@@ -18,6 +18,14 @@
 > Brief presentation of the artefact goals.
 
 
+| Identifier       | Description            | 
+| ---------------- | ---------------------- | 
+| Visitor          |                        | 
+| User             |                        | 
+| Collabor         |                        | 
+| Project Manager  |                        | 
+| Administrator    |                        |
+
 ### 1. Actors
 
 > Diagram identifying actors and their relationships.  
@@ -84,9 +92,11 @@ Changes made to the first submission:
 1. ...
 
 ***
-GROUP21gg, DD/MM/2021
+GROUP2151, 26/10/2021
 
-* Sofia Germer, up201907461@up.pt
-* Miguel Lopes, up201704590@up.pt
-* Edgar Torre, up201906573@up.pt
-* Henrique Pinho, up201805000@up.pt
+| Name             | Number    | E-Mail               |
+| ---------------- | --------- | -------------------- |
+| Sofia Germer     | 201907461 | up201907461@up.pt    |
+| Miguel Lopes     | 20170459  | up201704590@up.pt    |
+| Edgar Torre      | 201906573 | up201906573@up.pt    |
+| Henrique Pinho   | 201805000 | up201805000@up.pt    |
