@@ -15,6 +15,7 @@
 
 ## A2: Actors and User stories
 
+![Project Managment Actors](PM_diagram.png)
 > Brief presentation of the artefact goals.
 
 

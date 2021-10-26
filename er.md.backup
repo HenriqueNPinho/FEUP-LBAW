@@ -15,6 +15,7 @@
 
 ## A2: Actors and User stories
 
+![Project Managment Actors]()
 > Brief presentation of the artefact goals.
 
 
@@ -107,22 +108,21 @@ This section contains business rules, technical requirements and other non-funct
 
 | Identifier       | Name                   | Priority               | 
 | ---------------- | ---------------------- | ---------------------- |        
-| BR01             |                        |                        | 
-| BR01             |                        |                        |                          
-| BR01             |                        |                        |                          
-| BR01             |                        |                        |                          
-| BR01             |                        |                        |
+| TR01             |                        |                        | 
+| TR01             |                        |                        |                          
+| TR01             |                        |                        |                          
+| TR01             |                        |                        |                          
+| TR01             |                        |                        |
 
 #### 3.3. Restrictions
 
 | Identifier       | Name                   | Priority               | 
 | ---------------- | ---------------------- | ---------------------- |        
-| TR01             |                        |                        | 
-| TR01             |                        |                        |                          
-| BR01             |                        |                        |                          
-| BR01             |                        |                        |                          
-| BR01             |                        |                        |
-
+| C01              |                        |                        | 
+| C01              |                        |                        |                          
+| C01              |                        |                        |                          
+| C01              |                        |                        |                          
+| C01              |                        |                        |
 ---
 
 
