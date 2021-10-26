@@ -37,25 +37,91 @@
 > User stories organized by actor.  
 > For each actor, a table containing a line for each user story, and for each user story: an identifier, a name, a priority, and a description (following the recommended pattern).
 
-#### 2.1. Actor 1
+#### 2.1. Visitor
 
-#### 2.2. Actor 2
+| Identifier       | Name                   | Priority               | Description              |
+| ---------------- | ---------------------- | ---------------------- |------------------------- |        
+| US01             |                        |                        |                          |
+| US02             |                        |                        |                          |
+| US03             |                        |                        |                          |
+| US04             |                        |                        |                          |
+| US05             |                        |                        |                          |
 
-#### 2.N. Actor n
+#### 2.2. User
+
+| Identifier       | Name                   | Priority               | Description              |
+| ---------------- | ---------------------- | ---------------------- |------------------------- |        
+| US01             |                        |                        |                          |
+| US01             |                        |                        |                          |
+| US01             |                        |                        |                          |
+| US01             |                        |                        |                          |
+| US01             |                        |                        |                          |
+
+#### 2.3. Collabor
+
+| Identifier       | Name                   | Priority               | Description              |
+| ---------------- | ---------------------- | ---------------------- |------------------------- |        
+| US01             |                        |                        |                          |
+| US01             |                        |                        |                          |
+| US01             |                        |                        |                          |
+| US01             |                        |                        |                          |
+| US01             |                        |                        |                          |
+
+#### 2.4. Project Manager
+
+| Identifier       | Name                   | Priority               | Description              |
+| ---------------- | ---------------------- | ---------------------- |------------------------- |        
+| US01             |                        |                        |                          |
+| US01             |                        |                        |                          |
+| US01             |                        |                        |                          |
+| US01             |                        |                        |                          |
+| US01             |                        |                        |                          |
+
+#### 2.5. Administrator
+
+| Identifier       | Name                   | Priority               | Description              |
+| ---------------- | ---------------------- | ---------------------- |------------------------- |        
+| US01             |                        |                        |                          |
+| US01             |                        |                        |                          |
+| US01             |                        |                        |                          |
+| US01             |                        |                        |                          |
+| US01             |                        |                        |                          |
 
 
 ### 3. Supplementary Requirements
 
-> Section including business rules, technical requirements, and restrictions.  
-> For each subsection, a table containing identifiers, names, and descriptions for each requirement.
+This section contains business rules, technical requirements and other non-functional requirements on the project.
 
 #### 3.1. Business rules
 
+| Identifier       | Name                   | Priority               | 
+| ---------------- | ---------------------- | ---------------------- |        
+| US01             |                        |                        | 
+| US01             |                        |                        |                          
+| US01             |                        |                        |                          
+| US01             |                        |                        |                          
+| US01             |                        |                        |
+
+
 #### 3.2. Technical requirements
+
+| Identifier       | Name                   | Priority               | 
+| ---------------- | ---------------------- | ---------------------- |        
+| TR01             |                        |                        | 
+| TR01             |                        |                        |                          
+| TR01             |                        |                        |                          
+| TR01             |                        |                        |                          
+| TR01             |                        |                        |
 
 #### 3.3. Restrictions
 
-
+| Identifier       | Name                   | Priority               | 
+| ---------------- | ---------------------- | ---------------------- |        
+| C01              |                        |                        | 
+| C01              |                        |                        |                          
+| C01              |                        |                        |                          
+| C01              |                        |                        |                          
+| C01              |                        |                        |
 ---
 
 
