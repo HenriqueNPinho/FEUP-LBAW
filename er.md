@@ -97,11 +97,9 @@ This section contains business rules, technical requirements and other non-funct
 
 | Identifier       | Name                   | Priority               | 
 | ---------------- | ---------------------- | ---------------------- |        
-| US01             |                        |                        | 
-| US01             |                        |                        |                          
-| US01             |                        |                        |                          
-| US01             |                        |                        |                          
-| US01             |                        |                        |
+| BR01             | Administrator privileges |  Administrator accounts are independent of the user accounts and cannot create or participate in projects | 
+| BR02             | Project delivery date  | A project’s delivery date must always be posterior to its starting date |                          
+| BR03             | Forum Post History |A record of all forum posts is kept for posterity (even those deleted by the Post Author)|                          
 
 
 #### 3.2. Technical requirements
