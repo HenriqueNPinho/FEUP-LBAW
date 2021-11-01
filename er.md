@@ -132,13 +132,10 @@ This section contains business rules, technical requirements and other non-funct
 | ---------------- | ---------------------- | ---------------------- |        
 | TR01             | Availability|The system must be available 99 percent of the time in each 24-hour period| 
 | TR02             | Accessibility|The system must ensure that everyone can access the pages, regardless of whether they have any handicap or not, or the web browser they use|        
-| TR03             | Usability|The system should be simple and easy to use.
-The MediaLibrary system is designed to be used by media consumers from all ages, with or without technical experience, so a very good usability is a critical requirement.|
+| TR03             | Usability|The system should be simple and easy to use. The MediaLibrary system is designed to be used by media consumers from all ages, with or without technical experience, so a very good usability is a critical requirement.|
 | TR04             | Performance|The system should have response times shorter than 2 s to ensure the user's attention|
-| TR05             | Web application|The system should be implemented as a web application with dynamic pages (HTML5, JavaScript, CSS3 and PHP).
-It is critical that the MediaLibrary system is easily accessible from anywhere without the need to install specific applications or software, adopting standard web technologies.|
-| TR06             | Portability|The server-side system should work across multiple platforms (Linux, Mac OS, etc.).
-The MediaLibrary system is destined for personal use. To make it easily available to a large user base, it should be platform-independent.|
+| TR05             | Web application|The system should be implemented as a web application with dynamic pages (HTML5, JavaScript, CSS3 and PHP).It is critical that the MediaLibrary system is easily accessible from anywhere without the need to install specific applications or software, adopting standard web technologies.|
+| TR06             | Portability|The server-side system should work across multiple platforms (Linux, Mac OS, etc.).The MediaLibrary system is destined for personal use. To make it easily available to a large user base, it should be platform-independent.|
 | TR07             | Database|The PostgreSQL database management system must be used, with a version of 11 or higher.|
 | TR08             | Security|The system shall protect information from unauthorised access through the use of an authentication and verification system|
 | TR09             | Robustness|The system must be prepared to handle and continue operating when runtime errors occur|
