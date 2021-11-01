@@ -124,15 +124,26 @@ Administrator may browse for a project and read its details.
 | US30           |Archive project|Medium|As the Project Coordinator, I want to be able to archive a project, so that| 
 | US31           |Manage members permissions||| 
 | US32           |Invite to Project by email|High|As the Project Coordinator, I want to be able to Invite a new member by email, so that|   
- 
-#### 2.7. Administrator
+
+
+ #### 2.7. Notifications
 
 | Identifier       | Name                   | Priority               | Description              |
 | ---------------- | ---------------------- | ---------------------- |------------------------- |        
-|US33              |Invite user to the company’s workspace|High|As the Administrator I want to be able to control who gets to access the company’s |
-|US34              |View a list of company users|High|As the Administrator I want to be able to be able to view a list of all users with access to the company’s project management platform|
-|US35              |Remove user from the company’s workplace|High|As the Administrator I want to be able to revoke an user’s access to the company’s project management platform|
-|US36              |Browse projects|High|As the Administrator I want to be able to browse projects and all its details with view only permissions|
+| US33            | Change in Project Coordinator         | High                   | As a notification, I want to notify every project member that the Project Coordinator has changed, so that |
+| US34             | Completed Task        | Medium               | As a notification, I want to notify every project member that a task is completed, so that everyone can start working on a new one|
+| US36             | Assigned to Task            | Medium                 |  As a notification, I want to notify a project member that a new task has been assigned to them, so they can start working on it |
+| US36             | Accepted Invitation    | Medium                  | As a notification, I want to notify every project member when someone accepts an invitation,so they know that a new member joined the project                             |
+
+
+#### 2.8. Administrator
+
+| Identifier       | Name                   | Priority               | Description              |
+| ---------------- | ---------------------- | ---------------------- |------------------------- |        
+|US37             |Invite user to the company’s workspace|High|As the Administrator I want to be able to control who gets to access the company’s |
+|US38              |View a list of company users|High|As the Administrator I want to be able to be able to view a list of all users with access to the company’s project management platform|
+|US39              |Remove user from the company’s workplace|High|As the Administrator I want to be able to revoke an user’s access to the company’s project management platform|
+|US40              |Browse projects|High|As the Administrator I want to be able to browse projects and all its details with view only permissions|
 
 
 ### 3. Supplementary Requirements
