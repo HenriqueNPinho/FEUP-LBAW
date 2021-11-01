@@ -65,8 +65,7 @@
 | US08             | View projects          | High                   | As an Authenticated user, I want to see my projects, so that I can switch between projects                         |
 | US09             | Mark project as favorite | Medium           |   As an Authenticated user, I want to be able to mark projects as favorites so I can access them faster                       |
 | US10             | Manage project invitations | High              |  As an Authenticated user, I want to be able to accept or decline invitations to participate in new projects               |
-| US11             | Manage profile      |  High      |  High
-As an Authenticated user, I want to be able to manage my personal information (Name, Contact Info, Profile Picture,...) |
+| US11             | Manage profile      |  High      | As an Authenticated user, I want to be able to manage my personal information (Name, Contact Info, Profile Picture,...) |
 
 #### 2.4. Project Member
 

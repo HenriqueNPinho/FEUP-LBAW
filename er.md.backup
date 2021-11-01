@@ -151,11 +151,8 @@ The MediaLibrary system is destined for personal use. To make it easily availabl
 
 | Identifier       | Name                   | Priority               | 
 | ---------------- | ---------------------- | ---------------------- |        
-| C01              |   Deadline                 |                        | 
-| C01              |                        |                        |                          
-| C01              |                        |                        |                          
-| C01              |                        |                        |                          
-| C01              |                        |                        |
+| C01              |   Deadline             | The platform must be developed and ready to use by the end of the semester | 
+
 ---
 
 
