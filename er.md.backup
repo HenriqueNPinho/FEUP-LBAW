@@ -83,17 +83,35 @@ As an Authenticated user, I want to be able to manage my personal information (N
 | US20             | Comment on task        |Medium |As a Project Member, I want to be able to comment on tasks. |
 | US21             | Leave project          |High |As a Project Member, I want to be able to leave the project|
 | US22             | View the project’s team|Low(?)|As a Project Member, I want to be able to view the project’s team|
-| US23             | View Team members profile|                        |                          |
+| US23             | View Team members profile|low (?)|As a Project Member, I want to be able to view the profile of project members|
 
-#### 2.5. Administrator
+#### 2.5. Post Author
 
 | Identifier       | Name                   | Priority               | Description              |
 | ---------------- | ---------------------- | ---------------------- |------------------------- |        
-| US01             | Invite user to the company's workspace    |                        |                          | 
-| US01             |                        |                        |                          |
-| US01             |                        |                        |                          |
-| US01             |                        |                        |                          |
-| US01             |                        |                        |                          |
+| US24             |Edit posts|High|As the Post Author, I want to be able to edit my own posts|
+| US25             |Delete posts|High|As the Post Author, I want to be able to delete my own posts|
+
+#### 2.6. Project Coordinator
+
+| Identifier       | Name                   | Priority               | Description              |
+| ---------------- | ---------------------- | ---------------------- |------------------------- |        
+| US26           |Add user to project|High|As the Project Coordinator, I want to be able to add an user to the project|
+| US27           |Assign tasks to members|High|As the Project Coordinator, I want to be able to assign a task to a member|
+| US28           |Assign new coordinator|High|As the Project Coordinator, I want to be able to choose another coordinator| 
+| US29           |Edit project details|High|As the Project Coordinator, I want to be able to edit project details, so that| 
+| US30           |Archive project|Medium|As the Project Coordinator, I want to be able to archive a project, so that| 
+| US31           |Manage members permissions||| 
+| US32           |Invite to Project by email|High|As the Project Coordinator, I want to be able to Invite a new member by email, so that|   
+ 
+#### 2.7. Administrator
+
+| Identifier       | Name                   | Priority               | Description              |
+| ---------------- | ---------------------- | ---------------------- |------------------------- |        
+|US33              |Invite user to the company’s workspace|High|As the Administrator I want to be able to control who gets to access the company’s |
+|US34              |View a list of company users|High|As the Administrator I want to be able to be able to view a list of all users with access to the company’s project management platform|
+|US35              |Remove user from the company’s workplace|High|As the Administrator I want to be able to revoke an user’s access to the company’s project management platform|
+|US36              |Browse projects|High|As the Administrator I want to be able to browse projects and all its details with view only permissions|
 
 
 ### 3. Supplementary Requirements
@@ -113,17 +131,27 @@ This section contains business rules, technical requirements and other non-funct
 
 | Identifier       | Name                   | Priority               | 
 | ---------------- | ---------------------- | ---------------------- |        
-| TR01             |                        |                        | 
-| TR01             |                        |                        |                          
-| TR01             |                        |                        |                          
-| TR01             |                        |                        |                          
-| TR01             |                        |                        |
+| TR01             | Availability|The system must be available 99 percent of the time in each 24-hour period| 
+| TR02             | Accessibility|The system must ensure that everyone can access the pages, regardless of whether they have any handicap or not, or the web browser they use|        
+| TR03             | Usability|The system should be simple and easy to use.
+The MediaLibrary system is designed to be used by media consumers from all ages, with or without technical experience, so a very good usability is a critical requirement.|
+| TR04             | Performance|The system should have response times shorter than 2 s to ensure the user's attention|
+| TR05             | Web application|The system should be implemented as a web application with dynamic pages (HTML5, JavaScript, CSS3 and PHP).
+It is critical that the MediaLibrary system is easily accessible from anywhere without the need to install specific applications or software, adopting standard web technologies.|
+| TR06             | Portability|The server-side system should work across multiple platforms (Linux, Mac OS, etc.).
+The MediaLibrary system is destined for personal use. To make it easily available to a large user base, it should be platform-independent.|
+| TR07             | Database|The PostgreSQL database management system must be used, with a version of 11 or higher.|
+| TR08             | Security|The system shall protect information from unauthorised access through the use of an authentication and verification system|
+| TR09             | Robustness|The system must be prepared to handle and continue operating when runtime errors occur|
+| TR10             | Scalability|The system must be prepared to deal with the growth in the number of users and their actions|
+| TR11             | Ethics|The system must respect the ethical principles in software development (for example, personal user details, or usage data, should not be collected nor shared without full acknowledgement and authorization from its owner)|
+
 
 #### 3.3. Restrictions
 
 | Identifier       | Name                   | Priority               | 
 | ---------------- | ---------------------- | ---------------------- |        
-| C01              |                        |                        | 
+| C01              |   Deadline                 |                        | 
 | C01              |                        |                        |                          
 | C01              |                        |                        |                          
 | C01              |                        |                        |                          
