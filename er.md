@@ -9,6 +9,28 @@
 > Main features.  
 > User profiles.
 
+This project aims to build an information system with a web interface for project management that allows teams of users to organize their professional projects. This application’s target audience are companies and teams working on complex projects, offering them a platform to organize every aspect of their work flow.
+
+The motivation behind this project is creating an application that boosts productivity when developing a project. Helps users organize their work by providing them with a simple yet powerful interface for project management.
+
+The application allows for each company’s users to work on multiple projects simultaneously. A project is defined by a list of tasks, the users working on that project and the timeline of completion. The application also includes a forum where users working on the same project can interact with each other.
+
+In order to start using our application a company must first register an account. The company's system administrator can send email invitations to their workers, after which they are prompted to create an account to start using the platform or use an existing account (this accounts for the possibility that a user has used our platform before to work on a different company, but was using the same email address). From that point on, the user needs to use their credentials to access the platform. 
+
+Different user types have different permissions. The existing types are: guests and authenticated users, which includes general, project members and administrators.
+
+Guests are only able to authenticate themselves.
+
+General authenticated users are able to create new and view current projects and are able to manage their projects by accepting/declining new invitations and by marking some as favorites.
+
+Project members within a project are able to view, modify, add, delete, comment and implement tasks and assign them to other collaborators. They are also able to browse and post to the message forum and are able to search for tasks and other collaborators and managers. Whoever posts to the forum may edit and delete the post.
+
+Project managers, besides having every permission a project member has, are able to moderate by adding or removing members from each project and promoting them to managers. They can also edit some project details and archive the project itself.
+
+
+Every user within a project receives notifications when: a new member joins the project, a user is promoted/demoted, a task is assigned to him and when an assigned task is completed if the user is a project manager or if he’s assigned to that task. 
+
+Administrator may browse for a project and read its details.
 
 ---
 
