@@ -53,29 +53,37 @@
 | Identifier       | Name                   | Priority               | Description              |
 | ---------------- | ---------------------- | ---------------------- |------------------------- |        
 | US03             | Manage invite          | High                   | As a User, I want to accept/decline invites to a project.|
-| US01             | See home               | High                   | As a User, I want to access the home page, so that I can see a brief presentation of the website                     |
-| US01             | See about              | High                   |  As a User, I want to access the about page, so that I can see a complete description of the website and its creators |
-| US01             | Consult FAQ            | High                   | As a User, I want to access the FAQ, so that I can get quick answers to common questions                             |
+| US04             | See home               | High                   | As a User, I want to access the home page, so that I can see a brief presentation of the website                     |
+| US05             | See about              | High                   |  As a User, I want to access the about page, so that I can see a complete description of the website and its creators |
+| US06             | Consult FAQ            | High                   | As a User, I want to access the FAQ, so that I can get quick answers to common questions                             |
 
-#### 2.3. Collabor
-
-| Identifier       | Name                   | Priority               | Description              |
-| ---------------- | ---------------------- | ---------------------- |------------------------- |        
-| US01             |                        |                        |                          |
-| US01             |                        |                        |                          |
-| US01             |                        |                        |                          |
-| US01             |                        |                        |                          |
-| US01             |                        |                        |                          |
-
-#### 2.4. Project Manager
+#### 2.3. Authenticated User
 
 | Identifier       | Name                   | Priority               | Description              |
 | ---------------- | ---------------------- | ---------------------- |------------------------- |        
-| US01             |                        |                        |                          |
-| US01             |                        |                        |                          |
-| US01             |                        |                        |                          |
-| US01             |                        |                        |                          |
-| US01             |                        |                        |                          |
+| US07             | Create project         |  Hight                 | As an Authenticated user, I want to create a project, so that I can work on a new project                         |
+| US08             | View projects          | High                   | As an Authenticated user, I want to see my projects, so that I can switch between projects                         |
+| US09             | Mark project as favorite | Medium           |   As an Authenticated user, I want to be able to mark projects as favorites so I can access them faster                       |
+| US10             | Manage project invitations | High              |  As an Authenticated user, I want to be able to accept or decline invitations to participate in new projects               |
+| US11             | Manage profile      |  High      |  High
+As an Authenticated user, I want to be able to manage my personal information (Name, Contact Info, Profile Picture,...) |
+
+#### 2.4. Project Member
+
+| Identifier       | Name                   | Priority               | Description              |
+| ---------------- | ---------------------- | ---------------------- |------------------------- |        
+| US12             | Create task            | High                   | As a Project Member, I want to create a task |
+| US13             | Manage tasks           | High          |   As a Project Member, I want to manage tasks, (so that I can assign them to another Project member), choose the priority of each task and its due date |
+| US14             | Complete an assigned task |  High     | As a Project Member, I want to be able to mark the tasks I am assigned to as complete |
+| US15             | Search tasks           |  High                  | As a Project Member, I want to be able to search for tasks using a search bar |
+| US16             | Browse project forum   | Medium  | As a Project Member, I want to access the project forum, so that I can read mine and other users’ messages |
+| US17             | Post messages to project forum | Medium | As a Project Member, I want to be able to post new messages to the project forum |
+| US18             | Assign Users to Tasks  | High |As a Project Member, I want to be able to assign a task to another project member|
+| US19             | View task details      |Medium |As a Project Member, I want to be able to view task details|
+| US20             | Comment on task        |Medium |As a Project Member, I want to be able to comment on tasks. |
+| US21             | Leave project          |High |As a Project Member, I want to be able to leave the project|
+| US22             | View the project’s team|Low(?)|As a Project Member, I want to be able to view the project’s team|
+| US23             | View Team members profile|low (?)|As a Project Member, I want to be able to view the profile of project members|
 
 #### 2.5. Administrator
 
