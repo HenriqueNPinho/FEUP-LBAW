@@ -15,12 +15,7 @@
 
 ## A2: Actors and User stories
 
-This artifact contains the specification of the actors and their user stories, serving as 
-agile documentation of the project’s requirements.
-
-## 2.1: Actors
-
-![Project Managment Actors]()
+![Project Managment Actors](PM_diagram.png)
 > Brief presentation of the artefact goals.
 
 
@@ -87,7 +82,8 @@ agile documentation of the project’s requirements.
 
 | Identifier       | Name                   | Priority               | Description              |
 | ---------------- | ---------------------- | ---------------------- |------------------------- |        
-| US01             |                        |                        |                          |
+| US01             | Invite user to the     |                        |                          |
+					company's workspace 
 | US01             |                        |                        |                          |
 | US01             |                        |                        |                          |
 | US01             |                        |                        |                          |

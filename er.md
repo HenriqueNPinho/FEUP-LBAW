@@ -82,7 +82,8 @@
 
 | Identifier       | Name                   | Priority               | Description              |
 | ---------------- | ---------------------- | ---------------------- |------------------------- |        
-| US01             |                        |                        |                          |
+| US01             | Invite user to the     |                        |                          |
+					company's workspace 
 | US01             |                        |                        |                          |
 | US01             |                        |                        |                          |
 | US01             |                        |                        |                          |
