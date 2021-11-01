@@ -74,7 +74,7 @@ Administrator may browse for a project and read its details.
 
 | Identifier       | Name                   | Priority               | Description              |
 | ---------------- | ---------------------- | ---------------------- |------------------------- |        
-| US03             | Manage invite          | High                   | As a User, I want to accept/decline invites to a project.|
+| US03             | Manage invite          | High                   | As a User, I want to accept/decline invites to a project, so I can decide which projects I want to work on|
 | US04             | See home               | High                   | As a User, I want to access the home page, so that I can see a brief presentation of the website                     |
 | US05             | See about              | High                   |  As a User, I want to access the about page, so that I can see a complete description of the website and its creators |
 | US06             | Consult FAQ            | High                   | As a User, I want to access the FAQ, so that I can get quick answers to common questions                             |
@@ -87,13 +87,13 @@ Administrator may browse for a project and read its details.
 | US08             | View projects          | High                   | As an Authenticated user, I want to see my projects, so that I can switch between projects                         |
 | US09             | Mark project as favorite | Medium           |   As an Authenticated user, I want to be able to mark projects as favorites so I can access them faster                       |
 | US10             | Manage project invitations | High              |  As an Authenticated user, I want to be able to accept or decline invitations to participate in new projects               |
-| US11             | Manage profile      |  High      | As an Authenticated user, I want to be able to manage my personal information (Name, Contact Info, Profile Picture,...) |
+| US11             | Manage profile      |  High      | As an Authenticated user, I want to be able to manage my personal information (Name, Contact Info, Profile Picture,...), so that I can see if there are any errors |
 
 #### 2.4. Project Member
 
 | Identifier       | Name                   | Priority               | Description              |
 | ---------------- | ---------------------- | ---------------------- |------------------------- |        
-| US12             | Create task            | High                   | As a Project Member, I want to create a task |
+| US12             | Create task            | High                   | As a Project Member, I want to create a task, so that  |
 | US13             | Manage tasks           | High          |   As a Project Member, I want to manage tasks, (so that I can assign them to another Project member), choose the priority of each task and its due date |
 | US14             | Complete an assigned task |  High     | As a Project Member, I want to be able to mark the tasks I am assigned to as complete |
 | US15             | Search tasks           |  High                  | As a Project Member, I want to be able to search for tasks using a search bar |
