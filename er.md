@@ -19,18 +19,21 @@
 > Brief presentation of the artefact goals.
 
 
-| Identifier       | Description            | 
-| ---------------- | ---------------------- | 
-| Visitor          |                        | 
-| User             |                        | 
-| Collabor         |                        | 
-| Project Manager  |                        | 
-| Administrator    |                        |
-
 ### 1. Actors
 
 > Diagram identifying actors and their relationships.  
 > Table identifying actors, including a brief description.
+
+| Identifier       | Description            | 
+| ---------------- | ---------------------- | 
+| Visitor          |  Unauthenticated user that can sign-in in the system or register (sign-up) with email invitation                      | 
+| User             |  Generic user that has access to public information| 
+| Authenticated User | Generic user that has access to public information, can create projects and accept/decline invites |
+| Project Member  | Authenticated user that can manage tasks, post messages on the forum and have access to project information                       | 
+| Post Author	  |Authenticated user that can edit/delete their own post |
+| Project Coordinator  | Authenticated user that can edit project details and is responsible for the management of users | 
+| Administrator    | Authenticated user that can browse and view project details |
+| Notifications    | Notifications alert project members about events related to the project  |
 
 
 ### 2. User Stories
@@ -42,21 +45,17 @@
 
 | Identifier       | Name                   | Priority               | Description              |
 | ---------------- | ---------------------- | ---------------------- |------------------------- |        
-| US01             |                        |                        |                          |
-| US02             |                        |                        |                          |
-| US03             |                        |                        |                          |
-| US04             |                        |                        |                          |
-| US05             |                        |                        |                          |
+| US01             | Sign-in                |  High                  | As a Visitor, I want to authenticate into the system, so that I can access privileged information                       |
+| US02             | Sign-up                |  High                  |  As a Visitor, I want to register myself into the system, so that I can authenticate myself into the system              |
 
 #### 2.2. User
 
 | Identifier       | Name                   | Priority               | Description              |
 | ---------------- | ---------------------- | ---------------------- |------------------------- |        
-| US01             |                        |                        |                          |
-| US01             |                        |                        |                          |
-| US01             |                        |                        |                          |
-| US01             |                        |                        |                          |
-| US01             |                        |                        |                          |
+| US03             | Manage invite          | High                   | As a User, I want to accept/decline invites to a project.|
+| US01             | See home               | High                   | As a User, I want to access the home page, so that I can see a brief presentation of the website                     |
+| US01             | See about              | High                   |  As a User, I want to access the about page, so that I can see a complete description of the website and its creators |
+| US01             | Consult FAQ            | High                   | As a User, I want to access the FAQ, so that I can get quick answers to common questions                             |
 
 #### 2.3. Collabor
 
