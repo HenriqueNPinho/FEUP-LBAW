@@ -76,7 +76,7 @@ Administrator may browse for a project and read its details.
 | ---------------- | ---------------------- | ---------------------- |------------------------- |        
 | US03             | Manage invite          | High                   | As a User, I want to accept/decline invites to a project, so I can decide which projects I want to work on|
 | US04             | See home               | High                   | As a User, I want to access the home page, so that I can see a brief presentation of the website                     |
-| US05             | See about              | High                   |  As a User, I want to access the about page, so that I can see a complete description of the website and its creators |
+| US05             | See about              | High                   | As a User, I want to access the about page, so that I can see a complete description of the website and its creators |
 | US06             | Consult FAQ            | High                   | As a User, I want to access the FAQ, so that I can get quick answers to common questions                             |
 
 #### 2.3. Authenticated User
@@ -86,61 +86,63 @@ Administrator may browse for a project and read its details.
 | US07             | Create project         |  High                 | As an Authenticated user, I want to create a project, so that I can work on a new project                         |
 | US08             | View projects          | High                   | As an Authenticated user, I want to see my projects, so that I can switch between projects                         |
 | US09             | Manage profile      |  High      | As an Authenticated user, I want to be able to manage my personal information (Name, Contact Info, Profile Picture,...), so that I can see if there are any errors |
-| US10             | Manage project invitations | High              |  As an Authenticated user, I want to be able to accept or decline invitations to participate in new projects               |
-| US11             | Mark project as favorite | Medium           |   As an Authenticated user, I want to be able to mark projects as favorites so I can access them faster    
+| US10             | Manage project invitations | High              |  As an Authenticated user, I want to be able to accept or decline invitations, so that I can participate in new projects               |
+| US11             | Mark project as favorite | Medium           |   As an Authenticated user, I want to be able to mark projects as favorites, so that I can filter them    
 #### 2.4. Project Member
 
 | Identifier       | Name                   | Priority               | Description              |
 | ---------------- | ---------------------- | ---------------------- |------------------------- |        
-| US12             | Create task            | High                   | As a Project Member, I want to create a task, so that  |
-| US13             | Manage tasks           | High          |   As a Project Member, I want to manage tasks, (so that I can assign them to another Project member), choose the priority of each task and its due date |
-| US14             | Complete an assigned task |  High     | As a Project Member, I want to be able to mark the tasks I am assigned to as complete |
-| US15             | Search tasks           |  High                  | As a Project Member, I want to be able to search for tasks using a search bar |
-| US16             | Leave project          |High |As a Project Member, I want to be able to leave the project|
-| US17             | Assign Users to Tasks  | High |As a Project Member, I want to be able to assign a task to another project member|
-| US18             | Post messages to project forum | Medium | As a Project Member, I want to be able to post new messages to the project forum |
-| US19             | View task details      |Medium |As a Project Member, I want to be able to view task details|
-| US20             | Comment on task        |Medium |As a Project Member, I want to be able to comment on tasks. |
+| US12             | Create task            | High                   | As a Project Member, I want to create a task, so that I'm able to use that feature |
+| US13             | Manage tasks           | High          |   As a Project Member, I want to manage tasks, (so that I can assign them to another Project member), choose the priority of each task and its due date, so that I can fix mistakes and update older tasks|
+| US14             | Complete an assigned task |  High     | As a Project Member, I want to be able to mark the tasks I am assigned to as complete, so that other collaborators don't overlap my work |
+| US15             | Search tasks           |  High                  | As a Project Member, I want to be able to search for tasks using a search bar, so that I can access them faster |
+| US16             | Leave project          | High |As a Project Member, I want to be able to leave the project, so that my project list is updated|
+| US17             | Assign Users to Tasks  | High |As a Project Member, I want to be able to assign a task to another project member, so that every collaborator knows what's left to do |
+| US18             | Post messages to project forum | Medium | As a Project Member, I want to be able to post new messages to the project forum, so that I can communicate with every collaborator|
+| US19             | View task details      |Medium |As a Project Member, I want to be able to view task details, so that I know more about it|
+| US20             | Comment on task        |Medium |As a Project Member, I want to be able to comment on tasks, so that I can communicate with other collaborators |
 | US21             | Browse project forum   | Medium  | As a Project Member, I want to access the project forum, so that I can read mine and other users’ messages |
-| US22             | View the project’s team|Low(?)|As a Project Member, I want to be able to view the project’s team|
-| US23             | View Team members profile|low (?)|As a Project Member, I want to be able to view the profile of project members|
+| US22             | View the project’s team|Low(?)|As a Project Member, I want to be able to view the project’s team, so that I know every collaborator within the project|
+| US23             | View Team members profile|low (?)|As a Project Member, I want to be able to view the profile of project members, so that I can correctly identify every collaborator|
 
 #### 2.5. Post Author
 
 | Identifier       | Name                   | Priority               | Description              |
 | ---------------- | ---------------------- | ---------------------- |------------------------- |        
-| US24             |Edit posts|High|As the Post Author, I want to be able to edit my own posts|
-| US25             |Delete posts|High|As the Post Author, I want to be able to delete my own posts|
+| US24             |Edit posts|High|As the Post Author, I want to be able to edit my own posts, so that I can fix previous mistakes or update my posts|
+| US25             |Delete posts|High|As the Post Author, I want to be able to delete my own posts, so that the message forum isn't full of obsolete posts|
 
 #### 2.6. Project Coordinator
 
 | Identifier       | Name                   | Priority               | Description              |
 | ---------------- | ---------------------- | ---------------------- |------------------------- |        
-| US26           |Add user to project|High|As the Project Coordinator, I want to be able to add an user to the project|
-| US27           |Assign tasks to members|High|As the Project Coordinator, I want to be able to assign a task to a member|
-| US28           |Assign new coordinator|High|As the Project Coordinator, I want to be able to choose another coordinator| 
-| US29           |Edit project details|High|As the Project Coordinator, I want to be able to edit project details, so that| 
+| US26           |Add user to project|High|As the Project Coordinator, I want to be able to add an user to the project, so that new collaborators gain their new permissions|
+| US27           |Assign tasks to members|High|As the Project Coordinator, I want to be able to assign a task to a member, so that every collaborator has a task or list of tasks to do|
+| US28           |Assign new coordinator|High|As the Project Coordinator, I want to be able to choose another coordinator, so that new project coordinators gain their new permissions| 
+| US29           |Edit project details|High|As the Project Coordinator, I want to be able to edit project details, so that I can fix old errors and update the objective of the project| 
 | US30           |Manage members permissions||| 
-| US31           |Invite to Project by email|High|As the Project Coordinator, I want to be able to Invite a new member by email, so that |
-| US32           |Archive project|Medium|As the Project Coordinator, I want to be able to archive a project, so that| 
+| US31           |Invite to Project by email|High|As the Project Coordinator, I want to be able to Invite a new member by email, so that new collaborators may join the project|
+| US32           |Archive project|Medium|As the Project Coordinator, I want to be able to archive a project, so that old projects are deactivated but not erased| 
 
+
+ #### 2.7. Notifications
 
 | Identifier       | Name                   | Priority               | Description              |
 | ---------------- | ---------------------- | ---------------------- |------------------------- |        
-| US33            | Change in Project Coordinator         | High                   | As a notification, I want to notify every project member that the Project Coordinator has changed, so that |
+| US33            | Change in Project Coordinator         | High                   | As a notification, I want to notify every project member that the Project Coordinator has changed, so that every member is aware of the change|
 | US34             | Completed Task        | Medium               | As a notification, I want to notify every project member that a task is completed, so that everyone can start working on a new one|
 | US36             | Assigned to Task            | Medium                 |  As a notification, I want to notify a project member that a new task has been assigned to them, so they can start working on it |
-| US36             | Accepted Invitation    | Medium                  | As a notification, I want to notify every project member when someone accepts an invitation,so they know that a new member joined the project                             |
+| US36             | Accepted Invitation    | Medium                  | As a notification, I want to notify every project member when someone accepts an invitation, so they know that a new member joined the project                             |
 
 
 #### 2.8. Administrator
 
 | Identifier       | Name                   | Priority               | Description              |
 | ---------------- | ---------------------- | ---------------------- |------------------------- |        
-|US37             |Invite user to the company’s workspace|High|As the Administrator I want to be able to control who gets to access the company’s |
-|US38              |View a list of company users|High|As the Administrator I want to be able to be able to view a list of all users with access to the company’s project management platform|
-|US39              |Remove user from the company’s workplace|High|As the Administrator I want to be able to revoke an user’s access to the company’s project management platform|
-|US40              |Browse projects|High|As the Administrator I want to be able to browse projects and all its details with view only permissions|
+|US37             |Invite user to the company’s workspace|High|As the Administrator, I want to be able to control who gets to access the company’s workspace, so that new users can access it|
+|US38              |View a list of company users|High|As the Administrator, I want to be able to be able to view a list of all users with access to the company’s project management platform, so that I can search for specific people|
+|US39              |Remove user from the company’s workplace|High|As the Administrator I want to be able to revoke an user’s access to the company’s project management platform, so that I can moderate the platform|
+|US40              |Browse projects|High|As the Administrator I want to be able to browse projects and all its details with view only permissions, so that I'm aware of every project being worked on |
 
 
 ### 3. Supplementary Requirements
@@ -199,9 +201,6 @@ This section contains business rules, technical requirements and other non-funct
 > Wireframes for, at least, two main pages of the web application.
 > Do not include trivial use cases.
 
-![User Homepage](wireframes/Homepage-Visitor.png)
-
-![Authenticated User Homepage](wireframes/Project-SideMenu.png)
 
 #### UIxx: Page Name
 
