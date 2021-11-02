@@ -125,8 +125,6 @@ Administrator may browse for a project and read its details.
 | US32           |Archive project|Medium|As the Project Coordinator, I want to be able to archive a project, so that| 
 
 
- #### 2.7. Notifications
-
 | Identifier       | Name                   | Priority               | Description              |
 | ---------------- | ---------------------- | ---------------------- |------------------------- |        
 | US33            | Change in Project Coordinator         | High                   | As a notification, I want to notify every project member that the Project Coordinator has changed, so that |
@@ -201,6 +199,9 @@ This section contains business rules, technical requirements and other non-funct
 > Wireframes for, at least, two main pages of the web application.
 > Do not include trivial use cases.
 
+![User Homepage](wireframes/Homepage-Visitor.png)
+
+![Authenticated User Homepage](wireframes/Project-SideMenu.png)
 
 #### UIxx: Page Name
 
