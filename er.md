@@ -202,9 +202,37 @@ This section contains business rules, technical requirements and other non-funct
 > Do not include trivial use cases.
 
 
-#### UIxx: Page Name
+#### UI01: User Homepage
+![User Homepage](wireframes/Homepage-Visitor.png)
 
-#### UIxx: Page Name
+#### UI02: Authenticated User Homepage
+
+![Authenticated User Homepage](wireframes/Project-SideMenu.png)
+
+#### Extra
+> Login
+
+![Login](wireframes/Project-SideMenu.png)
+
+> New Project
+
+![Creating a New Project](wireframes/NewProject.1_1.png)
+
+![Authenticated User Homepage](wireframes/NewProject.1_2.png)
+
+![Authenticated User Homepage](wireframes/NewProject.1_3.png)
+
+> Forum
+
+![Project Forum](wireframes/Project-Forum.png)
+
+> Project Overview
+
+![Project Overview](wireframes/ProjectOverview.png)
+
+> Sign Up
+
+![Side](wireframes/SignUp.png)
 
 
 ---
