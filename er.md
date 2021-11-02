@@ -199,7 +199,7 @@ This section contains business rules, technical requirements and other non-funct
 > Wireframes for, at least, two main pages of the web application.
 > Do not include trivial use cases.
 
-![User Homepage](wireframes/Homepage - Visitor.png)
+![User Homepage](wireframes/Homepage-Visitor.png)
 
 ![Authenticated User Homepage](wireframes/Project-SideMenu.png)
 
