@@ -193,9 +193,9 @@ This section contains business rules, technical requirements and other non-funct
 > Wireframes for, at least, two main pages of the web application.
 > Do not include trivial use cases.
 
-![User Homepage](wireframes/Homepage-Visitor.png)
+![User Homepage](wireframes/Homepage_Visitor.png)
 
-![Authenticated User Homepage](wireframes/Project-SideMenu.png)
+![Authenticated User Homepage](wireframes/Project_SideMenu.png)
 
 #### UI01: User Homepage
 ![User Homepage](wireframes/Homepage-Visitor.png)
@@ -203,20 +203,20 @@ This section contains business rules, technical requirements and other non-funct
 
 #### UI02: Authenticated User Homepage
 
-![Authenticated User Homepage](wireframes/Project-SideMenu.png)
+![Authenticated User Homepage](wireframes/Project_SideMenu.png)
 
 #### Extra
 > Login
 
-![Login](wireframes/Project-SideMenu.png)
+![Login](wireframes/Login.png)
 
 > New Project
 
-![Creating a New Project](wireframes/NewProject.1_1.png)
+![Creating a New Project](wireframes/NewProject_1.1.png)
 
-![Authenticated User Homepage](wireframes/NewProject.1_2.png)
+![Authenticated User Homepage](wireframes/NewProject_1.2.png)
 
-![Authenticated User Homepage](wireframes/NewProject.1_3.png)
+![Authenticated User Homepage](wireframes/NewProject_1.3.png)
 
 > Forum
 
@@ -224,11 +224,11 @@ This section contains business rules, technical requirements and other non-funct
 
 > Project Overview
 
-![Project Overview](wireframes/ProjectOverview.png)
+![Project Overview](wireframes/Project-ProjectOverview.png)
 
 > Sign Up
 
-![Side](wireframes/SignUp.png)
+![Side](wireframes/Project_SignUp.png)
 
 
 
