@@ -1,4 +1,4 @@
-# ER: Requirements Specification Component
+# Project Managment ActorsER: Requirements Specification Component
 
 > Project vision.
 
@@ -34,10 +34,12 @@ Administrator may browse for a project and read its details.
 
 ---
 
-
 ## A2: Actors and User stories
 
+
+
 ![Project Managment Actors](PM_diagram.png)
+
 > Brief presentation of the artefact goals.
 
 
@@ -116,25 +118,24 @@ Administrator may browse for a project and read its details.
 #### 2.6. Project Coordinator
 
 | Identifier       | Name                   | Priority               | Description              |
-| ---------------- | ---------------------- | ---------------------- |------------------------- |        
+| ---------------- | ---------------------- | ---------------------- |------------------------- |
 | US601           |Add user to project|High|As the Project Coordinator, I want to be able to add an user to the project, so that new collaborators gain their new permissions|
 | US602           |Assign tasks to members|High|As the Project Coordinator, I want to be able to assign a task to a member, so that every collaborator has a task or list of tasks to do|
-| US603           |Assign new coordinator|High|As the Project Coordinator, I want to be able to choose another coordinator, so that new project coordinators gain their new permissions| 
-| US604           |Edit project details|High|As the Project Coordinator, I want to be able to edit project details, so that I can fix old errors and update the objective of the project| 
-| US605           |Manage members permissions||| 
+| US603           |Assign new coordinator|High|As the Project Coordinator, I want to be able to choose another coordinator, so that new project coordinators gain their new permissions|
+| US604           |Edit project details|High|As the Project Coordinator, I want to be able to edit project details, so that I can fix old errors and update the objective of the project|
 | US606           |Invite to Project by email|High|As the Project Coordinator, I want to be able to Invite a new member by email, so that new collaborators may join the project|
-| US607           |Archive project|Medium|As the Project Coordinator, I want to be able to archive a project, so that old projects are deactivated but not erased| 
+| US607           |Archive project|Medium|As the Project Coordinator, I want to be able to archive a project, so that old projects are deactivated but not erased|
 
 
 
 #### 2.7. Administrator
 
 | Identifier       | Name                   | Priority               | Description              |
-| ---------------- | ---------------------- | ---------------------- |------------------------- |        
-|US37             |Invite user to the company’s workspace|High|As the Administrator, I want to be able to control who gets to access the company’s workspace, so that new users can access it|
-|US38              |View a list of company users|High|As the Administrator, I want to be able to be able to view a list of all users with access to the company’s project management platform, so that I can search for specific people|
-|US39              |Remove user from the company’s workplace|High|As the Administrator I want to be able to revoke an user’s access to the company’s project management platform, so that I can moderate the platform|
-|US40              |Browse projects|High|As the Administrator I want to be able to browse projects and all its details with view only permissions, so that I'm aware of every project being worked on |
+| ---------------- | ---------------------- | ---------------------- |------------------------- |
+|US701             |Invite user to the company’s workspace|High|As the Administrator, I want to be able to control who gets to access the company’s workspace, so that new users can access it|
+|US702              |View a list of company users|High|As the Administrator, I want to be able to be able to view a list of all users with access to the company’s project management platform, so that I can search for specific people|
+|US703              |Remove user from the company’s workplace|High|As the Administrator I want to be able to revoke an user’s access to the company’s project management platform, so that I can moderate the platform|
+|US704              |Browse projects|High|As the Administrator I want to be able to browse projects and all its details with view only permissions, so that I'm aware of every project being worked on |
 
 
 ### 3. Supplementary Requirements
