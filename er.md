@@ -57,7 +57,6 @@ Administrator may browse for a project and read its details.
 | Post Author	  |Authenticated user that can edit/delete their own post |
 | Project Coordinator  | Authenticated user that can edit project details and is responsible for the management of users | 
 | Administrator    | Authenticated user that can browse and view project details |
-| Notifications    | Notifications alert project members about events related to the project  |
 
 
 ### 2. User Stories

@@ -206,8 +206,7 @@ This section contains business rules, technical requirements and other non-funct
 - `3` This is the homepage/ project overview page. Here the user can see the project as a whole - all the tasks (his and other users' tasks) are displayed in one of the three dashboards: To Do, In Progress and Complete.
 - `4` By clicking his profile image the user can access a drop down menu that will include a link to his user profile settings and a log out link.
 - `5` The plus sign is used to create a new task.
-
-6 -Here is displayed the project title and the pictures of the Project Members. When the user clicks on one of them he is taken to a page where he can see the full project members list. When the user clicks on the title he is taken to a page with a full description of the project, including delivery date, project members, project coordinator, etc
+- `6` Here is displayed the project title and the pictures of the Project Members. When the user clicks on one of them he is taken to a page where he can see the full project members list. When the user clicks on the title he is taken to a page with a full description of the project, including delivery date, project members, project coordinator, etc
 
 #### Extra
 > Login
