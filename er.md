@@ -194,17 +194,12 @@ This section contains business rules, technical requirements and other non-funct
 > Wireframes for, at least, two main pages of the web application.
 > Do not include trivial use cases.
 
-![User Homepage](wireframes/Homepage_Visitor.png)
-
-![Authenticated User Homepage](wireframes/Project_SideMenu.png)
-
 #### UI01: User Homepage
 ![User Homepage](wireframes/Homepage-Visitor.png)
 
 
 #### UI02: Authenticated User Homepage
-
-![Authenticated User Homepage](wireframes/Project_SideMenu.png)
+![Authenticated User Homepage](wireframes/SideMenu.png)
 
 #### Extra
 > Login
@@ -221,15 +216,15 @@ This section contains business rules, technical requirements and other non-funct
 
 > Forum
 
-![Project Forum](wireframes/Project-Forum.png)
+![Project Forum](wireframes/Forum.png)
 
 > Project Overview
 
-![Project Overview](wireframes/Project-ProjectOverview.png)
+![Project Overview](wireframes/ProjectOverview.png)
 
 > Sign Up
 
-![Side](wireframes/Project_SignUp.png)
+![Side](wireframes/SignUp.png)
 
 
 
