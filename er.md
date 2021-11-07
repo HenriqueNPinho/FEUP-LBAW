@@ -142,21 +142,23 @@ This section contains business rules, technical requirements and other non-funct
 | ---------------- | ---------------------- | ---------------------- |        
 | BR01             | Administrator privileges |  Administrator accounts are independent of the user accounts and cannot create or participate in projects | 
 | BR02             | Project delivery date  | A project’s delivery date must always be posterior to its starting date |                          
-| BR03             | Forum Post History |A record of all forum posts is kept for posterity (even those deleted by the Post Author)|                          
+| BR03             | Forum Post History |A record of all forum posts is kept for posterity (even those deleted by the Post Author)|            
+| BR04             | User Data Deletion |When a user's account is deleted, every detail is kept, since it is considered work product. This includes (tasks created, forum posts, etc)|        
+| BR05             | Dates Restrictions |Completion/delivery dates must be posterior to the task/project's creation date.|                      
 
 
 #### 3.2. Technical requirements
 
 | Identifier       | Name                   | Priority               | 
 | ---------------- | ---------------------- | ---------------------- |        
-| TR01             | Availability|The system must be available 99 percent of the time in each 24-hour period| 
+| **`TR01             | Availability|The system must be available 99 percent of the time in each 24-hour period. If the Project Management platform isn't available at all times this could represent a serious cost for the company as it could lead to a delay in the delivery date as well as reduced productivity for its employees.`**| 
 | TR02             | Accessibility|The system must ensure that everyone can access the pages, regardless of whether they have any handicap or not, or the web browser they use|        
-| TR03             | Usability|The system should be simple and easy to use. The Project Managment system is designed to be used by media consumers from all ages, with or without technical experience, so a very good usability is a critical requirement.|
+|**`TR03             | Usability|The system should be simple and easy to use. One of the main motivations for this project is to offer a simple yet powerful tool for improving productivity, planning and overall workflow, so it is of utmost importance that it is easy to use.`**|
 | TR04             | Performance|The system should have response times shorter than 2 s to ensure the user's attention|
-| TR05             | Web application|The system should be implemented as a web application with dynamic pages (HTML5, JavaScript, CSS3 and PHP).It is critical that the Project Management system is easily accessible from anywhere without the need to install specific applications or software, adopting standard web technologies.|
-| TR06             | Portability|The server-side system should work across multiple platforms (Linux, Mac OS, etc.).The Project Managment system is destined for personal use. To make it easily available to a large user base, it should be platform-independent.|
+| TR05             | Web application|The system should be implemented as a web application with dynamic pages (HTML5, JavaScript, CSS3 and PHP).|
+| TR06             | Portability|The server-side system should work across multiple platforms (Linux, Mac OS, etc).|
 | TR07             | Database|The PostgreSQL database management system must be used, with a version of 11 or higher.|
-| TR08             | Security|The system shall protect information from unauthorised access through the use of an authentication and verification system|
+|**` TR08             | Security|The system shall protect information from unauthorised access through the use of an authentication and verification system. Companies deal with all sorts of sensitive materials and therefore it is crucial that all information is protected at all times and kept safe from unauthorised users.`**|
 | TR09             | Robustness|The system must be prepared to handle and continue operating when runtime errors occur|
 | TR10             | Scalability|The system must be prepared to deal with the growth in the number of users and their actions|
 | TR11             | Ethics|The system must respect the ethical principles in software development (for example, personal user details, or usage data, should not be collected nor shared without full acknowledgement and authorization from its owner)|
