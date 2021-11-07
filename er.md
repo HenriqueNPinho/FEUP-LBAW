@@ -4,7 +4,9 @@
 
 ## A1: Project Management
 
->The main goal of this artefact is to describe the project, the project's stakeholders as well the motivation behind it.
+The main goal of this artefact is to describe the project, the project's stakeholders as well the motivation behind it.
+
+### 1. Context and Motivation
 
 This project aims to build an information system with a web interface for project management that allows teams of users to organize their professional projects. This application’s target audience are companies and teams working on complex projects, offering them a platform to organize every aspect of their workflow.
 
@@ -174,6 +176,8 @@ The main goals of this artefact are the following:
 ### 1. Sitemap
 
 ![Site Map](sitemap.png)
+
+The "Project Overview" page and the "Task Page" are represented as page stacks because a user can have multiple projects and each project can have multiple tasks. Each project and each task have a different pages.
 
 ### 2. Wireframes
 
