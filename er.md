@@ -82,7 +82,7 @@ The main goal of this artefact is to identify and describe the system actors, as
 | Identifier       | Name                   | Priority               | Description              |
 | ---------------- | ---------------------- | ---------------------- |------------------------- |        
 | US301             | Create task            | High                   | As a Project Member, I want to create a task, so that I'm able to use that feature |
-| US302             | Manage tasks           | High          |   As a Project Member, I want to manage tasks, (so that I can assign them to another Project member), choose the priority of each task and its due date, so that I can fix mistakes and update older tasks|
+| US302             | Manage tasks           | High          |   As a Project Member, I want to manage tasks (assign them to another Project member, choose the priority of each task and its due date), so that I can fix mistakes and update older tasks|
 | US303             | Complete an assigned task |  High     | As a Project Member, I want to be able to mark the tasks I am assigned to as complete, so that other collaborators don't overlap my work |
 | US304             | Search tasks           |  High                  | As a Project Member, I want to be able to search for tasks using a search bar, so that I can access them faster |
 | US305             | Leave project          | High |As a Project Member, I want to be able to leave the project, so that my project list is updated|
