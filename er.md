@@ -227,9 +227,7 @@ The "Project Overview" page and the "Task Page" are represented as page stacks b
 
 ## Revision history
 
-Changes made to the first submission:
-1. Item 1
-1. ...
+No changes were made to this document, since this is our first delivery.
 
 ***
 GROUP2151, 26/10/2021
