@@ -50,8 +50,7 @@ Administrator may browse for a project and read its details.
 
 | Identifier       | Description            | 
 | ---------------- | ---------------------- | 
-| Visitor          |  Unauthenticated user that can sign-in in the system or register (sign-up) with email invitation                      | 
-| User             |  Generic user that has access to public information| 
+| User          |  Unauthenticated user that can sign-in in the system or register (sign-up) with email invitation and has acess to public information                      | 
 | Authenticated User | Generic user that has access to public information, can create projects and accept/decline invites |
 | Project Member  | Authenticated user that can manage tasks, post messages on the forum and have access to project information                       | 
 | Post Author	  |Authenticated user that can edit/delete their own post |
@@ -64,68 +63,62 @@ Administrator may browse for a project and read its details.
 > User stories organized by actor.  
 > For each actor, a table containing a line for each user story, and for each user story: an identifier, a name, a priority, and a description (following the recommended pattern).
 
-#### 2.1. Visitor
+#### 2.1. User
 
 | Identifier       | Name                   | Priority               | Description              |
 | ---------------- | ---------------------- | ---------------------- |------------------------- |        
-| US101             | Sign-in                |  High                  | As a Visitor, I want to authenticate into the system, so that I can access privileged information                       |
-| US102             | Sign-up                |  High                  |  As a Visitor, I want to register myself into the system, so that I can authenticate myself into the system              |
-
-#### 2.2. User
-
-| Identifier       | Name                   | Priority               | Description              |
-| ---------------- | ---------------------- | ---------------------- |------------------------- |        
-| US201             | Manage invite          | High                   | As a User, I want to accept/decline invites to a project, so I can decide which projects I want to work on|
-| US202             | See home               | High                   | As a User, I want to access the home page, so that I can see a brief presentation of the website                     |
-| US203             | See about              | High                   | As a User, I want to access the about page, so that I can see a complete description of the website and its creators |
-| US204             | Consult FAQ            | High                   | As a User, I want to access the FAQ, so that I can get quick answers to common questions                             |
-| US205             | Login                  | High                   | As a User, I want to  be able to access my account by using an email and password combination|
+| US101             | Login                |  High                  | As a Visitor, I want to authenticate into the system, so that I can access privileged information                       |
+| US102             | Sign-up                |  High                  |  As a Visitor, I want to register myself into the system, so that I can authenticate myself into the system              |       
+| US103             | Manage invite          | High                   | As a User, I want to accept/decline invites to a project, so I can decide which projects I want to work on|
+| US104             | See home               | High                   | As a User, I want to access the home page, so that I can see a brief presentation of the website                     |
+| US105             | See about              | High                   | As a User, I want to access the about page, so that I can see a complete description of the website and its creators |
+| US106             | Consult FAQ            | High                   | As a User, I want to access the FAQ, so that I can get quick answers to common questions                             |
 
 #### 2.3. Authenticated User
 
 | Identifier       | Name                   | Priority               | Description              |
 | ---------------- | ---------------------- | ---------------------- |------------------------- |        
-| US301             | Create project         |  High                 | As an Authenticated user, I want to create a project, so that I can work on a new project                         |
-| US302             | View projects          | High                   | As an Authenticated user, I want to see my projects, so that I can switch between projects                         |
-| US303             | Manage profile      |  High      | As an Authenticated user, I want to be able to manage my personal information (Name, Contact Info, Profile Picture,...), so that I can see if there are any errors |
-| US304             | Manage project invitations | High              |  As an Authenticated user, I want to be able to accept or decline invitations, so that I can participate in new projects               |
-| US305             | Mark project as favorite | Medium           |   As an Authenticated user, I want to be able to mark projects as favorites, so that I can filter them    |
-| US306             | Logout       | High           |   As an Authenticated user, I want to be able to logout of my account|
+| US201             | Create project         |  High                 | As an Authenticated user, I want to create a project, so that I can work on a new project                         |
+| US202             | View projects          | High                   | As an Authenticated user, I want to see my projects, so that I can switch between projects                         |
+| US203             | Manage profile      |  High      | As an Authenticated user, I want to be able to manage my personal information (Name, Contact Info, Profile Picture,...), so that I can see if there are any errors |
+| US204             | Manage project invitations | High              |  As an Authenticated user, I want to be able to accept or decline invitations, so that I can participate in new projects               |
+| US205             | Mark project as favorite | Medium           |   As an Authenticated user, I want to be able to mark projects as favorites, so that I can filter them    |
+| US206             | Logout       | High           |   As an Authenticated user, I want to be able to logout of my account|
 #### 2.4. Project Member
 
 | Identifier       | Name                   | Priority               | Description              |
 | ---------------- | ---------------------- | ---------------------- |------------------------- |        
-| US401             | Create task            | High                   | As a Project Member, I want to create a task, so that I'm able to use that feature |
-| US402             | Manage tasks           | High          |   As a Project Member, I want to manage tasks, (so that I can assign them to another Project member), choose the priority of each task and its due date, so that I can fix mistakes and update older tasks|
-| US403             | Complete an assigned task |  High     | As a Project Member, I want to be able to mark the tasks I am assigned to as complete, so that other collaborators don't overlap my work |
-| US404             | Search tasks           |  High                  | As a Project Member, I want to be able to search for tasks using a search bar, so that I can access them faster |
-| US405             | Leave project          | High |As a Project Member, I want to be able to leave the project, so that my project list is updated|
-| US406             | Assign Users to Tasks  | High |As a Project Member, I want to be able to assign a task to another project member, so that every collaborator knows what's left to do |
-| US407             | Post messages to project forum | Medium | As a Project Member, I want to be able to post new messages to the project forum, so that I can communicate with every collaborator|
-| US408             | View task details      |Medium |As a Project Member, I want to be able to view task details, so that I know more about it|
-| US409             | Comment on task        |Medium |As a Project Member, I want to be able to comment on tasks, so that I can communicate with other collaborators |
-| US410             | Browse project forum   | Medium  | As a Project Member, I want to access the project forum, so that I can read mine and other users’ messages |
-| US411        | Receive notifications          | Medium   | As a Project Member, I want to receive notifications, so that I can keep up to date on changes like new Project Coordinator, task completed, new member on project or a new task has been assigned to me |
-| US412             | View the project’s team|Low(?)|As a Project Member, I want to be able to view the project’s team, so that I know every collaborator within the project|
-| US413             | View Team members profile|low (?)|As a Project Member, I want to be able to view the profile of project members, so that I can correctly identify every collaborator|
+| US301             | Create task            | High                   | As a Project Member, I want to create a task, so that I'm able to use that feature |
+| US302             | Manage tasks           | High          |   As a Project Member, I want to manage tasks, (so that I can assign them to another Project member), choose the priority of each task and its due date, so that I can fix mistakes and update older tasks|
+| US303             | Complete an assigned task |  High     | As a Project Member, I want to be able to mark the tasks I am assigned to as complete, so that other collaborators don't overlap my work |
+| US304             | Search tasks           |  High                  | As a Project Member, I want to be able to search for tasks using a search bar, so that I can access them faster |
+| US305             | Leave project          | High |As a Project Member, I want to be able to leave the project, so that my project list is updated|
+| US306             | Assign Users to Tasks  | High |As a Project Member, I want to be able to assign a task to another project member, so that every collaborator knows what's left to do |
+| US307             | Post messages to project forum | Medium | As a Project Member, I want to be able to post new messages to the project forum, so that I can communicate with every collaborator|
+| US308             | View task details      |Medium |As a Project Member, I want to be able to view task details, so that I know more about it|
+| US309             | Comment on task        |Medium |As a Project Member, I want to be able to comment on tasks, so that I can communicate with other collaborators |
+| US310             | Browse project forum   | Medium  | As a Project Member, I want to access the project forum, so that I can read mine and other users’ messages |
+| US311        | Receive notifications          | Medium   | As a Project Member, I want to receive notifications, so that I can keep up to date on changes like new Project Coordinator, task completed, new member on project or a new task has been assigned to me |
+| US312             | View the project’s team|Low(?)|As a Project Member, I want to be able to view the project’s team, so that I know every collaborator within the project|
+| US313             | View Team members profile|low (?)|As a Project Member, I want to be able to view the profile of project members, so that I can correctly identify every collaborator|
 
 #### 2.5. Post Author
 
 | Identifier       | Name                   | Priority               | Description              |
 | ---------------- | ---------------------- | ---------------------- |------------------------- |        
-| US501             |Edit posts|High|As the Post Author, I want to be able to edit my own posts, so that I can fix previous mistakes or update my posts|
-| US502             |Delete posts|High|As the Post Author, I want to be able to delete my own posts, so that the message forum isn't full of obsolete posts|
+| US401             |Edit posts|High|As the Post Author, I want to be able to edit my own posts, so that I can fix previous mistakes or update my posts|
+| US402             |Delete posts|High|As the Post Author, I want to be able to delete my own posts, so that the message forum isn't full of obsolete posts|
 
 #### 2.6. Project Coordinator
 
 | Identifier       | Name                   | Priority               | Description              |
 | ---------------- | ---------------------- | ---------------------- |------------------------- |
-| US601           |Add user to project|High|As the Project Coordinator, I want to be able to add an user to the project, so that new collaborators gain their new permissions|
-| US602           |Assign tasks to members|High|As the Project Coordinator, I want to be able to assign a task to a member, so that every collaborator has a task or list of tasks to do|
-| US603           |Assign new coordinator|High|As the Project Coordinator, I want to be able to choose another coordinator, so that new project coordinators gain their new permissions|
-| US604           |Edit project details|High|As the Project Coordinator, I want to be able to edit project details, so that I can fix old errors and update the objective of the project|
-| US606           |Invite to Project by email|High|As the Project Coordinator, I want to be able to Invite a new member by email, so that new collaborators may join the project|
-| US607           |Archive project|Medium|As the Project Coordinator, I want to be able to archive a project, so that old projects are deactivated but not erased|
+| US501           |Add user to project|High|As the Project Coordinator, I want to be able to add an user to the project, so that new collaborators gain their new permissions|
+| US502           |Assign tasks to members|High|As the Project Coordinator, I want to be able to assign a task to a member, so that every collaborator has a task or list of tasks to do|
+| US503           |Assign new coordinator|High|As the Project Coordinator, I want to be able to choose another coordinator, so that new project coordinators gain their new permissions|
+| US504           |Edit project details|High|As the Project Coordinator, I want to be able to edit project details, so that I can fix old errors and update the objective of the project|
+| US506           |Invite to Project by email|High|As the Project Coordinator, I want to be able to Invite a new member by email, so that new collaborators may join the project|
+| US507           |Archive project|Medium|As the Project Coordinator, I want to be able to archive a project, so that old projects are deactivated but not erased|
 
 
 
@@ -133,10 +126,10 @@ Administrator may browse for a project and read its details.
 
 | Identifier       | Name                   | Priority               | Description              |
 | ---------------- | ---------------------- | ---------------------- |------------------------- |
-|US701             |Invite user to the company’s workspace|High|As the Administrator, I want to be able to control who gets to access the company’s workspace, so that new users can access it|
-|US702              |View a list of company users|High|As the Administrator, I want to be able to be able to view a list of all users with access to the company’s project management platform, so that I can search for specific people|
-|US703              |Remove user from the company’s workplace|High|As the Administrator I want to be able to revoke an user’s access to the company’s project management platform, so that I can moderate the platform|
-|US704              |Browse projects|High|As the Administrator I want to be able to browse projects and all its details with view only permissions, so that I'm aware of every project being worked on |
+|US601             |Invite user to the company’s workspace|High|As the Administrator, I want to be able to control who gets to access the company’s workspace, so that new users can access it|
+|US602              |View a list of company users|High|As the Administrator, I want to be able to be able to view a list of all users with access to the company’s project management platform, so that I can search for specific people|
+|US603              |Remove user from the company’s workplace|High|As the Administrator I want to be able to revoke an user’s access to the company’s project management platform, so that I can moderate the platform|
+|US604              |Browse projects|High|As the Administrator I want to be able to browse projects and all its details with view only permissions, so that I'm aware of every project being worked on |
 
 
 ### 3. Supplementary Requirements
