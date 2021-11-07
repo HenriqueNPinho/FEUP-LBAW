@@ -124,7 +124,7 @@ The main goal of this artefact is to identify and describe the system actors, as
 
 ### 3. Supplementary Requirements
 
-This section contains business rules, technical requirements and other non-functional requirements on the project.
+This section contains business rules, technical requirements and other non-functional requirements of the project.
 
 #### 3.1. Business rules
 
@@ -167,8 +167,8 @@ This section contains business rules, technical requirements and other non-funct
 
 
 The main goals of this artefact are the following:
-	- Create a simple prototype for the user interface that includes key features (wireframes)
-	- Specify the manner in which the main pages relate to each other
+* Create a simple prototype for the user interface that includes key features (wireframes)
+* Specify the manner in which the main pages relate to each other
 
 ### 1. Sitemap
 
