@@ -4,6 +4,8 @@
 
 ## A1: Project Management
 
+`The main goal of this artefact is to describe the project, the project's stakeholders as well the motivation behind it.`
+
 This project aims to build an information system with a web interface for project management that allows teams of users to organize their professional projects. This application’s target audience are companies and teams working on complex projects, offering them a platform to organize every aspect of their workflow.
 
 The motivation behind this project is creating an application that boosts productivity when developing a project. Helps users organize their work by providing them with a simple yet powerful interface for project management.
@@ -32,6 +34,8 @@ Administrator may browse for a project and read its details.
 ## A2: Actors and User stories
 
 > Brief presentation of the artefact goals.
+
+`The main goal of this artefact is to identify and describe the system actors, as well as their user stories.`
 
 ![Project Managment Actors](PM_diagram.png)
 
@@ -169,6 +173,9 @@ This section contains business rules, technical requirements and other non-funct
 
 > Brief presentation of the artefact goals.
 
+`The main goals of this artefact are the following:`
+	- Create a simple prototype for the user interface that includes key features (wireframes)
+- Specify the manner in which the main pages relate to each other
 
 ### 1. Sitemap
 
@@ -176,7 +183,7 @@ This section contains business rules, technical requirements and other non-funct
 > Each page must be identified in the sitemap.  
 > Multiple instances of the same page (e.g. student profile in SIGARRA) are presented as page stacks.
 
-
+![Site Map](sitemap.png)
 ### 2. Wireframes
 
 > Wireframes for, at least, two main pages of the web application.
@@ -238,6 +245,6 @@ GROUP2151, 26/10/2021
 | Name             | Number    | E-Mail               |
 | ---------------- | --------- | -------------------- |
 | Sofia Germer     | 201907461 | up201907461@up.pt    |
-| Miguel Lopes     | 20170459  | up201704590@up.pt    |
+| Miguel Lopes     | 201704590 | up201704590@up.pt    |
 | Edgar Torre      | 201906573 | up201906573@up.pt    |
 | Henrique Pinho   | 201805000 | up201805000@up.pt    |
