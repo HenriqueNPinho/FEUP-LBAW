@@ -150,7 +150,7 @@ This section contains business rules, technical requirements and other non-funct
 | TR05             | Web application|The system should be implemented as a web application with dynamic pages (HTML5, JavaScript, CSS3 and PHP).|
 | TR06             | Portability|The server-side system should work across multiple platforms (Linux, Mac OS, etc).|
 | TR07             | Database|The PostgreSQL database management system must be used, with a version of 11 or higher.|
-|**TR08             | Security | The system shall protect information from unauthorised access through the use of an authentication and verification system. <br><br> Companies deal with all sorts of sensitive materials and therefore it is crucial that all information is protected at all times and kept safe from unauthorised users.**|
+|TR08             | Security | The system shall protect information from unauthorised access through the use of an authentication and verification system. <br><br> Companies deal with all sorts of sensitive materials and therefore it is crucial that all information is protected at all times and kept safe from unauthorised users.|
 | TR09             | Robustness|The system must be prepared to handle and continue operating when runtime errors occur|
 | TR10             | Scalability|The system must be prepared to deal with the growth in the number of users and their actions|
 | TR11             | Ethics|The system must respect the ethical principles in software development (for example, personal user details, or usage data, should not be collected nor shared without full acknowledgement and authorization from its owner)|
