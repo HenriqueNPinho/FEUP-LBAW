@@ -79,6 +79,7 @@ Administrator may browse for a project and read its details.
 | US202             | See home               | High                   | As a User, I want to access the home page, so that I can see a brief presentation of the website                     |
 | US203             | See about              | High                   | As a User, I want to access the about page, so that I can see a complete description of the website and its creators |
 | US204             | Consult FAQ            | High                   | As a User, I want to access the FAQ, so that I can get quick answers to common questions                             |
+| US205             | Login                  | High                   | As a User, I want to  be able to access my account by using an email and password combination|
 
 #### 2.3. Authenticated User
 
@@ -89,6 +90,7 @@ Administrator may browse for a project and read its details.
 | US303             | Manage profile      |  High      | As an Authenticated user, I want to be able to manage my personal information (Name, Contact Info, Profile Picture,...), so that I can see if there are any errors |
 | US304             | Manage project invitations | High              |  As an Authenticated user, I want to be able to accept or decline invitations, so that I can participate in new projects               |
 | US305             | Mark project as favorite | Medium           |   As an Authenticated user, I want to be able to mark projects as favorites, so that I can filter them    |
+| US306             | Logout       | High           |   As an Authenticated user, I want to be able to logout of my account|
 #### 2.4. Project Member
 
 | Identifier       | Name                   | Priority               | Description              |
