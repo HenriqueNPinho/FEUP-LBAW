@@ -1,4 +1,4 @@
-# Project Managment ActorsER: Requirements Specification Component
+# ER: Requirements Specification Component
 
 > Project vision.
 
