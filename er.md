@@ -41,7 +41,7 @@ The main goal of this artefact is to identify and describe the system actors, as
 
 ### 1. Actors
 
-![Project Managment Actors](PM_diagram.png)
+<img src="PM_diagram.png" alt="Project Managment Actors" width="200"/>
 
 | Identifier       | Description            | 
 | ---------------- | ---------------------- | 
