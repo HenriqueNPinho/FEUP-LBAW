@@ -193,7 +193,7 @@ The main goals of this artefact are the following:
 #### Extra
 > Login
 
-![Login](wireframes/Login.png)
+![Login](wireframes/Login.png){width=50%}
 
 > New Project
 
