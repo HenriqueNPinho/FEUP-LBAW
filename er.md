@@ -16,20 +16,19 @@ The application allows for each company’s users to work on multiple projects s
 
 In order to start using our application a company must first register an account. The company's system administrator can send email invitations to their workers, after which they are prompted to create an account to start using the platform or use an existing account (this accounts for the possibility that a user has used our platform before to work on a different company, but was using the same email address). From that point on, the user needs to use their credentials to access the platform. 
 
-Different user types have different permissions. The existing types are: guests and authenticated users, which includes general, project members and administrators.
+Different user types have different permissions. The existing types are: visitors, authenticated users and the administrator. Authenticated users can also be project members, post authors and project coordinators.
 
-Guests are only able to authenticate themselves.
+Visitors are only able to authenticate themselves and view public information.
 
 General authenticated users are able to create new and view current projects and are able to manage their projects by accepting/declining new invitations and by marking some as favorites.
 
 Project members within a project are able to view, modify, add, delete, comment and implement tasks and assign them to other collaborators. They are also able to browse and post to the message forum and are able to search for tasks and other collaborators and managers. Whoever posts to the forum may edit and delete the post.
 
-Project managers, besides having every permission a project member has, are able to moderate by adding or removing members from each project and promoting them to managers. They can also edit some project details and archive the project itself.
-
+Project coordinators, besides having every permission a project member has, are able to moderate by adding or removing members from each project and promoting them to coordinators. They can also edit some project details and archive the project itself.
 
 Every user within a project receives notifications when: a new member joins the project, a user is promoted/demoted, a task is assigned to him and when an assigned task is completed if the user is a project manager or if he’s assigned to that task. 
 
-Administrator may browse for a project and read its details.
+The Administrator may browse through projects and read their details.
 
 ---
 
@@ -45,7 +44,7 @@ The main goal of this artefact is to identify and describe the system actors, as
 
 | Identifier       | Description            | 
 | ---------------- | ---------------------- | 
-| User          |  Unauthenticated user that can sign-in in the system or register (sign-up) with email invitation and has acess to public information                      | 
+| Visitor          |  Unauthenticated user that can sign-in in the system or register (sign-up) with email invitation and has acess to public information                      | 
 | Authenticated User | Generic user that has access to public information, can create projects and accept/decline invites |
 | Project Member  | Authenticated user that can manage tasks, post messages on the forum and have access to project information                       | 
 | Post Author	  |Authenticated user that can edit/delete their own post |
@@ -61,10 +60,10 @@ The main goal of this artefact is to identify and describe the system actors, as
 | ---------------- | ---------------------- | ---------------------- |------------------------- |        
 | US101             | Login                |  High                  | As a Visitor, I want to authenticate into the system, so that I can access privileged information                       |
 | US102             | Sign-up                |  High                  |  As a Visitor, I want to register myself into the system, so that I can authenticate myself into the system              |       
-| US103             | Manage invite          | High                   | As a User, I want to accept/decline invites to a project, so I can decide which projects I want to work on|
-| US104             | See home               | High                   | As a User, I want to access the home page, so that I can see a brief presentation of the website                     |
-| US105             | See about              | High                   | As a User, I want to access the about page, so that I can see a complete description of the website and its creators |
-| US106             | Consult FAQ            | High                   | As a User, I want to access the FAQ, so that I can get quick answers to common questions                             |
+| US103             | See home               | High                   | As a Visitor, I want to access the home page, so that I can see a brief presentation of the website                     |
+| US104             | See about              | High                   | As a Visitor, I want to access the about page, so that I can see a complete description of the website and its creators |
+| US105             | Consult FAQ            | High                   | As a Visitor, I want to access the FAQ, so that I can get quick answers to common questions                             |
+
 
 #### 2.3. Authenticated User
 
