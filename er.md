@@ -72,8 +72,9 @@ The main goal of this artefact is to identify and describe the system actors, as
 | US202             | View projects          | High                   | As an Authenticated user, I want to see my projects, so that I can switch between projects                         |
 | US203             | Manage profile      |  High      | As an Authenticated user, I want to be able to manage my personal information (Name, Contact Info, Profile Picture,...), so that I can see if there are any errors |
 | US204             | Manage project invitations | High              |  As an Authenticated user, I want to be able to accept or decline invitations, so that I can participate in new projects               |
-| US205             | Mark project as favorite | Medium           |   As an Authenticated user, I want to be able to mark projects as favorites, so that I can filter them    |
-| US206             | Logout       | High           |   As an Authenticated user, I want to be able to logout of my account|
+| US205             | Logout       | High           |   As an Authenticated user, I want to be able to logout of my account|
+| US206             | Mark project as favorite | Medium           |   As an Authenticated user, I want to be able to mark projects as favorites, so that I can filter them    |
+
 #### 2.4. Project Member
 
 | Identifier       | Name                   | Priority               | Description              |
@@ -89,8 +90,8 @@ The main goal of this artefact is to identify and describe the system actors, as
 | US309             | Comment on task        |Medium |As a Project Member, I want to be able to comment on tasks, so that I can communicate with other collaborators |
 | US310             | Browse project forum   | Medium  | As a Project Member, I want to access the project forum, so that I can read mine and other users’ messages |
 | US311        | Receive notifications          | Medium   | As a Project Member, I want to receive notifications, so that I can keep up to date on changes like new Project Coordinator, task completed, new member on project or a new task has been assigned to me |
-| US312             | View the project’s team|Low(?)|As a Project Member, I want to be able to view the project’s team, so that I know every collaborator within the project|
-| US313             | View Team members profile|low (?)|As a Project Member, I want to be able to view the profile of project members, so that I can correctly identify every collaborator|
+| US312             | View the project’s team| Low |As a Project Member, I want to be able to view the project’s team, so that I know every collaborator within the project|
+| US313             | View Team members profile| Low |As a Project Member, I want to be able to view the profile of project members, so that I can correctly identify every collaborator|
 
 #### 2.5. Post Author
 
