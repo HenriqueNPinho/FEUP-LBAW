@@ -33,14 +33,13 @@ Administrator may browse for a project and read its details.
 
 ## A2: Actors and User stories
 
->The main goal of this artefact is to identify and describe the system actors, as well as their user stories.
+The main goal of this artefact is to identify and describe the system actors, as well as their user stories.
 
-![Project Managment Actors](PM_diagram.png)
+
 
 ### 1. Actors
 
-> Diagram identifying actors and their relationships.  
-> Table identifying actors, including a brief description.
+![Project Managment Actors](PM_diagram.png)
 
 | Identifier       | Description            | 
 | ---------------- | ---------------------- | 
@@ -53,9 +52,6 @@ Administrator may browse for a project and read its details.
 
 
 ### 2. User Stories
-
-> User stories organized by actor.  
-> For each actor, a table containing a line for each user story, and for each user story: an identifier, a name, a priority, and a description (following the recommended pattern).
 
 #### 2.1. User
 
@@ -170,21 +166,15 @@ This section contains business rules, technical requirements and other non-funct
 ## A3: Information Architecture
 
 
->The main goals of this artefact are the following:
-	>- Create a simple prototype for the user interface that includes key features (wireframes)
-	>- Specify the manner in which the main pages relate to each other
+The main goals of this artefact are the following:
+	- Create a simple prototype for the user interface that includes key features (wireframes)
+	- Specify the manner in which the main pages relate to each other
 
 ### 1. Sitemap
 
-> Sitemap presenting the overall structure of the web application.  
-> Each page must be identified in the sitemap.  
-> Multiple instances of the same page (e.g. student profile in SIGARRA) are presented as page stacks.
-
 ![Site Map](sitemap.png)
-### 2. Wireframes
 
-> Wireframes for, at least, two main pages of the web application.
-> Do not include trivial use cases.
+### 2. Wireframes
 
 #### UI01: User Homepage
 ![User Homepage](wireframes/Homepage-Visitor.png)
