@@ -176,7 +176,7 @@ This section contains business rules, technical requirements and other non-funct
 > Each page must be identified in the sitemap.  
 > Multiple instances of the same page (e.g. student profile in SIGARRA) are presented as page stacks.
 
-
+![Site Map](sitemap.png)
 ### 2. Wireframes
 
 > Wireframes for, at least, two main pages of the web application.
