@@ -4,7 +4,7 @@
 
 ## A1: Project Management
 
-`The main goal of this artefact is to describe the project, the project's stakeholders as well the motivation behind it.`
+>The main goal of this artefact is to describe the project, the project's stakeholders as well the motivation behind it.
 
 This project aims to build an information system with a web interface for project management that allows teams of users to organize their professional projects. This application’s target audience are companies and teams working on complex projects, offering them a platform to organize every aspect of their workflow.
 
@@ -33,9 +33,7 @@ Administrator may browse for a project and read its details.
 
 ## A2: Actors and User stories
 
-> Brief presentation of the artefact goals.
-
-`The main goal of this artefact is to identify and describe the system actors, as well as their user stories.`
+>The main goal of this artefact is to identify and describe the system actors, as well as their user stories.
 
 ![Project Managment Actors](PM_diagram.png)
 
@@ -171,11 +169,10 @@ This section contains business rules, technical requirements and other non-funct
 
 ## A3: Information Architecture
 
-> Brief presentation of the artefact goals.
 
-`The main goals of this artefact are the following:`
-	`- Create a simple prototype for the user interface that includes key features (wireframes)`
-	`- Specify the manner in which the main pages relate to each other`
+>The main goals of this artefact are the following:
+	>- Create a simple prototype for the user interface that includes key features (wireframes)
+	>- Specify the manner in which the main pages relate to each other
 
 ### 1. Sitemap
 
