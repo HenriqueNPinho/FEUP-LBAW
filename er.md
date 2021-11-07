@@ -4,11 +4,6 @@
 
 ## A1: Project Management
 
-> Goals, business context and environment.  
-> Motivation.  
-> Main features.  
-> User profiles.
-
 This project aims to build an information system with a web interface for project management that allows teams of users to organize their professional projects. This application’s target audience are companies and teams working on complex projects, offering them a platform to organize every aspect of their workflow.
 
 The motivation behind this project is creating an application that boosts productivity when developing a project. Helps users organize their work by providing them with a simple yet powerful interface for project management.
@@ -36,12 +31,9 @@ Administrator may browse for a project and read its details.
 
 ## A2: Actors and User stories
 
-
-
-![Project Managment Actors](PM_diagram.png)
-
 > Brief presentation of the artefact goals.
 
+![Project Managment Actors](PM_diagram.png)
 
 ### 1. Actors
 
