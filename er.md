@@ -181,7 +181,7 @@ The "Project Overview" page and the "Task Page" are represented as page stacks b
 
 ### 2. Wireframes
 
-#### UI01: User Homepage
+#### UI01: Visitor Homepage
 ![User Homepage](wireframes/Homepage-Visitor.png)
 
 
@@ -196,11 +196,11 @@ The "Project Overview" page and the "Task Page" are represented as page stacks b
 - `6` Here is displayed the project title and the pictures of the Project Members. When the user clicks on one of them he is taken to a page where he can see the full project members list. When the user clicks on the title he is taken to a page with a full description of the project, including delivery date, project members, project coordinator, etc
 
 #### Extra
-> Login
+#### UI03: Login
 
 ![Login](wireframes/Login.png)
 
-> New Project
+#### UI04: New Project
 
 ![Creating a New Project - Part 1](wireframes/NewProject_1.1.png)
 
@@ -208,15 +208,15 @@ The "Project Overview" page and the "Task Page" are represented as page stacks b
 
 ![Creating a New Project - Part 3](wireframes/NewProject_1.3.png)
 
-> Forum
+#### UI05: Forum
 
 ![Project Forum](wireframes/Forum.png)
 
-> Project Overview
+#### UI06: Project Overview
 
 ![Project Overview](wireframes/ProjectOverview.png)
 
-> Sign Up
+#### UI07: Sign Up
 
 ![Side](wireframes/SignUp.png)
 
