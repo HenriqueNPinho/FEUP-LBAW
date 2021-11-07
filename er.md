@@ -151,7 +151,7 @@ This section contains business rules, technical requirements and other non-funct
 
 | Identifier       | Name                   | Priority               | 
 | ---------------- | ---------------------- | ---------------------- |        
-| **TR01**             | **Availability**| **The system must be available 99 percent of the time in each 24-hour period. <br><br> If the Project Management platform isn't available at all times this could represent a serious cost for the company as it could lead to a delay in the delivery date as well as reduced productivity for its employees.**| 
+| __TR01__             | **Availability**| **The system must be available 99 percent of the time in each 24-hour period. <br><br> If the Project Management platform isn't available at all times this could represent a serious cost for the company as it could lead to a delay in the delivery date as well as reduced productivity for its employees.**| 
 | TR02             | Accessibility|The system must ensure that everyone can access the pages, regardless of whether they have any handicap or not, or the web browser they use|        
 |**TR03**             |**Usability**|**The system should be simple and easy to use. <br><br> One of the main motivations for this project is to offer a simple yet powerful tool for improving productivity, planning and overall workflow, so it is of utmost importance that it is easy to use.**|
 | TR04             | Performance|The system should have response times shorter than 2 s to ensure the user's attention|
