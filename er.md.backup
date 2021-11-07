@@ -4,7 +4,9 @@
 
 ## A1: Project Management
 
->The main goal of this artefact is to describe the project, the project's stakeholders as well the motivation behind it.
+The main goal of this artefact is to describe the project, the project's stakeholders as well the motivation behind it.
+
+### 1. Context and Motivation
 
 This project aims to build an information system with a web interface for project management that allows teams of users to organize their professional projects. This application’s target audience are companies and teams working on complex projects, offering them a platform to organize every aspect of their workflow.
 
@@ -72,8 +74,9 @@ The main goal of this artefact is to identify and describe the system actors, as
 | US202             | View projects          | High                   | As an Authenticated user, I want to see my projects, so that I can switch between projects                         |
 | US203             | Manage profile      |  High      | As an Authenticated user, I want to be able to manage my personal information (Name, Contact Info, Profile Picture,...), so that I can see if there are any errors |
 | US204             | Manage project invitations | High              |  As an Authenticated user, I want to be able to accept or decline invitations, so that I can participate in new projects               |
-| US205             | Mark project as favorite | Medium           |   As an Authenticated user, I want to be able to mark projects as favorites, so that I can filter them    |
-| US206             | Logout       | High           |   As an Authenticated user, I want to be able to logout of my account|
+| US205             | Logout       | High           |   As an Authenticated user, I want to be able to logout of my account|
+| US206             | Mark project as favorite | Medium           |   As an Authenticated user, I want to be able to mark projects as favorites, so that I can filter them    |
+
 #### 2.4. Project Member
 
 | Identifier       | Name                   | Priority               | Description              |
@@ -89,8 +92,8 @@ The main goal of this artefact is to identify and describe the system actors, as
 | US309             | Comment on task        |Medium |As a Project Member, I want to be able to comment on tasks, so that I can communicate with other collaborators |
 | US310             | Browse project forum   | Medium  | As a Project Member, I want to access the project forum, so that I can read mine and other users’ messages |
 | US311        | Receive notifications          | Medium   | As a Project Member, I want to receive notifications, so that I can keep up to date on changes like new Project Coordinator, task completed, new member on project or a new task has been assigned to me |
-| US312             | View the project’s team|Low(?)|As a Project Member, I want to be able to view the project’s team, so that I know every collaborator within the project|
-| US313             | View Team members profile|low (?)|As a Project Member, I want to be able to view the profile of project members, so that I can correctly identify every collaborator|
+| US312             | View the project’s team| Low |As a Project Member, I want to be able to view the project’s team, so that I know every collaborator within the project|
+| US313             | View Team members profile| Low |As a Project Member, I want to be able to view the profile of project members, so that I can correctly identify every collaborator|
 
 #### 2.5. Post Author
 
@@ -174,6 +177,8 @@ The main goals of this artefact are the following:
 
 ![Site Map](sitemap.png)
 
+The "Project Overview" page and the "Task Page" are represented as page stacks because a user can have multiple projects and each project can have multiple tasks. Each project and each task have a different pages.
+
 ### 2. Wireframes
 
 #### UI01: User Homepage
@@ -193,7 +198,7 @@ The main goals of this artefact are the following:
 #### Extra
 > Login
 
-![Login](wireframes/Login.png){width-}
+![Login](wireframes/Login.png){width=50%}
 
 > New Project
 

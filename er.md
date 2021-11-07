@@ -197,7 +197,7 @@ The "Project Overview" page and the "Task Page" are represented as page stacks b
 #### Extra
 > Login
 
-![Login](wireframes/Login.png){width=50%}
+![Login](wireframes/Login.png)
 
 > New Project
 
