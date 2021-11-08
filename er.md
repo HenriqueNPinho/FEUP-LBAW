@@ -44,7 +44,7 @@ The main goal of this artefact is to identify and describe the system actors, as
 
 | Identifier       | Description            | 
 | ---------------- | ---------------------- | 
-| Visitor          |  Unauthenticated user that can sign in into the system (login) or register (sign-up) with email invitation and has acess to public information                      | 
+| Visitor          |  Unauthenticated user that can sign-in into the system (login) or register (sign-up) with email invitation and has acess to public information                      | 
 | Authenticated User | Generic user that has access to public information, can create projects and accept/decline invites |
 | Project Member  | Authenticated user that can manage tasks, post messages on the forum and have access to project information                       | 
 | Post Author	  |Authenticated user that can edit/delete their own post |
