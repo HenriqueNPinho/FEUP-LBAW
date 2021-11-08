@@ -1,6 +1,6 @@
 # ER: Requirements Specification Component
 
-> Project vision.
+Editor: Miguel Azevedo Lopes (up201704590) - up201704590@fe.up.pt
 
 ## A1: Project Management
 
