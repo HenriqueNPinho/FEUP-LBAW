@@ -230,11 +230,11 @@ The "Project Overview" page and the "Task Page" are represented as page stacks b
 No changes were made to this document, since this is our first delivery.
 
 ***
-GROUP2151, 26/10/2021
+GROUP2151, 08/11/2021
 
 | Name             | Number    | E-Mail               |
 | ---------------- | --------- | -------------------- |
 | Sofia Germer     | 201907461 | up201907461@up.pt    |
-| Miguel Lopes     | 201704590 | up201704590@up.pt    |
+| Miguel Lopes (Editor)     | 201704590 | up201704590@up.pt    |
 | Edgar Torre      | 201906573 | up201906573@up.pt    |
 | Henrique Pinho   | 201805000 | up201805000@up.pt    |
