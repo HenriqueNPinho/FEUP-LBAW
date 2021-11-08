@@ -71,7 +71,7 @@ The main goal of this artefact is to identify and describe the system actors, as
 | ---------------- | ---------------------- | ---------------------- |------------------------- |        
 | US201             | Create project         |  High                 | As an Authenticated user, I want to create a project, so that I can work on a new project                         |
 | US202             | View projects          | High                   | As an Authenticated user, I want to see my projects, so that I can switch between projects                         |
-| US203             | Manage profile      |  High      | As an Authenticated user, I want to be able to manage my personal information (Name, Contact Info, Profile Picture,...), so that I can see if there are any errors |
+| US203             | Manage profile      |  High      | As an Authenticated user, I want to be able to manage my personal information (Name, Contact Info, Profile Picture,...), so that I can update them at any time |
 | US204             | Manage project invitations | High              |  As an Authenticated user, I want to be able to accept or decline invitations, so that I can participate in new projects               |
 | US205             | Logout       | High           |   As an Authenticated user, I want to be able to logout of my account, so that I can log in to another account |
 | US206             | Mark project as favorite | Medium           |   As an Authenticated user, I want to be able to mark projects as favorites, so that I can filter them    |
