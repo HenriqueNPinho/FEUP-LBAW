@@ -44,7 +44,7 @@ The main goal of this artefact is to identify and describe the system actors, as
 
 | Identifier       | Description            | 
 | ---------------- | ---------------------- | 
-| Visitor          |  Unauthenticated user that can sign-in in the system or register (sign-up) with email invitation and has acess to public information                      | 
+| Visitor          |  Unauthenticated user that can sign in into the system (login) or register (sign-up) with email invitation and has acess to public information                      | 
 | Authenticated User | Generic user that has access to public information, can create projects and accept/decline invites |
 | Project Member  | Authenticated user that can manage tasks, post messages on the forum and have access to project information                       | 
 | Post Author	  |Authenticated user that can edit/delete their own post |
@@ -58,7 +58,7 @@ The main goal of this artefact is to identify and describe the system actors, as
 
 | Identifier       | Name                   | Priority               | Description              |
 | ---------------- | ---------------------- | ---------------------- |------------------------- |        
-| US101             | Login                |  High                  | As a Visitor, I want to authenticate into the system, so that I can access privileged information                       |
+| US101             | Login                |  High                  | As a Visitor, I want to authenticate myself into the system, so that I can access privileged information                       |
 | US102             | Sign-up                |  High                  |  As a Visitor, I want to register myself into the system, so that I can authenticate myself into the system              |       
 | US103             | See home               | High                   | As a Visitor, I want to access the home page, so that I can see a brief presentation of the website                     |
 | US104             | See about              | High                   | As a Visitor, I want to access the about page, so that I can see a complete description of the website and its creators |
