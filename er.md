@@ -1,6 +1,6 @@
 # ER: Requirements Specification Component
 
-Delivery Date: 08/11/2021
+Delivery Date: 08/11/2021  <br>
 Editor: Miguel Azevedo Lopes (up201704590) - up201704590@fe.up.pt
 
 ## A1: Project Management
