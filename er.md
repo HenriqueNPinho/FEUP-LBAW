@@ -110,7 +110,7 @@ The main goal of this artefact is to identify and describe the system actors, as
 | US502           |Assign tasks to members|High|As the Project Coordinator, I want to be able to assign a task to a member|
 | US503           |Assign new coordinator|High|As the Project Coordinator, I want to be able to choose another coordinator|
 | US504           |Edit project details|High|As the Project Coordinator, I want to be able to edit project details, so that I can update the project's details|
-| US506           |Invite to Project by email|High|As the Project Coordinator, I want to be able to Invite a new member by email, so that new collaborators may join the project|
+| US506           |Invite to Project by email|Medium|As the Project Coordinator, I want to be able to Invite a new member by email, so that new collaborators may join the project|
 | US507           |Archive project|Medium|As the Project Coordinator, I want to be able to archive a project, so that old projects are deactivated but not erased|
 
 
