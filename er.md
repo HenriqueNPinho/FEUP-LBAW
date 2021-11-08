@@ -75,7 +75,7 @@ The main goal of this artefact is to identify and describe the system actors, as
 | US204             | Manage project invitations | High              |  As an Authenticated user, I want to be able to accept or decline invitations, so that I can participate in new projects               |
 | US205             | Logout       | High           |   As an Authenticated user, I want to be able to logout of my account, so that I can log in to another account |
 | US206             | Mark project as favorite | Medium           |   As an Authenticated user, I want to be able to mark projects as favorites, so that I can filter them    |
-| US207           | Delete account | Medium           |   As an Authenticated user, I want to be able to delete my account, so that I can erase unused older accounts    |
+| US207           | Delete account | Medium           |   As an Authenticated user, I want to be able to delete my account, so that I can erase my personal information from the system   |
 
 #### 2.4. Project Member
 
