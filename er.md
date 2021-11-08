@@ -28,7 +28,7 @@ Project coordinators, besides having every permission a project member has, are 
 
 Every user within a project receives notifications when: a new member joins the project, a user is promoted/demoted, a task is assigned to him and when an assigned task is completed if the user is a project manager or if he’s assigned to that task. 
 
-The Administrator may browse through projects and read their details.
+The Administrator is the company's representative that is responsible for managing who inside the company gets to use this platform. Besides that he can also browse through projects and read their details.
 
 ---
 
@@ -73,23 +73,23 @@ The main goal of this artefact is to identify and describe the system actors, as
 | US202             | View projects          | High                   | As an Authenticated user, I want to see my projects, so that I can switch between projects                         |
 | US203             | Manage profile      |  High      | As an Authenticated user, I want to be able to manage my personal information (Name, Contact Info, Profile Picture,...), so that I can update them at any time |
 | US204             | Manage project invitations | High              |  As an Authenticated user, I want to be able to accept or decline invitations, so that I can participate in new projects               |
-| US205             | Logout       | High           |   As an Authenticated user, I want to be able to logout of my account, so that I can log in to another account |
-| US206             | Mark project as favorite | Medium           |   As an Authenticated user, I want to be able to mark projects as favorites, so that I can filter them    |
+| US205             | Logout       | High           |   As an Authenticated user, I want to be able to logout of my account|
+| US206             | Mark project as favorite | Medium           |   As an Authenticated user, I want to be able to mark projects as favorites, so that I can make accessing them easier  |
 | US207           | Delete account | Medium           |   As an Authenticated user, I want to be able to delete my account, so that I can erase my personal information from the system   |
 
 #### 2.4. Project Member
 
 | Identifier       | Name                   | Priority               | Description              |
 | ---------------- | ---------------------- | ---------------------- |------------------------- |        
-| US301             | Create task            | High                   | As a Project Member, I want to create a task, so that I'm able to use that feature |
-| US302             | Manage tasks           | High          |   As a Project Member, I want to manage tasks (assign them to another Project member, choose the priority of each task and its due date), so that I can fix mistakes and update older tasks|
-| US303             | Complete an assigned task |  High     | As a Project Member, I want to be able to mark the tasks I am assigned to as complete, so that other collaborators don't overlap my work |
+| US301             | Create task            | High                   | As a Project Member, I want to create a task |
+| US302             | Manage tasks           | High          |   As a Project Member, I want to manage tasks (assign them to another Project member, choose the priority of each task and its due date)|
+| US303             | Complete an assigned task |  High     | As a Project Member, I want to be able to mark the tasks I am assigned to as complete|
 | US304             | Search tasks           |  High                  | As a Project Member, I want to be able to search for tasks using a search bar, so that I can access them faster |
-| US305             | Leave project          | High |As a Project Member, I want to be able to leave the project, so that my project list is updated|
-| US306             | Assign Users to Tasks  | High |As a Project Member, I want to be able to assign a task to another project member, so that every collaborator knows what's left to do |
+| US305             | Leave project          | High |As a Project Member, I want to be able to leave the project|
+| US306             | Assign Users to Tasks  | High |As a Project Member, I want to be able to assign a task to another project member, so that every collaborator knows what they need to work on |
 | US307             | Post messages to project forum | Medium | As a Project Member, I want to be able to post new messages to the project forum, so that I can communicate with every collaborator|
-| US308             | View task details      |Medium |As a Project Member, I want to be able to view task details, so that I know more about it|
-| US309             | Comment on task        |Medium |As a Project Member, I want to be able to comment on tasks, so that I can communicate with other collaborators |
+| US308             | View task details      |Medium |As a Project Member, I want to be able to view task details|
+| US309             | Comment on task        |Medium |As a Project Member, I want to be able to comment on tasks|
 | US310             | Browse project forum   | Medium  | As a Project Member, I want to access the project forum, so that I can read mine and other users’ messages |
 | US311        | Receive notifications          | Medium   | As a Project Member, I want to receive notifications, so that I can keep up to date on changes like new Project Coordinator, task completed, new member on project or a new task has been assigned to me |
 | US312             | View the project’s team| Low |As a Project Member, I want to be able to view the project’s team, so that I know every collaborator within the project|
@@ -99,17 +99,17 @@ The main goal of this artefact is to identify and describe the system actors, as
 
 | Identifier       | Name                   | Priority               | Description              |
 | ---------------- | ---------------------- | ---------------------- |------------------------- |        
-| US401             |Edit posts|High|As the Post Author, I want to be able to edit my own posts, so that I can fix previous mistakes or update my posts|
-| US402             |Delete posts|High|As the Post Author, I want to be able to delete my own posts, so that the message forum isn't full of obsolete posts|
+| US401             |Edit posts|High|As the Post Author, I want to be able to edit my own posts, so that I can update my posts|
+| US402             |Delete posts|High|As the Post Author, I want to be able to delete my own posts|
 
 #### 2.6. Project Coordinator
 
 | Identifier       | Name                   | Priority               | Description              |
 | ---------------- | ---------------------- | ---------------------- |------------------------- |
-| US501           |Add user to project|High|As the Project Coordinator, I want to be able to add an user to the project, so that new collaborators gain their new permissions|
-| US502           |Assign tasks to members|High|As the Project Coordinator, I want to be able to assign a task to a member, so that every collaborator has a task or list of tasks to do|
-| US503           |Assign new coordinator|High|As the Project Coordinator, I want to be able to choose another coordinator, so that new project coordinators gain their new permissions|
-| US504           |Edit project details|High|As the Project Coordinator, I want to be able to edit project details, so that I can fix old errors and update the objective of the project|
+| US501           |Add user to project|High|As the Project Coordinator, I want to be able to add an user to the project, so that they can work on that project|
+| US502           |Assign tasks to members|High|As the Project Coordinator, I want to be able to assign a task to a member|
+| US503           |Assign new coordinator|High|As the Project Coordinator, I want to be able to choose another coordinator|
+| US504           |Edit project details|High|As the Project Coordinator, I want to be able to edit project details, so that I can update the project's details|
 | US506           |Invite to Project by email|High|As the Project Coordinator, I want to be able to Invite a new member by email, so that new collaborators may join the project|
 | US507           |Archive project|Medium|As the Project Coordinator, I want to be able to archive a project, so that old projects are deactivated but not erased|
 
