@@ -66,7 +66,7 @@ The main goal of this artefact is to identify and describe the system actors, as
 | US105             | Consult FAQ            | High                   | As a Visitor, I want to access the FAQ, so that I can get quick answers to common questions                             |
 
 
-#### 2.3. Authenticated User
+#### 2.2. Authenticated User
 
 | Identifier       | Name                   | Priority               | Description              |
 | ---------------- | ---------------------- | ---------------------- |------------------------- |        
@@ -78,7 +78,7 @@ The main goal of this artefact is to identify and describe the system actors, as
 | US206             | Mark project as favorite | Medium           |   As an Authenticated user, I want to be able to mark projects as favorites, so that I can make accessing them easier  |
 | US207           | Delete account | Medium           |   As an Authenticated user, I want to be able to delete my account, so that I can erase my personal information from the system   |
 
-#### 2.4. Project Member
+#### 2.3. Project Member
 
 | Identifier       | Name                   | Priority               | Description              |
 | ---------------- | ---------------------- | ---------------------- |------------------------- |        
@@ -96,14 +96,14 @@ The main goal of this artefact is to identify and describe the system actors, as
 | US312             | View the project’s team| Low |As a Project Member, I want to be able to view the project’s team, so that I know every collaborator within the project|
 | US313             | View Team members profile| Low |As a Project Member, I want to be able to view the profile of project members, so that I can correctly identify every collaborator|
 
-#### 2.5. Post Author
+#### 2.4. Post Author
 
 | Identifier       | Name                   | Priority               | Description              |
 | ---------------- | ---------------------- | ---------------------- |------------------------- |        
 | US401             |Edit posts|High|As the Post Author, I want to be able to edit my own posts, so that I can update my posts|
 | US402             |Delete posts|High|As the Post Author, I want to be able to delete my own posts|
 
-#### 2.6. Project Coordinator
+#### 2.5. Project Coordinator
 
 | Identifier       | Name                   | Priority               | Description              |
 | ---------------- | ---------------------- | ---------------------- |------------------------- |
@@ -116,7 +116,7 @@ The main goal of this artefact is to identify and describe the system actors, as
 
 
 
-#### 2.7. Administrator
+#### 2.6. Administrator
 
 | Identifier       | Name                   | Priority               | Description              |
 | ---------------- | ---------------------- | ---------------------- |------------------------- |
