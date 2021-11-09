@@ -55,7 +55,7 @@ The main goal of this artefact is to identify and describe the system actors, as
 
 ### 2. User Stories
 
-#### 2.1. User
+#### 2.1. Visitor
 
 | Identifier       | Name                   | Priority               | Description              |
 | ---------------- | ---------------------- | ---------------------- |------------------------- |        
