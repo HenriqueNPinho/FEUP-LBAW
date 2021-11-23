@@ -228,7 +228,7 @@ The "Project Overview" page and the "Task Page" are represented as page stacks b
 
 ## Revision history
 
-No changes were made to this document, since this is our first delivery.
+Updated Diagram, Project Coordinator now derives from Project Member
 
 ***
 GROUP2151, 08/11/2021
