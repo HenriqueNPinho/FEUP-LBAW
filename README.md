@@ -1,7 +1,9 @@
 # lbaw2151
 
-## Project Clinic
-#  (Project Management)
+## Project Clinic - Project Management application
+
+
+
 
 | Name             | E-Mail              |
 | ---------------- |-------------------- |
