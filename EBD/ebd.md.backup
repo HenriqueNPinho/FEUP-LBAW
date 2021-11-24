@@ -45,7 +45,7 @@ A professional diagram drawing tool that supports UML is recommended.
 |R09|taskAssigned(__project_member_id__,__project_id__,notification)|
 |R10|forum_post(__id__,project_member_id,title NN, content NN, post_date)|
 |R11|seen(projec,) |
-|R12|invitation(<u>project_id</u> -> project , **user_id**, **user_id** , accepted) |
+|R12|invitation(__project_id__ -> project , **user_id**, **user_id** , accepted) |
 |R13|favourite(**project_id**, **user_id**) |
 
 ###### NOTE:
