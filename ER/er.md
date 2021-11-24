@@ -41,7 +41,7 @@ The main goal of this artefact is to identify and describe the system actors, as
 
 ### 1. Actors
 
-<img src="PM_diagram.png" alt="Project Managment Actors" width="550"/>
+<img src="Untitled_Diagram.drawio_1.png" alt="Project Managment Actors" width="550"/>
 
 | Identifier       | Description            | 
 | ---------------- | ---------------------- | 
@@ -228,7 +228,7 @@ The "Project Overview" page and the "Task Page" are represented as page stacks b
 
 ## Revision history
 
-No changes were made to this document, since this is our first delivery.
+Updated Diagram, Project Coordinator now derives from Project Member
 
 ***
 GROUP2151, 08/11/2021
