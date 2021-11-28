@@ -179,26 +179,73 @@ Because all relations are in the Boyce–Codd Normal Form (BCNF), the relational
 
 | **Index**         | IDX01                                  |
 | ----------------- | -------------------------------------- |
-| **Relation**      | Relation where the index is applied    |
-| **Attribute**     | Attribute where the index is applied   |
-| **Type**          | B-tree, Hash, GiST or GIN              |
-| **Cardinality**   | Attribute cardinality: low/medium/high |
-| **Clustering**    | Clustering of the index                |
-| **Justification** | Justification for the proposed index   |
-| `SQL code`        |                                        |
+| **Relation**      | project_member                         |
+| **Attribute**     | user_id                                |
+| **Type**          | B-tree                                 |
+| **Cardinality**   | Medium                                 |
+| **Clustering**    | Yes                                    |
+| **Justification** | Table 'project_member' is large. Not large enough to justify an index just by its sheer size, but a very common query needs to filter every project by a certain member, so those two conditions justify an index. Since cardinality is medium (due to multiple tuples having the same user_id) and update frequency isn't high, it's a good candidate for clustering. Clustering can't be used on hash type indexes, so a B-tree type index was opted for. |
+| `SQL code`        |  `CREATE INDEX project_member_user_index ON project_member USING btree (user_id); CLUSTER project_member USING user_projects_member;`           |
+
+
+
+| **Index**         | IDX02          |
+| ----------------- | -------------- |
+| **Relation**      | project_member |
+| **Attribute**     | project_id     |
+| **Type**          | B-tree         |
+| **Cardinality**   | Medium         |
+| **Clustering**    | No             |
+| **Justification** | Table 'project_member' is large. Not large enough to justify an index just by its sheer size, but a very common query needs to filter every member of a certain project, so those two conditions justify an index. Despite its medium cardinality (due to multiple tuples having the same project_id) and medium update frequency, it's not a good candidate for clustering because the table is already clustered around user_id. |
+| `SQL code`        | `CREATE INDEX project_member_project_index ON project_member USING hash(project_id);`  |
+
+
+
+| **Index**         | IDX03             |
+| ----------------- | ----------------- |
+| **Relation**      | task_assigned     |
+| **Attribute**     | project_member_id |
+| **Type**          | B-tree            |
+| **Cardinality**   | Medium            |
+| **Clustering**    | No                |
+| **Justification** | Table 'task_assigned' is very large and a very common query needs to filter every project assigned to a project member, so an index is necessary. Despite its medium cardinality (due to multiple tuples having the same project_member_id) and medium update frequency, it's not a good candidate for clustering because the tuple is not small. |
+| `SQL code`        | `CREATE INDEX task_assigned_member_index ON task_assigned USING btree(project_member_id);` |
+
+
+| **Index**         | IDX04             |
+| ----------------- | ----------------- |
+| **Relation**      | task_assigned     |
+| **Attribute**     | task_id           |
+| **Type**          | B-tree            |
+| **Cardinality**   | Medium            |
+| **Clustering**    | No                |
+| **Justification** | Table 'task_assigned' is very large and a very common query checks to whom is a task assigned, so an index is necessary. Despite its low cardinality (due to not many tuples having the same task_id, that is, not many tasks are assigned to multiple members) and medium update frequency, it's not a good candidate for clustering because the tuple is not small  |
+| `SQL code`        | `CREATE INDEX task_assigned_task_index ON task_assigned USING btree(task_id);`|
+
+
+
+| **Index**         | IDX05             |
+| ----------------- | ----------------- |
+| **Relation**      | task              |
+| **Attribute**     | id                |
+| **Type**          | B-tree            |
+| **Cardinality**   | Low               |
+| **Clustering**    | Yes               |
+| **Justification** | Table 'task' is very large and a very common query checks a specific task's details. |
+| `SQL code`        | `CREATE INDEX task_id_index ON task USING btree(id);` |
 
 #### 2.2. Full-text Search Indices
 
 > The system being developed must provide full-text search features supported by PostgreSQL. Thus, it is necessary to specify the fields where full-text search will be available and the associated setup, namely all necessary configurations, indexes definitions and other relevant details.
 
-| **Index**         | IDX01                                |
+| **Index**         | IDX06                                |
 | ----------------- | ------------------------------------ |
-| **Relation**      | Relation where the index is applied  |
-| **Attribute**     | Attribute where the index is applied |
-| **Type**          | B-tree, Hash, GiST or GIN            |
-| **Clustering**    | Clustering of the index              |
-| **Justification** | Justification for the proposed index |
-| `SQL code`        |                                      |
+| **Relation**      | forum_post  |
+| **Attribute**     | content |
+| **Type**          | GIN            |
+| **Clustering**    | No              |
+| **Justification** | Used for improving the performance of full text search while searching for a specific term in the biggest table of the database, 'forum_post'. GIN was used because a forum post's content is not updated frequently.|
+| `SQL code`        | `CREATE INDEX forum_post_content_index ON forum_post USING GIN (search); `  |
 
 ### 3. Triggers
 
