@@ -180,6 +180,7 @@ It's essential to grasp the nature of the workload for the application and the p
 | R10                    | forum_post          | 1kk (millions)               | 1000 (thousands) / day |
 | R11                    | invitation          | 10k                          | 10 / day               |
 | R12                    | favorite            | 1k                           | 1 / day                |
+| R13                    | post_edition        | 100k                         | 100/ day               |
 
 ### 2. Proposed Indices
 
