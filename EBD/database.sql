@@ -96,7 +96,7 @@ CREATE TABLE forum_post(
 CREATE TABLE invitation(
     project_id INTEGER NOT NULL REFERENCES project(id),
     users_id INTEGER NOT NULL REFERENCES users(id),
-    task_id INTEGER NOT NULL REFERENCES task(id),
+    coordinator_id INTEGER NOT NULL REFERENCES project_coordinator(id),
     accepted BOOLEAN,
     PRIMARY KEY(project_id,users_id,task_id)
 );

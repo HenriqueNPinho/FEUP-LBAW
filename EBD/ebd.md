@@ -20,7 +20,8 @@ The following diagram represents the main organizational entities, the relations
 
 ### 2. Additional Business Rules
 
-* Only the post's author can generate new Post Editions
+- Only the post's author can generate new Post Editions
+- A user cannot be invited to a project where he is already a member
 
 ## A5: Relational Schema, validation and schema refinement
 
@@ -44,7 +45,7 @@ Relation schemas are specified in the compact notation:
 | R12                | favorite(**project_id**, **user_id**)                                                                                                      |
 | R13                | post_edition(**id**,forum_post_id,edit_date NN, content NN)                                                                                |
 
-###### NOTE:
+##### Note:
 
 Primary Keys are in **bold**, UK is an UNIQUE KEY, NN is NOT NULL and CK is CHECK.
 
@@ -213,10 +214,25 @@ It's essential to grasp the nature of the workload for the application and the p
 
 > User-defined functions and trigger procedures that add control structures to the SQL language or perform complex computations, are identified and described to be trusted by the database server. Every kind of function (SQL functions, Stored procedures, Trigger procedures) can take base types, composite types, or combinations of these as arguments (parameters). In addition, every kind of function can return a base type or a composite type. Functions can also be defined to return sets of base or composite values.
 
-| **Trigger**     | TRIGGER01                                                               |
-| --------------- | ----------------------------------------------------------------------- |
-| **Description** | Trigger description, including reference to the business rules involved |
-| `SQL code`      |                                                                         |
+| **Trigger**     | TRIGGER01                                                          |
+| --------------- | ------------------------------------------------------------------ |
+| **Description** | A user cannot be invited to a project where he is already a member |
+| `SQL code`      |                                                                    |
+|CREATE FUNCTION invite_to_project() RETURNS TRIGGER AS
+$BODY$
+BEGIN
+        IF EXISTS (SELECT * FROM project_member WHERE NEW.users_id = users_id AND end_t > NEW.start_t) THEN
+           RAISE EXCEPTION 'An item can only be loaned to one user at a given moment.';
+        END IF;
+        RETURN NEW;
+END
+$BODY$
+LANGUAGE plpgsql;
+
+CREATE TRIGGER loan_item
+        BEFORE INSERT OR UPDATE ON loan
+        FOR EACH ROW
+        EXECUTE PROCEDURE loan_item();|
 
 ### 4. Transactions
 
