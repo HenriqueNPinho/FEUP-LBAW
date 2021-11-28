@@ -44,7 +44,7 @@ A professional diagram drawing tool that supports UML is recommended.
 
 ###### NOTE:
 
-Primary Keys : <u>Underlined</u> <br>
+Primary Keys : <span style="text-decoration: underline">Underlined</span> <br>
 Unique Keys : UK <br>
 Not Null : NN <br>
 Check : CK <br>
