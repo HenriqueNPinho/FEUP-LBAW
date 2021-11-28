@@ -153,8 +153,7 @@ Because all relations are in the Boyce–Codd Normal Form (BCNF), the relational
 
 ### 1. Database Workload
 
-> A study of the predicted system load (database load).
-> Estimate of tuples at each relation.
+It's essential to grasp the nature of the workload for the application and the performance objectives to develop a good database design. The workload includes an estimate of the number of tuples for each relation and also the estimated growth.
 
 | **Relation reference** | **Relation Name**   | **Order of magnitude**       | **Estimated growth**   |
 | ---------------------- | ------------------- | ---------------------------- | --------------------   |
