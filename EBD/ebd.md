@@ -44,10 +44,7 @@ A professional diagram drawing tool that supports UML is recommended.
 
 ###### NOTE:
 
-Primary Keys : <span style="text-decoration: underline">Underlined</span> <br>
-Unique Keys : UK <br>
-Not Null : NN <br>
-Check : CK <br>
+Primary Keys are in **bold**, UK is an UNIQUE KEY, NN is NOT NULL and CK is CHECK.
 
 ### 2. Domains
 
@@ -61,91 +58,90 @@ Specification of additional domains:
 
 To validate the Relational Schema obtained from the Conceptual Data Model, all functional dependencies are identified and the normalization of all relation schemas is accomplished.
 
-| **TABLE R01**                | user                                                             |
-| ---------------------------- | ---------------------------------------------------------------- |
-| **Keys**                     | { id }, { email }                                                |
-| **Functional Dependencies:** |                                                                  |
-| ---------------------------- | ---------------------------------------------------------------- |
-| FD0101                       | id → {email, name, password, profile_image, profile_description} |
-| FD0102                       | email → {id, name, password, profile_image, profile_description} |
-| **NORMAL FORM**              | BCNF                                                             |
+| **TABLE R01**               | user                                                             |
+| --------------------------- | ---------------------------------------------------------------- |
+| **Keys**                    | { id }, { email }                                                |
+| **Functional Dependencies** |                                                                  |
+| FD0101                      | id → {email, name, password, profile_image, profile_description} |
+| FD0102                      | email → {id, name, password, profile_image, profile_description} |
+| **NORMAL FORM**             | BCNF                                                             |
 
-| **TABLE R02**                | company     |
-| ---------------------------- | ----------- |
-| **Keys**                     | { id }      |
-| **Functional Dependencies:** |             |
-| FD0101                       | id → {name} |
-| **NORMAL FORM**              | BCNF        |
+| **TABLE R02**               | company     |
+| --------------------------- | ----------- |
+| **Keys**                    | { id }      |
+| **Functional Dependencies** |             |
+| FD0101                      | id → {name} |
+| **NORMAL FORM**             | BCNF        |
 
-| **TABLE R03**                | administrator             |
-| ---------------------------- | ------------------------- |
-| **Keys**                     | { email }                 |
-| **Functional Dependencies:** |                           |
-| FD0101                       | email → {name,company_id} |
-| **NORMAL FORM**              | BCNF                      |
+| **TABLE R03**               | administrator             |
+| --------------------------- | ------------------------- |
+| **Keys**                    | { email }                 |
+| **Functional Dependencies** |                           |
+| FD0101                      | email → {name,company_id} |
+| **NORMAL FORM**             | BCNF                      |
 
-| **TABLE R04**                | work                    |
-| ---------------------------- | ----------------------- |
-| **Keys**                     | { user_id, company_id } |
-| **Functional Dependencies:** |                         |
-| FD0101                       | _none_                  |
-| **NORMAL FORM**              | BCNF                    |
+| **TABLE R04**               | work                    |
+| --------------------------- | ----------------------- |
+| **Keys**                    | { user_id, company_id } |
+| **Functional Dependencies** |                         |
+| FD0101                      | _none_                  |
+| **NORMAL FORM**             | BCNF                    |
 
-| **TABLE R05**                | project                                                                   |
-| ---------------------------- | ------------------------------------------------------------------------- |
-| **Keys**                     | {id }                                                                     |
-| **Functional Dependencies:** |                                                                           |
-| FD0101                       | id → {company_id, name, description, start_date, delivery_date, archived} |
-| **NORMAL FORM**              | BCNF                                                                      |
+| **TABLE R05**               | project                                                                   |
+| --------------------------- | ------------------------------------------------------------------------- |
+| **Keys**                    | {id }                                                                     |
+| **Functional Dependencies** |                                                                           |
+| FD0101                      | id → {company_id, name, description, start_date, delivery_date, archived} |
+| **NORMAL FORM**             | BCNF                                                                      |
 
-| **TABLE R06**                | project_coordinator     |
-| ---------------------------- | ----------------------- |
-| **Keys**                     | { user_id, project_id } |
-| **Functional Dependencies:** |                         |
-| FD0101                       | _none_                  |
-| **NORMAL FORM**              | BCNF                    |
+| **TABLE R06**               | project_coordinator     |
+| --------------------------- | ----------------------- |
+| **Keys**                    | { user_id, project_id } |
+| **Functional Dependencies** |                         |
+| FD0101                      | _none_                  |
+| **NORMAL FORM**             | BCNF                    |
 
-| **TABLE R07**                | project_member          |
-| ---------------------------- | ----------------------- |
-| **Keys**                     | { user_id, project_id } |
-| **Functional Dependencies:** |                         |
-| FD0101                       | _none_                  |
-| **NORMAL FORM**              | BCNF                    |
+| **TABLE R07**               | project_member          |
+| --------------------------- | ----------------------- |
+| **Keys**                    | { user_id, project_id } |
+| **Functional Dependencies** |                         |
+| FD0101                      | _none_                  |
+| **NORMAL FORM**             | BCNF                    |
 
-| **TABLE R08**                | task                                                                   |
-| ---------------------------- | ---------------------------------------------------------------------- |
-| **Keys**                     | {id}                                                                   |
-| **Functional Dependencies:** |                                                                        |
-| FD0101                       | id->{project_id, name, description, start_date, delivery_date, status} |
-| **NORMAL FORM**              | BCNF                                                                   |
+| **TABLE R08**               | task                                                                   |
+| --------------------------- | ---------------------------------------------------------------------- |
+| **Keys**                    | {id}                                                                   |
+| **Functional Dependencies** |                                                                        |
+| FD0101                      | id->{project_id, name, description, start_date, delivery_date, status} |
+| **NORMAL FORM**             | BCNF                                                                   |
 
-| **TABLE R09**                | task_assigned                                                    |
-| ---------------------------- | ---------------------------------------------------------------- |
-| **Keys**                     | {project_coordinator_id, project_member_id, task_id}             |
-| **Functional Dependencies:** |                                                                  |
-| FD0101                       | {project_coordinator_id, project_member_id, task_id}->{notified} |
-| **NORMAL FORM**              | BCNF                                                             |
+| **TABLE R09**               | task_assigned                                                    |
+| --------------------------- | ---------------------------------------------------------------- |
+| **Keys**                    | {project_coordinator_id, project_member_id, task_id}             |
+| **Functional Dependencies** |                                                                  |
+| FD0101                      | {project_coordinator_id, project_member_id, task_id}->{notified} |
+| **NORMAL FORM**             | BCNF                                                             |
 
-| **TABLE R10**                | forum_post                                              |
-| ---------------------------- | ------------------------------------------------------- |
-| **Keys**                     | {id}                                                    |
-| **Functional Dependencies:** |                                                         |
-| FD0101                       | id->{project_id, project_member_id, content, post_date} |
-| **NORMAL FORM**              | BCNF                                                    |
+| **TABLE R10**               | forum_post                                              |
+| --------------------------- | ------------------------------------------------------- |
+| **Keys**                    | {id}                                                    |
+| **Functional Dependencies** |                                                         |
+| FD0101                      | id->{project_id, project_member_id, content, post_date} |
+| **NORMAL FORM**             | BCNF                                                    |
 
-| **TABLE R11**                | invitation                                         |
-| ---------------------------- | -------------------------------------------------- |
-| **Keys**                     | {project_id, user_id, coordinator_id}              |
-| **Functional Dependencies:** |                                                    |
-| FD0101                       | {project_id, user_id, coordinator_id} ->{accepted} |
-| **NORMAL FORM**              | BCNF                                               |
+| **TABLE R11**               | invitation                                         |
+| --------------------------- | -------------------------------------------------- |
+| **Keys**                    | {project_id, user_id, coordinator_id}              |
+| **Functional Dependencies** |                                                    |
+| FD0101                      | {project_id, user_id, coordinator_id} ->{accepted} |
+| **NORMAL FORM**             | BCNF                                               |
 
-| **TABLE R12**                | favorite             |
-| ---------------------------- | -------------------- |
-| **Keys**                     | {user_id,project_id} |
-| **Functional Dependencies:** |                      |
-| FD0101                       | _none_               |
-| **NORMAL FORM**              | BCNF                 |
+| **TABLE R12**               | favorite             |
+| --------------------------- | -------------------- |
+| **Keys**                    | {user_id,project_id} |
+| **Functional Dependencies** |                      |
+| FD0101                      | _none_               |
+| **NORMAL FORM**             | BCNF                 |
 
 Because all relations are in the Boyce–Codd Normal Form (BCNF), the relational schema is also in the BCNF and, therefore, the schema does not need to be further normalized.
 
