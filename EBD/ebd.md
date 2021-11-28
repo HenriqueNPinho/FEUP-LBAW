@@ -35,7 +35,7 @@ Relation schemas are specified in the compact notation:
 | R04                | work(**user_id**,**company_id**)                                                                                                           |
 | R05                | project(**id**, company_id FK,name NN, description, start_date NN, delivery_date NN CK delivery_date>start_date, archived)                 |
 | R06                | project_coordinator(**user_id**,**project_id**)                                                                                            |
-| R07                | project_member(**user_id**,**company_id**)                                                                                                 |
+| R07                | project_member(**user_id**,**company_id**,seenNewForumPost NN)                                                                             |
 | R08                | task(**id**, project_id, name NN, description, start_date NN, delivery_date NN CK -> delivery > start, status NN CK status IN task_status) |
 | R09                | task_assigned(**project_coordinator_id**, **project_member_id**,**task_id**,notified)                                                      |
 | R10                | forum_post(**id**,project_id,project_member_id NN, content NN, post_date NN)                                                               |
@@ -101,12 +101,12 @@ To validate the Relational Schema obtained from the Conceptual Data Model, all f
 | FD0101                      | _none_                  |
 | **NORMAL FORM**             | BCNF                    |
 
-| **TABLE R07**               | project_member          |
-| --------------------------- | ----------------------- |
-| **Keys**                    | { user_id, project_id } |
-| **Functional Dependencies** |                         |
-| FD0101                      | _none_                  |
-| **NORMAL FORM**             | BCNF                    |
+| **TABLE R07**               | project_member                                |
+| --------------------------- | --------------------------------------------- |
+| **Keys**                    | { user_id, project_id }                       |
+| **Functional Dependencies** |                                               |
+| FD0101                      | { user_id, project_id } -> {seenNewForumPost} |
+| **NORMAL FORM**             | BCNF                                          |
 
 | **TABLE R08**               | task                                                                   |
 | --------------------------- | ---------------------------------------------------------------------- |
@@ -144,9 +144,8 @@ To validate the Relational Schema obtained from the Conceptual Data Model, all f
 | **NORMAL FORM**             | BCNF                 |
 
 Because all relations are in the Boyce–Codd Normal Form (BCNF), the relational schema is also in the BCNF and, therefore, the schema does not need to be further normalized.
+
 ### SQL Code
-
-
 
 ## A6: Indexes, triggers, transactions and database population
 
@@ -157,19 +156,19 @@ Because all relations are in the Boyce–Codd Normal Form (BCNF), the relational
 It's essential to grasp the nature of the workload for the application and the performance objectives to develop a good database design. The workload includes an estimate of the number of tuples for each relation and also the estimated growth.
 
 | **Relation reference** | **Relation Name**   | **Order of magnitude**       | **Estimated growth**   |
-| ---------------------- | ------------------- | ---------------------------- | --------------------   |
+| ---------------------- | ------------------- | ---------------------------- | ---------------------- |
 | R01                    | user                | 10k (tens of thousands)      | 10 (tens) / day        |
 | R02                    | company             | 100 (hundreds)               | 1 (units) / day        |
-| R03                    | administrator       | 1k (hundreds)                | 1 / day                |
+| R03                    | administrator       | 100 (hundreds)               | 1 / day                |
 | R04                    | work                | 10k                          | 10 / day               |
 | R05                    | project             | 1k                           | 1 / day                |
 | R06                    | project_coordinator | 1k                           | 1 / day                |
 | R07                    | project_member      | 10k                          | 10 / day               |
 | R08                    | task                | 100k (hundreds of thousands) | 100 (hundreds) / day   |
 | R09                    | task_assigned       | 100k                         | 100 / day              |
-| R10                    | forum_post          | 1kk (milions)                | 1000 (thousands) / day |
-| R11                    | invitation          | 100                          | 1 / day                |
-| R12                    | favorite            | 100                          | 1 / day                |
+| R10                    | forum_post          | 1kk (millions)               | 1000 (thousands) / day |
+| R11                    | invitation          | 10k                          | 10 / day               |
+| R12                    | favorite            | 1k                           | 1 / day                |
 
 ### 2. Proposed Indices
 
