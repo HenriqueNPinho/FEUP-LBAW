@@ -27,27 +27,27 @@ A professional diagram drawing tool that supports UML is recommended.
 
 ### 1. Relational Schema
 
-| Relation reference | Relation Compact Notation                                                                                                                      |
-| ------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------- |
-| R01                | user(**id**,email UK NN,name NN,password NN, profile_image, profile_description)                                                               |
-| R02                | company(**id**,name NN)                                                                                                                        |
-| R03                | administrator(**email**,name NN,company_id NN)                                                                                                 |
-| R04                | work(**user_id**,**company_id**)                                                                                                               |
-| R05                | project(**id**, company_id FK,name NN, description, start_date NN, delivery_date NN CK delivery_date>start_date, archived)                     |
-| R06                | project_coordinator(**user_id**,**project_id**)                                                                                                |
-| R07                | project_member(**user_id**,**company_id**)                                                                                                     |
-| R08                | task(__id__, project_id, name NN, description, start_date NN, delivery_date NN CK -> delivery > start, status NN CK status IN Task_Status) |
-| R09                | task_assigned(__project_coordinator_id__, __project_member_id__,__task_id__,notified)                                                                                |
-| R10                | forum_post(__id__,project_id,project_member_id NN, content NN, post_date NN)                                                          |
-| R11                | invitation(**project_id** , **user_id**, **coordinator_id**, accepted NN)                                                                      |
-| R12                | favorite(**project_id**, **user_id**)                                                                                                          |
+| Relation reference | Relation Compact Notation                                                                                                                  |
+| ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------ |
+| R01                | user(**id**,email UK NN,name NN,password NN, profile_image, profile_description)                                                           |
+| R02                | company(**id**,name NN)                                                                                                                    |
+| R03                | administrator(**email**,name NN,company_id NN)                                                                                             |
+| R04                | work(**user_id**,**company_id**)                                                                                                           |
+| R05                | project(**id**, company_id FK,name NN, description, start_date NN, delivery_date NN CK delivery_date>start_date, archived)                 |
+| R06                | project_coordinator(**user_id**,**project_id**)                                                                                            |
+| R07                | project_member(**user_id**,**company_id**)                                                                                                 |
+| R08                | task(**id**, project_id, name NN, description, start_date NN, delivery_date NN CK -> delivery > start, status NN CK status IN Task_Status) |
+| R09                | task_assigned(**project_coordinator_id**, **project_member_id**,**task_id**,notified)                                                      |
+| R10                | forum_post(**id**,project_id,project_member_id NN, content NN, post_date NN)                                                               |
+| R11                | invitation(**project_id** , **user_id**, **coordinator_id**, accepted NN)                                                                  |
+| R12                | favorite(**project_id**, **user_id**)                                                                                                      |
 
 ###### NOTE:
 
-`Primary Keys` : underlined
-`Unique Keys` : UK
-`Not Null` : NN
-`Check` : CK
+Primary Keys : <u>Underlined</u> <br>
+Unique Keys : UK <br>
+Not Null : NN <br>
+Check : CK <br>
 
 ### 2. Domains
 
@@ -111,40 +111,40 @@ To validate the Relational Schema obtained from the Conceptual Data Model, all f
 | FD0101                       | _none_                  |
 | **NORMAL FORM**              | BCNF                    |
 
-| **TABLE R08**                | task     |
-| ---------------------------- | ----------------------- |
-| **Keys**                     | {id} |
-| **Functional Dependencies:** |                         |
-| FD0101                       | id->{project_id, name, description, start_date, delivery_date, status}                 |
-| **NORMAL FORM**              | BCNF                    |
+| **TABLE R08**                | task                                                                   |
+| ---------------------------- | ---------------------------------------------------------------------- |
+| **Keys**                     | {id}                                                                   |
+| **Functional Dependencies:** |                                                                        |
+| FD0101                       | id->{project_id, name, description, start_date, delivery_date, status} |
+| **NORMAL FORM**              | BCNF                                                                   |
 
-| **TABLE R09**                | task_assigned     |
-| ---------------------------- | ----------------------- |
-| **Keys**                     | {project_coordinator_id, project_member_id, task_id} |
-| **Functional Dependencies:** |                         |
-| FD0101                       | {project_coordinator_id, project_member_id, task_id}->{notified}                 |
-| **NORMAL FORM**              | BCNF                    |
+| **TABLE R09**                | task_assigned                                                    |
+| ---------------------------- | ---------------------------------------------------------------- |
+| **Keys**                     | {project_coordinator_id, project_member_id, task_id}             |
+| **Functional Dependencies:** |                                                                  |
+| FD0101                       | {project_coordinator_id, project_member_id, task_id}->{notified} |
+| **NORMAL FORM**              | BCNF                                                             |
 
-| **TABLE R10**                | forum_post     |
-| ---------------------------- | ----------------------- |
-| **Keys**                     | {id} |
-| **Functional Dependencies:** |                         |
-| FD0101                       | id->{project_id, project_member_id, content, post_date}                 |
-| **NORMAL FORM**              | BCNF                    |
+| **TABLE R10**                | forum_post                                              |
+| ---------------------------- | ------------------------------------------------------- |
+| **Keys**                     | {id}                                                    |
+| **Functional Dependencies:** |                                                         |
+| FD0101                       | id->{project_id, project_member_id, content, post_date} |
+| **NORMAL FORM**              | BCNF                                                    |
 
-| **TABLE R11**                | invitation     |
-| ---------------------------- | ----------------------- |
-| **Keys**                     | {project_id, user_id, coordinator_id} |
-| **Functional Dependencies:** |                         |
-| FD0101                       | {project_id, user_id, coordinator_id} ->{accepted}                |
-| **NORMAL FORM**              | BCNF                    |
+| **TABLE R11**                | invitation                                         |
+| ---------------------------- | -------------------------------------------------- |
+| **Keys**                     | {project_id, user_id, coordinator_id}              |
+| **Functional Dependencies:** |                                                    |
+| FD0101                       | {project_id, user_id, coordinator_id} ->{accepted} |
+| **NORMAL FORM**              | BCNF                                               |
 
-| **TABLE R12**                | favorite     |
-| ---------------------------- | ----------------------- |
+| **TABLE R12**                | favorite             |
+| ---------------------------- | -------------------- |
 | **Keys**                     | {user_id,project_id} |
-| **Functional Dependencies:** |                         |
-| FD0101                       | _none_            |
-| **NORMAL FORM**              | BCNF                    |
+| **Functional Dependencies:** |                      |
+| FD0101                       | _none_               |
+| **NORMAL FORM**              | BCNF                 |
 
 Because all relations are in the Boyce–Codd Normal Form (BCNF), the relational schema is also in the BCNF and, therefore, the schema does not need to be further normalized.
 
