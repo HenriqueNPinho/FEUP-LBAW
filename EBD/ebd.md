@@ -65,6 +65,7 @@ To validate the Relational Schema obtained from the Conceptual Data Model, all f
 | ---------------------------- | ---------------------------------------------------------------- |
 | **Keys**                     | { id }, { email }                                                |
 | **Functional Dependencies:** |                                                                  |
+| ---------------------------- | ---------------------------------------------------------------- |
 | FD0101                       | id → {email, name, password, profile_image, profile_description} |
 | FD0102                       | email → {id, name, password, profile_image, profile_description} |
 | **NORMAL FORM**              | BCNF                                                             |
