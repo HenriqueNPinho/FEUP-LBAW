@@ -12,8 +12,11 @@ A professional diagram drawing tool that supports UML is recommended.
 
 ### 1. Class diagram
 
-> UML class diagram containing the classes, associations, multiplicity and roles.  
-> For each class, the attributes, associations and constraints are included in the class diagram.
+The Conceptual Domain Model contains the identification and description of the entities of the domain and the relationships between them in a UML class diagram.
+
+The following diagram represents the main organizational entities, the relationships between them, attributes, and the multiplicity of relationships for our website.
+
+![Class Diagram](images/diagram.png)
 
 ### 2. Additional Business Rules
 
@@ -38,9 +41,10 @@ Relation schemas are specified in the compact notation:
 | R07                | project_member(**user_id**,**company_id**,seenNewForumPost NN)                                                                             |
 | R08                | task(**id**, project_id, name NN, description, start_date NN, delivery_date NN CK -> delivery > start, status NN CK status IN task_status) |
 | R09                | task_assigned(**project_coordinator_id**, **project_member_id**,**task_id**,notified)                                                      |
-| R10                | forum_post(**id**,project_id,project_member_id NN, content NN, post_date NN)                                                               |
+| R10                | forum_post(**id**,project_id,project_member_id NN, content NN, post_date NN, deleted NN)                                                   |
 | R11                | invitation(**project_id** , **user_id**, **coordinator_id**, accepted NN)                                                                  |
 | R12                | favorite(**project_id**, **user_id**)                                                                                                      |
+| R13                | post_edition(**id**,forum_post_id,edit_date NN, content NN)                                                                                |
 
 ###### NOTE:
 
@@ -122,12 +126,12 @@ To validate the Relational Schema obtained from the Conceptual Data Model, all f
 | FD0101                      | {project_coordinator_id, project_member_id, task_id}->{notified} |
 | **NORMAL FORM**             | BCNF                                                             |
 
-| **TABLE R10**               | forum_post                                              |
-| --------------------------- | ------------------------------------------------------- |
-| **Keys**                    | {id}                                                    |
-| **Functional Dependencies** |                                                         |
-| FD0101                      | id->{project_id, project_member_id, content, post_date} |
-| **NORMAL FORM**             | BCNF                                                    |
+| **TABLE R10**               | forum_post                                                       |
+| --------------------------- | ---------------------------------------------------------------- |
+| **Keys**                    | {id}                                                             |
+| **Functional Dependencies** |                                                                  |
+| FD0101                      | id->{project_id, project_member_id, content, post_date, deleted} |
+| **NORMAL FORM**             | BCNF                                                             |
 
 | **TABLE R11**               | invitation                                         |
 | --------------------------- | -------------------------------------------------- |
@@ -142,6 +146,13 @@ To validate the Relational Schema obtained from the Conceptual Data Model, all f
 | **Functional Dependencies** |                      |
 | FD0101                      | _none_               |
 | **NORMAL FORM**             | BCNF                 |
+
+| **TABLE R13**               | post_edition                            |
+| --------------------------- | --------------------------------------- |
+| **Keys**                    | {id}                                    |
+| **Functional Dependencies** |                                         |
+| FD0101                      | id->{forum_post_id, edit_date, content} |
+| **NORMAL FORM**             | BCNF                                    |
 
 Because all relations are in the Boyce–Codd Normal Form (BCNF), the relational schema is also in the BCNF and, therefore, the schema does not need to be further normalized.
 

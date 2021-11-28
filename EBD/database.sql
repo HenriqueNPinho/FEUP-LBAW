@@ -86,7 +86,8 @@ CREATE TABLE forum_post(
     project_id INTEGER NOT NULL REFERENCES project(id),
     project_member_id INTEGER NOT NULL REFERENCES users(id),
     content TEXT,
-    post_date TIMESTAMP WITH TIME ZONE DEFAULT now() NOT NULL
+    post_date TIMESTAMP WITH TIME ZONE DEFAULT now() NOT NULL,
+    deleted BOOLEAN DEFAULT FALSE NOT NULL
 );
 
 CREATE TABLE invitation(
