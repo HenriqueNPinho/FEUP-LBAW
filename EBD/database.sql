@@ -1,5 +1,3 @@
-CREATE TYPE task_status AS ENUM('Not Started','In Progress', 'Complete');
-
 DROP TABLE IF EXISTS users CASCADE;
 DROP TABLE IF EXISTS company CASCADE;
 DROP TABLE IF EXISTS administrator CASCADE;
@@ -14,6 +12,9 @@ DROP TABLE IF EXISTS invitation CASCADE;
 DROP TABLE IF EXISTS favorite CASCADE;
 DROP TABLE IF EXISTS post_edition CASCADE;
 
+DROP TYPE IF EXISTS task_status;
+
+CREATE TYPE task_status AS ENUM('Not Started','In Progress', 'Complete');
 
 CREATE TABLE users (
     id INTEGER PRIMARY KEY,
