@@ -17,7 +17,7 @@ The following diagram represents the main organizational entities, the relations
 ### 2. Additional Business Rules
 
 - Only the post's author can generate new Post Editions
-- A user cannot be invited to a project where he is already a member
+- A user can't have more than 5 favorite projects
 
 ## A5: Relational Schema, validation and schema refinement
 
@@ -259,23 +259,25 @@ It's essential to grasp the nature of the workload for the application and the p
 
 | **Trigger**     | TRIGGER01                                                          |
 | --------------- | ------------------------------------------------------------------ |
-| **Description** | A user cannot be invited to a project where he is already a member |
+| **Description** | A user cannot have more than 5 favorite projects |
 | `SQL code`      |                                                                    |
-|CREATE FUNCTION invite_to_project() RETURNS TRIGGER AS
+|CREATE FUNCTION add_favorite() RETURNS TRIGGER AS
 $BODY$
 BEGIN
-        IF EXISTS (SELECT * FROM project_member WHERE NEW.users_id = users_id AND end_t > NEW.start_t) THEN
-           RAISE EXCEPTION 'An item can only be loaned to one user at a given moment.';
+        IF COUNT(SELECT * FROM favorite WHERE NEW.users_id = users_id)==5 THEN
+           RAISE EXCEPTION 'A user can't have more than 5 favorite projects';
         END IF;
         RETURN NEW;
 END
 $BODY$
 LANGUAGE plpgsql;
 
-CREATE TRIGGER loan_item
-        BEFORE INSERT OR UPDATE ON loan
+CREATE TRIGGER add_favorite
+        BEFORE INSERT OR UPDATE ON favorite
         FOR EACH ROW
-        EXECUTE PROCEDURE loan_item();|
+        EXECUTE PROCEDURE add_favorite();|
+
+
 
 ### 4. Transactions
 
