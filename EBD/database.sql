@@ -98,7 +98,7 @@ CREATE TABLE invitation(
     users_id INTEGER NOT NULL REFERENCES users(id),
     coordinator_id INTEGER NOT NULL REFERENCES project_coordinator(id),
     accepted BOOLEAN,
-    PRIMARY KEY(project_id,users_id,task_id)
+    PRIMARY KEY(project_id,users_id,coordinator_id)
 );
 
 CREATE TABLE favorite(
