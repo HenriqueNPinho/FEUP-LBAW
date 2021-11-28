@@ -20,9 +20,7 @@ The following diagram represents the main organizational entities, the relations
 
 ### 2. Additional Business Rules
 
-> Business rules can be included in the UML diagram as UML notes or in a table in this section.
-
----
+* Only the post's author can generate new Post Editions
 
 ## A5: Relational Schema, validation and schema refinement
 
