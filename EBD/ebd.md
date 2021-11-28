@@ -4,10 +4,6 @@ This project aims to build an information system with a web interface for projec
 
 ## A4: Conceptual Data Model
 
-> The Conceptual Data Model contains the identification and description of the entities and relationships that are relevant to the database specification.
-
-> A UML class diagram is used to document the model.
-
 A professional diagram drawing tool that supports UML is recommended.
 
 ### 1. Class diagram

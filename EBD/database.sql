@@ -104,6 +104,7 @@ CREATE TABLE invitation(
 CREATE TABLE favorite(
     project_id INTEGER NOT NULL REFERENCES project(id),
     users_id INTEGER NOT NULL REFERENCES users(id),
+    PRIMARY KEY(project_id,users_id)
 );
 
 CREATE TABLE post_edition(
