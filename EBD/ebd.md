@@ -168,9 +168,9 @@ It's essential to grasp the nature of the workload for the application and the p
 | ---------------------- | ------------------- | ---------------------------- | ---------------------- |
 | R01                    | user                | 10k (tens of thousands)      | 10 (tens) / day        |
 | R02                    | company             | 100 (hundreds)               | 1 (units) / day        |
-| R03                    | administrator       | 100 (hundreds)               | 1 / day                |
+| R03                    | administrator       | 100                          | 1 / day                |
 | R04                    | work                | 10k                          | 10 / day               |
-| R05                    | project             | 1k                           | 1 / day                |
+| R05                    | project             | 1k  (thousands)              | 1 / day                |
 | R06                    | project_coordinator | 1k                           | 1 / day                |
 | R07                    | project_member      | 10k                          | 10 / day               |
 | R08                    | task                | 100k (hundreds of thousands) | 100 (hundreds) / day   |
