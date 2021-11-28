@@ -12,6 +12,8 @@ DROP TABLE IF EXISTS task_assigned CASCADE;
 DROP TABLE IF EXISTS forum_post CASCADE;
 DROP TABLE IF EXISTS invitation CASCADE;
 DROP TABLE IF EXISTS favorite CASCADE;
+DROP TABLE IF EXISTS post_edition CASCADE;
+
 
 CREATE TABLE users (
     id INTEGER PRIMARY KEY,
@@ -101,4 +103,11 @@ CREATE TABLE invitation(
 CREATE TABLE favorite(
     project_id INTEGER NOT NULL REFERENCES project(id),
     users_id INTEGER NOT NULL REFERENCES users(id),
+);
+
+CREATE TABLE post_edition(
+    id PRIMARY KEY,
+    post_id INTEGER NOT NULL REFERENCES post(id),
+    edit_date TIMESTAMP WITH TIME ZONE DEFAULT now() NOT NULL,
+    content TEXT
 );
