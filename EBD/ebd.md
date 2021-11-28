@@ -156,12 +156,20 @@ Because all relations are in the Boyce–Codd Normal Form (BCNF), the relational
 > A study of the predicted system load (database load).
 > Estimate of tuples at each relation.
 
-| **Relation reference** | **Relation Name** | **Order of magnitude** | **Estimated growth** |
-| ---------------------- | ----------------- | ---------------------- | -------------------- | -------- | --- | ---------------- |
-| R01                    | Table1            | units                  | dozens               | hundreds | etc | order per time   |
-| R02                    | Table2            | units                  | dozens               | hundreds | etc | dozens per month |
-| R03                    | Table3            | units                  | dozens               | hundreds | etc | hundreds per day |
-| R04                    | Table4            | units                  | dozens               | hundreds | etc | no growth        |
+| **Relation reference** | **Relation Name**   | **Order of magnitude**       | **Estimated growth**   |
+| ---------------------- | ------------------- | ---------------------------- | --------------------   |
+| R01                    | user                | 10k (tens of thousands)      | 10 (tens) / day        |
+| R02                    | company             | 100 (hundreds)               | 1 (units) / day        |
+| R03                    | administrator       | 1k (hundreds)                | 1 / day                |
+| R04                    | work                | 10k                          | 10 / day               |
+| R05                    | project             | 1k                           | 1 / day                |
+| R06                    | project_coordinator | 1k                           | 1 / day                |
+| R07                    | project_member      | 10k                          | 10 / day               |
+| R08                    | task                | 100k (hundreds of thousands) | 100 (hundreds) / day   |
+| R09                    | task_assigned       | 100k                         | 100 / day              |
+| R10                    | forum_post          | 1kk (milions)                | 1000 (thousands) / day |
+| R11                    | invitation          | 100                          | 1 / day                |
+| R12                    | favorite            | 100                          | 1 / day                |
 
 ### 2. Proposed Indices
 
