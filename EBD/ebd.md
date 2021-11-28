@@ -23,9 +23,9 @@ A professional diagram drawing tool that supports UML is recommended.
 
 ## A5: Relational Schema, validation and schema refinement
 
-> Brief presentation of the artefact goals.
-
 ### 1. Relational Schema
+
+Relation schemas are specified in the compact notation:
 
 | Relation reference | Relation Compact Notation                                                                                                                  |
 | ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -36,7 +36,7 @@ A professional diagram drawing tool that supports UML is recommended.
 | R05                | project(**id**, company_id FK,name NN, description, start_date NN, delivery_date NN CK delivery_date>start_date, archived)                 |
 | R06                | project_coordinator(**user_id**,**project_id**)                                                                                            |
 | R07                | project_member(**user_id**,**company_id**)                                                                                                 |
-| R08                | task(**id**, project_id, name NN, description, start_date NN, delivery_date NN CK -> delivery > start, status NN CK status IN Task_Status) |
+| R08                | task(**id**, project_id, name NN, description, start_date NN, delivery_date NN CK -> delivery > start, status NN CK status IN task_status) |
 | R09                | task_assigned(**project_coordinator_id**, **project_member_id**,**task_id**,notified)                                                      |
 | R10                | forum_post(**id**,project_id,project_member_id NN, content NN, post_date NN)                                                               |
 | R11                | invitation(**project_id** , **user_id**, **coordinator_id**, accepted NN)                                                                  |
@@ -52,7 +52,7 @@ Specification of additional domains:
 
 | Domain Name | Domain Specification                           |
 | ----------- | ---------------------------------------------- |
-| Task Status | ENUM('Not Started', 'In Progress', 'Complete') |
+| task_status | ENUM('Not Started', 'In Progress', 'Complete') |
 
 ### 3. Schema validation
 
@@ -144,8 +144,9 @@ To validate the Relational Schema obtained from the Conceptual Data Model, all f
 | **NORMAL FORM**             | BCNF                 |
 
 Because all relations are in the Boyce–Codd Normal Form (BCNF), the relational schema is also in the BCNF and, therefore, the schema does not need to be further normalized.
+### SQL Code
 
----
+
 
 ## A6: Indexes, triggers, transactions and database population
 
