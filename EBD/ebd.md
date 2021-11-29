@@ -226,7 +226,7 @@ An index is used for looking something up in a table or any identical structure.
 
 Full-Text Search Indexes are used when looking for full text. For each column wished to index for Full-Text Search you need to create a new column with auxiliary values for SQL algorithms to use.
 
-| **Index**         | IDX06                                                                                                                                                                                                                 |
+| **Index**         | IDX04                                                                                                                                                                                                                 |
 | ----------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **Relation**      | forum_post                                                                                                                                                                                                            |
 | **Attribute**     | content                                                                                                                                                                                                               |
