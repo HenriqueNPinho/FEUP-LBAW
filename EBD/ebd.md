@@ -250,12 +250,11 @@ It's essential to grasp the nature of the workload for the application and the p
 
 > User-defined functions and trigger procedures that add control structures to the SQL language or perform complex computations, are identified and described to be trusted by the database server. Every kind of function (SQL functions, Stored procedures, Trigger procedures) can take base types, composite types, or combinations of these as arguments (parameters). In addition, every kind of function can return a base type or a composite type. Functions can also be defined to return sets of base or composite values.
 
-| **Trigger**     | TRIGGER01                                        |
-| --------------- | ------------------------------------------------ |
-| **Description** | A user cannot have more than 5 favorite projects |
-| `SQL code`      |                                                  |
+| **Trigger**     | TRIGGER01                                         |
+| --------------- | ------------------------------------------------- |
+| **Description** | A user cannot have more than 5 favorite projects  |
+| `SQL code`      | CREATE FUNCTION add_favorite() RETURNS TRIGGER AS |
 
-|CREATE FUNCTION add_favorite() RETURNS TRIGGER AS
 $BODY$
 BEGIN
 IF (COUNT(SELECT \* FROM favorite WHERE NEW.users_id = users_id)==5) THEN
@@ -274,9 +273,8 @@ EXECUTE PROCEDURE add_favorite();|
 | **Trigger**     | TRIGGER02                                                                   |
 | --------------- | --------------------------------------------------------------------------- |
 | **Description** | When a project is archived, it is removed from the users' favorite projects |
-| `SQL code`      |                                                                             |
+| `SQL code`      | CREATE FUNCTION remove_favorites() RETURNS TRIGGER AS                       |
 
-|CREATE FUNCTION remove_favorites() RETURNS TRIGGER AS
 $BODY$
 BEGIN
 IF (NEW.archived==TRUE) THEN
@@ -290,14 +288,13 @@ LANGUAGE plpgsql;
 CREATE TRIGGER remove_favorites
 BEFORE UPDATE ON project
 FOR EACH ROW
-EXECUTE PROCEDURE remove_favorites();|
+EXECUTE PROCEDURE remove_favorites(); |
 
 | **Trigger**     | TRIGGER03                                                             |
 | --------------- | --------------------------------------------------------------------- |
 | **Description** | Changing the content of a forum post creates a new Post Edition entry |
-| `SQL code`      |                                                                       |
+| `SQL code`      | CREATE FUNCTION add_edit() RETURNS TRIGGER AS                         |
 
-|CREATE FUNCTION add_edit() RETURNS TRIGGER AS
 $BODY$
 BEGIN
 IF (NEW.content!=content) THEN
