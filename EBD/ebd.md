@@ -253,7 +253,6 @@ It's essential to grasp the nature of the workload for the application and the p
 | **Trigger**     | TRIGGER01                                        |
 | --------------- | ------------------------------------------------ |
 | **Description** | A user cannot have more than 5 favorite projects |
-| `SQL code`      |
 
 ```sql
 CREATE FUNCTION add_favorite() RETURNS TRIGGER AS
@@ -273,12 +272,9 @@ FOR EACH ROW
 EXECUTE PROCEDURE add_favorite();
 ```
 
-|
-
 | **Trigger**     | TRIGGER02                                                                   |
 | --------------- | --------------------------------------------------------------------------- |
 | **Description** | When a project is archived, it is removed from the users' favorite projects |
-| `SQL code`      |
 
 ```sql
 CREATE FUNCTION remove_favorites() RETURNS TRIGGER AS
@@ -298,12 +294,9 @@ FOR EACH ROW
 EXECUTE PROCEDURE remove_favorites();
 ```
 
-|
-
 | **Trigger**     | TRIGGER03                                                             |
 | --------------- | --------------------------------------------------------------------- |
 | **Description** | Changing the content of a forum post creates a new Post Edition entry |
-| `SQL code`      |
 
 ```sql
 CREATE FUNCTION add_edit() RETURNS TRIGGER AS
@@ -322,8 +315,6 @@ BEFORE UPDATE ON forum_post
 FOR EACH ROW
 EXECUTE PROCEDURE add_edit();
 ```
-
-|
 
 ### 4. Transactions
 
