@@ -159,8 +159,6 @@ To validate the Relational Schema obtained from the Conceptual Data Model, all f
 
 Because all relations are in the Boyce–Codd Normal Form (BCNF), the relational schema is also in the BCNF and, therefore, the schema does not need to be further normalized.
 
-### SQL Code
-
 ## A6: Indexes, triggers, transactions and database population
 
 This artefact contains the database's workload, the physical schema of the database, its indexes, its triggers, the definition of some functions and transactions needed to assure the integrity of the data.
@@ -184,7 +182,7 @@ It's essential to grasp the nature of the workload for the application and the p
 | R10                    | forum_post          | 1kk (millions)               | 1000 (thousands) / day |
 | R11                    | invitation          | 10k                          | 10 / day               |
 | R12                    | favorite            | 1k                           | 1 / day                |
-| R13                    | post_edition        | 100k                         | 100/ day               |
+| R13                    | post_edition        | 100k                         | 100 (hundreds)/ day    |
 
 ### 2. Proposed Indexes
 
@@ -200,7 +198,10 @@ An index is used for looking something up in a table or any identical structure.
 | **Cardinality**   | Medium                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
 | **Clustering**    | Yes                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
 | **Justification** | Table 'project_member' is large. Not large enough to justify an index just by its sheer size, but a very common query needs to filter every project by a certain member, so those two conditions justify an index. Since its cardinality is medium (due to multiple tuples having the same user_id -> high cardinality means to having mostly unique elements and low cardinality means having many repetead values) and update frequency isn't high, it's a good candidate for clustering. Clustering can't be used on hash type indexes, so a B-tree type index was opted for. The B-tree is the default index type and is used for exact matches or elements that have a greater or less than a certain value. |
-| `SQL code`        | <p> `CREATE INDEX project_member_user_index` </p> <p>`ON project_member`</p> <p>`USING btree (users_id);`</p> <p>`CLUSTER project_member`</p> <p>`USING project_member_user_index;`<p>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+
+```sql
+CREATE INDEX project_member_user_index ON project_member USING btree (users_id); CLUSTER project_member USING project_member_user_index;
+```
 
 | **Index**         | IDX02                                                                                                                                                                                                                                                                                                                                                                                                                              |
 | ----------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -210,7 +211,10 @@ An index is used for looking something up in a table or any identical structure.
 | **Cardinality**   | Medium                                                                                                                                                                                                                                                                                                                                                                                                                             |
 | **Clustering**    | No                                                                                                                                                                                                                                                                                                                                                                                                                                 |
 | **Justification** | Table 'project_member' is large. Not large enough to justify an index just by its sheer size, but a very common query needs to filter every member of a certain project, so those two conditions justify an index. Despite its medium cardinality (due to multiple tuples having the same project_id) and medium update frequency, it's not a good candidate for clustering because the table is already clustered around user_id. |
-| `SQL code`        | <p> `CREATE INDEX project_member_project_index`</p> <p> `ON project_member`</p> <p> `USING hash(project_id);` </p>                                                                                                                                                                                                                                                                                                                 |
+                                                                                                                                                       
+```sql
+CREATE INDEX project_member_project_index ON project_member USING hash(project_id);
+```
 
 | **Index**         | IDX03                                                                                                                                                                                                                                                                                                                                                                                                                                               |
 | ----------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -220,18 +224,21 @@ An index is used for looking something up in a table or any identical structure.
 | **Cardinality**   | Medium                                                                                                                                                                                                                                                                                                                                                                                                                                              |
 | **Clustering**    | No                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
 | **Justification** | Table 'task_assigned' is very large and a very common query needs to filter every project assigned to a project member, so an index is necessary. Despite its medium cardinality (due to multiple tuples having the same project_member_id) and medium update frequency, it's not a good candidate for clustering. Clustering uses a lot of resources so it can take a lot of time, specially in this case where the tuple in question is so large. |
-| `SQL code`        | <p>`CREATE INDEX task_assigned_member_index` </p> <p>`ON task_assigned USING btree` </p> <p>`(project_member_id);` </p>                                                                                                                                                                                                                                                                                                                             |
+
+```sql
+CREATE INDEX task_assigned_member_index ON task_assigned USING btree (project_member_id);
+```
 
 #### 2.2. Full-text Search Indixes
 
 Full-Text Search Indexes are used when looking for full text. For each column wished to index for Full-Text Search you need to create a new column with auxiliary values for SQL algorithms to use.
 
-| **Index**         | IDX04                                                                                                                                                                                                                 |
-| ----------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Relation**      | forum_post                                                                                                                                                                                                            |
-| **Attribute**     | content                                                                                                                                                                                                               |
-| **Type**          | GIN                                                                                                                                                                                                                   |
-| **Clustering**    | No                                                                                                                                                                                                                    |
+| **Index**         | IDX04                                                                                                                                                                                                                      |
+| ----------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Relation**      | forum_post                                                                                                                                                                                                                 |
+| **Attribute**     | content                                                                                                                                                                                                                    |
+| **Type**          | GIN                                                                                                                                                                                                                        |
+| **Clustering**    | No                                                                                                                                                                                                                         |
 | **Justification** | Used for improving the performance of full text search while searching for a specific term in of the biggest table of the database, 'task'. GIN was used because a task's name and description are not updated frequently. |
 
 ```sql
