@@ -17,6 +17,7 @@ DROP TYPE IF EXISTS task_status;
 DROP FUNCTION IF EXISTS add_favorite;
 DROP FUNCTION IF EXISTS remove_favorites;
 DROP FUNCTION IF EXISTS add_edit;
+DROP FUNCTION IF EXISTS task_search_update;
 
 CREATE TYPE task_status AS ENUM('Not Started','In Progress', 'Complete');
 
@@ -77,7 +78,7 @@ CREATE TABLE task (
     description TEXT,
     start_date TIMESTAMP WITH TIME ZONE,
     delivery_date TIMESTAMP WITH TIME ZONE,
-    TYPE task_status DEFAULT 'Not Started',
+    status task_status DEFAULT 'Not Started',
     CONSTRAINT date_ck CHECK (delivery_date>start_date)
 );
 
