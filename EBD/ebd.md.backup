@@ -36,7 +36,7 @@ Relation schemas are specified in the compact notation:
 | R07                | project_member(user_id **PK**,company_id**PK**,seenNewForumPost **NN**)                                                                             |
 | R08                | task(id **PK**, project_id, name **NN**, description, start_date **NN**, delivery_date NN CK -> delivery > start, status **NN** **CK** status IN task_status) |
 | R09                | task_assigned(project_coordinator_id **PK**, project_member_id **PK**,task_id **PK**,notified)                                                      |
-| R10                | forum_post(id **PK**,project_id,project_member_id **NN**, content **NN**, post_date **NN**, deleted NN)                                                   |
+| R10                | forum_post(id **PK**,project_id,project_member_id **NN**, content **NN**, post_date **NN**, deleted **NN**)                                                   |
 | R11                | invitation(project_id **PK** ,user_id **PK**,coordinator_id **PK**, accepted **NN**)                                                                  |
 | R12                | favorite(**project_id**, **user_id**)                                                                                                      |
 | R13                | post_edition(**id**,forum_post_id,edit_date **NN**, content **NN**)                                                                                |
@@ -44,9 +44,13 @@ Relation schemas are specified in the compact notation:
 > **Legend:** 
 >
 > **PK** = PRIMATY KEY 
+> 
 > **UK** = UNIQUE KEY
+> 
 > **FK** = FOREIGN KEY
+> 
 > **NN** = NOT NULL 
+> 
 > **CK** = CHECK.
 
 ### 2. Domains

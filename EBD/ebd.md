@@ -44,9 +44,13 @@ Relation schemas are specified in the compact notation:
 > **Legend:** 
 >
 > **PK** = PRIMATY KEY 
+> 
 > **UK** = UNIQUE KEY
+> 
 > **FK** = FOREIGN KEY
+> 
 > **NN** = NOT NULL 
+> 
 > **CK** = CHECK.
 
 ### 2. Domains
@@ -216,7 +220,7 @@ It's essential to grasp the nature of the workload for the application and the p
 | **Cardinality**   | Medium                                                                                                                                                                                                                                                                                                                                            |
 | **Clustering**    | No                                                                                                                                                                                                                                                                                                                                                |
 | **Justification** | Table 'task_assigned' is very large and a very common query needs to filter every project assigned to a project member, so an index is necessary. Despite its medium cardinality (due to multiple tuples having the same project_member_id) and medium update frequency, it's not a good candidate for clustering. Clustering uses a lot of resources so it can take a lot of time, specially in this case where the tuple in question is so large.  |
-| `SQL code`        | <p>`CREATE INDEX task_assigned_member_index` </p>  <p>`ON task_assigned USING btree` </p>  <p>`(project_member_id);` <\p>                                                                                                                                                                                                                                                       |
+| `SQL code`        | <p>`CREATE INDEX task_assigned_member_index` </p>  <p>`ON task_assigned USING btree` </p>  <p>`(project_member_id);` </p>                                                                                                                                                                                                                                                       |
 
 
 #### 2.2. Full-text Search Indices
@@ -230,7 +234,7 @@ It's essential to grasp the nature of the workload for the application and the p
 | **Type**          | GIN                                                                                                                                                                                                                   |
 | **Clustering**    | No                                                                                                                                                                                                                    |
 | **Justification** | Used for improving the performance of full text search while searching for a specific term in the biggest table of the database, 'forum_post'. GIN was used because a forum post's content is not updated frequently. |
-| `SQL code`        | `CREATE INDEX forum_post_content_index ON forum_post USING GIN (search); `                                                                                                                                            |
+| `SQL code`        | <p> `CREATE INDEX forum_post_content_index` <p> `ON forum_post` <p> `USING GIN (search);` <p>                                                                                                                                             |
 
 ### 3. Triggers
 
