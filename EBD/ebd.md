@@ -27,21 +27,26 @@ Relation schemas are specified in the compact notation:
 
 | Relation reference | Relation Compact Notation                                                                                                                  |
 | ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------ |
-| R01                | user(**id**,email UK NN,name NN,password NN, profile_image, profile_description)                                                           |
-| R02                | company(**id**,name NN)                                                                                                                    |
-| R03                | administrator(**email**,name NN,company_id NN)                                                                                             |
-| R04                | work(**user_id**,**company_id**)                                                                                                           |
-| R05                | project(**id**, company_id FK,name NN, description, start_date NN, delivery_date NN CK delivery_date>start_date, archived)                 |
-| R06                | project_coordinator(**user_id**,**project_id**)                                                                                            |
-| R07                | project_member(**user_id**,**company_id**,seenNewForumPost NN)                                                                             |
+| R01                | user(id**PK**,email **UK NN**,name **NN**,password **NN**, profile_image, profile_description)                                                           |
+| R02                | company(id**PK**,name **NN**)                                                                                                                    |
+| R03                | administrator(email**PK**,name **NN**,company_id **NN**)                                                                                             |
+| R04                | work(user_id**PK**,**company id**)                                                                                                           |
+| R05                | project(id</u>, company_id FK,name NN, description, start_date NN, delivery_date NN CK delivery_date>start_date, archived)                 |
+| R06                | project_coordinator(user_id**PK**,project_id**PK**)                                                                                            |
+| R07                | project_member(user_id**PK**,company_id**PK**,seenNewForumPost **NN**)                                                                             |
 | R08                | task(**id**, project_id, name NN, description, start_date NN, delivery_date NN CK -> delivery > start, status NN CK status IN task_status) |
 | R09                | task_assigned(**project_coordinator_id**, **project_member_id**,**task_id**,notified)                                                      |
-| R10                | forum_post(**id**,project_id,project_member_id NN, content NN, post_date NN, deleted NN)                                                   |
+| R10                | forum_post(**id**,project_id,project_member_id **NN**, content **NN**, post_date NN, deleted NN)                                                   |
 | R11                | invitation(**project_id** , **user_id**, **coordinator_id**, accepted NN)                                                                  |
 | R12                | favorite(**project_id**, **user_id**)                                                                                                      |
-| R13                | post_edition(**id**,forum_post_id,edit_date NN, content NN)                                                                                |
+| R13                | post_edition(**id**,forum_post_id,edit_date **NN**, content **NN**)                                                                                |
 
-Note: Primary Keys are in **bold**, UK is an UNIQUE KEY, NN is NOT NULL and CK is CHECK.
+> **Legend:** 
+>
+> **PK** = PRIMATY KEY 
+> **UK** = UNIQUE KEY
+> **NN** = NOT NULL 
+> **CK** = CHECK.
 
 ### 2. Domains
 
@@ -153,7 +158,8 @@ Because all relations are in the Boyce–Codd Normal Form (BCNF), the relational
 
 ## A6: Indexes, triggers, transactions and database population
 
-> Brief presentation of the artefact goals.
+> This artefact contains the database's workload, the physical schema of the database, its indexes, its triggers, the definition of some functions and transactions needed to assure the integrity of the data. 
+Besides all this, it also includes a link the complete database creation script, including indexes and triggers.
 
 ### 1. Database Workload
 
@@ -188,7 +194,7 @@ It's essential to grasp the nature of the workload for the application and the p
 | **Type**          | B-tree                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
 | **Cardinality**   | Medium                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
 | **Clustering**    | Yes                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
-| **Justification** | Table 'project_member' is large. Not large enough to justify an index just by its sheer size, but a very common query needs to filter every project by a certain member, so those two conditions justify an index. Since cardinality is medium (due to multiple tuples having the same user_id) and update frequency isn't high, it's a good candidate for clustering. Clustering can't be used on hash type indexes, so a B-tree type index was opted for. |
+| **Justification** | Table 'project_member' is large. Not large enough to justify an index just by its sheer size, but a very common query needs to filter every project by a certain member, so those two conditions justify an index. Since its cardinality is medium (due to multiple tuples having the same user_id -> high cardinality means to having mostly unique elements and low cardinality means having many repetead values) and update frequency isn't high, it's a good candidate for clustering. Clustering can't be used on hash type indexes, so a B-tree type index was opted for. The B-tree is the default index type and is used for exact matches or elements that have a greater or less than a certaiin value. |
 | `SQL code`        | `CREATE INDEX project_member_user_index ON project_member USING btree (user_id); CLUSTER project_member USING user_projects_member;`                                                                                                                                                                                                                                                                                                                        |
 
 | **Index**         | IDX02                                                                                                                                                                                                                                                                                                                                                                                                                              |
@@ -199,7 +205,7 @@ It's essential to grasp the nature of the workload for the application and the p
 | **Cardinality**   | Medium                                                                                                                                                                                                                                                                                                                                                                                                                             |
 | **Clustering**    | No                                                                                                                                                                                                                                                                                                                                                                                                                                 |
 | **Justification** | Table 'project_member' is large. Not large enough to justify an index just by its sheer size, but a very common query needs to filter every member of a certain project, so those two conditions justify an index. Despite its medium cardinality (due to multiple tuples having the same project_id) and medium update frequency, it's not a good candidate for clustering because the table is already clustered around user_id. |
-| `SQL code`        | `CREATE INDEX project_member_project_index ON project_member USING hash(project_id);`                                                                                                                                                                                                                                                                                                                                              |
+| `SQL code`        | <code> CREATE INDEX project_member_project_index ON project_member USING hash(project_id); </code>                                                                                                                                                                                                                                                                                                                                               |
 
 | **Index**         | IDX03                                                                                                                                                                                                                                                                                                                                             |
 | ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -209,27 +215,11 @@ It's essential to grasp the nature of the workload for the application and the p
 | **Cardinality**   | Medium                                                                                                                                                                                                                                                                                                                                            |
 | **Clustering**    | No                                                                                                                                                                                                                                                                                                                                                |
 | **Justification** | Table 'task_assigned' is very large and a very common query needs to filter every project assigned to a project member, so an index is necessary. Despite its medium cardinality (due to multiple tuples having the same project_member_id) and medium update frequency, it's not a good candidate for clustering because the tuple is not small. |
-| `SQL code`        | `CREATE INDEX task_assigned_member_index ON task_assigned USING btree(project_member_id);`                                                                                                                                                                                                                                                        |
+| `SQL code`        | <p>`CREATE INDEX task_assigned_member_index` </p>  <p>`ON task_assigned USING btree` </p>  <p>`(project_member_id);` <\p>                                                                                                                                                                                                                                                       |
 
 | **Index**         | IDX04                                                                                                                                                                                                                                                                                                                                                                |
 | ----------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Relation**      | task_assigned                                                                                                                                                                                                                                                                                                                                                        |
-| **Attribute**     | task_id                                                                                                                                                                                                                                                                                                                                                              |
-| **Type**          | B-tree                                                                                                                                                                                                                                                                                                                                                               |
-| **Cardinality**   | Medium                                                                                                                                                                                                                                                                                                                                                               |
-| **Clustering**    | No                                                                                                                                                                                                                                                                                                                                                                   |
-| **Justification** | Table 'task_assigned' is very large and a very common query checks to whom is a task assigned, so an index is necessary. Despite its low cardinality (due to not many tuples having the same task_id, that is, not many tasks are assigned to multiple members) and medium update frequency, it's not a good candidate for clustering because the tuple is not small |
-| `SQL code`        | `CREATE INDEX task_assigned_task_index ON task_assigned USING btree(task_id);`                                                                                                                                                                                                                                                                                       |
 
-| **Index**         | IDX05                                                                                |
-| ----------------- | ------------------------------------------------------------------------------------ |
-| **Relation**      | task                                                                                 |
-| **Attribute**     | id                                                                                   |
-| **Type**          | B-tree                                                                               |
-| **Cardinality**   | Low                                                                                  |
-| **Clustering**    | Yes                                                                                  |
-| **Justification** | Table 'task' is very large and a very common query checks a specific task's details. |
-| `SQL code`        | `CREATE INDEX task_id_index ON task USING btree(id);`                                |
 
 #### 2.2. Full-text Search Indices
 

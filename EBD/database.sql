@@ -36,7 +36,8 @@ CREATE TABLE company(
 
 CREATE TABLE administrator(
     email TEXT PRIMARY KEY,
-    name TEXT NOT NULL
+    name TEXT NOT NULL,
+    company_id INTEGER NOT NULL REFERENCES company(id)
 );
 
 CREATE TABLE work(
