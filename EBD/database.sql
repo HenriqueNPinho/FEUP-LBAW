@@ -17,7 +17,7 @@ DROP TYPE IF EXISTS task_status;
 CREATE TYPE task_status AS ENUM('Not Started','In Progress', 'Complete');
 
 CREATE TABLE users (
-    id INTEGER PRIMARY KEY,
+    id SERIAL PRIMARY KEY,
     email TEXT NOT NULL UNIQUE,
     name TEXT NOT NULL,
     password TEXT NOT NULL,
@@ -26,7 +26,7 @@ CREATE TABLE users (
 );
 
 CREATE TABLE company(
-    id INTEGER PRIMARY KEY,
+    id SERIAL PRIMARY KEY,
     name TEXT NOT NULL
 );
 
@@ -42,7 +42,7 @@ CREATE TABLE work(
 );
 
 CREATE TABLE project (
-    id INTEGER PRIMARY KEY,
+    id SERIAL PRIMARY KEY,
     company_id INTEGER NOT NULL REFERENCES company(id) ON DELETE CASCADE,
     name TEXT NOT NULL,
     decription TEXT,
@@ -66,7 +66,7 @@ CREATE TABLE project_member(
 );
 
 CREATE TABLE task (
-    id INTEGER PRIMARY KEY,
+    id SERIAL PRIMARY KEY,
     project_id INTEGER NOT NULL REFERENCES project(id) ON DELETE CASCADE,
     name TEXT NOT NULL,
     decription TEXT,
@@ -85,7 +85,7 @@ CREATE TABLE task_assigned(
 );
 
 CREATE TABLE forum_post(
-    id INTEGER PRIMARY KEY,
+    id SERIAL PRIMARY KEY,
     project_id INTEGER NOT NULL REFERENCES project(id),
     project_member_id INTEGER NOT NULL REFERENCES users(id),
     content TEXT,
@@ -108,7 +108,7 @@ CREATE TABLE favorite(
 );
 
 CREATE TABLE post_edition(
-    id PRIMARY KEY,
+    id SERIAL PRIMARY KEY,
     post_id INTEGER NOT NULL REFERENCES post(id),
     edit_date TIMESTAMP WITH TIME ZONE DEFAULT now() NOT NULL,
     content TEXT

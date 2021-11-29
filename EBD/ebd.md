@@ -167,7 +167,7 @@ It's essential to grasp the nature of the workload for the application and the p
 | R02                    | company             | 100 (hundreds)               | 1 (units) / day        |
 | R03                    | administrator       | 100                          | 1 / day                |
 | R04                    | work                | 10k                          | 10 / day               |
-| R05                    | project             | 1k  (thousands)              | 1 / day                |
+| R05                    | project             | 1k (thousands)               | 1 / day                |
 | R06                    | project_coordinator | 1k                           | 1 / day                |
 | R07                    | project_member      | 10k                          | 10 / day               |
 | R08                    | task                | 100k (hundreds of thousands) | 100 (hundreds) / day   |
@@ -183,101 +183,135 @@ It's essential to grasp the nature of the workload for the application and the p
 
 > Indices proposed to improve performance of the identified queries.
 
-| **Index**         | IDX01                                  |
-| ----------------- | -------------------------------------- |
-| **Relation**      | project_member                         |
-| **Attribute**     | user_id                                |
-| **Type**          | B-tree                                 |
-| **Cardinality**   | Medium                                 |
-| **Clustering**    | Yes                                    |
+| **Index**         | IDX01                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
+| ----------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Relation**      | project_member                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| **Attribute**     | user_id                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+| **Type**          | B-tree                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| **Cardinality**   | Medium                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| **Clustering**    | Yes                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
 | **Justification** | Table 'project_member' is large. Not large enough to justify an index just by its sheer size, but a very common query needs to filter every project by a certain member, so those two conditions justify an index. Since cardinality is medium (due to multiple tuples having the same user_id) and update frequency isn't high, it's a good candidate for clustering. Clustering can't be used on hash type indexes, so a B-tree type index was opted for. |
-| `SQL code`        |  `CREATE INDEX project_member_user_index ON project_member USING btree (user_id); CLUSTER project_member USING user_projects_member;`           |
+| `SQL code`        | `CREATE INDEX project_member_user_index ON project_member USING btree (user_id); CLUSTER project_member USING user_projects_member;`                                                                                                                                                                                                                                                                                                                        |
 
-
-
-| **Index**         | IDX02          |
-| ----------------- | -------------- |
-| **Relation**      | project_member |
-| **Attribute**     | project_id     |
-| **Type**          | B-tree         |
-| **Cardinality**   | Medium         |
-| **Clustering**    | No             |
+| **Index**         | IDX02                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| ----------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Relation**      | project_member                                                                                                                                                                                                                                                                                                                                                                                                                     |
+| **Attribute**     | project_id                                                                                                                                                                                                                                                                                                                                                                                                                         |
+| **Type**          | B-tree                                                                                                                                                                                                                                                                                                                                                                                                                             |
+| **Cardinality**   | Medium                                                                                                                                                                                                                                                                                                                                                                                                                             |
+| **Clustering**    | No                                                                                                                                                                                                                                                                                                                                                                                                                                 |
 | **Justification** | Table 'project_member' is large. Not large enough to justify an index just by its sheer size, but a very common query needs to filter every member of a certain project, so those two conditions justify an index. Despite its medium cardinality (due to multiple tuples having the same project_id) and medium update frequency, it's not a good candidate for clustering because the table is already clustered around user_id. |
-| `SQL code`        | `CREATE INDEX project_member_project_index ON project_member USING hash(project_id);`  |
+| `SQL code`        | `CREATE INDEX project_member_project_index ON project_member USING hash(project_id);`                                                                                                                                                                                                                                                                                                                                              |
 
-
-
-| **Index**         | IDX03             |
-| ----------------- | ----------------- |
-| **Relation**      | task_assigned     |
-| **Attribute**     | project_member_id |
-| **Type**          | B-tree            |
-| **Cardinality**   | Medium            |
-| **Clustering**    | No                |
+| **Index**         | IDX03                                                                                                                                                                                                                                                                                                                                             |
+| ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Relation**      | task_assigned                                                                                                                                                                                                                                                                                                                                     |
+| **Attribute**     | project_member_id                                                                                                                                                                                                                                                                                                                                 |
+| **Type**          | B-tree                                                                                                                                                                                                                                                                                                                                            |
+| **Cardinality**   | Medium                                                                                                                                                                                                                                                                                                                                            |
+| **Clustering**    | No                                                                                                                                                                                                                                                                                                                                                |
 | **Justification** | Table 'task_assigned' is very large and a very common query needs to filter every project assigned to a project member, so an index is necessary. Despite its medium cardinality (due to multiple tuples having the same project_member_id) and medium update frequency, it's not a good candidate for clustering because the tuple is not small. |
-| `SQL code`        | `CREATE INDEX task_assigned_member_index ON task_assigned USING btree(project_member_id);` |
+| `SQL code`        | `CREATE INDEX task_assigned_member_index ON task_assigned USING btree(project_member_id);`                                                                                                                                                                                                                                                        |
 
+| **Index**         | IDX04                                                                                                                                                                                                                                                                                                                                                                |
+| ----------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Relation**      | task_assigned                                                                                                                                                                                                                                                                                                                                                        |
+| **Attribute**     | task_id                                                                                                                                                                                                                                                                                                                                                              |
+| **Type**          | B-tree                                                                                                                                                                                                                                                                                                                                                               |
+| **Cardinality**   | Medium                                                                                                                                                                                                                                                                                                                                                               |
+| **Clustering**    | No                                                                                                                                                                                                                                                                                                                                                                   |
+| **Justification** | Table 'task_assigned' is very large and a very common query checks to whom is a task assigned, so an index is necessary. Despite its low cardinality (due to not many tuples having the same task_id, that is, not many tasks are assigned to multiple members) and medium update frequency, it's not a good candidate for clustering because the tuple is not small |
+| `SQL code`        | `CREATE INDEX task_assigned_task_index ON task_assigned USING btree(task_id);`                                                                                                                                                                                                                                                                                       |
 
-| **Index**         | IDX04             |
-| ----------------- | ----------------- |
-| **Relation**      | task_assigned     |
-| **Attribute**     | task_id           |
-| **Type**          | B-tree            |
-| **Cardinality**   | Medium            |
-| **Clustering**    | No                |
-| **Justification** | Table 'task_assigned' is very large and a very common query checks to whom is a task assigned, so an index is necessary. Despite its low cardinality (due to not many tuples having the same task_id, that is, not many tasks are assigned to multiple members) and medium update frequency, it's not a good candidate for clustering because the tuple is not small  |
-| `SQL code`        | `CREATE INDEX task_assigned_task_index ON task_assigned USING btree(task_id);`|
-
-
-
-| **Index**         | IDX05             |
-| ----------------- | ----------------- |
-| **Relation**      | task              |
-| **Attribute**     | id                |
-| **Type**          | B-tree            |
-| **Cardinality**   | Low               |
-| **Clustering**    | Yes               |
+| **Index**         | IDX05                                                                                |
+| ----------------- | ------------------------------------------------------------------------------------ |
+| **Relation**      | task                                                                                 |
+| **Attribute**     | id                                                                                   |
+| **Type**          | B-tree                                                                               |
+| **Cardinality**   | Low                                                                                  |
+| **Clustering**    | Yes                                                                                  |
 | **Justification** | Table 'task' is very large and a very common query checks a specific task's details. |
-| `SQL code`        | `CREATE INDEX task_id_index ON task USING btree(id);` |
+| `SQL code`        | `CREATE INDEX task_id_index ON task USING btree(id);`                                |
 
 #### 2.2. Full-text Search Indices
 
 > The system being developed must provide full-text search features supported by PostgreSQL. Thus, it is necessary to specify the fields where full-text search will be available and the associated setup, namely all necessary configurations, indexes definitions and other relevant details.
 
-| **Index**         | IDX06                                |
-| ----------------- | ------------------------------------ |
-| **Relation**      | forum_post  |
-| **Attribute**     | content |
-| **Type**          | GIN            |
-| **Clustering**    | No              |
-| **Justification** | Used for improving the performance of full text search while searching for a specific term in the biggest table of the database, 'forum_post'. GIN was used because a forum post's content is not updated frequently.|
-| `SQL code`        | `CREATE INDEX forum_post_content_index ON forum_post USING GIN (search); `  |
+| **Index**         | IDX06                                                                                                                                                                                                                 |
+| ----------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Relation**      | forum_post                                                                                                                                                                                                            |
+| **Attribute**     | content                                                                                                                                                                                                               |
+| **Type**          | GIN                                                                                                                                                                                                                   |
+| **Clustering**    | No                                                                                                                                                                                                                    |
+| **Justification** | Used for improving the performance of full text search while searching for a specific term in the biggest table of the database, 'forum_post'. GIN was used because a forum post's content is not updated frequently. |
+| `SQL code`        | `CREATE INDEX forum_post_content_index ON forum_post USING GIN (search); `                                                                                                                                            |
 
 ### 3. Triggers
 
 > User-defined functions and trigger procedures that add control structures to the SQL language or perform complex computations, are identified and described to be trusted by the database server. Every kind of function (SQL functions, Stored procedures, Trigger procedures) can take base types, composite types, or combinations of these as arguments (parameters). In addition, every kind of function can return a base type or a composite type. Functions can also be defined to return sets of base or composite values.
 
-| **Trigger**     | TRIGGER01                                                          |
-| --------------- | ------------------------------------------------------------------ |
+| **Trigger**     | TRIGGER01                                        |
+| --------------- | ------------------------------------------------ |
 | **Description** | A user cannot have more than 5 favorite projects |
-| `SQL code`      |                                                                    |
+| `SQL code`      |                                                  |
+
 |CREATE FUNCTION add_favorite() RETURNS TRIGGER AS
 $BODY$
 BEGIN
-        IF COUNT(SELECT * FROM favorite WHERE NEW.users_id = users_id)==5 THEN
-           RAISE EXCEPTION 'A user can't have more than 5 favorite projects';
-        END IF;
-        RETURN NEW;
+IF (COUNT(SELECT \* FROM favorite WHERE NEW.users_id = users_id)==5) THEN
+RAISE EXCEPTION 'A user can't have more than 5 favorite projects';
+END IF;
+RETURN NEW;
 END
 $BODY$
 LANGUAGE plpgsql;
 
 CREATE TRIGGER add_favorite
-        BEFORE INSERT OR UPDATE ON favorite
-        FOR EACH ROW
-        EXECUTE PROCEDURE add_favorite();|
+BEFORE INSERT OR UPDATE ON favorite
+FOR EACH ROW
+EXECUTE PROCEDURE add_favorite();|
 
+| **Trigger**     | TRIGGER02                                                                   |
+| --------------- | --------------------------------------------------------------------------- |
+| **Description** | When a project is archived, it is removed from the users' favorite projects |
+| `SQL code`      |                                                                             |
 
+|CREATE FUNCTION remove_favorites() RETURNS TRIGGER AS
+$BODY$
+BEGIN
+IF (NEW.archived==TRUE) THEN
+DELETE \* FROM favorite WHERE NEW.id = project_id;
+END IF;
+RETURN NEW;
+END
+$BODY$
+LANGUAGE plpgsql;
+
+CREATE TRIGGER remove_favorites
+BEFORE UPDATE ON project
+FOR EACH ROW
+EXECUTE PROCEDURE remove_favorites();|
+
+| **Trigger**     | TRIGGER03                                                             |
+| --------------- | --------------------------------------------------------------------- |
+| **Description** | Changing the content of a forum post creates a new Post Edition entry |
+| `SQL code`      |                                                                       |
+
+|CREATE FUNCTION add_edit() RETURNS TRIGGER AS
+$BODY$
+BEGIN
+IF (NEW.content!=content) THEN
+INSERT INTO post_edition(post_id,now(),NEW.content);
+END IF;
+RETURN NEW;
+END
+$BODY$
+LANGUAGE plpgsql;
+
+CREATE TRIGGER add_edit
+BEFORE UPDATE ON forum_post
+FOR EACH ROW
+EXECUTE PROCEDURE add_edit();|
 
 ### 4. Transactions
 
