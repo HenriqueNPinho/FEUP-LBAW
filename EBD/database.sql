@@ -14,6 +14,10 @@ DROP TABLE IF EXISTS post_edition CASCADE;
 
 DROP TYPE IF EXISTS task_status;
 
+DROP FUNCTION IF EXISTS add_favorite;
+DROP FUNCTION IF EXISTS remove_favorites;
+DROP FUNCTION IF EXISTS add_edit;
+
 CREATE TYPE task_status AS ENUM('Not Started','In Progress', 'Complete');
 
 CREATE TABLE users (
@@ -96,7 +100,7 @@ CREATE TABLE forum_post(
 CREATE TABLE invitation(
     project_id INTEGER NOT NULL REFERENCES project(id),
     users_id INTEGER NOT NULL REFERENCES users(id),
-    coordinator_id INTEGER NOT NULL REFERENCES project_coordinator(id),
+    coordinator_id INTEGER NOT NULL REFERENCES users(id),
     accepted BOOLEAN,
     PRIMARY KEY(project_id,users_id,coordinator_id)
 );
@@ -109,7 +113,61 @@ CREATE TABLE favorite(
 
 CREATE TABLE post_edition(
     id SERIAL PRIMARY KEY,
-    post_id INTEGER NOT NULL REFERENCES post(id),
+    post_id INTEGER NOT NULL REFERENCES forum_post(id),
     edit_date TIMESTAMP WITH TIME ZONE DEFAULT now() NOT NULL,
     content TEXT
 );
+
+-- TRIGGER 1
+
+CREATE FUNCTION add_favorite() RETURNS TRIGGER AS
+$BODY$
+	BEGIN
+		IF ((SELECT COUNT(*) FROM favorite WHERE NEW.users_id = users_id)=5) THEN
+		RAISE EXCEPTION 'A user cant have more than 5 favorite projects';
+		END IF;
+		RETURN NEW;
+	END
+$BODY$
+LANGUAGE plpgsql;
+
+CREATE TRIGGER add_favorite
+BEFORE INSERT OR UPDATE ON favorite
+FOR EACH ROW
+EXECUTE PROCEDURE add_favorite();
+
+-- TRIGGER 2
+
+CREATE FUNCTION remove_favorites() RETURNS TRIGGER AS
+$BODY$
+BEGIN
+IF (NEW.archived=TRUE) THEN
+DELETE FROM favorite WHERE NEW.id = project_id;
+END IF;
+RETURN NEW;
+END
+$BODY$
+LANGUAGE plpgsql;
+
+CREATE TRIGGER remove_favorites
+BEFORE UPDATE ON project
+FOR EACH ROW
+EXECUTE PROCEDURE remove_favorites();
+
+-- TRIGGER 3
+
+CREATE FUNCTION add_edit() RETURNS TRIGGER AS
+$BODY$
+BEGIN
+IF (NEW.content!=OLD.content) THEN
+INSERT INTO post_edition VALUES(DEFAULT,OLD.id,DEFAULT,OLD.content);
+END IF;
+RETURN NEW;
+END
+$BODY$
+LANGUAGE plpgsql;
+
+CREATE TRIGGER add_edit
+BEFORE UPDATE ON forum_post
+FOR EACH ROW
+EXECUTE PROCEDURE add_edit();
