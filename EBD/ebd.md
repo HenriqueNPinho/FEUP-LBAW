@@ -27,21 +27,26 @@ Relation schemas are specified in the compact notation:
 
 | Relation reference | Relation Compact Notation                                                                                                                  |
 | ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------ |
-| R01                | user(*id*,email UK NN,name NN,password NN, profile_image, profile_description)                                                           |
-| R02                | company(<u>id</u>,name NN)                                                                                                                    |
-| R03                | administrator(<u>email</u>,name NN,company_id NN)                                                                                             |
-| R04                | work(<u>user id</u>,<u>company id</u>)                                                                                                           |
-| R05                | project(<u>id</u>, company_id FK,name NN, description, start_date NN, delivery_date NN CK delivery_date>start_date, archived)                 |
-| R06                | project_coordinator(**user_id**,**project_id**)                                                                                            |
-| R07                | project_member(**user_id**,**company_id**,seenNewForumPost NN)                                                                             |
+| R01                | user(id**PK**,email **UK NN**,name **NN**,password **NN**, profile_image, profile_description)                                                           |
+| R02                | company(id**PK**,name **NN**)                                                                                                                    |
+| R03                | administrator(email**PK**,name **NN**,company_id **NN**)                                                                                             |
+| R04                | work(user_id**PK**,**company id**)                                                                                                           |
+| R05                | project(id</u>, company_id FK,name NN, description, start_date NN, delivery_date NN CK delivery_date>start_date, archived)                 |
+| R06                | project_coordinator(user_id**PK**,project_id**PK**)                                                                                            |
+| R07                | project_member(user_id**PK**,company_id**PK**,seenNewForumPost **NN**)                                                                             |
 | R08                | task(**id**, project_id, name NN, description, start_date NN, delivery_date NN CK -> delivery > start, status NN CK status IN task_status) |
 | R09                | task_assigned(**project_coordinator_id**, **project_member_id**,**task_id**,notified)                                                      |
-| R10                | forum_post(**id**,project_id,project_member_id NN, content NN, post_date NN, deleted NN)                                                   |
+| R10                | forum_post(**id**,project_id,project_member_id **NN**, content **NN**, post_date NN, deleted NN)                                                   |
 | R11                | invitation(**project_id** , **user_id**, **coordinator_id**, accepted NN)                                                                  |
 | R12                | favorite(**project_id**, **user_id**)                                                                                                      |
-| R13                | post_edition(**id**,forum_post_id,edit_date NN, content NN)                                                                                |
+| R13                | post_edition(**id**,forum_post_id,edit_date **NN**, content **NN**)                                                                                |
 
-Note: Primary Keys are in **bold**, UK is an UNIQUE KEY, NN is NOT NULL and CK is CHECK.
+> **Legend:** 
+>
+> **PK** = PRIMATY KEY 
+> **UK** = UNIQUE KEY
+> **NN** = NOT NULL 
+> **CK** = CHECK.
 
 ### 2. Domains
 
@@ -153,7 +158,8 @@ Because all relations are in the Boyce–Codd Normal Form (BCNF), the relational
 
 ## A6: Indexes, triggers, transactions and database population
 
-> Brief presentation of the artefact goals.
+> This artefact contains the database's workload, the physical schema of the database, its indexes, its triggers, the definition of some functions and transactions needed to assure the integrity of the data. 
+Besides all this, it also includes a link the complete database creation script, including indexes and triggers.
 
 ### 1. Database Workload
 
