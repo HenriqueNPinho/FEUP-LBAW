@@ -41,9 +41,7 @@ Relation schemas are specified in the compact notation:
 | R12                | favorite(**project_id**, **user_id**)                                                                                                      |
 | R13                | post_edition(**id**,forum_post_id,edit_date NN, content NN)                                                                                |
 
-##### Note:
-
-Primary Keys are in **bold**, UK is an UNIQUE KEY, NN is NOT NULL and CK is CHECK.
+Note: Primary Keys are in **bold**, UK is an UNIQUE KEY, NN is NOT NULL and CK is CHECK.
 
 ### 2. Domains
 
