@@ -188,9 +188,9 @@ It's essential to grasp the nature of the workload for the application and the p
 
 ### 2. Proposed Indexes
 
-#### 2.1. Performance Indexes
+> An index is used for looking something up in a table or any identical structure. This, however. takes extra memory since they are stored in memory and extra time when changing the table as the index needs to be updated as well
 
-> Indices proposed to improve performance of the identified queries.
+#### 2.1. Performance Indexes
 
 | **Index**         | IDX01                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
 | ----------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -223,9 +223,9 @@ It's essential to grasp the nature of the workload for the application and the p
 | `SQL code`        | <p>`CREATE INDEX task_assigned_member_index` </p>  <p>`ON task_assigned USING btree` </p>  <p>`(project_member_id);` </p>                                                                                                                                                                                                                                                       |
 
 
-#### 2.2. Full-text Search Indices
+#### 2.2. Full-text Search Indixes
 
-> The system being developed must provide full-text search features supported by PostgreSQL. Thus, it is necessary to specify the fields where full-text search will be available and the associated setup, namely all necessary configurations, indexes definitions and other relevant details.
+> Full-Text Search Indexes are used when looking for full text. For each column wished to index for Full-Text Search you need to create a new column with auxiliary values for SQL algorithms to use.
 
 | **Index**         | IDX06                                                                                                                                                                                                                 |
 | ----------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -234,7 +234,7 @@ It's essential to grasp the nature of the workload for the application and the p
 | **Type**          | GIN                                                                                                                                                                                                                   |
 | **Clustering**    | No                                                                                                                                                                                                                    |
 | **Justification** | Used for improving the performance of full text search while searching for a specific term in the biggest table of the database, 'forum_post'. GIN was used because a forum post's content is not updated frequently. |
-| `SQL code`        | <p> `CREATE INDEX forum_post_content_index` <p> `ON forum_post` <p> `USING GIN (search);` <p>                                                                                                                                             |
+| `SQL code`        | <p> `CREATE INDEX forum_post_content_index`</p> <p> `ON forum_post`</p> <p> `USING GIN (search);`</p>                                                                                                                                             |
 
 ### 3. Triggers
 
