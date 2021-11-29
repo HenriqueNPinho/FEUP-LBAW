@@ -46,7 +46,7 @@ CREATE TABLE project (
     id SERIAL PRIMARY KEY,
     company_id INTEGER NOT NULL REFERENCES company(id) ON DELETE CASCADE,
     name TEXT NOT NULL,
-    decription TEXT,
+    description TEXT,
     start_date TIMESTAMP WITH TIME ZONE,
     delivery_date TIMESTAMP WITH TIME ZONE,
     archived BOOLEAN DEFAULT FALSE NOT NULL,
