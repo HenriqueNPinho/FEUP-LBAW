@@ -211,7 +211,7 @@ CREATE INDEX project_member_user_index ON project_member USING btree (users_id);
 | **Cardinality**   | Medium                                                                                                                                                                                                                                                                                                                                                                                                                             |
 | **Clustering**    | No                                                                                                                                                                                                                                                                                                                                                                                                                                 |
 | **Justification** | Table 'project_member' is large. Not large enough to justify an index just by its sheer size, but a very common query needs to filter every member of a certain project, so those two conditions justify an index. Despite its medium cardinality (due to multiple tuples having the same project_id) and medium update frequency, it's not a good candidate for clustering because the table is already clustered around user_id. For this, is will be used a hash index type where filtering is done by exact match, thus an hash type is best suited.  |
-                                                                                                                                                       
+
 ```sql
 CREATE INDEX project_member_project_index ON project_member USING hash(project_id);
 ```
@@ -345,11 +345,51 @@ EXECUTE PROCEDURE add_edit();
 
 > Transactions needed to assure the integrity of the data.
 
-| SQL Reference       | Transaction Name                    |
-| ------------------- | ----------------------------------- |
-| Justification       | Justification for the transaction.  |
-| Isolation level     | Isolation level of the transaction. |
-| `Complete SQL Code` |                                     |
+| TRAN01          | Assign new Task                                              |
+| --------------- | ------------------------------------------------------------ |
+| Justification   | The isolation level is Repeatable Read, because, with it , transactions can only read committed records and between two reads the transactions cannot modify the record . Otherwise, an update of project:id could happen, due to an insert in the table project committed by a concurrent transaction, and as a result, inconsistent data would be stored. |
+| Isolation level | REPEATABLE READ                                              |
+
+```sql
+BEGIN TRANSACTION;
+
+SET TRANSACTION ISOLATION LEVEL REPEATABLE READ;
+
+-- Insert task
+INSERT INTO task(project_id, name, description, start_date, delivery_date, status)
+ VALUES ($project_id, $name, $description, $start_date, $delivery_date, $status);
+
+-- Insert task assigned
+INSERT INTO task_assigned(project_coordinator_id, project_member_id, task_id, notified)
+ VALUES ($project_coordinator_id, $project_member_id, currval('task_id_seq'), $notified);
+
+END TRANSACTION;
+```
+
+
+
+| TRAN02          | Get current Project Members                                  |
+| --------------- | ------------------------------------------------------------ |
+| Justification   | In the middle of the transaction, the insertion of new rows in the project_member table can occur, which implies that the information retrieved in both selects is different, consequently resulting in a Phantom Read (a transaction re-executes a query and finds that the results have changed by another transaction). Aiming for a less restrictive isolation level that still guarantees its data is consistent, we used READ ONLY (since it only uses Selects). |
+| Isolation level | SERIALIZABLE READ ONLY                                       |
+
+```sql
+BEGIN TRANSACTION;
+
+SET TRANSACTION ISOLATION LEVEL SERIALIZABLE READ ONLY;
+
+-- Get project members
+SELECT name, email, project.id
+FROM user
+INNER JOIN project_member ON id = project_member.users_id
+INNER JOIN company ON project_member.company_id = company.id
+INNER JOIN project ON company.id = project.company_id
+ORDER BY project.id ASC;
+
+END TRANSACTION;
+```
+
+
 
 ## Annex A. SQL Code
 
