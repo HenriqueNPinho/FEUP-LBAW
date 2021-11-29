@@ -200,7 +200,7 @@ An index is used for looking something up in a table or any identical structure.
 | **Cardinality**   | Medium                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
 | **Clustering**    | Yes                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
 | **Justification** | Table 'project_member' is large. Not large enough to justify an index just by its sheer size, but a very common query needs to filter every project by a certain member, so those two conditions justify an index. Since its cardinality is medium (due to multiple tuples having the same user_id -> high cardinality means to having mostly unique elements and low cardinality means having many repetead values) and update frequency isn't high, it's a good candidate for clustering. Clustering can't be used on hash type indexes, so a B-tree type index was opted for. The B-tree is the default index type and is used for exact matches or elements that have a greater or less than a certain value. |
-| `SQL code`        | <p> `CREATE INDEX project_member_user_index` </p> <p>`ON project_member`</p> <p>`USING btree (user_id);`</p> <p>`CLUSTER project_member`</p> <p>`USING user_projects_member;`<p>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| `SQL code`        | <p> `CREATE INDEX project_member_user_index` </p> <p>`ON project_member`</p> <p>`USING btree (users_id);`</p> <p>`CLUSTER project_member`</p> <p>`USING project_member_user_index;`<p>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
 
 | **Index**         | IDX02                                                                                                                                                                                                                                                                                                                                                                                                                              |
 | ----------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -232,8 +232,37 @@ Full-Text Search Indexes are used when looking for full text. For each column wi
 | **Attribute**     | content                                                                                                                                                                                                               |
 | **Type**          | GIN                                                                                                                                                                                                                   |
 | **Clustering**    | No                                                                                                                                                                                                                    |
-| **Justification** | Used for improving the performance of full text search while searching for a specific term in the biggest table of the database, 'forum_post'. GIN was used because a forum post's content is not updated frequently. |
-| `SQL code`        | <p> `CREATE INDEX forum_post_content_index`</p> <p> `ON forum_post`</p> <p> `USING GIN (search);`</p>                                                                                                                 |
+| **Justification** | Used for improving the performance of full text search while searching for a specific term in of the biggest table of the database, 'task'. GIN was used because a task's name and description are not updated frequently. |
+
+```sql
+ALTER TABLE task
+ADD COLUMN tsvectors TSVECTOR;
+
+CREATE FUNCTION task_search_update() RETURNS TRIGGER AS $$
+BEGIN
+IF TG_OP = 'INSERT' THEN
+       NEW.tsvectors = (
+        setweight(to_tsvector('english', NEW.name), 'A') ||
+        setweight(to_tsvector('english', NEW.description), 'B')
+       );
+END IF;
+IF TG_OP = 'UPDATE' THEN
+        IF (NEW.name <> OLD.name OR NEW.description <> OLD.description) THEN
+          NEW.tsvectors = (
+            setweight(to_tsvector('english', NEW.name), 'A') ||
+            setweight(to_tsvector('english', NEW.description), 'B')
+          );
+        END IF;
+END IF;
+RETURN NEW;
+END $$
+LANGUAGE plpgsql;
+
+CREATE TRIGGER task_search_update
+BEFORE INSERT OR UPDATE ON task
+FOR EACH ROW
+EXECUTE PROCEDURE task_search_update();
+```
 
 ### 3. Triggers
 

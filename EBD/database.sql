@@ -74,7 +74,7 @@ CREATE TABLE task (
     id SERIAL PRIMARY KEY,
     project_id INTEGER NOT NULL REFERENCES project(id) ON DELETE CASCADE,
     name TEXT NOT NULL,
-    decription TEXT,
+    description TEXT,
     start_date TIMESTAMP WITH TIME ZONE,
     delivery_date TIMESTAMP WITH TIME ZONE,
     TYPE task_status DEFAULT 'Not Started',
@@ -118,6 +118,48 @@ CREATE TABLE post_edition(
     edit_date TIMESTAMP WITH TIME ZONE DEFAULT now() NOT NULL,
     content TEXT
 );
+
+-- INDEX 1
+
+CREATE INDEX project_member_user_index  ON project_member USING btree (users_id); CLUSTER project_member USING project_member_user_index;
+
+-- INDEX 2
+
+CREATE INDEX project_member_project_index  ON project_member  USING hash(project_id);
+
+-- INDEX 3
+
+CREATE INDEX task_assigned_member_index  ON task_assigned USING btree  (project_member_id);
+
+-- INDEX 4
+
+ALTER TABLE task
+ADD COLUMN tsvectors TSVECTOR;
+
+CREATE FUNCTION task_search_update() RETURNS TRIGGER AS $$
+BEGIN
+ IF TG_OP = 'INSERT' THEN
+        NEW.tsvectors = (
+         setweight(to_tsvector('english', NEW.name), 'A') ||
+         setweight(to_tsvector('english', NEW.description), 'B')
+        );
+ END IF;
+ IF TG_OP = 'UPDATE' THEN
+         IF (NEW.name <> OLD.name OR NEW.description <> OLD.description) THEN
+           NEW.tsvectors = (
+             setweight(to_tsvector('english', NEW.name), 'A') ||
+             setweight(to_tsvector('english', NEW.description), 'B')
+           );
+         END IF;
+ END IF;
+ RETURN NEW;
+END $$
+LANGUAGE plpgsql;
+
+CREATE TRIGGER task_search_update
+BEFORE INSERT OR UPDATE ON task
+FOR EACH ROW
+EXECUTE PROCEDURE task_search_update();
 
 -- TRIGGER 1
 
