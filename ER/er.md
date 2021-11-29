@@ -27,7 +27,7 @@ Project members within a project are able to view, modify, add, delete, comment 
 
 Project coordinators, besides having every permission a project member has, are able to moderate by adding or removing members from each project and promoting them to coordinators. They can also edit some project details and archive the project itself.
 
-Every user within a project receives notifications when: a new member joins the project, a user is promoted/demoted, a task is assigned to him and when an assigned task is completed if the user is a project manager or if he’s assigned to that task.
+Every user within a project receives notifications when: he is invited to a project, a task is assigned to him or when there is a new message in the forum.
 
 The Administrator is the company's representative that is responsible for managing who inside the company gets to use this platform. Besides that he can also browse through projects and read their details.
 
@@ -76,21 +76,21 @@ The main goal of this artefact is to identify and describe the system actors, as
 
 #### 2.3. Project Member
 
-| Identifier | Name                           | Priority | Description                                                                                                                                                                                              |
-| ---------- | ------------------------------ | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| US301      | Create task                    | High     | As a Project Member, I want to create a task                                                                                                                                                             |
-| US302      | Manage tasks                   | High     | As a Project Member, I want to manage tasks (assign them to another Project member, choose the priority of each task and its due date)                                                                   |
-| US303      | Complete an assigned task      | High     | As a Project Member, I want to be able to mark the tasks I am assigned to as complete                                                                                                                    |
-| US304      | Search tasks                   | High     | As a Project Member, I want to be able to search for tasks using a search bar, so that I can access them faster                                                                                          |
-| US305      | Leave project                  | High     | As a Project Member, I want to be able to leave the project                                                                                                                                              |
-| US306      | Assign Users to Tasks          | High     | As a Project Member, I want to be able to assign a task to another project member, so that every collaborator knows what they need to work on                                                            |
-| US307      | Post messages to project forum | Medium   | As a Project Member, I want to be able to post new messages to the project forum, so that I can communicate with every collaborator                                                                      |
-| US308      | View task details              | Medium   | As a Project Member, I want to be able to view task details                                                                                                                                              |
-| US309      | Comment on task                | Medium   | As a Project Member, I want to be able to comment on tasks                                                                                                                                               |
-| US310      | Browse project forum           | Medium   | As a Project Member, I want to access the project forum, so that I can read mine and other users’ messages                                                                                               |
-| US311      | Receive notifications          | Medium   | As a Project Member, I want to receive notifications, so that I can keep up to date on changes like new Project Coordinator, task completed, new member on project or a new task has been assigned to me |
-| US312      | View the project’s team        | Low      | As a Project Member, I want to be able to view the project’s team, so that I know every collaborator within the project                                                                                  |
-| US313      | View Team members profile      | Low      | As a Project Member, I want to be able to view the profile of project members, so that I can correctly identify every collaborator                                                                       |
+| Identifier | Name                           | Priority | Description                                                                                                                                   |
+| ---------- | ------------------------------ | -------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
+| US301      | Create task                    | High     | As a Project Member, I want to create a task                                                                                                  |
+| US302      | Manage tasks                   | High     | As a Project Member, I want to manage tasks (assign them to another Project member, choose the priority of each task and its due date)        |
+| US303      | Complete an assigned task      | High     | As a Project Member, I want to be able to mark the tasks I am assigned to as complete                                                         |
+| US304      | Search tasks                   | High     | As a Project Member, I want to be able to search for tasks using a search bar, so that I can access them faster                               |
+| US305      | Leave project                  | High     | As a Project Member, I want to be able to leave the project                                                                                   |
+| US306      | Assign Users to Tasks          | High     | As a Project Member, I want to be able to assign a task to another project member, so that every collaborator knows what they need to work on |
+| US307      | Post messages to project forum | Medium   | As a Project Member, I want to be able to post new messages to the project forum, so that I can communicate with every collaborator           |
+| US308      | View task details              | Medium   | As a Project Member, I want to be able to view task details                                                                                   |
+| US309      | Comment on task                | Medium   | As a Project Member, I want to be able to comment on tasks                                                                                    |
+| US310      | Browse project forum           | Medium   | As a Project Member, I want to access the project forum, so that I can read mine and other users’ messages                                    |
+| US311      | Receive notifications          | Medium   | As a Project Member, I want to receive notifications, a new task has been assigned to me or when there are new messages in the forum          |
+| US312      | View the project’s team        | Low      | As a Project Member, I want to be able to view the project’s team, so that I know every collaborator within the project                       |
+| US313      | View Team members profile      | Low      | As a Project Member, I want to be able to view the profile of project members, so that I can correctly identify every collaborator            |
 
 #### 2.4. Post Author
 
@@ -132,6 +132,8 @@ This section contains business rules, technical requirements and other non-funct
 | BR03       | Forum Post History       | A record of all forum posts is kept for posterity (even those deleted by the Post Author)                                                  |
 | BR04       | User Data Deletion       | When a user's account is deleted, every detail is kept, since it is considered work product(this includes tasks created, forum posts, etc) |
 | BR05       | Dates Restrictions       | Completion/delivery dates must be posterior to the task/project's creation date.                                                           |
+| BR06       | Project Coordinator      | When a user creates a project, they automatically become the project coordinator for that project                                          |
+| BR07       | Edit Forum Posts         | A user can edit his own forum posts however a record of the editing is kept and made available for other users to see                      |
 
 #### 3.2. Technical requirements
 
@@ -217,8 +219,9 @@ The "Project Overview" page and the "Task Page" are represented as page stacks b
 
 ## Revision history
 
-Updated Diagram, Project Coordinator now derives from Project Member
-
+- Updated Diagram, Project Coordinator now derives from Project Member
+- Added BR06 and BR07
+- Reviewed the notification policy
 ---
 
 GROUP2151, 08/11/2021
