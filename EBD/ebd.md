@@ -27,10 +27,10 @@ Relation schemas are specified in the compact notation:
 
 | Relation reference | Relation Compact Notation                                                                                                                  |
 | ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------ |
-| R01                | user(**id**,email UK NN,name NN,password NN, profile_image, profile_description)                                                           |
-| R02                | company(**id**,name NN)                                                                                                                    |
-| R03                | administrator(**email**,name NN,company_id NN)                                                                                             |
-| R04                | work(**user_id**,**company_id**)                                                                                                           |
+| R01                | user(<u>id</u>,email UK NN,name NN,password NN, profile_image, profile_description)                                                           |
+| R02                | company(<u>id</u>,name NN)                                                                                                                    |
+| R03                | administrator(<u>email</u>,name NN,company_id NN)                                                                                             |
+| R04                | work(<u>user_id</u>,<u>company_id</u>)                                                                                                           |
 | R05                | project(**id**, company_id FK,name NN, description, start_date NN, delivery_date NN CK delivery_date>start_date, archived)                 |
 | R06                | project_coordinator(**user_id**,**project_id**)                                                                                            |
 | R07                | project_member(**user_id**,**company_id**,seenNewForumPost NN)                                                                             |
