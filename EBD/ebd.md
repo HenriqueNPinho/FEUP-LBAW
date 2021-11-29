@@ -273,8 +273,7 @@ EXECUTE PROCEDURE add_favorite();|
 | **Trigger**     | TRIGGER02                                                                   |
 | --------------- | --------------------------------------------------------------------------- |
 | **Description** | When a project is archived, it is removed from the users' favorite projects |
-| `SQL code`      | CREATE FUNCTION remove_favorites() RETURNS TRIGGER AS                       |
-
+| `SQL code`      | CREATE FUNCTION remove_favorites() RETURNS TRIGGER AS                       
 $BODY$
 BEGIN
 IF (NEW.archived==TRUE) THEN
@@ -293,8 +292,7 @@ EXECUTE PROCEDURE remove_favorites(); |
 | **Trigger**     | TRIGGER03                                                             |
 | --------------- | --------------------------------------------------------------------- |
 | **Description** | Changing the content of a forum post creates a new Post Edition entry |
-| `SQL code`      | CREATE FUNCTION add_edit() RETURNS TRIGGER AS                         |
-
+| `SQL code`      | `CREATE FUNCTION add_edit() RETURNS TRIGGER AS                         
 $BODY$
 BEGIN
 IF (NEW.content!=content) THEN
@@ -308,7 +306,7 @@ LANGUAGE plpgsql;
 CREATE TRIGGER add_edit
 BEFORE UPDATE ON forum_post
 FOR EACH ROW
-EXECUTE PROCEDURE add_edit();|
+EXECUTE PROCEDURE add_edit();`|
 
 ### 4. Transactions
 
