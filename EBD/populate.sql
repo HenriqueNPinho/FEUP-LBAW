@@ -190,26 +190,26 @@ INSERT INTO company (id, name) VALUES
 (DEFAULT, 'Zaask');
 
 -- 20 rows
-INSERT INTO administrator (email, name, company_id) VALUES
-('luisa.moreira03@gmail.com', 'Luisa Moreira', 1),
-('tramos02@gmail.com', 'Tiago Ramos', 2),
-('bernardo.slemos96@gmail.com', 'Bernardo Lemos', 3),
-('fredrbastos00@gmail.com', 'Frederico Bastos', 4),
-('patricia.fsilva@gmail.com', 'Patricia Silva', 5),
-('margarida..ribeiro84@gmail.com', 'Margarida Ribeiro', 6),
-('ritaotorres@gmail.com', 'Rita Torres', 7),
-('hugoaamoreira01@gmail.com', 'Hugo Amoreira', 8),
-('ines_osilva04@gmail.com', 'Ines Oliveira', 9),
-('ricardopires54@gmail.com', 'Ricardo Pires', 10),
-('joanatsilva06@gmail.com', 'Joana Silva', 11),
-('leonardo.igreja@gmail.com', 'Leonardo Igreja', 12),
-('zdanielatorresz@gmail.com', 'Daniela Torres', 13),
-('edtandrade93@gmail.com', 'Edgar Andrade', 14),
-('pedrofbrandao7@gmail.com', 'Pedro Brandão', 15),
-('gabimelo75@gmail.com', 'Gabriela Melo', 16),
-('martamelao12@gmail.com', 'Marta Melão', 17),
-('rafacampos04@gmail.com', 'Rafael Campos', 18),
-('guilhermerestivo@gmail.com', 'Guilherme Restivo', 19);
+INSERT INTO administrator (id,email, name, company_id) VALUES
+(DEFAULT,'luisa.moreira03@gmail.com', 'Luisa Moreira', 1),
+(DEFAULT,'tramos02@gmail.com', 'Tiago Ramos', 2),
+(DEFAULT,'bernardo.slemos96@gmail.com', 'Bernardo Lemos', 3),
+(DEFAULT,'fredrbastos00@gmail.com', 'Frederico Bastos', 4),
+(DEFAULT,'patricia.fsilva@gmail.com', 'Patricia Silva', 5),
+(DEFAULT,'margarida..ribeiro84@gmail.com', 'Margarida Ribeiro', 6),
+(DEFAULT,'ritaotorres@gmail.com', 'Rita Torres', 7),
+(DEFAULT,'hugoaamoreira01@gmail.com', 'Hugo Amoreira', 8),
+(DEFAULT,'ines_osilva04@gmail.com', 'Ines Oliveira', 9),
+(DEFAULT,'ricardopires54@gmail.com', 'Ricardo Pires', 10),
+(DEFAULT,'joanatsilva06@gmail.com', 'Joana Silva', 11),
+(DEFAULT,'leonardo.igreja@gmail.com', 'Leonardo Igreja', 12),
+(DEFAULT,'zdanielatorresz@gmail.com', 'Daniela Torres', 13),
+(DEFAULT,'edtandrade93@gmail.com', 'Edgar Andrade', 14),
+(DEFAULT,'pedrofbrandao7@gmail.com', 'Pedro Brandão', 15),
+(DEFAULT,'gabimelo75@gmail.com', 'Gabriela Melo', 16),
+(DEFAULT,'martamelao12@gmail.com', 'Marta Melão', 17),
+(DEFAULT,'rafacampos04@gmail.com', 'Rafael Campos', 18),
+(DEFAULT,'guilhermerestivo@gmail.com', 'Guilherme Restivo', 19);
 
 
 --  1 -> [1..29],     2 -> [25..45],    3 -> [40..59],    4 -> [60..69],    5 -> [65..84]

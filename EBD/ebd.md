@@ -1,5 +1,8 @@
 # EBD: Database Specification Component
 
+Delivery Date: 29/11/2021 <br>
+Editor: Henrique Pinho (up201805000) - up201805000@up.pt
+
 This project aims to build an information system with a web interface for project management that allows teams of users to organize their professional projects. This application’s target audience are companies and teams working on complex projects, offering them a platform to organize every aspect of their workflow.
 
 ## A4: Conceptual Data Model
@@ -29,7 +32,7 @@ Relation schemas are specified in the compact notation:
 | ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | R01                | user(id **PK**,email **UK NN**,name **NN**,password **NN**, profile_image, profile_description)                                                               |
 | R02                | company(id **PK**,name **NN**)                                                                                                                                |
-| R03                | administrator(email **PK**,name **NN**,company_id **NN**)                                                                                                     |
+| R03                | administrator(id **PK**, email **PK**,name **NN**,company_id **NN**)                                                                                          |
 | R04                | work(user_id **PK**,**company id**)                                                                                                                           |
 | R05                | project(id **PK**, company_id **FK**,name **NN**, description, start_date **NN**, delivery_date **NN** **CK** delivery_date>start_date, archived)             |
 | R06                | project_coordinator(user_id **PK**,project_id**PK**)                                                                                                          |
@@ -80,12 +83,13 @@ To validate the Relational Schema obtained from the Conceptual Data Model, all f
 | FD0101                      | id → {name} |
 | **NORMAL FORM**             | BCNF        |
 
-| **TABLE R03**               | administrator             |
-| --------------------------- | ------------------------- |
-| **Keys**                    | { email }                 |
-| **Functional Dependencies** |                           |
-| FD0101                      | email → {name,company_id} |
-| **NORMAL FORM**             | BCNF                      |
+| **TABLE R03**               | administrator                  |
+| --------------------------- | ------------------------------ |
+| **Keys**                    | {id}, { email }                |
+| **Functional Dependencies** |                                |
+| FD0101                      | id → {name,email, company_id}  |
+| FD0102                      | email → {id, name, company_id} |
+| **NORMAL FORM**             | BCNF                           |
 
 | **TABLE R04**               | work                    |
 | --------------------------- | ----------------------- |
@@ -203,14 +207,14 @@ An index is used for looking something up in a table or any identical structure.
 CREATE INDEX project_member_user_index ON project_member USING btree (users_id); CLUSTER project_member USING project_member_user_index;
 ```
 
-| **Index**         | IDX02                                                                                                                                                                                                                                                                                                                                                                                                                              |
-| ----------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Relation**      | project_member                                                                                                                                                                                                                                                                                                                                                                                                                     |
-| **Attribute**     | project_id                                                                                                                                                                                                                                                                                                                                                                                                                         |
-| **Type**          | Hash                                                                                                                                                                                                                                                                                                                                                                                                                             |
-| **Cardinality**   | Medium                                                                                                                                                                                                                                                                                                                                                                                                                             |
-| **Clustering**    | No                                                                                                                                                                                                                                                                                                                                                                                                                                 |
-| **Justification** | Table 'project_member' is large. Not large enough to justify an index just by its sheer size, but a very common query needs to filter every member of a certain project, so those two conditions justify an index. Despite its medium cardinality (due to multiple tuples having the same project_id) and medium update frequency, it's not a good candidate for clustering because the table is already clustered around user_id. For this, is will be used a hash index type where filtering is done by exact match, thus an hash type is best suited.  |
+| **Index**         | IDX02                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
+| ----------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Relation**      | project_member                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| **Attribute**     | project_id                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| **Type**          | Hash                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+| **Cardinality**   | Medium                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
+| **Clustering**    | No                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
+| **Justification** | Table 'project_member' is large. Not large enough to justify an index just by its sheer size, but a very common query needs to filter every member of a certain project, so those two conditions justify an index. Despite its medium cardinality (due to multiple tuples having the same project_id) and medium update frequency, it's not a good candidate for clustering because the table is already clustered around user_id. For this, is will be used a hash index type where filtering is done by exact match, thus an hash type is best suited. |
 
 ```sql
 CREATE INDEX project_member_project_index ON project_member USING hash(project_id);
@@ -345,10 +349,10 @@ EXECUTE PROCEDURE add_edit();
 
 > Transactions needed to assure the integrity of the data.
 
-| TRAN01          | Assign new Task                                              |
-| --------------- | ------------------------------------------------------------ |
+| TRAN01          | Assign new Task                                                                                                                                                                                                                                                                                                                                             |
+| --------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Justification   | The isolation level is Repeatable Read, because, with it , transactions can only read committed records and between two reads the transactions cannot modify the record . Otherwise, an update of project:id could happen, due to an insert in the table project committed by a concurrent transaction, and as a result, inconsistent data would be stored. |
-| Isolation level | REPEATABLE READ                                              |
+| Isolation level | REPEATABLE READ                                                                                                                                                                                                                                                                                                                                             |
 
 ```sql
 BEGIN TRANSACTION;
@@ -366,12 +370,10 @@ INSERT INTO task_assigned(project_coordinator_id, project_member_id, task_id, no
 END TRANSACTION;
 ```
 
-
-
-| TRAN02          | Get current Project Members                                  |
-| --------------- | ------------------------------------------------------------ |
+| TRAN02          | Get current Project Members                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+| --------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Justification   | In the middle of the transaction, the insertion of new rows in the project_member table can occur, which implies that the information retrieved in both selects is different, consequently resulting in a Phantom Read (a transaction re-executes a query and finds that the results have changed by another transaction). Aiming for a less restrictive isolation level that still guarantees its data is consistent, we used READ ONLY (since it only uses Selects). |
-| Isolation level | SERIALIZABLE READ ONLY                                       |
+| Isolation level | SERIALIZABLE READ ONLY                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
 
 ```sql
 BEGIN TRANSACTION;
@@ -389,8 +391,6 @@ ORDER BY project.id ASC;
 END TRANSACTION;
 ```
 
-
-
 ## Annex A. SQL Code
 
 > The database scripts are included in this annex to the EBD component.
@@ -402,6 +402,7 @@ END TRANSACTION;
 > This code should also be included in the group's git repository and links added here.
 
 ### A.1. Database schema
+
 ```sql
 DROP TABLE IF EXISTS users CASCADE;
 DROP TABLE IF EXISTS company CASCADE;
@@ -441,7 +442,8 @@ CREATE TABLE company(
 );
 
 CREATE TABLE administrator(
-    email TEXT PRIMARY KEY,
+    id SERIAL PRIMARY KEY,
+    email TEXT NOT NULL,
     name TEXT NOT NULL,
     company_id INTEGER NOT NULL REFERENCES company(id)
 );
@@ -621,9 +623,10 @@ BEFORE UPDATE ON forum_post
 FOR EACH ROW
 EXECUTE PROCEDURE add_edit();
 ```
+
 ### A.2. Database population
+
 ```sql
--- 165 rows
 INSERT INTO users (id, email, name, password, profile_image, profile_description) VALUES
 (DEFAULT, 'alberto.noronha@gmail.com', 'Alberto Noronha', 'pass1221ssap', 'pictures/defaultPicture.png', 'I am a happy user of this beautiful platform!' ),
 (DEFAULT, 'patricia123silva@gmail.com', 'Patrícia Silva', 'pass1221ssap', 'pictures/defaultPicture.png', 'I am a happy user of this beautiful platform!' ),
@@ -815,26 +818,26 @@ INSERT INTO company (id, name) VALUES
 (DEFAULT, 'Zaask');
 
 -- 20 rows
-INSERT INTO administrator (email, name, company_id) VALUES
-('luisa.moreira03@gmail.com', 'Luisa Moreira', 1),
-('tramos02@gmail.com', 'Tiago Ramos', 2),
-('bernardo.slemos96@gmail.com', 'Bernardo Lemos', 3),
-('fredrbastos00@gmail.com', 'Frederico Bastos', 4),
-('patricia.fsilva@gmail.com', 'Patricia Silva', 5),
-('margarida..ribeiro84@gmail.com', 'Margarida Ribeiro', 6),
-('ritaotorres@gmail.com', 'Rita Torres', 7),
-('hugoaamoreira01@gmail.com', 'Hugo Amoreira', 8),
-('ines_osilva04@gmail.com', 'Ines Oliveira', 9),
-('ricardopires54@gmail.com', 'Ricardo Pires', 10),
-('joanatsilva06@gmail.com', 'Joana Silva', 11),
-('leonardo.igreja@gmail.com', 'Leonardo Igreja', 12),
-('zdanielatorresz@gmail.com', 'Daniela Torres', 13),
-('edtandrade93@gmail.com', 'Edgar Andrade', 14),
-('pedrofbrandao7@gmail.com', 'Pedro Brandão', 15),
-('gabimelo75@gmail.com', 'Gabriela Melo', 16),
-('martamelao12@gmail.com', 'Marta Melão', 17),
-('rafacampos04@gmail.com', 'Rafael Campos', 18),
-('guilhermerestivo@gmail.com', 'Guilherme Restivo', 19);
+INSERT INTO administrator (id,email, name, company_id) VALUES
+(DEFAULT,'luisa.moreira03@gmail.com', 'Luisa Moreira', 1),
+(DEFAULT,'tramos02@gmail.com', 'Tiago Ramos', 2),
+(DEFAULT,'bernardo.slemos96@gmail.com', 'Bernardo Lemos', 3),
+(DEFAULT,'fredrbastos00@gmail.com', 'Frederico Bastos', 4),
+(DEFAULT,'patricia.fsilva@gmail.com', 'Patricia Silva', 5),
+(DEFAULT,'margarida..ribeiro84@gmail.com', 'Margarida Ribeiro', 6),
+(DEFAULT,'ritaotorres@gmail.com', 'Rita Torres', 7),
+(DEFAULT,'hugoaamoreira01@gmail.com', 'Hugo Amoreira', 8),
+(DEFAULT,'ines_osilva04@gmail.com', 'Ines Oliveira', 9),
+(DEFAULT,'ricardopires54@gmail.com', 'Ricardo Pires', 10),
+(DEFAULT,'joanatsilva06@gmail.com', 'Joana Silva', 11),
+(DEFAULT,'leonardo.igreja@gmail.com', 'Leonardo Igreja', 12),
+(DEFAULT,'zdanielatorresz@gmail.com', 'Daniela Torres', 13),
+(DEFAULT,'edtandrade93@gmail.com', 'Edgar Andrade', 14),
+(DEFAULT,'pedrofbrandao7@gmail.com', 'Pedro Brandão', 15),
+(DEFAULT,'gabimelo75@gmail.com', 'Gabriela Melo', 16),
+(DEFAULT,'martamelao12@gmail.com', 'Marta Melão', 17),
+(DEFAULT,'rafacampos04@gmail.com', 'Rafael Campos', 18),
+(DEFAULT,'guilhermerestivo@gmail.com', 'Guilherme Restivo', 19);
 
 
 --  1 -> [1..29],     2 -> [25..45],    3 -> [40..59],    4 -> [60..69],    5 -> [65..84]
@@ -1595,26 +1598,25 @@ INSERT INTO post_edition (id, post_id, edit_date, content) VALUES
 (DEFAULT, 18,'2021-08-24 14:00:01 +02:00' , 'Added 3 more exclamation points.'),
 (DEFAULT, 19,'2021-08-24 14:00:01 +02:00' , 'Added 3 more exclamation points.'),
 (DEFAULT, 20,'2021-08-24 14:00:01 +02:00' , 'Added 3 more exclamation points.');
+
 ```
+
 ---
 
 ## Revision history
 
-Changes made to the first submission:
-
-1. Item 1
-1. ..
+No revisions were made yet.
 
 ---
 
-GROUP2151, 08/11/2021
+GROUP2151, 29/11/2021
 
-| Name           | Number    | E-Mail            |
-| -------------- | --------- | ----------------- |
-| Sofia Germer   | 201907461 | up201907461@up.pt |
-| Miguel Lopes   | 201704590 | up201704590@up.pt |
-| Edgar Torre    | 201906573 | up201906573@up.pt |
-| Henrique Pinho | 201805000 | up201805000@up.pt |
+| Name                    | Number    | E-Mail            |
+| ----------------------- | --------- | ----------------- |
+| Sofia Germer            | 201907461 | up201907461@up.pt |
+| Miguel Lopes            | 201704590 | up201704590@up.pt |
+| Edgar Torre             | 201906573 | up201906573@up.pt |
+| Henrique Pinho (Editor) | 201805000 | up201805000@up.pt |
 
 ```
 
