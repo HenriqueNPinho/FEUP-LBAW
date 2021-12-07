@@ -71,7 +71,11 @@ tags:
 
 | User Story reference | Name                   | Priority                   | Description                   |
 | -------------------- | ---------------------- | -------------------------- | ----------------------------- |
-| US01                 | Name of the user story | Priority of the user story | Description of the user story |
+| US101      | Login       | High     | As a Visitor, I want to authenticate myself into the system, so that I can access privileged information                |
+| US102      | Sign-up     | High     | As a Visitor, I want to register myself into the system, so that I can authenticate myself into the system              |
+| US103      | See home    | High     | As a Visitor, I want to access the home page, so that I can see a brief presentation of the website                     |
+| US104      | See about   | High     | As a Visitor, I want to access the about page, so that I can see a complete description of the website and its creators |
+| US105      | Consult FAQ | High     | As a Visitor, I want to access the FAQ, so that I can get quick answers to common questions                             |
 
 ...
 
@@ -83,7 +87,16 @@ tags:
 
 | Web Resource Reference | URL                            |
 | ---------------------- | ------------------------------ |
-| R01: Web resource name | URL to access the web resource |
+| R101: Login Form | GET /   |
+| R012: Login Action  | POST /login |
+| R103: Logout Action |POST /logout  |
+| R104: Register Form  | GET /register  |
+| R105: Register Action |Action POST /register  |
+| R106: View Profile| GET /users/{id} |
+| R107: Edit Profile Form |GET /users/{id}/edit  |
+| R108: Edit Profile Action | POST /users/{id}/edit |
+| R109: Password Reset Form  | GET /password/reset  |
+| R110: Password Reset Action   | POST /password/reset   |
 
 ...
 
