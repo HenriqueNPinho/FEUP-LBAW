@@ -34,6 +34,8 @@ paths:
       responses:
         '200':
           description: 'Ok. Show log-in UI'
+        '302':
+          description: 'Redirect if user is logged in.'
     post:
       operationId: R102
       summary: 'R102: Login Action'
@@ -52,8 +54,6 @@ paths:
                   type: string
                 password:    # <!--- form field name
                   type: string
-                name:
-                  type: string 
               required:
                 - email
                 - password
@@ -126,6 +126,7 @@ paths:
                   type: string
                   format: binary
               required:
+                - name
                 - email
                 - password
 
@@ -164,14 +165,14 @@ paths:
           description: 'Ok. Show view profile UI'
  
 
-  /api/works:
+  /api/tasks:
     get:
       operationId: R202
-      summary: 'R202: Search Works API'
-      description: 'Searches for works and returns the results as JSON. Access: PUB.'
+      summary: 'R202: Search Tasks API'
+      description: 'Searches for tasks and returns the results as JSON. Access: PM.'
 
       tags: 
-        - 'M03: Taks'
+        - 'M03: Tasks'
 
       parameters:
         - in: query
