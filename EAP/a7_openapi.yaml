@@ -144,10 +144,10 @@ paths:
                   value: '/login'
 
   /credential recovery:
-    get:
+    pos:
       operationId: R107
       summary: 'R107: Recover Password Form'
-      description: 'Recover a user's password'
+      description: 'Recover a user's password'               '
       tags:
         - 'M01: Authentication and Individual Profile'
       requestBody:
