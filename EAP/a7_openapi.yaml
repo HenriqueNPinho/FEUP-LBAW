@@ -2,8 +2,8 @@ openapi: 3.0.0
 
 info:
   version: '1.0'
-  title: 'LBAW MediaLibrary Web API'
-  description: 'Web Resources Specification (A7) for MediaLibrary'
+  title: 'LBAW Project Clinic'
+  description: 'Web Resources Specification (A7) for Project Clinic'
 
 servers:
 - url: http://lbaw.fe.up.pt
@@ -15,10 +15,12 @@ externalDocs:
 
 tags:
   - name: 'M01: Authentication and Individual Profile'
-  - name: 'M02: Works'
-  - name: 'M03: Reviews and Wish list'
-  - name: 'M04: Loans'
-  - name: 'M05: User Administration and Static pages'
+  - name: 'M02: Project Area'
+  - name: 'M03: Taks'
+  - name: 'M04: Forum'
+  - name: 'M05: Static Pages'
+  - name: 'M06: Authenticated User Area'
+  - name: 'M07: Company Administrator Area'
 
 paths:
 
