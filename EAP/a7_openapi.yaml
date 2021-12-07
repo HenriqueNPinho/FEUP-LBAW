@@ -16,7 +16,7 @@ externalDocs:
 tags:
   - name: 'M01: Authentication and Individual Profile'
   - name: 'M02: Project Area'
-  - name: 'M03: Taks'
+  - name: 'M03: Tasks'
   - name: 'M04: Forum'
   - name: 'M05: Static Pages'
   - name: 'M06: Authenticated User Area'
@@ -34,8 +34,6 @@ paths:
       responses:
         '200':
           description: 'Ok. Show log-in UI'
-        '302':
-          description: 'Redirect if user is logged in.'
     post:
       operationId: R102
       summary: 'R102: Login Action'
@@ -145,6 +143,41 @@ paths:
                   description: 'Failed authentication. Redirect to login form.'
                   value: '/login'
 
+  /credential recovery:
+    get:
+      operationId: R107
+      summary: 'R107: Recover Password Form'
+      description: 'Recover a user's password'
+      tags:
+        - 'M01: Authentication and Individual Profile'
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                inputEmail:
+                  type: string
+              required:
+                - inputEmail
+
+      responses:
+        '303':
+          description: 'Successful request password recorvery. Redirect to login.'
+          headers:
+            Location:
+              schema:
+                type: string
+              examples:
+                303Success:
+                  description: 'Ok. Redirect to [US07](https://git.fe.up.pt/lbaw/lbaw2021/lbaw2114/-/wikis/er#ui07-log-in).'
+                  value: '/login/'
+                303Error:
+                  description: 'Failed password recovery. Redirect to login.'
+                  value: '/login/'
+                  
+
   /users/{id}:
     get:
       operationId: R106
@@ -163,7 +196,9 @@ paths:
       responses:
         '200':
           description: 'Ok. Show view profile UI'
- 
+  
+  
+
 
   /api/tasks:
     get:
