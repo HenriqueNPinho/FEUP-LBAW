@@ -147,7 +147,7 @@ paths:
     post:
       operationId: R106
       summary: 'R106: Recover Password Form'
-      description: 'Recover a user's password'               '
+      description: "Recover a user's password"
       tags:
         - 'M01: Authentication and Individual Profile'
 
