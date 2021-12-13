@@ -144,12 +144,13 @@ paths:
                   value: '/login'
 
   /credential recovery:
-    pos:
-      operationId: R107
-      summary: 'R107: Recover Password Form'
+    post:
+      operationId: R106
+      summary: 'R106: Recover Password Form'
       description: 'Recover a user's password'               '
       tags:
         - 'M01: Authentication and Individual Profile'
+
       requestBody:
         required: true
         content:
@@ -164,7 +165,7 @@ paths:
 
       responses:
         '303':
-          description: 'Successful request password recorvery. Redirect to login.'
+          description: 'Successful request password recovery. Redirect to login.'
           headers:
             Location:
               schema:
@@ -180,8 +181,8 @@ paths:
 
   /users/{id}:
     get:
-      operationId: R106
-      summary: 'R106: View user profile'
+      operationId: R107
+      summary: 'R107: View user profile'
       description: 'Show the individual user profile. Access: USR'
       tags:
         - 'M01: Authentication and Individual Profile'
