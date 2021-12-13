@@ -143,10 +143,19 @@ paths:
                   description: 'Failed authentication. Redirect to login form.'
                   value: '/login'
 
-  /credentialRecovery:
-    post:
+  /password/recovery:
+    get:
       operationId: R106
-      summary: 'R106: Recover Password Form'
+      summary: 'R106: Password Recovery Form'
+      description: 'Provide password recovery form. Access: PUB'
+      tags:
+        - 'M01: Authentication and Individual Profile'
+      responses:
+        '200':  
+          description: 'Ok. Show password recovery form'
+    post:
+      operationId: R107
+      summary: 'R107: Recover Password Action'
       description: "Recover a user's password"
       tags:
         - 'M01: Authentication and Individual Profile'
@@ -165,24 +174,24 @@ paths:
 
       responses:
         '303':
-          description: 'Successful request password recovery. Redirect to login.'
+          description: 'Redirect after processing password recovery request'
           headers:
             Location:
               schema:
                 type: string
               examples:
                 303Success:
-                  description: 'Ok. Redirect to [US07](https://git.fe.up.pt/lbaw/lbaw2021/lbaw2114/-/wikis/er#ui07-log-in).'
+                  description: 'Ok. Redirect to login.'
                   value: '/login/'
                 303Error:
-                  description: 'Failed password recovery. Redirect to login.'
+                  description: 'Failed password recovery. Redirect to password recovery.'
                   value: '/login/'
                   
 
   /users/{id}:
     get:
-      operationId: R107
-      summary: 'R107: View user profile'
+      operationId: R108
+      summary: 'R108: View user profile'
       description: 'Show the individual user profile. Access: USR'
       tags:
         - 'M01: Authentication and Individual Profile'
@@ -197,6 +206,108 @@ paths:
       responses:
         '200':
           description: 'Ok. Show view profile UI'
+  
+  /users/{id}/edit:
+    get:
+      operationId: R109
+      summary: 'R109: Edit user profile form'
+      description: 'Show the individual user profile edit form. Access: USR'
+      tags:
+        - 'M01: Authentication and Individual Profile'
+
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+
+      responses:
+        '200':
+          description: 'Ok. Show edit profile UI'
+    post:
+      operationID: R110
+      summary: 'R110: Edit user profile action'
+      description: 'Edit user profile'
+      tags:
+        - 'M01: Authentication and Individual Profile'
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                inputName:
+                  type: string
+                inputDescription:
+                  type: string
+                inputProfilePicture:
+                  type: file
+
+      responses:
+        '302':
+          description: 'Redirect after processing the new user information.'
+          headers:
+            Location:
+              schema:
+                type: string
+              examples:
+                302Success:
+                  description: 'Information successfully processed. Redirect to user profile.'
+                  value: '/users/{id}'
+                302Failure:
+                  description: 'Failed to process information. Redirect to edit user information form.'
+                  value: '/users/{id}/edit'
+
+  /users/{id}/password:
+    get:
+      operationId: R111
+      summary: "R111: Reset user's password form"
+      description: 'Show the password reset form. Access: USR'
+      tags:
+        - 'M01: Authentication and Individual Profile'
+
+      responses:
+        '200':
+          description: 'Ok. Show edit profile UI'
+    post:
+      operationID: R112
+      summary: "R112: Reset user's password"
+      description: 'Edit user profile'
+      tags:
+        - 'M01: Authentication and Individual Profile'
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                inputName:
+                  type: string
+                inputDescription:
+                  type: string
+                inputProfilePicture:
+                  type: file
+
+      responses:
+        '302':
+          description: 'Redirect after processing the new user information.'
+          headers:
+            Location:
+              schema:
+                type: string
+              examples:
+                302Success:
+                  description: 'Information successfully processed. Redirect to user profile.'
+                  value: '/users/{id}'
+                302Failure:
+                  description: 'Failed to process information. Redirect to edit user information form.'
+                  value: '/users/{id}/edit'
+  
+  
+
   
   
 
@@ -216,30 +327,6 @@ paths:
           description: String to use for full-text search
           schema:
             type: string
-          required: false
-        - in: query
-          name: item
-          description: Category of the works
-          schema:
-            type: string
-          required: false
-        - in: query
-          name: loaned
-          description: Boolean with the loaned flag value
-          schema:
-            type: boolean
-          required: false
-        - in: query
-          name: owner
-          description: Boolean with the owner flag value
-          schema:
-            type: boolean
-          required: false
-        - in: query
-          name: classification
-          description: Integer corresponding to the work classification
-          schema:
-            type: integer
           required: false
 
       responses:

@@ -87,16 +87,18 @@ tags:
 
 | Web Resource Reference | URL                            |
 | ---------------------- | ------------------------------ |
-| R101: Login Form | GET /   |
-| R012: Login Action  | POST /login |
+| R101: Login Form | GET /login   |
+| R102: Login Action  | POST /login |
 | R103: Logout Action |POST /logout  |
 | R104: Register Form  | GET /register  |
 | R105: Register Action |Action POST /register  |
-| R106: View Profile| GET /users/{id} |
-| R107: Edit Profile Form |GET /users/{id}/edit  |
-| R108: Edit Profile Action | POST /users/{id}/edit |
-| R109: Password Reset Form  | GET /password/reset  |
-| R110: Password Reset Action   | POST /password/reset   |
+| R106: Password Recovery Form | GET /password/recovery |
+| R107: Password Recovery Action | POST /password/recovery |
+| R108: View Profile| GET /users/{id} |
+| R109: Edit Profile Form |GET /users/{id}/edit  |
+| R110: Edit Profile Action | POST /users/{id}/edit |
+| R111: Password Reset Form  | GET /password/reset  |
+| R112: Password Reset Action   | POST /password/reset   |
 
 ...
 
