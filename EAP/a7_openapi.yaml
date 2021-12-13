@@ -274,7 +274,7 @@ paths:
     post:
       operationID: R112
       summary: "R112: Reset user's password"
-      description: 'Edit user profile'
+      description: "Change user's password"
       tags:
         - 'M01: Authentication and Individual Profile'
       requestBody:
@@ -284,12 +284,10 @@ paths:
             schema:
               type: object
               properties:
-                inputName:
+                Old password:
                   type: string
-                inputDescription:
+                New password:
                   type: string
-                inputProfilePicture:
-                  type: file
 
       responses:
         '302':
