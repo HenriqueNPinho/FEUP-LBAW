@@ -143,7 +143,7 @@ paths:
                   description: 'Failed authentication. Redirect to login form.'
                   value: '/login'
 
-  /credential recovery:
+  /credentialRecovery:
     post:
       operationId: R106
       summary: 'R106: Recover Password Form'
