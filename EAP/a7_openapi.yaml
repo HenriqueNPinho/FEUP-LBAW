@@ -25,12 +25,16 @@ tags:
 paths:
 #-------------------------------- M01 -----------------------------------------
 /about-us:
-  operationId: R101
-  summary: 'R101: See About Us'
-  description: ' Access: PUB, USR, '
-
-
-
+  get:
+    operationId: R101
+    summary: 'R101: See About Us'
+    description: 'Provide description about website and its creators. Access: PUB'
+    tags:
+    - 'M01: Static Pages'
+    responses:
+    '200':
+      description: 'Ok. Show About Us page' 
+ 
 #-------------------------------- M02 -----------------------------------------
   /login:
     get:
@@ -322,12 +326,12 @@ paths:
 
   /api/tasks:
     get:
-      operationId: R202
-      summary: 'R202: Search Tasks API'
+      operationId: R401
+      summary: 'R401: Search Tasks API'
       description: 'Searches for tasks and returns the results as JSON. Access: PM.'
 
       tags: 
-        - 'M03: Tasks'
+        - 'M04: Project Area'
 
       parameters:
         - in: query
