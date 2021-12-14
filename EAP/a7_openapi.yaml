@@ -24,7 +24,7 @@ tags:
 
 paths:
 #-------------------------------- M01 -----------------------------------------
-  /about-us:
+  /aboutus:
     get:
       operationId: R101
       summary: 'R101: See About Us'
