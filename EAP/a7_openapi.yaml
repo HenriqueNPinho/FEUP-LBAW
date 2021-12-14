@@ -24,16 +24,16 @@ tags:
 
 paths:
 #-------------------------------- M01 -----------------------------------------
-/about-us:
-  get:
-    operationId: R101
-    summary: 'R101: See About Us'
-    description: 'Provide description about website and its creators. Access: PUB'
-    tags:
-    - 'M01: Static Pages'
-    responses:
-    '200':
-      description: 'Ok. Show About Us page' 
+  /about-us:
+    get:
+      operationId: R101
+      summary: 'R101: See About Us'
+      description: 'Provide description about website and its creators. Access: PUB'
+      tags:
+      - 'M01: Static Pages'
+      responses:
+      '200':
+        description: 'Ok. Show About Us page' 
  
 #-------------------------------- M02 -----------------------------------------
   /login:
