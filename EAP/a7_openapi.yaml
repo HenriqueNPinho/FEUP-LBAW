@@ -14,32 +14,40 @@ externalDocs:
   url: https://web.fe.up.pt/~ssn/wiki/teach/lbaw/medialib/a07
 
 tags:
-  - name: 'M01: Authentication'
-  - name: 'M02: Authenticated User Area'
-  - name: 'M03: Tasks'
-  - name: 'M04: Forum'
-  - name: 'M05: Static Pages'
-  - name: 'M06: Project Area'
+  - name: 'M01: Static Pages'
+  - name: 'M02: Authentication'
+  - name: 'M03: Authenticated User Area'
+  - name: 'M04: Project Area'
+  - name: 'M05: Tasks'
+  - name: 'M06: Forum'
   - name: 'M07: Company Administrator Area'
 
 paths:
 #-------------------------------- M01 -----------------------------------------
+/about-us:
+  operationId: R101
+  summary: 'R101: See About Us'
+  description: ' Access: PUB, USR, '
+
+
+
+#-------------------------------- M02 -----------------------------------------
   /login:
     get:
-      operationId: R101
-      summary: 'R101: Login Form'
+      operationId: R201
+      summary: 'R201: Login Form'
       description: 'Provide login form. Access: PUB'
       tags:
-        - 'M01: Authentication and Individual Profile'
+        - 'M02: Authentication'
       responses:
         '200':
           description: 'Ok. Show log-in UI'
     post:
-      operationId: R102
-      summary: 'R102: Login Action'
+      operationId: R202
+      summary: 'R202: Login Action'
       description: 'Processes the login form submission. Access: PUB'
       tags:
-        - 'M01: Authentication and Individual Profile'
+        - 'M02: Authentication'
  
       requestBody:
         required: true
@@ -73,21 +81,21 @@ paths:
                   
   /register:
     get:
-      operationId: R104
-      summary: 'R104: Register Form'
+      operationId: R204
+      summary: 'R204: Register Form'
       description: 'Provide new user registration form. Access: PUB'
       tags:
-        - 'M01: Authentication and Individual Profile'
+        - 'M02: Authentication'
       responses:
         '200':
           description: 'Ok. Show sign-up UI'
 
     post:
-      operationId: R105
-      summary: 'R105: Register Action'
+      operationId: R205
+      summary: 'R205: Register Action'
       description: 'Processes the new user registration form submission. Access: PUB'
       tags:
-        - 'M01: Authentication and Individual Profile'
+        - 'M02: Authentication'
 
       requestBody:
         required: true
@@ -125,20 +133,20 @@ paths:
  
   /password/recovery:
     get:
-      operationId: R106
-      summary: 'R106: Password Recovery Form'
+      operationId: R206
+      summary: 'R206: Password Recovery Form'
       description: 'Provide password recovery form. Access: PUB'
       tags:
-        - 'M01: Authentication and Individual Profile'
+        - 'M02: Authentication'
       responses:
         '200':  
           description: 'Ok. Show password recovery form'
     post:
-      operationId: R107
-      summary: 'R107: Recover Password Action'
+      operationId: R207
+      summary: 'R207: Recover Password Action'
       description: "Recover a user's password"
       tags:
-        - 'M01: Authentication and Individual Profile'
+        - 'M02: Authentication'
 
       requestBody:
         required: true
@@ -166,17 +174,17 @@ paths:
                 303Error:
                   description: 'Failed password recovery. Redirect to password recovery.'
                   value: '/login/'
-                  
- # ---------------------------- M02 -----------------------------------------------
+
+ # ---------------------------- M03 -----------------------------------------------
   
   /logout:
 
     post:
-      operationId: R103
-      summary: 'R103: Logout Action'
+      operationId: R301
+      summary: 'R301: Logout Action'
       description: 'Logout the current authenticated used. Access: USR, ADM'
       tags:
-        - 'M01: Authentication and Individual Profile'
+        - 'M03: Authenticated User Area'
       responses:
         '302':
           description: 'Redirect after processing logout.'
@@ -192,11 +200,11 @@ paths:
 
   /users/{id}:
     get:
-      operationId: R108
-      summary: 'R108: View user profile'
+      operationId: R302
+      summary: 'R302: View user profile'
       description: 'Show the individual user profile. Access: USR'
       tags:
-        - 'M01: Authentication and Individual Profile'
+        - 'M03: Authenticated User Area'
 
       parameters:
         - in: path
@@ -211,11 +219,11 @@ paths:
   
   /users/{id}/edit:
     get:
-      operationId: R109
-      summary: 'R109: Edit user profile form'
+      operationId: R303
+      summary: 'R303: Edit user profile form'
       description: 'Show the individual user profile edit form. Access: USR'
       tags:
-        - 'M01: Authentication and Individual Profile'
+        - 'M03: Authenticated User Area'
 
       parameters:
         - in: path
@@ -228,11 +236,11 @@ paths:
         '200':
           description: 'Ok. Show edit profile UI'
     post:
-      operationID: R110
-      summary: 'R110: Edit user profile action'
+      operationID: R304
+      summary: 'R304: Edit user profile action'
       description: 'Edit user profile'
       tags:
-        - 'M01: Authentication and Individual Profile'
+        - 'M03: Authenticated User Area'
       requestBody:
         required: true
         content:
@@ -264,21 +272,21 @@ paths:
 
   /users/{id}/password:
     get:
-      operationId: R111
-      summary: "R111: Reset user's password form"
-      description: 'Show the password reset form. Access: USR'
+      operationId: R305
+      summary: "R305: Change user's password form"
+      description: 'Show the password change form. Access: USR'
       tags:
-        - 'M01: Authentication and Individual Profile'
+        - 'M03: Authenticated User Area'
 
       responses:
         '200':
           description: 'Ok. Show edit profile UI'
     post:
-      operationID: R112
-      summary: "R112: Reset user's password"
+      operationID: R306
+      summary: "R306: Change user's password"
       description: "Change user's password"
       tags:
-        - 'M01: Authentication and Individual Profile'
+        - 'M03: Authenticated User Area'
       requestBody:
         required: true
         content:
@@ -309,7 +317,7 @@ paths:
   
 
   
-  #------------------------------- M03 -----------------------------------------------------------------
+  #------------------------------- M04 -----------------------------------------------------------------
 
 
   /api/tasks:
@@ -365,7 +373,6 @@ paths:
                     owner: Manuel Teixeira
                     type: DVD
 
-#------------------------------- M04 -----------------------------------------------------------------
 #------------------------------- M05 -----------------------------------------------------------------
 #------------------------------- M06 -----------------------------------------------------------------
 #------------------------------- M07 -----------------------------------------------------------------
