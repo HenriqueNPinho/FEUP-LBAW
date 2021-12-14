@@ -47,11 +47,11 @@ Link to the Swagger generated documentation (e.g. `https://app.swaggerhub.com/ap
 openapi: 3.0.0
 tags:
  - name: 'M01: Authentication'
- - name: 'M02: Project Area'
+ - name: 'M02: Authenticated User Area'
  - name: 'M03: Tasks'
  - name: 'M04: Forum'
  - name: 'M05: Static Pages'
- - name: 'M06: Authenticated User Area'
+ - name: 'M06: Project Area'
  - name: 'M07: Company Administrator Area'
 ...
 ```

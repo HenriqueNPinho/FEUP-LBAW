@@ -14,16 +14,16 @@ externalDocs:
   url: https://web.fe.up.pt/~ssn/wiki/teach/lbaw/medialib/a07
 
 tags:
-  - name: 'M01: Authentication and Individual Profile'
-  - name: 'M02: Project Area'
+  - name: 'M01: Authentication'
+  - name: 'M02: Authenticated User Area'
   - name: 'M03: Tasks'
   - name: 'M04: Forum'
   - name: 'M05: Static Pages'
-  - name: 'M06: Authenticated User Area'
+  - name: 'M06: Project Area'
   - name: 'M07: Company Administrator Area'
 
 paths:
-
+#-------------------------------- M01 -----------------------------------------
   /login:
     get:
       operationId: R101
@@ -70,27 +70,7 @@ paths:
                 302Error:
                   description: 'Failed authentication. Redirect to login form.'
                   value: '/login'
- 
-  /logout:
-
-    post:
-      operationId: R103
-      summary: 'R103: Logout Action'
-      description: 'Logout the current authenticated used. Access: USR, ADM'
-      tags:
-        - 'M01: Authentication and Individual Profile'
-      responses:
-        '302':
-          description: 'Redirect after processing logout.'
-          headers:
-            Location:
-              schema:
-                type: string
-              examples:
-                302Success:
-                  description: 'Successful logout. Redirect to login form.'
-                  value: '/login'
-
+                  
   /register:
     get:
       operationId: R104
@@ -142,7 +122,7 @@ paths:
                 302Failure:
                   description: 'Failed authentication. Redirect to login form.'
                   value: '/login'
-
+ 
   /password/recovery:
     get:
       operationId: R106
@@ -187,6 +167,28 @@ paths:
                   description: 'Failed password recovery. Redirect to password recovery.'
                   value: '/login/'
                   
+ # ---------------------------- M02 -----------------------------------------------
+  
+  /logout:
+
+    post:
+      operationId: R103
+      summary: 'R103: Logout Action'
+      description: 'Logout the current authenticated used. Access: USR, ADM'
+      tags:
+        - 'M01: Authentication and Individual Profile'
+      responses:
+        '302':
+          description: 'Redirect after processing logout.'
+          headers:
+            Location:
+              schema:
+                type: string
+              examples:
+                302Success:
+                  description: 'Successful logout. Redirect to login form.'
+                  value: '/login'
+  
 
   /users/{id}:
     get:
@@ -307,7 +309,7 @@ paths:
   
 
   
-  
+  #------------------------------- M03 -----------------------------------------------------------------
 
 
   /api/tasks:
@@ -362,3 +364,8 @@ paths:
                     year: 1995
                     owner: Manuel Teixeira
                     type: DVD
+
+#------------------------------- M04 -----------------------------------------------------------------
+#------------------------------- M05 -----------------------------------------------------------------
+#------------------------------- M06 -----------------------------------------------------------------
+#------------------------------- M07 -----------------------------------------------------------------
