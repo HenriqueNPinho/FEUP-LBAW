@@ -18,13 +18,12 @@ tags:
   - name: 'M02: Authentication'
   - name: 'M03: Authenticated User Area'
   - name: 'M04: Project Area'
-  - name: 'M05: Tasks'
-  - name: 'M06: Forum'
-  - name: 'M07: Company Administrator Area'
+  - name: 'M05: Forum'
+  - name: 'M06 Company Administrator Area'
 
 paths:
 #-------------------------------- M01 -----------------------------------------
-  /aboutus:
+  /about-us/:
     get:
       operationId: R101
       summary: 'R101: See About Us'
@@ -35,6 +34,16 @@ paths:
       '200':
         description: 'Ok. Show About Us page' 
  
+  /faq/:
+    get:
+      operationId: R102
+      summary: 'R102: See Frequently Asked Questions (FAQ)'
+      description: 'Provide frequently asked questions about our app. Access: PUB'
+      tags:
+      - 'M01: Static Pages'
+      responses:
+      '200':
+        description: 'Ok. Show FAQ page' 
 #-------------------------------- M02 -----------------------------------------
   /login:
     get:
@@ -318,16 +327,94 @@ paths:
                   description: 'Failed to process information. Redirect to edit user information form.'
                   value: '/users/{id}/edit'
   
-  
+ #------------------------------- M04 -----------------------------------------------------------------
 
-  
-  #------------------------------- M04 -----------------------------------------------------------------
-
-
-  /api/tasks:
+  /create-project/:
     get:
       operationId: R401
-      summary: 'R401: Search Tasks API'
+      summary: 'R401: Create New Project'
+      description: 'Create New Project. Access: USR'
+      tags:
+        - 'MO4: Project Area'
+      parameters:
+        - in: query
+          name: name
+          schema:
+            type: string
+        - in: query
+          name: company id
+          schema:
+            type: integer
+        - in: query
+          name: description
+          schema:
+            type: string 
+        - in: query
+          name: start date
+          schema:
+            type: string    
+        - in: query
+          name: delivery date
+          schema:
+            type: string   
+      responses:
+        '302':
+            description: 'Redirect after processing the project information.'
+            headers:
+              Location:
+                schema:
+                  type: string
+                examples:
+                  302Success:
+                    description: 'Success. Redirect to project area.'
+                    value: #### project page
+                  302Error:
+                    description: 'Failed. Redirect to project creation form.'
+                    value: '/create-project/'
+          
+       
+  /api/load-users:
+    get:
+      operationId: R402
+      summary: 'R402: Load Users'
+      description: 'Load Users. Access: PM'
+      tags:
+        - 'M04: Project Area'
+      parameters:
+        - in: query
+          name: pagination
+          schema:
+            type: integer
+          required: false
+        - in: query
+          name: page
+          schema:
+            type: integer
+          required: false
+        - in: query
+          name: sortBy
+          schema:
+            type: integer
+          required: false
+      responses:
+        '200':
+          description: "Return users for pagination"
+          content: 
+            application/json:
+              schema:
+                type: object
+                properties:
+                  posts:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/User'
+        '400':
+          description: "Error in parameters"
+            
+  /search-tasks/:
+    get:
+      operationId: R403
+      summary: 'R403: Search Tasks API'
       description: 'Searches for tasks and returns the results as JSON. Access: PM.'
 
       tags: 
@@ -348,35 +435,171 @@ paths:
             application/json:
               schema:
                 type: array
-                items:
-                  type: object
-                  properties:
-                    id:
-                      type: string
-                    title:
-                      type: string
-                    obs:
-                      type: string
-                    year:
-                      type: string
-                    owner:
-                      type: string
-                    type:
-                      type: string
-                example:
-                  - id: 1
-                    title: Rihanna - Unapologetic
-                    obs: Good pop music album.
-                    year: 2012
-                    owner: Joana Lima
-                    type: MP3
-                  - id: 15
-                    title: Mr. Bean
-                    obs: The best comedy movie.
-                    year: 1995
-                    owner: Manuel Teixeira
-                    type: DVD
+                items: 
+                  $ref: '#/components/schemas/TaskPreview'
+                   
+  /new-task/:
+    get:
+      operationId: R404
+      summary: "R404: Get new task form"
+      description: 'Show the form to create a new task. Access: PM'
+      tags:
+        - 'M04: Project Area'
 
+      responses:
+        '200':
+          description: 'Ok. Show create  profile UI'
+    post:
+      operationId: R404
+      summary: "R404: Create new task"
+      description: "Create a new task. Access: PM"
+      tags:
+        - 'M04: Project Area'
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                task-name:
+                  type: string
+                task-description:
+                  type: string
+                task-members:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/User'
+                due-date:
+                  type: string
+      responses:
+        '201':
+          description: 'Task created'
+
+  /task-page/{id}:
+    get:
+      operationID: R405
+      summary: "R405: See task page"
+      description: "See the task page and all its information. Access: PM"
+      tags:
+        - 'M04: Project Area'
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+
+      responses:
+        '200':
+          description: 'Ok. Show task page UI'
+
+
+  
 #------------------------------- M05 -----------------------------------------------------------------
+
+  /api/forum:
+    get:
+      operationId: R501
+      summary: 'R501: Search post API'
+      description: 'Searches for post and returns the results as JSON. Access: PM.'
+
+      tags: 
+        - 'M05: Forum'
+
+      parameters:
+        - in: query
+          name: query
+          description: String to use for full-text search
+          schema:
+            type: string
+          required: false
+
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items: 
+                  properties: 
+                    message:
+                      type: string
+                    author_name:
+                      type: string
+                  
+               
+  /new-post/:
+    get:
+      operationId: R502
+      summary: "R502: Create new post"
+      description: 'Show the form to create a new task. Access: PM'
+      tags:
+        - 'M05: Forum'
+
+      responses:
+        '200':
+          description: 'Ok. Post created'
+
+  /edit-post/:
+    get:
+      operationId: R503
+      summary: "R503: Edit an existing post"
+      description: 'Show the form to create a new task. Access: PA'
+      tags:
+        - 'M05: Forum'
+
+      responses:
+        '200':
+          description: 'Ok. Post edited'
+
+  /delete-post/:
+    get:
+      operationId: R504
+      summary: "R504: Delete post"
+      description: 'Show the form to create a new task. Access: PA'
+      tags:
+        - 'M05: Forum'
+
+      responses:
+        '200':
+          description: 'Ok. Post Deleted'
+
 #------------------------------- M06 -----------------------------------------------------------------
-#------------------------------- M07 -----------------------------------------------------------------
+
+# -------------------- Components --------------------
+  
+components:
+  schemas:
+    TaskPreview:
+      type: object
+      properties:
+        description:
+          type: string
+        start_date:
+          type: string
+        delivery_Date:
+          type: string
+        status:
+          type: string
+        project_member:
+          type: array
+          items:
+            $ref: '#/components/schemas/User'
+        photo:
+          type: string
+
+    User:
+        type: object
+        properties:
+          name:
+            type: string
+          email: 
+            type: String
+          profile_description:
+            type: string
+          profile_image:
+            type: string
+
+   
