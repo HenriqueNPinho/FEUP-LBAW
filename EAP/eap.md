@@ -12,13 +12,13 @@
 
 | Module | Description|
 |----|----|
-|**M01 : Authentication**| Web resources associated with user authentication. Includes the following system features: login/logout, registration, password recovery.|
-|**M02 : Project Area** | Web resources associated with the project components. This module offers an overview of the project that includes web resources from other modules, which will be later descibed (such as tasks, project collaborators, forum access and tasks search). In addition to this, it allows to add users to the project, to manage their hierarchy within the project and to create new projecs.|
+|**M01: Static Pages** | Web resources associated with static content such as the About Us page and the Frequently Asked Questions (FAQ) page|
+|**M02 : Authentication**| Web resources associated with user authentication. Includes the following system features: login/logout, registration, password recovery.|
+|**M03: Authenticated User Area** | Web resources associated with the user's personal area and its management. This includes editing profile details (name, email, profile picture,...) and deleting the account.|
+|**M04 : Project Area** | Web resources associated with the project components. This module offers an overview of the project that includes web resources from other modules, which will be later descibed (such as tasks, project collaborators, forum access and tasks search). In addition to this, it allows to add users to the project, to manage their hierarchy within the project and to create new projecs.|
 |**M03 : Tasks** | Web resources associated with tasks, which are a crucial part of our application. This module includes the following features: creating new tasks, viewing the complete task page, editing the task details, managing task members, managing the task status and deleting the task.|
 |**M04 : Forum** | Web resources associated with the project's forum. This module includes viewing and posting and editing messages|
-|**M05: Static Pages** | Web resources associated with static content such as the About Us page and the Frequently Asked Questions (FAQ) page|
-|**M06: Authenticated User Area** | Web resources associated with the user's personal area and its management. This includes editing profile details (name, email, profile picture,...) and deleting the account.|
-|**M07: Company Administrator Area**| Web resources associated with the company's administrator features. This includes user management withing the company (inviting and removing users from the company's workspace) and browsing through the company's projects.|
+|**M05: Company Administrator Area**| Web resources associated with the company's administrator features. This includes user management withing the company (inviting and removing users from the company's workspace) and browsing through the company's projects.|
 
 ### 2. Permissions
 
