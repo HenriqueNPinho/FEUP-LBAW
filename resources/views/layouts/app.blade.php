@@ -56,6 +56,7 @@
         </div>
         @endif
       </header>
+      <div id="filler"></div>
       <section id="content">
         @yield('content')
       </section>

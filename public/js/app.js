@@ -26,12 +26,22 @@ function addEventListeners() {
   let dropDownMenuIcon = document.querySelector('.navbar-collapse-item');
   let dropDownMenu =document.querySelector('.navbar-collapse');
   dropDownMenuIcon.addEventListener('click',function(){
-    console.log(dropDownMenu.style.display);
     if(dropDownMenu.style.display=="" ||dropDownMenu.style.display=="none")
       dropDownMenu.style.display="block";
     else
-    dropDownMenu.style.display="none";
+      dropDownMenu.style.display="none";
   })
+
+  let projectIcons =document.querySelectorAll('.project-icon');
+  let slideRightMenu = document.querySelector('#slide-right-menu')
+  projectIcons.forEach(function (item, index) {
+    item.addEventListener('click',function(){
+      if(slideRightMenu.style.display=="" ||slideRightMenu.style.display=="none")
+        slideRightMenu.style.display="block";
+      else
+        slideRightMenu.style.display="none";
+    })
+  });
 }
 
 function encodeForAjax(data) {

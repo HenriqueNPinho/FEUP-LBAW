@@ -15,7 +15,7 @@ class HomepageController extends Controller
      */
     public function index()
     {
-        if (Auth::check()) return redirect('/cards');
+        if (Auth::check()) return redirect('/projects');
         return view('pages.homepage');
     }
 

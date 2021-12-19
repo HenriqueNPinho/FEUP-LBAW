@@ -31,9 +31,9 @@ class User extends Authenticatable
     ];
 
     /**
-     * The cards this user owns.
+     * The projects this user is a member of.
      */
-     public function cards() {
-      return $this->hasMany('App\Models\Card');
+    public function projects() {
+        return $this->belongsToMany('App\Models\Project','project_member','users_id','project_id');
     }
 }

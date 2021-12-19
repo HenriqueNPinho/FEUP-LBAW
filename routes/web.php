@@ -14,8 +14,8 @@
 Route::get('/', 'HomepageController@index');
 
 // Cards
-Route::get('cards', 'CardController@list');
-Route::get('cards/{id}', 'CardController@show');
+Route::get('projects', 'ProjectController@list');
+Route::get('projects/{id}', 'ProjectController@show');
 
 // API
 Route::put('api/cards', 'CardController@create');
