@@ -45,17 +45,24 @@
   <div class="project-overview">
     <div class="boards-container">
       <div class="board">
-        <h2>To Do</h2>
+        <h2>TO DO</h2>
+        <div draggable="true" class="task-preview">
+          <div class="task-preview-info">
+            <h3>Task Name</h2>
+            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Recusandae, dolore.</p>
+            <h4>14/01/2022</h4>
+          </div>
+        </div>
       </div>
       <div class="board">
-        <h2>Doing</h2>
+        <h2>DOING</h2>
       </div>
       <div class="board">
-        <h2>Done</h2>
+        <h2>DONE</h2>
       </div>
     </div>
-    
   </div>
+
 </div>
 
 @endsection
