@@ -11,7 +11,6 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Styles -->
-    <link href="{{ asset('css/milligram.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -29,17 +28,32 @@
       <header>
         
         @if (Auth::check())
-        <a href="{{ url('/cards') }}"><img src="./images/horizontal-logo.png" alt=""></a>
-        <a class="button" href="{{ url('/logout') }}"> Logout </a> <span>{{ Auth::user()->name }}</span>
-        @else
-        <a href="{{ url('/') }}"><img src="./images/horizontal-logo.png" alt=""></a>
-        <div id="navbar-options">
-          <a href="">About Us</a>
-          <a href="">FAQ</a>
-          <a href="{{ url('/login') }}">Login</a>
-          <a href="{{ url('/register') }}">Signup</a>
+        <div class="navbar">
+          <a href="{{ url('/cards') }}"><img src="./images/horizontal-logo.png" alt=""></a>
+          <div class="navbar-options">
+            
+            <div class="navbar-collapse-item">
+              <a >{{ Auth::user()->name }}</a>
+              <img src="./images/profile-pic.png" alt="">
+            </div>
+            
+          </div>
         </div>
-        
+        <div class="navbar-collapse">
+          <a href=""><div>Profile</div></a>
+          <a href="{{ url('/logout') }}"><div>Logout</div></a>
+        </div>
+         
+        @else
+        <div class="navbar">
+          <a href="{{ url('/') }}"><img src="./images/horizontal-logo.png" alt=""></a>
+          <div class="navbar-options">
+            <a href="">About Us</a>
+            <a href="">FAQ</a>
+            <a href="{{ url('/login') }}">Login</a>
+            <a href="{{ url('/register') }}">Signup</a>
+          </div>
+        </div>
         @endif
       </header>
       <section id="content">

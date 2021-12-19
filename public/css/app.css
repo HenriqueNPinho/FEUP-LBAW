@@ -4,36 +4,86 @@ body {
     color: black;
     font-family: "Montserrat", sans-serif;
 }
+
+/******Header******/
 main > header {
+    display: flex;
+    flex-direction: column;
+}
+.navbar {
+    position: fixed;
+    background-color: white;
+    top: 0;
+    width: 100%;
     display: flex;
     justify-content: space-between;
     -webkit-box-shadow: 0px 5px 16px 0px rgba(0, 0, 0, 0.11);
     box-shadow: 0px 5px 16px 0px rgba(0, 0, 0, 0.11);
+    z-index: 1;
 }
-main > header a img {
+.navbar a img {
     height: 90px;
     padding-left: 100px;
 }
-#navbar-options {
+.navbar-options {
     align-self: center;
     display: flex;
     justify-content: space-around;
-    padding-right: 80px;
+    padding-right: 40px;
 }
-#navbar-options a {
+.navbar-options a {
     padding-right: 40px;
     font-weight: bold;
 }
-main > header span {
-    margin: 1em;
-    justify-self: center;
+
+.navbar-collapse-item {
+    display: flex;
+    justify-content: space-around;
+    cursor: pointer;
+}
+
+.navbar-collapse-item img {
+    height: 50px;
+    align-self: center;
+}
+
+.navbar-collapse-item a {
+    align-self: center;
+    padding-right: 20px;
+}
+
+.navbar-collapse {
+    display: none;
+    position: absolute;
+    top: 95px;
+    background-color: white;
+    width: 180px;
+    align-self: flex-end;
+    text-align: center;
+    margin-right: 40px;
+    z-index: 2;
+}
+
+.navbar-collapse a div {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    border-top: solid 1px #264653;
+}
+
+.navbar-collapse a:last-child div {
+    border-bottom: solid 1px #264653;
+}
+
+.navbar-options a:hover {
+    color: rgb(88, 88, 88);
 }
 
 /******Homepage******/
 
 #homepage-content {
+    padding-top: 95px;
     background-color: #264653;
-    height: 100vh;
+    height: 90vh;
     display: flex;
     justify-content: space-around;
     padding-right: 50px;
@@ -51,7 +101,16 @@ main > header span {
 }
 
 .homepage-column h2 {
+    font-size: 2.5em;
     font-weight: bold;
+}
+
+.homepage-column img {
+    max-width: 100%;
+}
+
+.homepage-column p {
+    margin-bottom: 30px;
 }
 
 /**********************/
@@ -61,27 +120,160 @@ main > header span {
 .auth-page {
     display: flex;
     flex-direction: column;
-    padding-top: 100px;
+    padding-top: 195px;
+    justify-content: space-around;
 }
 
 .auth-page h2 {
     align-self: center;
+    color: #264653;
 }
 
 .auth-page form {
-    margin: 0 auto;
-    margin-top: 20px;
-    padding: 2em;
+    background-color: rgb(255, 255, 255);
+    align-self: center;
+    display: flex;
+    border-radius: 4px;
+    flex-direction: column;
+    padding: 2.5em;
     max-width: 20em;
-    -webkit-box-shadow: 0px 5px 20px 3px rgba(0, 0, 0, 0.13);
-    box-shadow: 0px 5px 20px 3px rgba(0, 0, 0, 0.13);
+    -webkit-box-shadow: 0px 5px 20px 3px rgba(138, 138, 138, 0.096);
+    box-shadow: 0px 5px 20px 3px rgba(138, 138, 138, 0.096);
 }
+
+.auth-page form input {
+    background-color: #dfdfdf;
+    margin-bottom: 20px;
+    border-radius: 2px;
+    border: 0;
+    box-sizing: border-box;
+    color: rgb(126, 126, 126);
+    font-size: 18px;
+    height: 45px;
+    outline: 0;
+    padding: 4px 20px 0;
+    width: 100%;
+}
+
 .auth-page form .error {
     font-weight: bold;
     color: #ff3333;
 }
-.auth-page form input {
+
+#remember-me {
+    display: flex;
+    padding-bottom: 20px;
+}
+
+#remember-me h4 {
+    font-weight: normal;
+    margin: 0;
+    font-size: 13px;
+    align-self: center;
+    margin-right: 10px;
+}
+
+#remember-me input {
+    margin: 0;
+    height: 15px;
+    width: 15px;
+    align-self: center;
+}
+
+form button {
+    border: 0;
+    background-color: #2a9d8f;
+    padding: 13px;
+    border-radius: 20px;
+    height: 40px;
+    font-size: 14px;
+    color: white;
+    text-transform: uppercase;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+form .button {
+    border: 0;
+    background-color: #2a9d8f;
+    padding: 13px;
+    border-radius: 20px;
+    height: 14px;
+    text-align: center;
+    font-size: 14px;
+    font-weight: bold;
+    color: white;
+    margin-top: 10px;
+}
+
+.divider {
+    align-self: center;
+    margin-top: 30px;
+    width: 80%;
+    height: 2px;
+    background-color: #264653;
+}
+
+form h4 {
+    font-weight: normal;
+    font-size: 13px;
+    align-self: center;
+    margin-bottom: 5px;
+}
+
+/**********************/
+
+/*****Project Area*****/
+
+#project-area {
+    display: flex;
+    height: 100vh;
+}
+
+#projects-bar {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding-top: 95px;
+    width: 5%;
+    background-color: #2a9d8f;
+}
+
+#add-project {
+    align-self: center;
+    padding-top: 20px;
+}
+#add-project img {
+    height: 35px;
+}
+
+#slide-right-menu {
+    padding-top: 95px;
+    background-color: #dfdfdf;
+}
+
+.slide-right-menu-item div {
+    display: flex;
+    justify-content: left;
+    padding: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
     background-color: white;
+}
+
+.slide-right-menu-item div img {
+    align-self: center;
+    height: 32px;
+    margin-right: 10px;
+}
+
+.slide-right-menu-item {
+    height: 2px;
+    width: 100%;
+}
+
+.slide-right-menu-item div h2 {
+    font-size: 18px;
 }
 
 /**********************/
@@ -189,15 +381,26 @@ main > header span {
  * Overide milligram colors
  * Some styles might be missing
  **/
-button {
-    background-color: #2a9d8f;
-    border-color: #2a9d8f;
+
+.button {
+    padding: 12px;
+    border-radius: 7px;
+    text-transform: uppercase;
+    font-size: 15px;
+}
+
+.button.white:hover {
+    background-color: rgb(75, 75, 75);
+    color: white;
 }
 
 .white {
     background-color: white;
-    border-color: white;
     color: black;
+}
+
+.light-blue-border {
+    border-color: #264653;
 }
 
 .light-blue {
@@ -207,12 +410,9 @@ button {
 a.button.button-outline {
     color: #000;
 }
+
 a {
+    text-decoration: none;
     color: #000;
     font-size: 18px;
-}
-input[type="text"]:focus,
-input[type="email"]:focus,
-input[type="password"]:focus {
-    border-color: #264653;
 }

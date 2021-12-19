@@ -22,6 +22,16 @@ function addEventListeners() {
   let cardCreator = document.querySelector('article.card form.new_card');
   if (cardCreator != null)
     cardCreator.addEventListener('submit', sendCreateCardRequest);
+  
+  let dropDownMenuIcon = document.querySelector('.navbar-collapse-item');
+  let dropDownMenu =document.querySelector('.navbar-collapse');
+  dropDownMenuIcon.addEventListener('click',function(){
+    console.log(dropDownMenu.style.display);
+    if(dropDownMenu.style.display=="" ||dropDownMenu.style.display=="none")
+      dropDownMenu.style.display="block";
+    else
+    dropDownMenu.style.display="none";
+  })
 }
 
 function encodeForAjax(data) {

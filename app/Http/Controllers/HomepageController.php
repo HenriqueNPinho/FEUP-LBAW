@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HomepageController extends Controller
 {
@@ -14,6 +15,7 @@ class HomepageController extends Controller
      */
     public function index()
     {
+        if (Auth::check()) return redirect('/cards');
         return view('pages.homepage');
     }
 
