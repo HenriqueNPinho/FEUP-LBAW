@@ -11,16 +11,19 @@ use App\Models\Project;
 class ProjectController extends Controller
 {
     /**
-     * Shows the card for a given id.
+     * Shows the project for a given id.
      *
      * @param  int  $id
      * @return Response
      */
     public function show($id)
     {
+      if (!Auth::check()) return redirect('/login');
+      $this->authorize('list', Project::class);
+      $projects = Auth::user()->projects()->orderBy('id')->get();
       $project = Project::find($id);
       $this->authorize('show', $project);
-      return view('pages.project', ['project' => $project]);
+      return view('pages.project', ['project' => $project,'projects' =>$projects]);
     }
 
     /**

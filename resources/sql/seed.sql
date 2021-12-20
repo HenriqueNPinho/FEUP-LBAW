@@ -11,7 +11,7 @@ DROP TABLE IF EXISTS work CASCADE;
 DROP TABLE IF EXISTS projects CASCADE;
 DROP TABLE IF EXISTS project_coordinator CASCADE;
 DROP TABLE IF EXISTS project_member CASCADE;
-DROP TABLE IF EXISTS task CASCADE;
+DROP TABLE IF EXISTS tasks CASCADE;
 DROP TABLE IF EXISTS task_assigned CASCADE;
 DROP TABLE IF EXISTS forum_post CASCADE;
 DROP TABLE IF EXISTS invitation CASCADE;
@@ -76,8 +76,8 @@ CREATE TABLE projects (
     company_id INTEGER NOT NULL REFERENCES company(id) ON DELETE CASCADE,
     name TEXT NOT NULL,
     description TEXT,
-    start_date TIMESTAMP WITH TIME ZONE,
-    delivery_date TIMESTAMP WITH TIME ZONE,
+    start_date DATE,
+    delivery_date DATE,
     archived BOOLEAN DEFAULT FALSE NOT NULL,
     CONSTRAINT date_ck CHECK (delivery_date>start_date)
 );
@@ -99,21 +99,23 @@ CREATE TABLE project_member(
     PRIMARY KEY(users_id,project_id)
 );
 
-CREATE TABLE task (
+CREATE TABLE tasks (
     id SERIAL PRIMARY KEY,
     project_id INTEGER NOT NULL REFERENCES projects(id) ON DELETE CASCADE,
     name TEXT NOT NULL,
     description TEXT,
-    start_date TIMESTAMP WITH TIME ZONE,
-    delivery_date TIMESTAMP WITH TIME ZONE,
+    start_date DATE,
+    delivery_date DATE,
     status task_status DEFAULT 'Not Started',
     CONSTRAINT date_ck CHECK (delivery_date>start_date)
 );
 
+
+
 CREATE TABLE task_assigned(
     project_coordinator_id INTEGER NOT NULL REFERENCES users(id),
     project_member_id INTEGER NOT NULL REFERENCES users(id),
-    task_id INTEGER NOT NULL REFERENCES task(id),
+    task_id INTEGER NOT NULL REFERENCES tasks(id),
     notified BOOLEAN DEFAULT FALSE NOT NULL,
     PRIMARY KEY(project_coordinator_id,project_member_id,task_id)
 );
@@ -162,7 +164,7 @@ CREATE INDEX task_assigned_member_index  ON task_assigned USING btree  (project_
 
 -- INDEX 4
 
-ALTER TABLE task
+ALTER TABLE tasks
 ADD COLUMN tsvectors TSVECTOR;
 
 CREATE FUNCTION task_search_update() RETURNS TRIGGER AS $$
@@ -186,7 +188,7 @@ END $$
 LANGUAGE plpgsql;
 
 CREATE TRIGGER task_search_update
-BEFORE INSERT OR UPDATE ON task
+BEFORE INSERT OR UPDATE ON tasks
 FOR EACH ROW
 EXECUTE PROCEDURE task_search_update();
 
@@ -255,8 +257,9 @@ INSERT INTO users VALUES (
 
 
 INSERT INTO company VALUES(DEFAULT,'FEUP');
-INSERT INTO projects VALUES(DEFAULT,1,'LBAW','Um trabalho que me faz querer cortar os pulsos','2021-08-24 14:00:00 +02:00', '2022-08-24 14:00:00 +02:00', DEFAULT);
+INSERT INTO projects VALUES(DEFAULT,1,'LBAW','Um trabalho que me faz querer cortar os pulsos','2021-08-24', '2022-08-24', DEFAULT);
 INSERT INTO project_member VALUES(1,1);
+INSERT INTO tasks VALUES(DEFAULT,1,'Finish A8','Finish this specification on time','2021-08-24','2021-09-12',DEFAULT)
 
 -- INSERT INTO cards VALUES (DEFAULT, 'Things to do', 1);
 -- INSERT INTO items VALUES (DEFAULT, 1, 'Buy milk');

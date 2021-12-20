@@ -29,12 +29,12 @@
         
         @if (Auth::check())
         <div class="navbar">
-          <a href="{{ url('/cards') }}"><img src="./images/horizontal-logo.png" alt=""></a>
+          <a href="{{ url('/') }}"><img src="/images/horizontal-logo.png" alt=""></a>
           <div class="navbar-options">
             
             <div class="navbar-collapse-item">
               <a >{{ Auth::user()->name }}</a>
-              <img src="./images/profile-pic.png" alt="">
+              <img src="/images/profile-pic.png" alt="">
             </div>
             
           </div>
@@ -46,7 +46,7 @@
          
         @else
         <div class="navbar">
-          <a href="{{ url('/') }}"><img src="./images/horizontal-logo.png" alt=""></a>
+          <a href="{{ url('/') }}"><img src="/images/horizontal-logo.png" alt=""></a>
           <div class="navbar-options">
             <a href="">About Us</a>
             <a href="">FAQ</a>
