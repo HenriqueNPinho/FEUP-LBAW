@@ -20,13 +20,6 @@ class Project extends Model
     return $this->hasMany('App\Models\Task');
   }
 
-  // public function tasksDone(){
-  //   return tasks()->where('status','Complete')->get();
-  // }
-
-  // public function tasksToDo(){
-  //   return tasks()->where('status','Not Started')->get();
-  // }
   /**
    * Items inside this card
    */

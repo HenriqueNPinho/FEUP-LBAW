@@ -1,4 +1,4 @@
-var dragged;
+let dragged;
 
 function addEventListeners() {
   // let itemCheckers = document.querySelectorAll('article.card li.item input[type=checkbox]');
@@ -57,12 +57,7 @@ function setUpProjectSwitch(){
     })
   });
   
-  
 }
-
-
-
-
 
 function setUpDragAndDropTasks(){
   var dragged;
@@ -116,6 +111,7 @@ function setUpDragAndDropTasks(){
       // move dragged elem to the selected drop target
       if ( event.target.className == "board" && dragged!=null) {
           event.target.style.background = "";
+          sendTaskUpdateStatusRequest(dragged.getAttribute('data-id'),dragged.parentNode.getAttribute('id'),event.target.getAttribute('id'))
           dragged.parentNode.removeChild( dragged );
           event.target.appendChild( dragged );
       }
@@ -124,7 +120,57 @@ function setUpDragAndDropTasks(){
   }, false);
 }
 
+function sendTaskUpdateStatusRequest(id,previousStatus,newStatus){
+  if(previousStatus==newStatus) return false;
+  let statusString;
+  switch (newStatus){
+    case 'not-started':
+      statusString='Not Started';
+      break;
+    case 'started':
+      statusString='In Progress';
+      break;
+    case 'complete':
+      statusString='Complete';
+      break;
+    default:
+      return false;
+  }
+  return sendAjaxRequest('post', '/api/task/updateStatus/' + id, {status: statusString}, genericResponseHandler);
+}
 
+function genericResponseHandler(){
+  if(this.status!=200){
+    location.reload();
+  }
+  return;
+}
+
+function setUpAddNewTask(){
+  let addTaskIcons=document.querySelectorAll('.new-task-plus');
+  addTaskIcons.forEach(function(item,index){
+    item.addEventListener('click',createNewTask);
+  });
+}
+
+function createNewTask(){
+  let projectAreaCover=document.querySelector('#project-overview-opaque-cover');
+  projectAreaCover.style.display="block";
+  let taskForm = document.querySelector('#new-task-form');
+  taskForm.style.display="flex";
+  
+  let closeTaskIcon=document.querySelector("#close-task-form");
+  closeTaskIcon.addEventListener("click",function(){
+    projectAreaCover.style.display="none";
+    taskForm.style.display="none";
+  })
+
+  let createTaskButton=document.querySelector("#createNewTaskButton");
+  createTaskButton.addEventListener("click",function(){
+    let id=document.querySelector('#project-overview').getAttribute('data-id');
+    sendAjaxRequest('post','/api/project/'+id,)
+  })
+}
 
 function encodeForAjax(data) {
   if (data == null) return null;
@@ -148,7 +194,8 @@ function sendAjaxRequest(method, url, data, handler) {
 
 setUpDropDownMenu();
 setUpProjectSwitch();
-setUpDragAndDropTasks()
+setUpDragAndDropTasks();
+setUpAddNewTask();
 
 
 
