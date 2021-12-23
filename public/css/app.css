@@ -23,7 +23,7 @@ main > header {
     z-index: 10;
 }
 .navbar a img {
-    height: 90px;
+    height: 10vh;
     padding-left: 100px;
 }
 .navbar-options {
