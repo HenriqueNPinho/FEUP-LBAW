@@ -224,7 +224,7 @@ $BODY$
 LANGUAGE plpgsql;
 
 CREATE TRIGGER remove_favorites
-BEFORE UPDATE ON project
+BEFORE UPDATE ON projects
 FOR EACH ROW
 EXECUTE PROCEDURE remove_favorites();
 
