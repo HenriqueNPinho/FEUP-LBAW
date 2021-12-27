@@ -698,3 +698,104 @@ a {
     user-select: none; /* Non-prefixed version, currently
                                     supported by Chrome, Edge, Opera and Firefox */
 }
+
+/*--------------------*/
+/* USER PAGE */
+
+#photoSpace{
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.textSpace{
+    display: flex;
+    flex-flow: column;
+    margin-left: 15%;
+}
+
+.userName{
+    color:#264653;
+    font-weight: 600px;
+    font-size: 30px;
+}
+
+.userEmail{
+    color :black;
+}
+
+.userpageSetUp{
+    padding-top: 5%;
+    padding-bottom: 3%;
+    display: flex;
+    flex-flow: row nowrap;
+    align-self: center;
+    justify-content: center;
+}
+
+.userpageInfo{
+    display: flex;
+    flex-flow: column;
+}
+
+#emailSpace{
+    display: flex;
+    flex-flow: row;
+}
+
+#emailIcon{
+    align-self: center;
+    padding-right: 2%;
+}
+
+.icon{
+    color:#264653;
+}
+
+#userPhoto{
+    display: flex;
+    align-self:center;
+    width: 200px;
+    height: 200px;
+}
+
+#buttonEditProfile{
+    padding : 14px 30px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 65%;
+    display: flex;
+    background: #3abb71;
+    color: rgb(255,255,255);
+    border: none;
+    border-radius: 30px;
+    font-weight: 600;
+    display: flex;
+    align-self: center;
+    justify-content: center;
+}
+
+#userPageHR{
+    background-color: #3abb71;
+    border: none;
+    height: 5px;
+    width: 100%;
+}
+
+/*--------------------*/
+/* USER PAGE */
+#cancelImage{
+    width: 20px;
+    height: 20px;
+    background-color: yellow;
+    color:black;
+}
+
+#saveImage{
+    width: 20px;
+    height: 20px;
+    background-color: yellow;
+    color:black;
+}
