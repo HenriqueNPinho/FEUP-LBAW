@@ -33,9 +33,9 @@ CREATE TABLE users (
     name TEXT NOT NULL,
     email TEXT NOT NULL UNIQUE,
     password TEXT NOT NULL,
-    remember_token VARCHAR,
     profile_image TEXT,
-    profile_description TEXT
+    profile_description TEXT,
+    remember_token VARCHAR
 );
 
 
@@ -113,11 +113,11 @@ CREATE TABLE tasks (
 
 
 CREATE TABLE task_assigned(
-    project_coordinator_id INTEGER NOT NULL REFERENCES users(id),
-    project_member_id INTEGER NOT NULL REFERENCES users(id),
-    task_id INTEGER NOT NULL REFERENCES tasks(id),
+    project_member_id INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+    task_id INTEGER NOT NULL REFERENCES tasks(id) ON DELETE CASCADE,
+    project_coordinator_id INTEGER,
     notified BOOLEAN DEFAULT FALSE NOT NULL,
-    PRIMARY KEY(project_coordinator_id,project_member_id,task_id)
+    PRIMARY KEY(project_member_id,task_id)
 );
 
 CREATE TABLE forum_post(
@@ -252,14 +252,18 @@ INSERT INTO users VALUES (
   DEFAULT,
   'John Doe',
   'admin@example.com',
-  '$2y$10$HfzIhGCCaxqyaIdGgjARSuOKAcm1Uy82YfLuNaajn6JrjLWy9Sj/W'
+  '$2y$10$HfzIhGCCaxqyaIdGgjARSuOKAcm1Uy82YfLuNaajn6JrjLWy9Sj/W',
+  '/images/profile-pic.png'
 ); -- Password is 1234. Generated using Hash::make('1234')
 
 
 INSERT INTO company VALUES(DEFAULT,'FEUP');
 INSERT INTO projects VALUES(DEFAULT,1,'LBAW','Um trabalho que me faz querer cortar os pulsos','2021-08-24', '2022-08-24', DEFAULT);
 INSERT INTO project_member VALUES(1,1);
-INSERT INTO tasks VALUES(DEFAULT,1,'Finish A8','Finish this specification on time','2021-08-24','2021-09-12',DEFAULT)
+INSERT INTO project_coordinator VALUES(1,1);
+INSERT INTO tasks VALUES(DEFAULT,1,'Finish A8','Finish this specification on time','2021-08-24','2021-09-12',DEFAULT);
+INSERT INTO task_assigned VALUES(1,1,null,DEFAULT);
+
 
 -- INSERT INTO cards VALUES (DEFAULT, 'Things to do', 1);
 -- INSERT INTO items VALUES (DEFAULT, 1, 'Buy milk');

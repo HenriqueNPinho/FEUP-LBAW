@@ -15,5 +15,9 @@ class Task extends Model
   public function project() {
     return $this->belongsTo('App\Models\Project');
   }
+
+  public function members() {
+    return $this->belongsToMany('App\Models\User','task_assigned','task_id','project_member_id');
+  }
   
 }

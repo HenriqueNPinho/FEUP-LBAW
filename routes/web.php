@@ -19,7 +19,9 @@ Route::get('project/{id}', 'ProjectController@show');
 
 // API
 Route::post('api/task/updateStatus/{id}', 'TaskController@updateStatus');
-Route::put('api/project/{project_id}','TaskController@create');
+Route::put('api/task/{project_id}','TaskController@create');
+Route::get('api/task/{task_id}','TaskController@get');
+Route::delete('api/task/{task_id}','TaskController@delete');
 
 Route::put('api/cards', 'CardController@create');
 Route::delete('api/cards/{card_id}', 'CardController@delete');

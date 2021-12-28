@@ -1,32 +1,5 @@
 let dragged;
 
-function addEventListeners() {
-  // let itemCheckers = document.querySelectorAll('article.card li.item input[type=checkbox]');
-  // [].forEach.call(itemCheckers, function(checker) {
-  //   checker.addEventListener('change', sendItemUpdateRequest);
-  // });
-
-  // let itemCreators = document.querySelectorAll('article.card form.new_item');
-  // [].forEach.call(itemCreators, function(creator) {
-  //   creator.addEventListener('submit', sendCreateItemRequest);
-  // });
-
-  // let itemDeleters = document.querySelectorAll('article.card li a.delete');
-  // [].forEach.call(itemDeleters, function(deleter) {
-  //   deleter.addEventListener('click', sendDeleteItemRequest);
-  // });
-
-  // let cardDeleters = document.querySelectorAll('article.card header a.delete');
-  // [].forEach.call(cardDeleters, function(deleter) {
-  //   deleter.addEventListener('click', sendDeleteCardRequest);
-  // });
-
-  // let cardCreator = document.querySelector('article.card form.new_card');
-  // if (cardCreator != null)
-  //   cardCreator.addEventListener('submit', sendCreateCardRequest);
-
-}
-
 function setUpDropDownMenu(){
   let dropDownMenuIcon = document.querySelector('.navbar-collapse-item');
   let dropDownMenu =document.querySelector('.navbar-collapse');
@@ -139,12 +112,25 @@ function sendTaskUpdateStatusRequest(id,previousStatus,newStatus){
   return sendAjaxRequest('post', '/api/task/updateStatus/' + id, {status: statusString}, genericResponseHandler);
 }
 
+function genericResponseHandlerWithRefresh(){
+  if(this.status>=400){
+    alert("Error, try again");
+    console.log(this.status);
+    console.log(this.response);
+  }
+  location.reload();
+  return;
+}
+
 function genericResponseHandler(){
-  if(this.status!=200){
-    location.reload();
+  if(this.status>=400){
+    alert("Error, try again");
+    console.log(this.status);
+    console.log(this.response);
   }
   return;
 }
+
 
 function setUpAddNewTask(){
   let addTaskIcons=document.querySelectorAll('.new-task-plus');
@@ -164,12 +150,89 @@ function createNewTask(){
     projectAreaCover.style.display="none";
     taskForm.style.display="none";
   })
-
   let createTaskButton=document.querySelector("#createNewTaskButton");
-  createTaskButton.addEventListener("click",function(){
-    let id=document.querySelector('#project-overview').getAttribute('data-id');
-    sendAjaxRequest('post','/api/project/'+id,)
+  let taskStatus=this.getAttribute('data-id');
+  createTaskButton.addEventListener('click',function(){
+    let id=document.querySelector('.project-overview').getAttribute('data-id');
+    let taskName=document.querySelector('#task-name-input').value;
+    let taskDescription=document.querySelector('#task-description-input').value;
+    let selectedMembers = [];
+    let memberSelectionInput=document.querySelectorAll('.member-selection-option-input');
+    memberSelectionInput.forEach(function(item){
+      if(item.checked) selectedMembers.push(item.getAttribute('data-id'));
+    });
+    if(selectedMembers.length==0) selectedMembers="";
+    let taskDeliveryDate=document.querySelector('#new-task-end-date').value;
+    if(new Date(taskDeliveryDate)<new Date()){
+      alert("The delivery date isn't valid!");
+      return;
+    }
+    
+    sendAjaxRequest('put','/api/task/'+id,{name:taskName, description:taskDescription, members:selectedMembers,status:taskStatus, date:taskDeliveryDate},genericResponseHandlerWithRefresh);
+    
   })
+}
+
+
+function setUpViewFullTask(){
+  let taskPreviews=document.querySelectorAll('.task-preview');
+  taskPreviews.forEach(function(item){
+    item.addEventListener("click",function(){
+      let taskID=this.getAttribute('data-id');
+      sendAjaxRequest('get','/api/task/'+taskID,null,viewFullTask);
+    })
+  })
+}
+
+function viewFullTask(){
+  if(this.status!=200){
+    location.reload();
+  }
+  
+  let task=JSON.parse(this.response);
+  console.log(task);
+  let taskPage=document.querySelector("#task-page");
+  taskPage.style.display="block";
+  let projectAreaCover=document.querySelector('#project-overview-opaque-cover');
+  projectAreaCover.style.display="block";
+
+  let closeTaskIcon=document.querySelector("#close-task-page");
+  closeTaskIcon.addEventListener("click",function(){
+    projectAreaCover.style.display="none";
+    taskPage.style.display="none";
+    
+  })
+
+  let deleteTaskIcon=document.querySelector("#delete-task-icon");
+  deleteTaskIcon.addEventListener("click",function(){
+    projectAreaCover.style.display="none";
+    taskPage.style.display="none";
+    let taskID=task[0]["id"];
+    sendAjaxRequest('delete','/api/task/'+taskID,null,genericResponseHandler);
+    let tasks=document.querySelectorAll('.task-preview');
+    tasks.forEach(function(item){
+      if(item.getAttribute("data-id")==taskID){
+        item.parentNode.removeChild(item);
+      }
+    })
+  })
+
+
+
+  document.querySelector('#task-page-task-name').innerHTML=task[0]["name"];
+  document.querySelector('#task-page-task-description').innerHTML=task[0]["description"];
+  document.querySelector('#task-page-task-date').innerHTML=task[0]['delivery_date']
+
+  let taskPageMembersContainer=document.querySelector('#task-page-members');
+  let addMemberIcon=document.querySelector("#task-page-add-member");
+  taskPageMembersContainer.innerHTML="";
+  task[1].forEach(function(item,index){
+    let image=document.createElement("img");
+    image.setAttribute("src",task[1][index]['profile_image']);
+    document.querySelector('#task-page-members').appendChild(image);
+  })
+  document.querySelector('#task-page-members').appendChild(addMemberIcon);
+  
 }
 
 function encodeForAjax(data) {
@@ -190,12 +253,11 @@ function sendAjaxRequest(method, url, data, handler) {
 }
 
 
-
-
 setUpDropDownMenu();
 setUpProjectSwitch();
 setUpDragAndDropTasks();
 setUpAddNewTask();
+setUpViewFullTask();
 
 
 

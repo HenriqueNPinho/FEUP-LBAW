@@ -20,7 +20,6 @@ class User extends Authenticatable
     protected $fillable = [
         'name', 'email', 'password',
     ];
-
     /**
      * The attributes that should be hidden for arrays.
      *
@@ -35,5 +34,9 @@ class User extends Authenticatable
      */
     public function projects() {
         return $this->belongsToMany('App\Models\Project','project_member','users_id','project_id');
+    }
+
+    public function tasks() {
+        return $this->belongsToMany('App\Models\Task','task_assigned','project_member_id','task_id');
     }
 }

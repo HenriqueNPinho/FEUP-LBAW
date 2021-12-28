@@ -20,6 +20,9 @@ class Project extends Model
     return $this->hasMany('App\Models\Task');
   }
 
+  public function coordinators(){
+    return $this->belongsToMany('App\Models\User','project_coordinator','project_id','users_id');
+  }
   /**
    * Items inside this card
    */
