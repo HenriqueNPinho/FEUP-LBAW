@@ -35,3 +35,9 @@ Route::post('login', 'Auth\LoginController@login');
 Route::get('logout', 'Auth\LoginController@logout')->name('logout');
 Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
 Route::post('register', 'Auth\RegisterController@register');
+
+//User Page
+Route::get('userpage', 'UserController@showProfile')->name('userpage');
+Route::get('edituserpage', 'UserController@edit');
+//Route::post('/edituserpage', 'UserController@update')->name('edituserpage');
+Route::post('/edituserpage', 'UserController@userpageUpdate')->name('edituserpage');

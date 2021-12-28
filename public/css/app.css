@@ -875,3 +875,142 @@ a {
     user-select: none; /* Non-prefixed version, currently
                                     supported by Chrome, Edge, Opera and Firefox */
 }
+
+/*--------------------*/
+/* USER PAGE */
+
+#photoSpace{
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.textSpace{
+    display: flex;
+    flex-flow: column;
+    margin-left: 15%;
+}
+
+.userName{
+    color:#264653;
+    font-weight: 600px;
+    font-size: 30px;
+}
+
+.userEmail{
+    color :black;
+}
+
+.userpageSetUp{
+    padding-top: 5%;
+    padding-bottom: 3%;
+    display: flex;
+    flex-flow: row nowrap;
+    align-self: center;
+    justify-content: center;
+}
+
+.userpageInfo{
+    display: flex;
+    flex-flow: column;
+}
+
+#emailSpace{
+    display: flex;
+    flex-flow: row;
+}
+
+#emailIcon{
+    align-self: center;
+    padding-right: 2%;
+}
+
+.icon{
+    color:#264653;
+}
+
+#userPhoto{
+    display: flex;
+    align-self:center;
+    width: 200px;
+    height: 200px;
+}
+
+#buttonEditProfile{
+    display: flex;
+    align-self: center;
+    justify-content: center;
+}
+
+#userPageHR{
+    background-color: #3abb71;
+    border: none;
+    height: 5px;
+    width: 100%;
+}
+
+#editprofileButton{
+    border: 0;
+    background-color: #2a9d8f;
+    padding: 13px;
+    border-radius: 20px;
+    height: 40px;
+    font-size: 14px;
+    color: white;
+    text-transform: uppercase;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/*--------------------*/
+/* EDIT USER PAGE */
+
+#edituserpageTitle{
+    color: #264653;
+    font-size: 30px;
+    text-align: center;
+    padding-top : 15px;
+}
+
+.edituserpageHR{
+  
+    border: 0;
+    height: 1px;
+    width: 50%;
+    position: relative;
+    margin: 30px auto;
+    background: #2a9d8f;
+}
+
+.edituserpageHR::before{
+    background: #2a9d8f;
+    content: "";
+    width: 6px;
+    height: 6px;
+    display: inline-block;
+    border: 2px solid #2a9d8f;
+    position: absolute;
+    top: -5px;
+    left: 50%;
+    margin: 0 0 0 -3px;
+    transform:rotate(45deg);
+    -ms-transform:rotate(45deg); 
+}
+
+.userpageParam{
+    padding-bottom: 30px;
+}
+
+#buttonUpdate{
+    padding-top: 40px;
+    display: flex;
+    align-self: center;
+    justify-content: center;
+}
+
+.edituserpagePlaceholder{
+    width: 250px;
+    height: 50px;
+    color: rgb(126, 126, 126);
+}
