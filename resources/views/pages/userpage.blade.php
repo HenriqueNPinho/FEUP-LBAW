@@ -9,7 +9,6 @@
     </div>
     <div class = "textSpace">
         <div class="userpageInfo">
-            <!-- <i class="login__icon fas fa-user icon"></i> -->
             <p class="userName">{{ $user->name }}</p>
             <hr id = "userPageHR">
         </div>
@@ -20,11 +19,10 @@
             </div>
         </div>
         <div id= "buttonEditProfile"> 
-        <a href="{{ url('/edituserpage') }}">Edit Profile </a>
+            <a href="{{ url('/edituserpage') }}" id = "editprofileButton">Edit Profile </a>
         </div>
     </div>
 </div>
-
 
 @endsection
 

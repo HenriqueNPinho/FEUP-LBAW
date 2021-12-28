@@ -31,33 +31,18 @@ class UserController extends Controller
         return view('pages.edituserpage', ['user' => $user]);
     }
 
-    /**
-     * Update the specified User in storage.
-     *
-     * @param  int              $id
-     * @param Request $request
-     *
-     * @return Response
-     */
-    public function update(Request $request)
-    {
-        $this->validate($request, [
-            'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'name' => 'required|string|max:255'
+    public function userpageUpdate(Request $request){
+        //validation rules
+
+        $request->validate([
+            'name' =>'required|min:4|string|max:255',
+            'email'=>'required|email|string|max:255'
         ]);
-
         $user = Auth::user();
-
-        if($request->image != null) {
-            //$imageName = 'user-' . $id . '.'.$request->image->getClientOriginalExtension();
-            //$request->image->move(public_path('img/users/'), $imageName);
-    
-            //$request->merge(['img' => $imageName]);
-        }
-
-        Flash::success('User updated successfully.');
-
-        return redirect(route('pages.userpage', $user));
+        $user->name = $request['name'];
+        $user->email = $request['email'];
+        $user->save();
+        return view('pages.userpage', ['user' => $user])->with('message','User Page Updated');
     }
 
 }

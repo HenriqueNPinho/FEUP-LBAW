@@ -761,17 +761,6 @@ a {
 }
 
 #buttonEditProfile{
-    padding : 14px 30px;
-    margin: 8px 0;
-    border: none;
-    cursor: pointer;
-    width: 65%;
-    display: flex;
-    background: #3abb71;
-    color: rgb(255,255,255);
-    border: none;
-    border-radius: 30px;
-    font-weight: 600;
     display: flex;
     align-self: center;
     justify-content: center;
@@ -784,18 +773,67 @@ a {
     width: 100%;
 }
 
-/*--------------------*/
-/* USER PAGE */
-#cancelImage{
-    width: 20px;
-    height: 20px;
-    background-color: yellow;
-    color:black;
+#editprofileButton{
+    border: 0;
+    background-color: #2a9d8f;
+    padding: 13px;
+    border-radius: 20px;
+    height: 40px;
+    font-size: 14px;
+    color: white;
+    text-transform: uppercase;
+    font-weight: bold;
+    cursor: pointer;
 }
 
-#saveImage{
-    width: 20px;
-    height: 20px;
-    background-color: yellow;
-    color:black;
+/*--------------------*/
+/* EDIT USER PAGE */
+
+#edituserpageTitle{
+    color: #264653;
+    font-size: 30px;
+    text-align: center;
+    padding-top : 15px;
+}
+
+.edituserpageHR{
+  
+    border: 0;
+    height: 1px;
+    width: 50%;
+    position: relative;
+    margin: 30px auto;
+    background: #2a9d8f;
+}
+
+.edituserpageHR::before{
+    background: #2a9d8f;
+    content: "";
+    width: 6px;
+    height: 6px;
+    display: inline-block;
+    border: 2px solid #2a9d8f;
+    position: absolute;
+    top: -5px;
+    left: 50%;
+    margin: 0 0 0 -3px;
+    transform:rotate(45deg);
+    -ms-transform:rotate(45deg); 
+}
+
+.userpageParam{
+    padding-bottom: 30px;
+}
+
+#buttonUpdate{
+    padding-top: 40px;
+    display: flex;
+    align-self: center;
+    justify-content: center;
+}
+
+.edituserpagePlaceholder{
+    width: 250px;
+    height: 50px;
+    color: rgb(126, 126, 126);
 }
