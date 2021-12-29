@@ -39,7 +39,7 @@
           <div class="navbar-options">
             
             <div class="navbar-collapse-item">
-              <a >{{ Auth::user()->name }}</a>
+              <a>{{ Auth::user()->name }}</a>
               <img src="/images/profile-pic.png" alt="">
             </div>
           </div>

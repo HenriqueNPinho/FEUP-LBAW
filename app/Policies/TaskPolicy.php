@@ -12,11 +12,21 @@ class TaskPolicy
 {
     use HandlesAuthorization;
 
-    // public function create(User $user, Task $task)
-    // {
-    //   // User can only create items in cards they own
-    //   return $user->id == $item->card->user_id;
-    // }
+    public function create(User $user, Task $task)
+    {
+      foreach($task->project->members as $member){
+        if($user->id == $member->id) return TRUE;
+      }
+      return FALSE;
+    }
+
+    public function access(User $user, Task $task)
+    {
+      foreach($task->project->members as $member){
+        if($user->id == $member->id) return TRUE;
+      }
+      return FALSE;
+    }
 
     public function update(User $user, Task $task)
     {
@@ -27,9 +37,12 @@ class TaskPolicy
       return FALSE;
     }
 
-    // public function delete(User $user, Item $item)
-    // {
-    //   // User can only delete items in cards they own
-    //   return $user->id == $item->card->user_id;
-    // }
+    public function delete(User $user, Task $task)
+    {
+      // Only coordinators can delete tasks
+      foreach($task->project->coordinators as $coordinator){
+        if($coordinator->id == $user->id) return TRUE;
+      }
+      return FALSE;
+    }
 }

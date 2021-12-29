@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Task;
 use App\Models\Project;
 
@@ -14,51 +15,71 @@ class TaskController extends Controller
   /**
    * Creates a new item.
    *
-   * @param  int  $card_id
+   * @param  int  $project_id
    * @param  Request request containing the description
    * @return Response
    */
-  // public function create(Request $request, $card_id)
-  // {
-  //   $item = new Item();
-  //   $item->card_id = $card_id;
-  //   $this->authorize('create', $item);
-  //   $item->done = false;
-  //   $item->description = $request->input('description');
-  //   $item->save();
-  //   return $item;
-  // }
+	public function create(Request $request, $project_id)
+	{
+		$task = new Task();
+		$task->project_id = $project_id;
+		$this->authorize('create', $task);
+		$task->status = $request->input('status');
+		$task->name = $request->input('name');
+		$task->start_date = date("Y-m-d");
+		$task->delivery_date = $request->input('date');
+		$task->description = $request->input('description');
+		$members=$request->input('members');
+		
+		$task->save();
+		if($members!=""){
+			$assignedMembersIDs = explode(",", $members);
+			foreach($assignedMembersIDs as $memberID){
+				$task->members()->attach($memberID);
+			}
+		}
+		
+		return $task;
+	}
 
-    /**
-     * Updates the state of an individual item.
-     *
-     * @param  int  $id
-     * @param  Request request containing the new state
-     * @return Response
-     */
-    public function updateStatus(Request $request, $id)
-    {
-      $task = Task::find($id);
-      $this->authorize('update', $task);
-      if($request->input('status')=='Not Started' || $request->input('status')=='In Progress' | $request->input('status')=='Complete'){
-        $task->status = $request->input('status');
-        $task->save();
-      }
-      return $task;
-    }
+	public function get($task_id)
+	{
+		$task = Task::find($task_id);
+		$this->authorize('access', $task);
+		return [$task,$task->members];
+	}
 
-    /**
-     * Deletes an individual item.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    // public function delete(Request $request, $id)
-    // {
-    //   $item = Item::find($id);
-    //   $this->authorize('delete', $item);
-    //   $item->delete();
-    //   return $item;
-    // }
+
+  /**
+   * Updates the state of an individual item.
+   *
+   * @param  int  $id
+   * @param  Request request containing the new state
+   * @return Response
+   */
+	public function updateStatus(Request $request, $id)
+	{
+		$task = Task::find($id);
+		$this->authorize('update', $task);
+		if($request->input('status')=='Not Started' || $request->input('status')=='In Progress' | $request->input('status')=='Complete'){
+			$task->status = $request->input('status');
+			$task->save();
+		}
+		return $task;
+	}
+
+	/**
+	 * Deletes an individual item.
+	 *
+	 * @param  int  $id
+	 * @return Response
+	 */
+	public function delete(Request $request, $id)
+	{
+	  $task = Task::find($id);
+	  $this->authorize('delete', $task);
+	  $task->delete();
+	  return $task;
+	}
 
 }
