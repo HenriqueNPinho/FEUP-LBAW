@@ -388,8 +388,7 @@ form h4 {
     padding-left: 5%;
     padding-right: 5%;
     display: flex;
-    flex-direction: column;
-    justify-content: space-around;
+    justify-content: space-between;
     align-self: center;
     width: 90%;
     background-color: white;
@@ -418,12 +417,174 @@ form h4 {
     font-size: 14px;
 }
 
-#project-overview-opaque-cover{
-    display: none   ;
+.alternate-member-count{
+    display: flex;
+    justify-content: space-around;
+    height: 30px;
+    width: 30px;
+    border: 2px solid #264653;
+    border-radius: 25px;
+    margin-top:20px;
+}
+
+.alternate-member-count h2{
+    font-size: 17px;
+    align-self: center;
+}
+
+#project-overview-opaque-cover {
+    display: none;
     position: absolute;
     height: 90vh;
-    width: 100%;
+    width: 95%;
     background-color: #c9c9c9a9;
+}
+
+#task-page {
+    display: none;
+    position: absolute;
+    flex-direction: column;
+    margin-top: 8vh;
+    margin-left: 30%;
+    margin-right: 35%;
+    width: 30%;
+    max-height: 80vh;
+    overflow: scroll;
+    background-color: #ececec;
+    border-radius: 3px;
+    -webkit-box-shadow: 0px 5px 16px 0px rgba(0, 0, 0, 0.11);
+    box-shadow: 0px 5px 16px 0px rgba(0, 0, 0, 0.11);
+}
+
+#task-page-header {
+    display: flex;
+    justify-content: space-between;
+}
+
+#task-page-header h2 {
+    align-self: top;
+    margin-top: 33px;
+    align-self: left;
+    text-transform: uppercase;
+    color: #264653;
+}
+
+#task-page-header img {
+    margin-left: 15px;
+    cursor: pointer;
+    height: 23px;
+    margin-top: 33px;
+}
+
+#task-page > div {
+    margin-left: 33px;
+    margin-right: 33px;
+}
+
+#task-page h2 {
+    color: #264653;
+}
+
+#task-page-header h1 {
+    margin-bottom: 15px;
+    font-size: 35px;
+    color: #264653;
+}
+
+#task-description-container {
+    width: 60%;
+}
+
+#task-page-task-date-container{
+    display: flex;
+    align-items: center;
+}
+
+
+#task-page-task-date-container img{
+    height: 20px;
+    margin-right:8px
+}
+
+#task-page-members {
+    margin-top: 0px;
+    display: flex;
+    justify-content: flex-start;
+}
+
+#task-page-members img {
+    height: 30px;
+    border-radius: 30px;
+    margin-left: 5px;
+    align-self: center;
+}
+
+#task-page-members #task-page-add-member {
+    cursor: pointer;
+    height: 25px;
+    margin-left: 10px;
+    align-self: center;
+}
+
+#task-page-members img:first-of-type {
+    margin-left: 0;
+}
+
+#task-comments-container {
+    width: 60%;
+}
+.task-page-comment {
+    display: flex;
+    padding-bottom: 10px;
+}
+
+.task-page-comment img {
+    height: 40px;
+    border-radius: 40px;
+}
+
+.task-page-comment > div > h5 {
+    margin-top: 1px;
+    margin-left: 10px;
+    font-size: 15px;
+    margin-bottom: 0px;
+}
+
+.task-page-comment > div > p {
+    margin-left: 10px;
+    font-size: 13px;
+    margin-top: 5px;
+    background-color: white;
+    border-radius: 5px;
+    padding: 13px;
+    width: 480px;
+}
+
+.task-page-comment > div > textarea {
+    margin-left: 10px;
+    width: 480px;
+    font-size: 13px;
+    margin-top: 5px;
+    background-color: white;
+    border-color: white;
+    border-radius: 5px;
+    padding: 13px;
+    height: 45px;
+    outline: 0;
+    resize: none;
+}
+
+.task-page-comment > div > h4 {
+    cursor: pointer;
+    background-color: #264653;
+    padding: 6px;
+    text-align: center;
+    border-radius: 5px;
+    font-size: 11px;
+    width: 10%;
+    margin-left:10px ;
+    margin-top:10px;
+    color:white;
 }
 
 #new-task-form {
@@ -441,38 +602,40 @@ form h4 {
     box-shadow: 0px 5px 16px 0px rgba(0, 0, 0, 0.11);
 }
 
-#new-task-form-header{
+#new-task-form-header {
     display: flex;
     justify-content: space-between;
 }
 
-#new-task-form-header h2{
+#new-task-form-header h2 {
     align-self: top;
 }
 
-#new-task-form-header img{
+#new-task-form-header img {
     align-self: top;
     cursor: pointer;
     height: 23px;
-    margin-top: 5%;
-    margin-right:  5%;
+    margin-top: 33px;
+    margin-right: 33px;
 }
 
 #new-task-form h2 {
-    margin-left: 5%;
-    margin-top: 5%;
+    margin-left: 33px;
+    margin-top: 33px;
     margin-bottom: 5%;
     align-self: left;
     text-transform: uppercase;
     color: #264653;
 }
 
-#new-task-form input[type="text"], #new-task-form textarea{
+#new-task-form input[type="text"],
+#new-task-form textarea {
     margin-left: 5%;
     margin-right: 5%;
 }
 
-#new-task-form input, #new-task-form textarea {
+#new-task-form input,
+#new-task-form textarea {
     background-color: #ffffff;
     margin-bottom: 20px;
     border-radius: 2px;
@@ -486,13 +649,21 @@ form h4 {
     resize: none;
 }
 
+#new-task-end-date-selection {
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+#new-task-end-date-selection h4 {
+    margin-top: 0;
+}
+
 #new-task-form textarea {
     padding: 12px 20px 0;
     height: 20vh;
 }
 
-
-#member-selection{
+#member-selection {
     background-color: white;
     margin-left: 5%;
     margin-right: 5%;
@@ -501,22 +672,24 @@ form h4 {
     height: 22vh;
 }
 
-#member-selection h4{
+#member-selection h4 {
     margin-left: 15px;
+    margin-right: 20px;
     margin-bottom: 5px;
 }
-#member-selection-option{
+#member-selection-option {
     display: flex;
 }
-#member-selection-option input,#member-selection-option label{
-    margin:0;
+#member-selection-option input,
+#member-selection-option label {
+    margin: 0;
     margin-left: 15px;
     align-self: center;
 }
 
-#new-task-form .button{
+#new-task-form .button {
     align-self: center;
-    margin-top:20px;
+    margin-top: 20px;
     display: flex;
     border: 0;
     background-color: #2a9d8f;
@@ -531,10 +704,14 @@ form h4 {
     width: 20%;
 }
 
-#new-task-form .button h4{
+#new-task-form .button h4 {
     width: 100%;
     align-self: center;
     text-align: center;
+}
+
+.two-column-container {
+    display: flex;
 }
 
 /**********************/
@@ -638,6 +815,35 @@ form h4 {
         border-bottom: 1px solid rgba(96, 108, 118, 0.4);
     }
 }
+#create-project input[type="text"]{ 
+    width: 45%;
+    padding: 20px;
+    margin: 12px;
+    box-sizing: border-box;
+}
+#create-project{
+    display: flex;
+    justify-content: center;
+}
+
+#creatingYP{
+    text-align: center;
+    color: #7e7d7ad2;
+}
+#c-button  input[type="button"]{
+        width: 15%;
+        height: 30px;
+        text-align: center;
+        text-size-adjust: auto;
+        border: 0.2px solid #000;
+        background: #e6e4e4;
+        cursor: pointer;
+}
+#c-button {
+display: flex;
+justify-content: center;
+}
+
 /**
  * Overide milligram colors
  * Some styles might be missing

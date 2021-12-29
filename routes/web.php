@@ -19,7 +19,9 @@ Route::get('project/{id}', 'ProjectController@show');
 
 // API
 Route::post('api/task/updateStatus/{id}', 'TaskController@updateStatus');
-Route::put('api/project/{project_id}','TaskController@create');
+Route::put('api/task/{project_id}','TaskController@create');
+Route::get('api/task/{task_id}','TaskController@get');
+Route::delete('api/task/{task_id}','TaskController@delete');
 
 Route::put('api/cards', 'CardController@create');
 Route::delete('api/cards/{card_id}', 'CardController@delete');
@@ -37,4 +39,12 @@ Route::post('register', 'Auth\RegisterController@register');
 //User Page
 Route::get('userpage', 'UserController@showProfile')->name('userpage');
 Route::get('edituserpage', 'UserController@edit');
+<<<<<<< HEAD
 Route::post('edituserpage', 'UserController@userpageUpdate')->name('edituserpage');
+=======
+//Route::post('/edituserpage', 'UserController@update')->name('edituserpage');
+Route::post('/edituserpage', 'UserController@userpageUpdate')->name('edituserpage');
+
+
+Route::get('step1', 'ProjectController@step1');
+>>>>>>> 0aaab8974943e5cc80ac81b190a468ce6ab61cfe

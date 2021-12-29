@@ -5,31 +5,14 @@
 
 
 
-  @include('partials.projects-bar',['projects'=>$projects])
+  @include('partials.projects-bar')
 
   @include('partials.slide-right-menu')
     <div class="project-overview" data-id="{{$project->id}}">
         <div id="project-overview-opaque-cover"></div>
-        <div id="new-task-form">
-            <div id="new-task-form-header">
-                <h2>Create a new task</h2>
-                <img id="close-task-form" src="/images/icons/close.png" alt="">
-                
-            </div>
-            
-            <input type="text" name="name" placeholder="Task Name">
-            <textarea name="description" placeholder="Description of your task" cols="40" rows="5"></textarea>
-            <div id="member-selection">
-                <h4>ASSIGN MEMBERS TO THE TASK</h4>
-                @foreach ($project->members as $member)
-                <div id="member-selection-option">
-                    <input type = "checkbox" id = "{{$member->id}}" name = "{{$member->name}}" >
-                    <label for = "{{$member->id}}"> {{$member->name}}</label>
-                </div>
-                @endforeach
-            </div>
-            <div id="createNewTaskButton" class="button"><h4>ADD TASK</h4></div>
-        </div>
+        @include('partials.new-task-form')
+        @include('partials.task-page')
+        
         <h2 id="project-title">{{$project->name}}</h2>
         <div class="boards-container">
             <div id="not-started" class="board">
