@@ -40,7 +40,11 @@
             
             <div class="navbar-collapse-item">
               <a >{{ Auth::user()->name }}</a>
-              <img src="/images/profile-pic.png" alt="">
+                @if(empty(Auth::user()->profile_image))
+                  <img src = "/images/avatars/profile-pic.png" id = "ProfilePhoto">
+                @else
+                    <img src ="{{Auth::user()->profile_image}}" id = "ProfilePhoto"> 
+                @endif
             </div>
           </div>
         </div>
