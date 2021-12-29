@@ -39,3 +39,6 @@ Route::get('userpage', 'UserController@showProfile')->name('userpage');
 Route::get('edituserpage', 'UserController@edit');
 //Route::post('/edituserpage', 'UserController@update')->name('edituserpage');
 Route::post('/edituserpage', 'UserController@userpageUpdate')->name('edituserpage');
+
+
+Route::get('step1', 'ProjectController@step1');

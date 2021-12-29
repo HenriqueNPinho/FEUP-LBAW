@@ -638,6 +638,35 @@ form h4 {
         border-bottom: 1px solid rgba(96, 108, 118, 0.4);
     }
 }
+#create-project input[type="text"]{ 
+    width: 45%;
+    padding: 20px;
+    margin: 12px;
+    box-sizing: border-box;
+}
+#create-project{
+    display: flex;
+    justify-content: center;
+}
+
+#creatingYP{
+    text-align: center;
+    color: #7e7d7ad2;
+}
+#c-button  input[type="button"]{
+        width: 15%;
+        height: 30px;
+        text-align: center;
+        text-size-adjust: auto;
+        border: 0.2px solid #000;
+        background: #e6e4e4;
+        cursor: pointer;
+}
+#c-button {
+display: flex;
+justify-content: center;
+}
+
 /**
  * Overide milligram colors
  * Some styles might be missing
