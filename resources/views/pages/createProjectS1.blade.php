@@ -13,8 +13,8 @@
         <div id="c-button">
           <input type="button" onclick="location.href='step2';" value="Continue" />
         </div>
-        <div id="creatingYP">
-        <h5>Creating your project-step 1 of 3</h5>   
+        <div id="create-project">
+            <h5>Creating your project-step 1 of 3</h5>   
         </div>    
     </div>
   </div>

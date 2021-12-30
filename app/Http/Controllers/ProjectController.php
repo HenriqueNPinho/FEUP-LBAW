@@ -46,6 +46,20 @@ class ProjectController extends Controller
           return view('pages.createProjectS1', ['projects'=>$projects]);
         }
     }
+    public function step2()
+    {
+        if (Auth::check()){
+          $projects = Auth::user()->projects()->orderBy('id')->get();
+          return view('pages.createProjectS2', ['projects'=>$projects]);
+        }
+    }
+    public function step3()
+    {
+        if (Auth::check()){
+          $projects = Auth::user()->projects()->orderBy('id')->get();
+          return view('pages.createProjectS3', ['projects'=>$projects]);
+        }
+    }
     /**
      * Creates a new card.
      *
