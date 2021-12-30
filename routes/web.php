@@ -45,7 +45,4 @@ Route::post('edituserpage', 'UserController@userpageUpdate')->name('edituserpage
 Route::post('/edituserpage', 'UserController@userpageUpdate')->name('edituserpage');
 
 
-Route::get('step1', 'ProjectController@step1');
-
-Route::get('step2', 'ProjectController@step2');
-Route::get('step3', 'ProjectController@step3');
+Route::get('create-project', 'ProjectController@createproject');
