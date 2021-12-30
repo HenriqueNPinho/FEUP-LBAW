@@ -13,8 +13,8 @@ return [
     |
     */
 
-    'default' => env('FILESYSTEM_DRIVER', 'local'),
-
+    //'default' => env('FILESYSTEM_DRIVER', 'local'), sofia => mudei para imagem do utilizador
+    'default' => env('FILESYSTEM_DRIVER', 'public'),
     /*
     |--------------------------------------------------------------------------
     | Filesystem Disks

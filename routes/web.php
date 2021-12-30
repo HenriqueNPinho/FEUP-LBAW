@@ -39,10 +39,17 @@ Route::post('register', 'Auth\RegisterController@register');
 //User Page
 Route::get('userpage', 'UserController@showProfile')->name('userpage');
 Route::get('edituserpage', 'UserController@edit');
+<<<<<<< HEAD
+Route::post('edituserpage', 'UserController@userpageUpdate')->name('edituserpage');
+=======
 //Route::post('/edituserpage', 'UserController@update')->name('edituserpage');
 Route::post('/edituserpage', 'UserController@userpageUpdate')->name('edituserpage');
 
 
 Route::get('step1', 'ProjectController@step1');
+<<<<<<< HEAD
 Route::get('step2', 'ProjectController@step2');
 Route::get('step3', 'ProjectController@step3');
+=======
+>>>>>>> 0aaab8974943e5cc80ac81b190a468ce6ab61cfe
+>>>>>>> 7b2f85af35142f5fde3bbc7f12c3879b8f5e6000
