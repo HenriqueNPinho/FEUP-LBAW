@@ -21,10 +21,8 @@ email2@example.com
 email3@example.com" ></textarea>
          </div>
          
-
-
     <div id="c-button">
-        <input type="button" onclick="location.href='';" value="Finish" />
+        <input type="button" onclick="location.href='------------------------------';" value="Finish" />
       </div>
       <div id="create-project">
           <h5>Creating your project - step 3 of 3</h5>   
