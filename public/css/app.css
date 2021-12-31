@@ -84,6 +84,21 @@ main > header {
     width: 100%;
 }
 
+/*=================================*/
+
+/*NAVBAR USER IMAGE*/
+
+#navbarPhotoCropper{
+    width:50px;
+    height:50px;
+}
+
+#navbarProfilePhoto{
+    width: 50px;
+}
+/*=================================*/
+
+
 /******Homepage******/
 
 #homepage-content {
@@ -775,7 +790,7 @@ form h4 {
     margin: 0;
 }
 #content label {
-    font-weight: normal;
+    width:100%;
 }
 
 @media (max-width: 70em) {
@@ -912,31 +927,36 @@ a {
 .userpageSetUp{
     padding-top: 5%;
     padding-bottom: 3%;
+    width: 80%;
     display: flex;
     flex-flow: row nowrap;
     align-self: center;
     justify-content: center;
 }
 
-#photoSpace{
+.photoSpace{
     display: flex;
     flex-flow: column;
     align-items: center;
-    justify-content: center;
-    width: 400px;
-    height: 400px;
+    width: 50%;
+    height: auto;
+    padding-right: 5%;
 }
 
 .textSpace{
     display: flex;
     flex-flow: column;
-    margin-left: 15%;
+    align-items: left;
+    justify-content: center;
+    width: 50%;
+    height: auto;
 }
 
 .userName{
     color:#264653;
     font-weight: 600px;
     font-size: 30px;
+    text-align: center;
 }
 
 .userEmail{
@@ -946,6 +966,7 @@ a {
 .userpageInfo{
     display: flex;
     flex-flow: column;
+    width: 100%;
 }
 
 #emailSpace{
@@ -976,26 +997,41 @@ a {
 }
 
 #userPageHR{
-    background-color: #3abb71;
+    background-color:#2a9d8f;
     border: none;
     height: 5px;
     width: 100%;
 }
 
-#editprofileButton{
-    width: 30%;
+#editProfileButton{
+    margin-top: 10px;
+    width: 300px;
+    height: 45px;
     border: 0;
     background-color: #2a9d8f;
+    color: white;
     border-radius: 20px;
-    height: 40px;
-    font-size: 14px;
+    cursor: pointer;
+    display: flex;
+    align-self: center;
+    justify-content: center;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+#editProfileButton:hover{
+    background-color: #89adbb;
+}
+
+#editProfileButtonText{
     color: white;
     text-transform: uppercase;
     text-align: center;
-    justify-self: center;
     font-weight: bold;
-    cursor: pointer;
-    align-self: center;
 }
 
 /*--------------------*/
@@ -1016,7 +1052,7 @@ a {
 .edituserpageHR{
     border: 0;
     height: 1px;
-    width: 50%;
+    width: 80%;
     position: relative;
     margin: 30px auto;
     background: #2a9d8f;
@@ -1039,30 +1075,46 @@ a {
 
 .userpageParam{
     padding-bottom: 30px;
+    display :flex;
+    flex-flow: column;
 }
 
-#buttonUpdate{
-    padding-top: 40px;
+#divButtonUpdate{
     display: flex;
     align-self: center;
     justify-content: center;
 }
 
+#buttonUpdate{
+    width: 300px;
+    height: 45px;
+    text-align: center;
+    font-size:18px;
+}
+
 .edituserpagePlaceholder{
+    width: 80%;
+    height: 45px;
+    color: rgb(124, 122, 122);
+    background-color: rgb(247, 243, 243);
+    border: none;
+}
+
+.profilePhotoCropper{
     width: 250px;
-    height: 50px;
-    color: rgb(126, 126, 126);
-}
-
-#profilePhoto{
-    width: 200px;
-    height: 200px;
+    height: 250px;
+    position: relative;
+    overflow: hidden;
     border-radius: 50%;
+    display: flex;
 }
 
-#ProfilePhoto{
-    max-width: 100%;
-    max-height: 100%;
+.roundPhoto{
+    align-self: center;
+    display: inline;
+    margin: 0 auto;
+    height: auto;
+    width: 250px;
 }
 
 .editprofileError{
@@ -1074,34 +1126,162 @@ a {
     align-self: center;
     justify-content: center;
     height: 200px;
-    background-color: rgb(229, 226, 226);
+    background-color: rgb(243, 240, 240);
+    color: rgb(121, 118, 118);
     border-width: 20px;
 
     width: 50%;
     position: relative;
     margin: 30px auto;
+    width: 100%;
+    overflow: scroll;
 }
 
 .editdescriptionBox{
-    height: 200px;
-    width: 100%;
-    color: rgb(126, 126, 126);
+    height: 150px;
+    width: 80%;
+    color: rgb(124, 122, 122);
+    background-color: rgb(247, 243, 243);
+    border: none;
 }
 
 .editProfileIcon{
     color: #e76f51;
 }
 
-#uploadImageButton{
+.uploadImageButton{
     cursor: pointer;
     border: 0;
     background-color: #e76f51;
     padding: 13px;
     border-radius: 20px;
     height: 40px;
+    width:200px;
     font-size: 14px;
     color: white;
     text-transform: uppercase;
     font-weight: bold;
     cursor: pointer;
+    display: flex;
+    flex-flow: row nowrap;
+}
+
+.blackIcon{
+    color: black;
+    padding-left: 3%;
+    padding-right: 10px;
+}
+
+#edituserpageForm{
+    display: flex;
+    flex-flow: column;
+}
+
+.editprofileText{
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.goBack{
+    width: 80%;
+    height:30px;
+    display: flex;
+    flex-flow: row nowrap;
+    align-self: center;
+}
+
+.goBackButton{
+    width:200px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color:rgb(235, 228, 228);
+    background-color: #264653;
+    font-weight: bold;
+    font-size: 15px;
+    position: absolute;
+    right: 10%; 
+}
+
+.goBackButton:hover{
+    background-color: #89adbb;
+    color :rgb(49, 48, 48)
+}
+
+#deleteImageButtonID{
+    background-color: rgb(219, 216, 216);
+    color: black;
+}
+
+#bottomButtons{
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+}
+
+/* ============================================== */
+
+/* GRID FOR OVERLAPING IMAGES */
+
+#containerEditPhoto {
+  position: relative;
+}
+
+.uploadImage{
+    position: absolute;
+    top: 85%;
+    left: 15%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    font-size: 16px;
+    padding: 12px 24px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.editImageButton{
+    width: 100px;
+    height:40px;
+    font-size: 15px;
+    background-color: rgb(219, 216, 216);
+    display: flex;
+    flex-flow: row nowrap;
+    color:black;
+    border-radius: 20px;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    border-radius: 20px;
+}
+.editImageButton:hover{
+    background-color:rgb(85, 82, 82);
+    color:white;
+}
+
+#deleteImageButton{
+    width:200px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(219, 216, 216);
+    font-weight: bold;
+    font-size: 15px;
+    border-radius: 20px;
+}
+
+#deleteImageButton:hover{
+    background-color:rgb(85, 82, 82);
+    color:white;
+}
+
+#profilePhoto{
+    padding-top: 10px;
+    padding-bottom: 30px;
+}
+
+.deleteImageText{
+    font-weight: bold;
 }

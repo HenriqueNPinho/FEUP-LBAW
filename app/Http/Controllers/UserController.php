@@ -6,6 +6,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\File;
 use App\Models\User;
 use App\Models\Image;
 class UserController extends Controller
@@ -62,9 +64,31 @@ class UserController extends Controller
         }
         else{
             $sofia = "não recebi imagem";
-            echo("<script>console.log('PHP: " . $sofia . "');</script>");
+            echo("<script>console.log('PATH: " . $sofia . "');</script>");
         }
+
         $user->save();
         return view('pages.userpage', ['user' => $user]);
+    }
+
+    public function deletePhoto(Request $request){
+        $sofia = "estou na função que apaga a foto";
+        echo("<script>console.log('PATH: " . $sofia . "');</script>");
+
+        $user = Auth::user();
+        File::delete($user->profile_image);
+        $user->profile_image = '/images/avatars/profile-pic-2.png';
+
+        return view('pages.edituserpage', ['user' => $user]);
+    }
+
+    public function delete(Request $request) 
+    {
+        $user = Auth::user();
+        File::delete($user->profile_image);
+        Auth::logout();
+        $user->delete();
+        
+        return Redirect::route('homepage')->with('global', 'Your account has been deleted!'); 
     }
 }

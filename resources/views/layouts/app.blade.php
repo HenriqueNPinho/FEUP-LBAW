@@ -37,19 +37,15 @@
         <div class="navbar">
           <a href="{{ url('/') }}"><img src="/images/horizontal-logo.png" alt=""></a>
           <div class="navbar-options">
-            
             <div class="navbar-collapse-item">
-<<<<<<< HEAD
               <a >{{ Auth::user()->name }}</a>
-                @if(empty(Auth::user()->profile_image))
-                  <img src = "/images/avatars/profile-pic.png" id = "ProfilePhoto">
-                @else
-                    <img src ="{{Auth::user()->profile_image}}" id = "ProfilePhoto"> 
-                @endif
-=======
-              <a>{{ Auth::user()->name }}</a>
-              <img src="/images/profile-pic.png" alt="">
->>>>>>> 0aaab8974943e5cc80ac81b190a468ce6ab61cfe
+              <div class = "profilePhotoCropper" id ="navbarPhotoCropper">
+                  @if(empty(Auth::user()->profile_image))
+                    <img src = "/images/avatars/profile-pic-2.png" id = "navbarProfilePhoto">
+                  @else
+                    <img src ="{{Auth::user()->profile_image}}" id = "navbarProfilePhoto"> 
+                  @endif
+              </div>
             </div>
           </div>
         </div>

@@ -11,7 +11,7 @@
 |
 */
 // Home
-Route::get('/', 'HomepageController@index');
+Route::get('/', 'HomepageController@index')->name("homepage");
 
 // Cards
 Route::get('projects', 'ProjectController@list');
@@ -23,9 +23,9 @@ Route::put('api/task/{project_id}','TaskController@create');
 Route::get('api/task/{task_id}','TaskController@get');
 Route::delete('api/task/{task_id}','TaskController@delete');
 
-Route::put('api/cards', 'CardController@create');
-Route::delete('api/cards/{card_id}', 'CardController@delete');
-Route::put('api/cards/{card_id}/', 'ItemController@create');
+//Route::put('api/cards', 'CardController@create');
+//Route::delete('api/cards/{card_id}', 'CardController@delete');
+//Route::put('api/cards/{card_id}/', 'ItemController@create');
 
 Route::delete('api/item/{id}', 'ItemController@delete');
 
@@ -39,12 +39,8 @@ Route::post('register', 'Auth\RegisterController@register');
 //User Page
 Route::get('userpage', 'UserController@showProfile')->name('userpage');
 Route::get('edituserpage', 'UserController@edit');
-<<<<<<< HEAD
-Route::post('edituserpage', 'UserController@userpageUpdate')->name('edituserpage');
-=======
-//Route::post('/edituserpage', 'UserController@update')->name('edituserpage');
-Route::post('/edituserpage', 'UserController@userpageUpdate')->name('edituserpage');
 
-
-Route::get('step1', 'ProjectController@step1');
->>>>>>> 0aaab8974943e5cc80ac81b190a468ce6ab61cfe
+//Edit User Page
+Route::post('userpage', 'UserController@userpageUpdate')->name('edituserpage');
+Route::get('deleteuser', 'UserController@delete')->name('deleteuser');
+Route::get('deleteUserPhoto', 'UserController@deletePhoto')->name('deleteUserPhoto');

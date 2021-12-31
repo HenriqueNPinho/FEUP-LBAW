@@ -23,13 +23,6 @@ class RegisterController extends Controller
     use RegistersUsers;
 
     /**
-     * Where to redirect users after registration.
-     *
-     * @var string
-     */
-    protected $redirectTo = '/cards';
-
-    /**
      * Create a new controller instance.
      *
      * @return void
@@ -66,7 +59,6 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
-            //'profile_image' => 'public/images/'
         ]);
     }
 }

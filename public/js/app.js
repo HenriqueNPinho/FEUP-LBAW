@@ -217,8 +217,6 @@ function viewFullTask(){
     })
   })
 
-
-
   document.querySelector('#task-page-task-name').innerHTML=task[0]["name"];
   document.querySelector('#task-page-task-description').innerHTML=task[0]["description"];
   document.querySelector('#task-page-task-date').innerHTML=task[0]['delivery_date']
@@ -261,6 +259,14 @@ setUpViewFullTask();
 /*********************************************************************/
 /* EDIT USER PAGE */
 
+var loadFile = function(event) {
+                            
+  var image = document.getElementById('tempProfilePhoto');
+  image.src = URL.createObjectURL(event.target.files[0]);
+  image.onload = function() {
+      URL.revokeObjectURL(image.src) // free memory
+  }
+};
 
 /*********************************************************************/
 //addEventListeners();
