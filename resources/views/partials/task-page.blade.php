@@ -2,15 +2,15 @@
     <div id="task-page-header">
         <h1 id="task-page-task-name">TASK NAME GOES HERE</h1>
         <div>
+            <img id="edit-task-icon" src="/images/icons/edit.png" alt="">
             <img id="delete-task-icon" src="/images/icons/delete.png" alt="">
             <img id="close-task-page" src="/images/icons/close.png" alt="">
             
         </div>
     </div>
     <div id="task-page-members">
-        
-        <img id="task-page-add-member" src="/images/icons/plus-blue.png" alt="">
     </div>
+    
     <div>
         <div>
             <div id="task-description-container">
