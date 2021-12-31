@@ -44,3 +44,5 @@ Route::get('edituserpage', 'UserController@edit');
 Route::post('userpage', 'UserController@userpageUpdate')->name('edituserpage');
 Route::get('deleteuser', 'UserController@delete')->name('deleteuser');
 Route::get('deleteUserPhoto', 'UserController@deletePhoto')->name('deleteUserPhoto');
+
+Route::get('create-project', 'ProjectController@createproject');

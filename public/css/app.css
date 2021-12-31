@@ -256,6 +256,19 @@ form h4 {
     font-size: 40px;
     margin-top: 15vh;
 }
+#all-projects h3 {
+    text-align: center;
+    align-self: center;
+    font-size: 33px;
+    margin-top: 15vh;
+}
+#all-projects h5 {
+    text-align: center;
+    align-self: center;
+    font-size: 20px;
+    margin-top: 0vh;
+}
+
 
 #project-select {
     align-self: center;
@@ -830,23 +843,93 @@ form h4 {
         border-bottom: 1px solid rgba(96, 108, 118, 0.4);
     }
 }
-#create-project input[type="text"]{ 
-    width: 45%;
-    padding: 20px;
-    margin: 12px;
-    box-sizing: border-box;
-}
-#create-project{
-    display: flex;
-    justify-content: center;
-}
-
-#creatingYP{
+  
+  #regForm {
+    
+    margin: 100px auto;
+    font-family: Raleway;
+    padding: 40px;
+    width: 70%;
+    min-width: 300px;
+  }
+  #regForm h5{
     text-align: center;
+    align-self: center;
+    font-size: 15px;
+    margin-top: 2vh;
     color: #7e7d7ad2;
 }
+#regForm textarea{ 
+    width: 40%;
+    text-size-adjust: 30%;
+    box-sizing: border-box;
+    align-self: center;
+    resize: none;
+}
+  h1 {
+    text-align: center;  
+  }
+  
+  input {
+    padding: 10px;
+    width: 100%;
+    font-size: 17px;
+    border: 1px solid #aaaaaa;
+  }
+  
+  /* Mark input boxes that gets an error on validation: */
+  input.invalid {
+    background-color: #ffdddd;
+  }
+  
+  /* Hide all steps by default: */
+  .tab {
+    display: none;
+  }
+  
+  button {
+    background-color: #7e7d7ad2;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 17px;
+    font-family: Raleway;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    opacity: 0.8;
+  }
+  
+  #prevBtn {
+    background-color: #bbbbbb;
+  }
+  
+  /* Make circles that indicate the steps of the form: */
+  .step {
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: #7e7d7ad2;
+    border: none;  
+    border-radius: 50%;
+    display: inline-block;
+    opacity: 0.5;
+  }
+  
+  .step.active {
+    opacity: 1;
+  }
+  
+  /* Mark the steps that are finished and valid: */
+  .step.finish {
+    background-color: #7e7d7ad2;
+  }
+
+
 #c-button  input[type="button"]{
-        width: 15%;
+
+        width: 20%;
         height: 30px;
         text-align: center;
         text-size-adjust: auto;
@@ -854,9 +937,11 @@ form h4 {
         background: #e6e4e4;
         cursor: pointer;
 }
+
 #c-button {
 display: flex;
 justify-content: center;
+margin-top: 1vh;
 }
 
 /**
