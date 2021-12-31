@@ -18,12 +18,12 @@ class ProjectController extends Controller
      */
     public function show($id)
     {
-      if (!Auth::check()) return redirect('/login');
-      $this->authorize('list', Project::class);
-      $projects = Auth::user()->projects()->orderBy('id')->get();
-      $project = Project::find($id);
-      $this->authorize('show', $project);
-      return view('pages.project', ['project' => $project,'projects' =>$projects]);
+        if (!Auth::check()) return redirect('/login');
+        $this->authorize('list', Project::class);
+        $projects = Auth::user()->projects()->orderBy('id')->get();
+        $project = Project::find($id);
+        $this->authorize('access', $project);
+        return view('pages.project', ['project' => $project,'projects' =>$projects]);
     }
 
     /**
@@ -33,37 +33,28 @@ class ProjectController extends Controller
      */
     public function list()
     {
-      if (!Auth::check()) return redirect('/login');
-      $this->authorize('list', Project::class);
-      $projects = Auth::user()->projects()->orderBy('id')->get();
-      return view('pages.projects', ['projects' => $projects]);
+        if (!Auth::check()) return redirect('/login');
+        $this->authorize('list', Project::class);
+        $projects = Auth::user()->projects()->orderBy('id')->get();
+        
+        return view('pages.projects', ['projects' => $projects]);
     }
 
-    /**
-     * Creates a new card.
-     *
-     * @return Card The card created.
-     */
-    // public function create(Request $request)
-    // {
-    //   $card = new Card();
-
-    //   $this->authorize('create', $card);
-
-    //   $card->name = $request->input('name');
-    //   $card->user_id = Auth::user()->id;
-    //   $card->save();
-
-    //   return $card;
-    // }
-
-    // public function delete(Request $request, $id)
-    // {
-    //   $card = Card::find($id);
-
-    //   $this->authorize('delete', $card);
-    //   $card->delete();
-
-    //   return $card;
-    // }
+    public function taskSearch(Request $request, $id)
+    {
+        if (!Auth::check()) return redirect('/login');
+        $project = Project::find($id);
+        $this->authorize('access',$project);
+        $this->authorize('list', Project::class);
+        $projects = Auth::user()->projects()->orderBy('id')->get();
+        $project = Project::find($id);
+        $searchQuery=$request["search-tasks-query"];
+        $searchResults=array();
+        foreach($project->tasks as $task){
+            if(str_contains(strtoupper($task->name),strtoupper($searchQuery)) || str_contains(strtoupper($task->description),strtoupper($searchQuery))){
+                array_push($searchResults,$task);
+            }
+        }
+        return view('pages.task-search-results',['searchResults'=>$searchResults,'project' => $project,'projects' =>$projects]);
+    }
 }

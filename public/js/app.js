@@ -21,10 +21,13 @@ function setUpProjectSwitch(){
     item.addEventListener('click',function(){
       id=item.getAttribute('data-id');
 
-      if(slideRightMenu.style.display=="" ||slideRightMenu.style.display=="none")
+      if(slideRightMenu.style.display=="" ||slideRightMenu.style.display=="none"){
         slideRightMenu.style.display="block";
-      else
+      }
+      else{
         slideRightMenu.style.display="none";
+      }
+        
       
       projectOverview.setAttribute('href',"/project/"+id);
     })
@@ -145,7 +148,7 @@ function createNewTask(){
   let taskForm = document.querySelector('#new-task-form');
   taskForm.style.display="flex";
   
-  let closeTaskIcon=document.querySelector("#close-task-form");
+  let closeTaskIcon=document.querySelector("#close-new-task-form");
   closeTaskIcon.addEventListener("click",function(){
     projectAreaCover.style.display="none";
     taskForm.style.display="none";
@@ -154,10 +157,10 @@ function createNewTask(){
   let taskStatus=this.getAttribute('data-id');
   createTaskButton.addEventListener('click',function(){
     let id=document.querySelector('.project-overview').getAttribute('data-id');
-    let taskName=document.querySelector('#task-name-input').value;
-    let taskDescription=document.querySelector('#task-description-input').value;
+    let taskName=document.querySelector('#new-task-name-input').value;
+    let taskDescription=document.querySelector('#new-task-description-input').value;
     let selectedMembers = [];
-    let memberSelectionInput=document.querySelectorAll('.member-selection-option-input');
+    let memberSelectionInput=document.querySelectorAll('.new-member-selection-option-input');
     memberSelectionInput.forEach(function(item){
       if(item.checked) selectedMembers.push(item.getAttribute('data-id'));
     });
@@ -190,7 +193,6 @@ function viewFullTask(){
   }
   
   let task=JSON.parse(this.response);
-  console.log(task);
   let taskPage=document.querySelector("#task-page");
   taskPage.style.display="block";
   let projectAreaCover=document.querySelector('#project-overview-opaque-cover');
@@ -208,14 +210,11 @@ function viewFullTask(){
     projectAreaCover.style.display="none";
     taskPage.style.display="none";
     let taskID=task[0]["id"];
-    sendAjaxRequest('delete','/api/task/'+taskID,null,genericResponseHandler);
-    let tasks=document.querySelectorAll('.task-preview');
-    tasks.forEach(function(item){
-      if(item.getAttribute("data-id")==taskID){
-        item.parentNode.removeChild(item);
-      }
-    })
+    sendAjaxRequest('delete','/api/task/'+taskID,null,genericResponseHandlerWithRefresh);
   })
+
+  let taskPageMembersContainer=document.querySelector('#task-page-members');
+  taskPageMembersContainer.style.display="flex";
 
 
 
@@ -223,17 +222,68 @@ function viewFullTask(){
   document.querySelector('#task-page-task-description').innerHTML=task[0]["description"];
   document.querySelector('#task-page-task-date').innerHTML=task[0]['delivery_date']
 
-  let taskPageMembersContainer=document.querySelector('#task-page-members');
-  let addMemberIcon=document.querySelector("#task-page-add-member");
+  
   taskPageMembersContainer.innerHTML="";
   task[1].forEach(function(item,index){
     let image=document.createElement("img");
     image.setAttribute("src",task[1][index]['profile_image']);
+    image.setAttribute("data-id",task[1][index]["id"]);
     document.querySelector('#task-page-members').appendChild(image);
   })
-  document.querySelector('#task-page-members').appendChild(addMemberIcon);
-  
+
+  let editTaskIcon=document.querySelector("#edit-task-icon");
+  editTaskIcon.addEventListener("click",function(){
+    projectAreaCover.style.display="none";
+    taskPage.style.display="none";
+    editTask(task);
+  })
 }
+
+function editTask(task){
+  let projectAreaCover=document.querySelector('#project-overview-opaque-cover');
+  projectAreaCover.style.display="block";
+  let taskForm = document.querySelector('#edit-task-form');
+  taskForm.style.display="flex";
+  
+  let taskName=document.querySelector('#edit-task-name-input');
+  taskName.value=task[0]["name"];
+  let taskDescription=document.querySelector('#edit-task-description-input');
+  taskDescription.value=task[0]["description"];
+  let selectedMembers = [];
+  let memberSelectionInput=document.querySelectorAll('.edit-member-selection-option-input');
+  memberSelectionInput.forEach(function(item){
+    for(let i=0;i<task[1].length;i++){
+      if(item.getAttribute("data-id")==task[1][i]["id"]){
+        item.checked=true;   
+      }
+    }
+  });
+  let taskDeliveryDate=document.querySelector('#edit-task-end-date');
+  taskDeliveryDate.value=task[0]["delivery_date"];
+
+  let closeTaskIcon=document.querySelector("#close-edit-task-form");
+  closeTaskIcon.addEventListener("click",function(){
+    projectAreaCover.style.display="none";
+    taskForm.style.display="none";
+  })
+  let createTaskButton=document.querySelector("#editTaskButton");
+  createTaskButton.addEventListener('click',function(){
+    
+    memberSelectionInput.forEach(function(item){
+      if(item.checked) selectedMembers.push(item.getAttribute('data-id'));
+    });
+    if(selectedMembers.length==0) selectedMembers="";
+    
+    if(new Date(taskDeliveryDate)<new Date()){
+      alert("The delivery date isn't valid!");
+      return;
+    }
+    
+    sendAjaxRequest('post','/api/task/'+task[0]["id"],{name:taskName.value, description:taskDescription.value, members:selectedMembers, date:taskDeliveryDate.value},genericResponseHandlerWithRefresh);
+
+  })
+}
+
 
 function encodeForAjax(data) {
   if (data == null) return null;
@@ -257,6 +307,7 @@ setUpProjectSwitch();
 setUpDragAndDropTasks();
 setUpAddNewTask();
 setUpViewFullTask();
+
 
 /*********************************************************************/
 /* EDIT USER PAGE */
