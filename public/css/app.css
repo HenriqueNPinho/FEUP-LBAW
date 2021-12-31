@@ -88,16 +88,15 @@ main > header {
 
 /*NAVBAR USER IMAGE*/
 
-#navbarPhotoCropper{
-    width:50px;
-    height:50px;
+#navbarPhotoCropper {
+    width: 50px;
+    height: 50px;
 }
 
-#navbarProfilePhoto{
+#navbarProfilePhoto {
     width: 50px;
 }
 /*=================================*/
-
 
 /******Homepage******/
 
@@ -266,9 +265,7 @@ form h4 {
     text-align: center;
     align-self: center;
     font-size: 20px;
-    margin-top: 0vh;
 }
-
 
 #project-select {
     align-self: center;
@@ -455,8 +452,8 @@ form h4 {
     display: flex;
     margin-top: 50px;
     justify-content: space-between;
-    margin-left:70px;
-    margin-right:120px;
+    margin-left: 70px;
+    margin-right: 120px;
 }
 
 .search-results-header h2,
@@ -468,10 +465,10 @@ form h4 {
     width: 95%;
     padding: 20px;
     padding-top: 50px;
-    margin-left:50px;
+    margin-left: 50px;
 }
 
-.search-results-area .task-preview{
+.search-results-area .task-preview {
     width: 400px;
     padding-left: 21px;
     padding-right: 21px;
@@ -995,7 +992,7 @@ form h4 {
     margin: 0;
 }
 #content label {
-    width:100%;
+    width: 100%;
 }
 
 @media (max-width: 70em) {
@@ -1035,51 +1032,50 @@ form h4 {
         border-bottom: 1px solid rgba(96, 108, 118, 0.4);
     }
 }
-  
-  #regForm {
-    
+
+#regForm {
     margin: 100px auto;
     font-family: Raleway;
     padding: 40px;
     width: 70%;
     min-width: 300px;
-  }
-  #regForm h5{
+}
+#regForm h5 {
     text-align: center;
     align-self: center;
     font-size: 15px;
     margin-top: 2vh;
     color: #7e7d7ad2;
 }
-#regForm textarea{ 
+#regForm textarea {
     width: 40%;
     text-size-adjust: 30%;
     box-sizing: border-box;
     align-self: center;
     resize: none;
 }
-  h1 {
-    text-align: center;  
-  }
-  
-  input {
+h1 {
+    text-align: center;
+}
+
+/* input {
     padding: 10px;
     width: 100%;
     font-size: 17px;
     border: 1px solid #aaaaaa;
-  }
-  
-  /* Mark input boxes that gets an error on validation: */
-  input.invalid {
+} */
+
+/* Mark input boxes that gets an error on validation: */
+input.invalid {
     background-color: #ffdddd;
-  }
-  
-  /* Hide all steps by default: */
-  .tab {
+}
+
+/* Hide all steps by default: */
+.tab {
     display: none;
-  }
-  
-  button {
+}
+
+button {
     background-color: #7e7d7ad2;
     color: #ffffff;
     border: none;
@@ -1087,53 +1083,51 @@ form h4 {
     font-size: 17px;
     font-family: Raleway;
     cursor: pointer;
-  }
-  
-  button:hover {
+}
+
+button:hover {
     opacity: 0.8;
-  }
-  
-  #prevBtn {
+}
+
+#prevBtn {
     background-color: #bbbbbb;
-  }
-  
-  /* Make circles that indicate the steps of the form: */
-  .step {
+}
+
+/* Make circles that indicate the steps of the form: */
+.step {
     height: 15px;
     width: 15px;
     margin: 0 2px;
     background-color: #7e7d7ad2;
-    border: none;  
+    border: none;
     border-radius: 50%;
     display: inline-block;
     opacity: 0.5;
-  }
-  
-  .step.active {
+}
+
+.step.active {
     opacity: 1;
-  }
-  
-  /* Mark the steps that are finished and valid: */
-  .step.finish {
+}
+
+/* Mark the steps that are finished and valid: */
+.step.finish {
     background-color: #7e7d7ad2;
-  }
+}
 
-
-#c-button  input[type="button"]{
-
-        width: 20%;
-        height: 30px;
-        text-align: center;
-        text-size-adjust: auto;
-        border: 0.2px solid #000;
-        background: #e6e4e4;
-        cursor: pointer;
+#c-button input[type="button"] {
+    width: 20%;
+    height: 30px;
+    text-align: center;
+    text-size-adjust: auto;
+    border: 0.2px solid #000;
+    background: #e6e4e4;
+    cursor: pointer;
 }
 
 #c-button {
-display: flex;
-justify-content: center;
-margin-top: 1vh;
+    display: flex;
+    justify-content: center;
+    margin-top: 1vh;
 }
 
 /**
@@ -1200,8 +1194,7 @@ a {
 /*--------------------*/
 /* USER PAGE */
 
-
-.userpageSetUp{
+.userpageSetUp {
     padding-top: 5%;
     padding-bottom: 3%;
     width: 80%;
@@ -1211,7 +1204,7 @@ a {
     justify-content: center;
 }
 
-.photoSpace{
+.photoSpace {
     display: flex;
     flex-flow: column;
     align-items: center;
@@ -1248,7 +1241,7 @@ a {
     align-self: center;
     justify-content: center;
 }
-.userpageInfo{
+.userpageInfo {
     display: flex;
     flex-flow: column;
     width: 100%;
@@ -1281,14 +1274,14 @@ a {
     justify-content: center;
 }
 
-#userPageHR{
-    background-color:#2a9d8f;
+#userPageHR {
+    background-color: #2a9d8f;
     border: none;
     height: 5px;
     width: 100%;
 }
 
-#editProfileButton{
+#editProfileButton {
     margin-top: 10px;
     width: 300px;
     height: 45px;
@@ -1308,11 +1301,11 @@ a {
     font-size: 18px;
 }
 
-#editProfileButton:hover{
+#editProfileButton:hover {
     background-color: #89adbb;
 }
 
-#editProfileButtonText{
+#editProfileButtonText {
     color: white;
     text-transform: uppercase;
     text-align: center;
@@ -1322,19 +1315,19 @@ a {
 /*--------------------*/
 /* EDIT USER PAGE */
 
-.profileDiv{
+.profileDiv {
     display: flex;
     flex-flow: column;
 }
 
-.profileTitle{
+.profileTitle {
     color: #264653;
     font-size: 30px;
     text-align: center;
     padding-top: 15px;
 }
 
-.edituserpageHR{
+.edituserpageHR {
     border: 0;
     height: 1px;
     width: 80%;
@@ -1360,11 +1353,11 @@ a {
 
 .userpageParam {
     padding-bottom: 30px;
-    display :flex;
+    display: flex;
     flex-flow: column;
 }
 
-#divButtonUpdate{
+#divButtonUpdate {
     display: flex;
     align-self: center;
     justify-content: center;
@@ -1408,14 +1401,14 @@ a {
 ::-webkit-scrollbar-corner {
     background: #ececec;
 }
-#buttonUpdate{
+#buttonUpdate {
     width: 300px;
     height: 45px;
     text-align: center;
-    font-size:18px;
+    font-size: 18px;
 }
 
-.edituserpagePlaceholder{
+.edituserpagePlaceholder {
     width: 80%;
     height: 45px;
     color: rgb(124, 122, 122);
@@ -1423,7 +1416,7 @@ a {
     border: none;
 }
 
-.profilePhotoCropper{
+.profilePhotoCropper {
     width: 250px;
     height: 250px;
     position: relative;
@@ -1432,7 +1425,7 @@ a {
     display: flex;
 }
 
-.roundPhoto{
+.roundPhoto {
     align-self: center;
     display: inline;
     margin: 0 auto;
@@ -1440,12 +1433,12 @@ a {
     width: 250px;
 }
 
-.editprofileError{
+.editprofileError {
     font-weight: bold;
     color: #ff3333;
 }
 
-.descriptionBox{
+.descriptionBox {
     align-self: center;
     justify-content: center;
     height: 200px;
@@ -1460,7 +1453,7 @@ a {
     overflow: scroll;
 }
 
-.editdescriptionBox{
+.editdescriptionBox {
     height: 150px;
     width: 80%;
     color: rgb(124, 122, 122);
@@ -1468,18 +1461,18 @@ a {
     border: none;
 }
 
-.editProfileIcon{
+.editProfileIcon {
     color: #e76f51;
 }
 
-.uploadImageButton{
+.uploadImageButton {
     cursor: pointer;
     border: 0;
     background-color: #e76f51;
     padding: 13px;
     border-radius: 20px;
     height: 40px;
-    width:200px;
+    width: 200px;
     font-size: 14px;
     color: white;
     text-transform: uppercase;
@@ -1489,55 +1482,55 @@ a {
     flex-flow: row nowrap;
 }
 
-.blackIcon{
+.blackIcon {
     color: black;
     padding-left: 3%;
     padding-right: 10px;
 }
 
-#edituserpageForm{
+#edituserpageForm {
     display: flex;
     flex-flow: column;
 }
 
-.editprofileText{
+.editprofileText {
     font-weight: bold;
     font-size: 18px;
 }
 
-.goBack{
+.goBack {
     width: 80%;
-    height:30px;
+    height: 30px;
     display: flex;
     flex-flow: row nowrap;
     align-self: center;
 }
 
-.goBackButton{
-    width:200px;
+.goBackButton {
+    width: 200px;
     height: 30px;
     display: flex;
     align-items: center;
     justify-content: center;
-    color:rgb(235, 228, 228);
+    color: rgb(235, 228, 228);
     background-color: #264653;
     font-weight: bold;
     font-size: 15px;
     position: absolute;
-    right: 10%; 
+    right: 10%;
 }
 
-.goBackButton:hover{
+.goBackButton:hover {
     background-color: #89adbb;
-    color :rgb(49, 48, 48)
+    color: rgb(49, 48, 48);
 }
 
-#deleteImageButtonID{
+#deleteImageButtonID {
     background-color: rgb(219, 216, 216);
     color: black;
 }
 
-#bottomButtons{
+#bottomButtons {
     display: flex;
     flex-flow: row;
     justify-content: center;
@@ -1548,10 +1541,10 @@ a {
 /* GRID FOR OVERLAPING IMAGES */
 
 #containerEditPhoto {
-  position: relative;
+    position: relative;
 }
 
-.uploadImage{
+.uploadImage {
     position: absolute;
     top: 85%;
     left: 15%;
@@ -1564,27 +1557,27 @@ a {
     border-radius: 5px;
 }
 
-.editImageButton{
+.editImageButton {
     width: 100px;
-    height:40px;
+    height: 40px;
     font-size: 15px;
     background-color: rgb(219, 216, 216);
     display: flex;
     flex-flow: row nowrap;
-    color:black;
+    color: black;
     border-radius: 20px;
     align-items: center;
     justify-content: center;
     font-size: 15px;
     border-radius: 20px;
 }
-.editImageButton:hover{
-    background-color:rgb(85, 82, 82);
-    color:white;
+.editImageButton:hover {
+    background-color: rgb(85, 82, 82);
+    color: white;
 }
 
-#deleteImageButton{
-    width:200px;
+#deleteImageButton {
+    width: 200px;
     height: 40px;
     display: flex;
     align-items: center;
@@ -1595,16 +1588,16 @@ a {
     border-radius: 20px;
 }
 
-#deleteImageButton:hover{
-    background-color:rgb(85, 82, 82);
-    color:white;
+#deleteImageButton:hover {
+    background-color: rgb(85, 82, 82);
+    color: white;
 }
 
-#profilePhoto{
+#profilePhoto {
     padding-top: 10px;
     padding-bottom: 30px;
 }
 
-.deleteImageText{
+.deleteImageText {
     font-weight: bold;
 }
