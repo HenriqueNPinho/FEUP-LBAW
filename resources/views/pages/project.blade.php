@@ -11,9 +11,37 @@
     <div class="project-overview" data-id="{{$project->id}}">
         <div id="project-overview-opaque-cover"></div>
         @include('partials.new-task-form')
+        @include('partials.edit-task-form')
         @include('partials.task-page')
         
-        <h2 id="project-title">{{$project->name}}</h2>
+        <div id="project-overview-top-bar">
+            <div id="project-overview-top-bar-left">
+                <h2 id="project-title">{{$project->name}}</h2>
+                
+                @if(count($project->members)>3)
+                    @for($i = 0; $i <= 2; $i++)
+                        <img src="{{$project->members[$i]->profile_image}}" alt="">
+                        @if((count($project->members)-3)>9)
+                            <div><h2>9+</h2></div>
+                        @else
+                            <div><h2>{{count($$project->members)}}+</h2></div>
+                        @endif
+                        
+                    @endfor
+                @else
+                    @foreach($project->members as $member)
+                        <img src="{{$member->profile_image}}" alt="">
+                    @endforeach
+                @endif
+            </div>
+            <div id="project-overview-top-bar-right">
+                <form method="GET" action="{{'/project/'.$project->id.'/search'}}" id="search-tasks-form" role="search">
+                    <label for="search">Search for stuff</label>
+                    <input name="search-tasks-query" id="search-tasks-query" type="search" placeholder="Search for tasks here..." autofocus required />
+                    <button type="submit">Go</button>    
+                </form>
+            </div>
+        </div>
         <div class="boards-container">
             <div id="not-started" class="board">
                 <div class="board-header">

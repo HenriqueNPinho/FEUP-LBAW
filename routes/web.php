@@ -13,21 +13,19 @@
 // Home
 Route::get('/', 'HomepageController@index')->name("homepage");
 
-// Cards
+
 Route::get('projects', 'ProjectController@list');
 Route::get('project/{id}', 'ProjectController@show');
+Route::get('project/{project_id}/search/','ProjectController@taskSearch');
 
 // API
 Route::post('api/task/updateStatus/{id}', 'TaskController@updateStatus');
 Route::put('api/task/{project_id}','TaskController@create');
 Route::get('api/task/{task_id}','TaskController@get');
+Route::post('api/task/{task_id}','TaskController@edit');
 Route::delete('api/task/{task_id}','TaskController@delete');
 
-//Route::put('api/cards', 'CardController@create');
-//Route::delete('api/cards/{card_id}', 'CardController@delete');
-//Route::put('api/cards/{card_id}/', 'ItemController@create');
 
-Route::delete('api/item/{id}', 'ItemController@delete');
 
 // Authentication
 Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');

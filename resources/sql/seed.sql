@@ -110,8 +110,6 @@ CREATE TABLE tasks (
     CONSTRAINT date_ck CHECK (delivery_date>start_date)
 );
 
-
-
 CREATE TABLE task_assigned(
     project_member_id INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
     task_id INTEGER NOT NULL REFERENCES tasks(id) ON DELETE CASCADE,

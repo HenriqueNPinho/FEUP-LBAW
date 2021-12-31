@@ -39,4 +39,8 @@ class User extends Authenticatable
     public function tasks() {
         return $this->belongsToMany('App\Models\Task','task_assigned','project_member_id','task_id');
     }
+
+    public function companies(){
+        return $this->belongsToMany('App\Models\Company','work','users_id','company_id');
+    }
 }

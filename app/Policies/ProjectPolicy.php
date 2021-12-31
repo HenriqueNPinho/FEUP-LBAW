@@ -12,7 +12,7 @@ class ProjectPolicy
 {
     use HandlesAuthorization;
 
-    public function show(User $user, Project $project)
+    public function access(User $user, Project $project)
     {
       // Only a project member can see it
       foreach ($project->members as $member) {
@@ -21,17 +21,18 @@ class ProjectPolicy
       return FALSE;
     }
 
-    public function list(User $user)
+    public function list()
     {
       // Any user can list its own cards
       return Auth::check();
     }
 
-    public function create(User $user)
+    public function create()
     {
       // Any user can create a new card
       return Auth::check();
     }
+
 
     // public function delete(User $user, Card $card)
     // {

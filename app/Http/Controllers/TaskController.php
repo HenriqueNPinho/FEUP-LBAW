@@ -21,6 +21,7 @@ class TaskController extends Controller
    */
 	public function create(Request $request, $project_id)
 	{
+        if (!Auth::check()) return redirect('/login');
 		$task = new Task();
 		$task->project_id = $project_id;
 		$this->authorize('create', $task);
@@ -44,6 +45,7 @@ class TaskController extends Controller
 
 	public function get($task_id)
 	{
+        if (!Auth::check()) return redirect('/login');
 		$task = Task::find($task_id);
 		$this->authorize('access', $task);
 		return [$task,$task->members];
@@ -59,11 +61,33 @@ class TaskController extends Controller
    */
 	public function updateStatus(Request $request, $id)
 	{
+        if (!Auth::check()) return redirect('/login');
 		$task = Task::find($id);
 		$this->authorize('update', $task);
 		if($request->input('status')=='Not Started' || $request->input('status')=='In Progress' | $request->input('status')=='Complete'){
 			$task->status = $request->input('status');
 			$task->save();
+		}
+		return $task;
+	}
+
+	public function edit(Request $request, $id)
+	{
+        if (!Auth::check()) return redirect('/login');
+		$task = Task::find($id);
+		$this->authorize('update', $task);
+		$task->name = $request->input('name');
+		$task->start_date = date("Y-m-d");
+		$task->delivery_date = $request->input('date');
+		$task->description = $request->input('description');
+		$members=$request->input('members');
+		$task->save();
+		$task->members()->detach();
+		if($members!=""){
+			$assignedMembersIDs = explode(",", $members);
+			foreach($assignedMembersIDs as $memberID){
+				$task->members()->attach($memberID);
+			}
 		}
 		return $task;
 	}
@@ -76,10 +100,13 @@ class TaskController extends Controller
 	 */
 	public function delete(Request $request, $id)
 	{
-	  $task = Task::find($id);
-	  $this->authorize('delete', $task);
-	  $task->delete();
-	  return $task;
+        if (!Auth::check()) return redirect('/login');  
+        $task = Task::find($id);
+        $this->authorize('delete', $task);
+        $task->delete();
+        return $task;
 	}
+	
+
 
 }
