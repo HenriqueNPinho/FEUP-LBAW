@@ -84,6 +84,21 @@ main > header {
     width: 100%;
 }
 
+/*=================================*/
+
+/*NAVBAR USER IMAGE*/
+
+#navbarPhotoCropper{
+    width:50px;
+    height:50px;
+}
+
+#navbarProfilePhoto{
+    width: 50px;
+}
+/*=================================*/
+
+
 /******Homepage******/
 
 #homepage-content {
@@ -241,6 +256,19 @@ form h4 {
     font-size: 40px;
     margin-top: 15vh;
 }
+#all-projects h3 {
+    text-align: center;
+    align-self: center;
+    font-size: 33px;
+    margin-top: 15vh;
+}
+#all-projects h5 {
+    text-align: center;
+    align-self: center;
+    font-size: 20px;
+    margin-top: 0vh;
+}
+
 
 #project-select {
     align-self: center;
@@ -967,7 +995,7 @@ form h4 {
     margin: 0;
 }
 #content label {
-    font-weight: normal;
+    width:100%;
 }
 
 @media (max-width: 70em) {
@@ -1007,6 +1035,107 @@ form h4 {
         border-bottom: 1px solid rgba(96, 108, 118, 0.4);
     }
 }
+  
+  #regForm {
+    
+    margin: 100px auto;
+    font-family: Raleway;
+    padding: 40px;
+    width: 70%;
+    min-width: 300px;
+  }
+  #regForm h5{
+    text-align: center;
+    align-self: center;
+    font-size: 15px;
+    margin-top: 2vh;
+    color: #7e7d7ad2;
+}
+#regForm textarea{ 
+    width: 40%;
+    text-size-adjust: 30%;
+    box-sizing: border-box;
+    align-self: center;
+    resize: none;
+}
+  h1 {
+    text-align: center;  
+  }
+  
+  input {
+    padding: 10px;
+    width: 100%;
+    font-size: 17px;
+    border: 1px solid #aaaaaa;
+  }
+  
+  /* Mark input boxes that gets an error on validation: */
+  input.invalid {
+    background-color: #ffdddd;
+  }
+  
+  /* Hide all steps by default: */
+  .tab {
+    display: none;
+  }
+  
+  button {
+    background-color: #7e7d7ad2;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 17px;
+    font-family: Raleway;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    opacity: 0.8;
+  }
+  
+  #prevBtn {
+    background-color: #bbbbbb;
+  }
+  
+  /* Make circles that indicate the steps of the form: */
+  .step {
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: #7e7d7ad2;
+    border: none;  
+    border-radius: 50%;
+    display: inline-block;
+    opacity: 0.5;
+  }
+  
+  .step.active {
+    opacity: 1;
+  }
+  
+  /* Mark the steps that are finished and valid: */
+  .step.finish {
+    background-color: #7e7d7ad2;
+  }
+
+
+#c-button  input[type="button"]{
+
+        width: 20%;
+        height: 30px;
+        text-align: center;
+        text-size-adjust: auto;
+        border: 0.2px solid #000;
+        background: #e6e4e4;
+        cursor: pointer;
+}
+
+#c-button {
+display: flex;
+justify-content: center;
+margin-top: 1vh;
+}
+
 /**
  * Overide milligram colors
  * Some styles might be missing
@@ -1071,23 +1200,40 @@ a {
 /*--------------------*/
 /* USER PAGE */
 
-#photoSpace {
+
+.userpageSetUp{
+    padding-top: 5%;
+    padding-bottom: 3%;
+    width: 80%;
+    display: flex;
+    flex-flow: row nowrap;
+    align-self: center;
+    justify-content: center;
+}
+
+.photoSpace{
     display: flex;
     flex-flow: column;
     align-items: center;
-    justify-content: center;
+    width: 50%;
+    height: auto;
+    padding-right: 5%;
 }
 
 .textSpace {
     display: flex;
     flex-flow: column;
-    margin-left: 15%;
+    align-items: left;
+    justify-content: center;
+    width: 50%;
+    height: auto;
 }
 
 .userName {
     color: #264653;
     font-weight: 600px;
     font-size: 30px;
+    text-align: center;
 }
 
 .userEmail {
@@ -1102,10 +1248,10 @@ a {
     align-self: center;
     justify-content: center;
 }
-
-.userpageInfo {
+.userpageInfo{
     display: flex;
     flex-flow: column;
+    width: 100%;
 }
 
 #emailSpace {
@@ -1135,40 +1281,63 @@ a {
     justify-content: center;
 }
 
-#userPageHR {
-    background-color: #3abb71;
+#userPageHR{
+    background-color:#2a9d8f;
     border: none;
     height: 5px;
     width: 100%;
 }
 
-#editprofileButton {
+#editProfileButton{
+    margin-top: 10px;
+    width: 300px;
+    height: 45px;
     border: 0;
     background-color: #2a9d8f;
-    padding: 13px;
+    color: white;
     border-radius: 20px;
-    height: 40px;
-    font-size: 14px;
+    cursor: pointer;
+    display: flex;
+    align-self: center;
+    justify-content: center;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+#editProfileButton:hover{
+    background-color: #89adbb;
+}
+
+#editProfileButtonText{
     color: white;
     text-transform: uppercase;
+    text-align: center;
     font-weight: bold;
-    cursor: pointer;
 }
 
 /*--------------------*/
 /* EDIT USER PAGE */
 
-#edituserpageTitle {
+.profileDiv{
+    display: flex;
+    flex-flow: column;
+}
+
+.profileTitle{
     color: #264653;
     font-size: 30px;
     text-align: center;
     padding-top: 15px;
 }
 
-.edituserpageHR {
+.edituserpageHR{
     border: 0;
     height: 1px;
-    width: 50%;
+    width: 80%;
     position: relative;
     margin: 30px auto;
     background: #2a9d8f;
@@ -1191,19 +1360,14 @@ a {
 
 .userpageParam {
     padding-bottom: 30px;
+    display :flex;
+    flex-flow: column;
 }
 
-#buttonUpdate {
-    padding-top: 40px;
+#divButtonUpdate{
     display: flex;
     align-self: center;
     justify-content: center;
-}
-
-.edituserpagePlaceholder {
-    width: 250px;
-    height: 50px;
-    color: rgb(126, 126, 126);
 }
 
 img {
@@ -1243,4 +1407,204 @@ a {
 
 ::-webkit-scrollbar-corner {
     background: #ececec;
+}
+#buttonUpdate{
+    width: 300px;
+    height: 45px;
+    text-align: center;
+    font-size:18px;
+}
+
+.edituserpagePlaceholder{
+    width: 80%;
+    height: 45px;
+    color: rgb(124, 122, 122);
+    background-color: rgb(247, 243, 243);
+    border: none;
+}
+
+.profilePhotoCropper{
+    width: 250px;
+    height: 250px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 50%;
+    display: flex;
+}
+
+.roundPhoto{
+    align-self: center;
+    display: inline;
+    margin: 0 auto;
+    height: auto;
+    width: 250px;
+}
+
+.editprofileError{
+    font-weight: bold;
+    color: #ff3333;
+}
+
+.descriptionBox{
+    align-self: center;
+    justify-content: center;
+    height: 200px;
+    background-color: rgb(243, 240, 240);
+    color: rgb(121, 118, 118);
+    border-width: 20px;
+
+    width: 50%;
+    position: relative;
+    margin: 30px auto;
+    width: 100%;
+    overflow: scroll;
+}
+
+.editdescriptionBox{
+    height: 150px;
+    width: 80%;
+    color: rgb(124, 122, 122);
+    background-color: rgb(247, 243, 243);
+    border: none;
+}
+
+.editProfileIcon{
+    color: #e76f51;
+}
+
+.uploadImageButton{
+    cursor: pointer;
+    border: 0;
+    background-color: #e76f51;
+    padding: 13px;
+    border-radius: 20px;
+    height: 40px;
+    width:200px;
+    font-size: 14px;
+    color: white;
+    text-transform: uppercase;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    flex-flow: row nowrap;
+}
+
+.blackIcon{
+    color: black;
+    padding-left: 3%;
+    padding-right: 10px;
+}
+
+#edituserpageForm{
+    display: flex;
+    flex-flow: column;
+}
+
+.editprofileText{
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.goBack{
+    width: 80%;
+    height:30px;
+    display: flex;
+    flex-flow: row nowrap;
+    align-self: center;
+}
+
+.goBackButton{
+    width:200px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color:rgb(235, 228, 228);
+    background-color: #264653;
+    font-weight: bold;
+    font-size: 15px;
+    position: absolute;
+    right: 10%; 
+}
+
+.goBackButton:hover{
+    background-color: #89adbb;
+    color :rgb(49, 48, 48)
+}
+
+#deleteImageButtonID{
+    background-color: rgb(219, 216, 216);
+    color: black;
+}
+
+#bottomButtons{
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+}
+
+/* ============================================== */
+
+/* GRID FOR OVERLAPING IMAGES */
+
+#containerEditPhoto {
+  position: relative;
+}
+
+.uploadImage{
+    position: absolute;
+    top: 85%;
+    left: 15%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    font-size: 16px;
+    padding: 12px 24px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.editImageButton{
+    width: 100px;
+    height:40px;
+    font-size: 15px;
+    background-color: rgb(219, 216, 216);
+    display: flex;
+    flex-flow: row nowrap;
+    color:black;
+    border-radius: 20px;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    border-radius: 20px;
+}
+.editImageButton:hover{
+    background-color:rgb(85, 82, 82);
+    color:white;
+}
+
+#deleteImageButton{
+    width:200px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(219, 216, 216);
+    font-weight: bold;
+    font-size: 15px;
+    border-radius: 20px;
+}
+
+#deleteImageButton:hover{
+    background-color:rgb(85, 82, 82);
+    color:white;
+}
+
+#profilePhoto{
+    padding-top: 10px;
+    padding-bottom: 30px;
+}
+
+.deleteImageText{
+    font-weight: bold;
 }

@@ -11,7 +11,7 @@
 |
 */
 // Home
-Route::get('/', 'HomepageController@index');
+Route::get('/', 'HomepageController@index')->name("homepage");
 
 
 Route::get('projects', 'ProjectController@list');
@@ -37,5 +37,10 @@ Route::post('register', 'Auth\RegisterController@register');
 //User Page
 Route::get('userpage', 'UserController@showProfile')->name('userpage');
 Route::get('edituserpage', 'UserController@edit');
-//Route::post('/edituserpage', 'UserController@update')->name('edituserpage');
-Route::post('/edituserpage', 'UserController@userpageUpdate')->name('edituserpage');
+
+//Edit User Page
+Route::post('userpage', 'UserController@userpageUpdate')->name('edituserpage');
+Route::get('deleteuser', 'UserController@delete')->name('deleteuser');
+Route::get('deleteUserPhoto', 'UserController@deletePhoto')->name('deleteUserPhoto');
+
+Route::get('create-project', 'ProjectController@createproject');
