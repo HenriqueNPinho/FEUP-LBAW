@@ -40,6 +40,9 @@
                 <div id = "containerEditPhoto">
                     <div class = "profilePhotoCropper">
                         @if(empty(Auth::user()->profile_image))
+                            <script>
+                                console.log("não tem profile_image")
+                            </script>
                             <img src = "/images/avatars/profile-pic-2.png" class = "roundPhoto" id = "tempProfilePhoto">
                         @else
                             <img src ="{{Auth::user()->profile_image}}" class = "roundPhoto" id = "tempProfilePhoto"> 
