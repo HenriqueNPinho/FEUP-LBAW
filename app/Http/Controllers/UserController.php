@@ -8,8 +8,11 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 use App\Models\Image;
+use App\Rules\MatchOldPassword;
+
 class UserController extends Controller
 {
     public function showProfile()
@@ -91,4 +94,27 @@ class UserController extends Controller
         
         return Redirect::route('homepage')->with('global', 'Your account has been deleted!'); 
     }
+
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function store(Request $request)
+    {
+        $sofia = "vou mudar a pass";
+        echo("<script>console.log('PATH: " . $sofia . "');</script>");
+
+        $request->validate([
+            'current_password' => ['required', new MatchOldPassword],
+            'new_password' => ['required'],
+            'new_confirm_password' => ['same:new_password'],
+        ]);
+
+        $user = Auth::user();
+        $user->update(['password'=> Hash::make($request->new_password)]);
+
+        return view('pages.edituserpage', ['user' => $user]);
+    } 
+
 }

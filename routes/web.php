@@ -13,7 +13,6 @@
 // Home
 Route::get('/', 'HomepageController@index')->name("homepage");
 
-
 Route::get('projects', 'ProjectController@list');
 Route::get('project/{id}', 'ProjectController@show');
 Route::get('project/{project_id}/search/','ProjectController@taskSearch');
@@ -24,8 +23,6 @@ Route::put('api/task/{project_id}','TaskController@create');
 Route::get('api/task/{task_id}','TaskController@get');
 Route::post('api/task/{task_id}','TaskController@edit');
 Route::delete('api/task/{task_id}','TaskController@delete');
-
-
 
 // Authentication
 Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
@@ -43,4 +40,9 @@ Route::post('userpage', 'UserController@userpageUpdate')->name('edituserpage');
 Route::get('deleteuser', 'UserController@delete')->name('deleteuser');
 Route::get('deleteUserPhoto', 'UserController@deletePhoto')->name('deleteUserPhoto');
 
+//Change Password
+Route::post('changePassword', 'UserController@store')->name('changePassword');
+
 Route::get('create-project', 'ProjectController@createproject');
+
+
