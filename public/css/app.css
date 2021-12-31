@@ -859,12 +859,14 @@ form h4 {
     margin-top: 2vh;
     color: #7e7d7ad2;
 }
-#regForm textarea{ 
+#create-project textarea{ 
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
     width: 40%;
     text-size-adjust: 30%;
-    box-sizing: border-box;
-    align-self: center;
     resize: none;
+    
 }
   h1 {
     text-align: center;  
