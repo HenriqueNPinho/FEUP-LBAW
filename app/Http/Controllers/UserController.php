@@ -92,7 +92,7 @@ class UserController extends Controller
         Auth::logout();
         $user->delete();
         
-        return Redirect::route('homepage')->with('global', 'Your account has been deleted!'); 
+        return Redirect::route('homepage'); 
     }
 
     public function getNotifications()
@@ -121,5 +121,10 @@ class UserController extends Controller
 
         return view('pages.edituserpage', ['user' => $user]);
     } 
+
+    public function inviteResponse(Request $request)
+    {
+
+    }
 
 }

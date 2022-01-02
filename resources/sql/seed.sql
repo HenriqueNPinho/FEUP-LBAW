@@ -128,9 +128,9 @@ CREATE TABLE forum_post(
 );
 
 CREATE TABLE invitation(
-    project_id INTEGER NOT NULL REFERENCES projects(id),
-    users_id INTEGER NOT NULL REFERENCES users(id),
-    coordinator_id INTEGER NOT NULL REFERENCES users(id),
+    project_id INTEGER NOT NULL REFERENCES projects(id) ON DELETE CASCADE,
+    users_id INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+    coordinator_id INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
     accepted BOOLEAN DEFAULT NULL,
     PRIMARY KEY(project_id,users_id)
 );
