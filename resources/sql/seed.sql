@@ -73,13 +73,13 @@ CREATE TABLE work(
 
 CREATE TABLE projects (
     id SERIAL PRIMARY KEY,
-    company_id INTEGER NOT NULL REFERENCES company(id) ON DELETE CASCADE,
+    company_id INTEGER DEFAULT NULL REFERENCES company(id) ON DELETE CASCADE,
     name TEXT NOT NULL,
     description TEXT,
     start_date DATE,
     delivery_date DATE,
     archived BOOLEAN DEFAULT FALSE NOT NULL,
-    CONSTRAINT date_ck CHECK (delivery_date>start_date)
+    CONSTRAINT date_ck CHECK (delivery_date>=start_date)
 );
 
 

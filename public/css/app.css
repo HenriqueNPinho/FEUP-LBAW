@@ -1112,6 +1112,14 @@ form h4 {
     width: 70%;
     min-width: 300px;
 }
+#regForm select{
+    width: 20%;
+    height: 30px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  
+}
 #regForm h5 {
     text-align: center;
     align-self: center;
@@ -1137,17 +1145,12 @@ h1 {
     width: 100%;
     font-size: 17px;
     border: 1px solid #aaaaaa;
-} */
+} 
 
 /* Mark input boxes that gets an error on validation: */
-input.invalid {
-    background-color: #ffdddd;
-}
+
 
 /* Hide all steps by default: */
-.tab {
-    display: none;
-}
 
 
 button:hover {
@@ -1156,6 +1159,13 @@ button:hover {
 
 #prevBtn {
     background-color: #bbbbbb;
+}
+.tab {
+    display: none;
+}
+
+input.invalid {
+    background-color: #ffdddd;
 }
 
 /* Make circles that indicate the steps of the form: */
