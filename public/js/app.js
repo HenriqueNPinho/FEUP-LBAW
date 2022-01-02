@@ -19,6 +19,7 @@ function setUpSlideRightMenu() {
     let projectOverview = document.querySelector(
         "#slide-right-project-overview-link"
     );
+    let projectForum = document.querySelector("#slide-right-project-forum-link");
     let notifications= document.querySelector("#slide-right-project-notifications-link");
     let mainOptionsContainer=document.querySelector("#slide-right-menu-main-options");
     let notificationsContainer =document.querySelector("#notification-container");
@@ -40,6 +41,7 @@ function setUpSlideRightMenu() {
             }
 
             projectOverview.setAttribute("href", "/project/" + id);
+            projectForum.setAttribute("href", "/project/"+ id + "/forum");
 
             notifications.addEventListener("click",function(){
                 notificationsContainer.style.display="flex";

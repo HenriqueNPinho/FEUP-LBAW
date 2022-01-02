@@ -25,6 +25,11 @@ Route::post('api/task/{task_id}','TaskController@edit');
 Route::delete('api/task/{task_id}','TaskController@delete');
 Route::get('api/user/notifications','UserController@getNotifications');
 
+// Forum
+Route::get('project/{project_id}/forum','ForumPostController@getProjectForum');
+Route::post('project/{project_id}/forum','ForumPostController@create');
+Route::put('project/{project_id}/forum','ForumPostController@edit');
+Route::delete('project/{project_id}/forum','ForumPostController@delete');
 
 // Authentication
 Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');

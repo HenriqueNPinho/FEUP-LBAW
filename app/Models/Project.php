@@ -20,6 +20,10 @@ class Project extends Model
     return $this->hasMany('App\Models\Task');
   }
 
+  public function forumPosts(){
+    return $this->hasMany('App\Models\ForumPost');
+  }
+
   public function coordinators(){
     return $this->belongsToMany('App\Models\User','project_coordinator','project_id','users_id');
   }
