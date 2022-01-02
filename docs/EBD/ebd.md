@@ -24,6 +24,7 @@ The following diagram represents the main organizational entities, the relations
 
 - Only the post's author can generate new Post Editions
 - A user can't have more than 5 favorite projects
+- When a user's account is deleted, every detail is kept, since it is considered work product
 
 ## A5: Relational Schema, validation and schema refinement
 
