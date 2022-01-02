@@ -95,6 +95,7 @@ main > header {
 
 #navbarProfilePhoto {
     width: 50px;
+    object-fit: cover;
 }
 /*=================================*/
 
@@ -495,6 +496,9 @@ form h4 {
 
 #project-overview-top-bar-left img {
     height: 35px;
+    width: 35px;
+    object-fit: cover;
+    border-radius: 35px;
     align-self: center;
 }
 #project-overview-top-bar-left img:first-of-type {
@@ -785,7 +789,9 @@ form h4 {
 
 #task-page-members img {
     height: 30px;
+    width: 30px;
     border-radius: 30px;
+    object-fit: cover;
     margin-left: 5px;
     align-self: center;
 }
@@ -1250,7 +1256,8 @@ a {
 .userpageSetUp {
     display: flex;
     flex-flow: row nowrap;
-    width:100%;
+    align-self: center;
+    width:80%;
     justify-content: center;
 }
 
@@ -1269,6 +1276,23 @@ a {
     justify-content: center;
     width: 50%;
     height: auto;
+}
+
+.textSpace form{
+    display: flex;
+    align-self: center;
+}
+
+.textSpace form button{
+    align-self: center;
+}
+
+.textSpaceButtons{
+    margin-top: 20px;
+    align-self: center;
+    width: 60%;
+    display: flex;
+    justify-content: space-around;
 }
 
 .userName {
@@ -1329,9 +1353,9 @@ a {
     width: 100%;
 }
 
-#editProfileButton {
+.profileButton {
     margin-top: 10px;
-    width: 300px;
+    width: 170px;
     height: 45px;
     border: 0;
     background-color: #2a9d8f;
@@ -1341,16 +1365,19 @@ a {
     display: flex;
     align-self: center;
     justify-content: center;
-
     display: flex;
     align-items: center;
     justify-content: center;
     font-weight: bold;
-    font-size: 18px;
+    font-size: 14px;
 }
 
-#editProfileButton:hover {
+.profileButton:hover {
     background-color: #89adbb;
+}
+
+#profileButtonDelete{
+    background-color: #e76f51;
 }
 
 #editProfileButtonText {
@@ -1482,8 +1509,9 @@ a {
     align-self: center;
     display: inline;
     margin: 0 auto;
-    height: auto;
+    height: 250px;
     width: 250px;
+    object-fit: cover;
 }
 
 .editprofileError {
@@ -1605,11 +1633,6 @@ a {
     height: auto;
 }
 
-.BigDivEditProfile{
-    padding-bottom: 3%;
-    align-self: center;
-    width:80%
-}
 
 #changeP{
     padding-bottom: 20px;

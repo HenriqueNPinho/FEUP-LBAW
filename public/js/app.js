@@ -367,6 +367,15 @@ function editTask(task) {
     });
 }
 
+function setUpConfirmDeleteAccount(){
+    let deleteAccountButton=document.querySelector("#profileButtonDelete");
+    deleteAccountButton.addEventListener("click",function(evt){
+        if(!confirm("Are you sure you want to delete your account?")){
+            evt.preventDefault();
+        }
+    },false);
+}
+
 function encodeForAjax(data) {
     if (data == null) return null;
     return Object.keys(data)
@@ -397,6 +406,7 @@ setUpSlideRightMenu();
 setUpDragAndDropTasks();
 setUpAddNewTask();
 setUpViewFullTask();
+setUpConfirmDeleteAccount();
 
 /*********************************************************************/
 /* EDIT USER PAGE */
