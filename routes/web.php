@@ -46,5 +46,7 @@ Route::get('deleteUserPhoto', 'UserController@deletePhoto')->name('deleteUserPho
 Route::post('changePassword', 'UserController@store')->name('changePassword');
 
 Route::get('create-project', 'ProjectController@createproject');
+//Route::put('api/project/create','ProjectController@createproject');
+Route::put('api/project/create','ProjectController@create');
 
 
