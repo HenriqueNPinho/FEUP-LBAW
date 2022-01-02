@@ -1608,3 +1608,10 @@ a {
 .deleteImageText {
     font-weight: bold;
 }
+
+/* ============================================== */
+
+#errorEditProfile{
+    font-weight: bold;
+    color: #ff3333;
+}

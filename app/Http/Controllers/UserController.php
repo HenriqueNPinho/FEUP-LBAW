@@ -68,6 +68,8 @@ class UserController extends Controller
         else{
             $sofia = "não recebi imagem";
             echo("<script>console.log('PATH: " . $sofia . "');</script>");
+
+            echo("<script>console.log('PATH: " . $user->profile_image . "');</script>");
         }
 
         $user->save();
@@ -82,6 +84,9 @@ class UserController extends Controller
         File::delete($user->profile_image);
         $user->profile_image = '/images/avatars/profile-pic-2.png';
 
+        echo("<script>console.log('PATH: " . $user->profile_image . "');</script>");
+
+        $user->save();
         return view('pages.edituserpage', ['user' => $user]);
     }
 
@@ -107,7 +112,7 @@ class UserController extends Controller
 
         $request->validate([
             'current_password' => ['required', new MatchOldPassword],
-            'new_password' => ['required'],
+            'new_password' => ['required', 'string', 'min:6' , 'confirmed'],
             'new_confirm_password' => ['same:new_password'],
         ]);
 
