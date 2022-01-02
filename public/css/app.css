@@ -1246,7 +1246,8 @@ a {
 .userpageSetUp {
     display: flex;
     flex-flow: row nowrap;
-    width:100%;
+    align-self: center;
+    width:80%;
     justify-content: center;
 }
 
@@ -1265,6 +1266,23 @@ a {
     justify-content: center;
     width: 50%;
     height: auto;
+}
+
+.textSpace form{
+    display: flex;
+    align-self: center;
+}
+
+.textSpace form button{
+    align-self: center;
+}
+
+.textSpaceButtons{
+    margin-top: 20px;
+    align-self: center;
+    width: 60%;
+    display: flex;
+    justify-content: space-around;
 }
 
 .userName {
@@ -1325,9 +1343,9 @@ a {
     width: 100%;
 }
 
-#editProfileButton {
+.profileButton {
     margin-top: 10px;
-    width: 300px;
+    width: 170px;
     height: 45px;
     border: 0;
     background-color: #2a9d8f;
@@ -1337,16 +1355,19 @@ a {
     display: flex;
     align-self: center;
     justify-content: center;
-
     display: flex;
     align-items: center;
     justify-content: center;
     font-weight: bold;
-    font-size: 18px;
+    font-size: 14px;
 }
 
-#editProfileButton:hover {
+.profileButton:hover {
     background-color: #89adbb;
+}
+
+#profileButtonDelete{
+    background-color: #e76f51;
 }
 
 #editProfileButtonText {
@@ -1478,8 +1499,9 @@ a {
     align-self: center;
     display: inline;
     margin: 0 auto;
-    height: auto;
+    height: 250px;
     width: 250px;
+    object-fit: cover;
 }
 
 .editprofileError {
@@ -1601,11 +1623,6 @@ a {
     height: auto;
 }
 
-.BigDivEditProfile{
-    padding-bottom: 3%;
-    align-self: center;
-    width:80%
-}
 
 #changeP{
     padding-bottom: 20px;
