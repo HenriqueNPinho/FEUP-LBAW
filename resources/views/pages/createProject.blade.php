@@ -12,6 +12,10 @@
   <div class="tab">
     <h1>Whats the name of the project:</h1>
     <p><input placeholder="Project Name" oninput="this.className = ''" name="pname"></p>
+    <h1>Company name:</h1>
+    <select id="company" name="company">
+      <option value="none">none</option>
+    </select>
   </div>
   
   <div class="tab">
