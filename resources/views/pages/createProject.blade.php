@@ -18,23 +18,23 @@
     <h1>When is the delivery date:</h1>
     <p><input type ="date" this.className = '' name="date"></p>
     <h1> <p> Give your project a description </p>  <p>(Optional)</p></h1>
-    <p><input placeholder="" oninput="this.className = ''" name="phone"></p>
+    <div id="create-project">
+      <textarea id= "description" name="description"
+      rows="5" cols="33" placeholder="" ></textarea>
+    </div>
   </div>
 
   <div class="tab">
     <h1>Assign a project coordinator</h1>   
         <h5>Invite them via e-mail</h5>
         <div id="create-project">
-            <input type="text" name="project-coordinator" placeholder="eg:email@example.com">
+            <input type="text" name="project-coordinator" type="email" placeholder="eg:email@example.com">
          </div>
          <h1>Assign members to your team</h1>   
         <h5>Invite them via e-mail</h5>
         <div id="create-project">
-            <textarea id= "project-members" name="project-members"
-            rows="5" cols="33" placeholder="eg: email@example.com; 
-email1@example.com; 
-email2@example.com
-email3@example.com" ></textarea>
+            <input id= "project-members" name="project-members"
+            type="email" multiple placeholder="eg: email@example.com; email1@example.com; email2@example.com; email3@example.com">
   </div>
   </div>
 
@@ -44,6 +44,7 @@ email3@example.com" ></textarea>
       <button type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
     </div>
   </div>
+
   <!-- Circles which indicates the steps of the form: -->
   <div style="text-align:center;margin-top:40px;">
     <span class="step"></span>
@@ -56,14 +57,13 @@ email3@example.com" ></textarea>
   </div>
 <script>
 
-var currentTab = 0; // Current tab is set to be the first tab (0)
+var currentTab = 0; //first tab 
 showTab(currentTab); // Display the current tab
 
 function showTab(n) {
-  // This function will display the specified tab of the form...
   var x = document.getElementsByClassName("tab");
   x[n].style.display = "block";
-  //... and fix the Previous/Next buttons:
+
   if (n == 0) {
     document.getElementById("prevBtn").style.display = "none";
   } else {
@@ -74,7 +74,6 @@ function showTab(n) {
   } else {
     document.getElementById("nextBtn").innerHTML = "Next";
   }
-  //... and run a function that will display the correct step indicator:
   fixStepIndicator(n)
 }
 

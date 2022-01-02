@@ -253,7 +253,7 @@ INSERT INTO users VALUES (
   'John Doe',
   'admin@example.com',
   '$2y$10$HfzIhGCCaxqyaIdGgjARSuOKAcm1Uy82YfLuNaajn6JrjLWy9Sj/W',
-  '/images/avatars/profile-pic.png'
+  '/images/avatars/profile-pic-2.png'
 ); -- Password is 1234. Generated using Hash::make('1234')
 
 INSERT INTO users VALUES (
