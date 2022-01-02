@@ -7,11 +7,12 @@ This project aims to build an information system with a web interface for projec
 
 ## A4: Conceptual Data Model
 
-A professional diagram drawing tool that supports UML is recommended.
-
-### 1. Class diagram
 
 The Conceptual Domain Model contains the identification and description of the entities of the domain and the relationships between them in a UML class diagram.
+A UML class diagram is used to document the model.
+The class diagram is developed by starting to include only the classes and its relationships in order not to overload the diagram too early in the process. In the following iterations additional detail is included, namely: class attributes, attribute domains, multiplicity of associations, and additional restrictions in OCL.
+
+### 1. Class diagram
 
 The following diagram represents the main organizational entities, the relationships between them, attributes, and the multiplicity of relationships for our website.
 
