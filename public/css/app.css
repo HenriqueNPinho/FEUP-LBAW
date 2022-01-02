@@ -1068,14 +1068,9 @@ h1 {
 } */
 
 /* Mark input boxes that gets an error on validation: */
-input.invalid {
-    background-color: #ffdddd;
-}
+
 
 /* Hide all steps by default: */
-.tab {
-    display: none;
-}
 
 
 button:hover {
@@ -1084,6 +1079,13 @@ button:hover {
 
 #prevBtn {
     background-color: #bbbbbb;
+}
+.tab {
+    display: none;
+}
+
+input.invalid {
+    background-color: #ffdddd;
 }
 
 /* Make circles that indicate the steps of the form: */

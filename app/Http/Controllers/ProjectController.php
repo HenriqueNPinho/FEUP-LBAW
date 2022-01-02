@@ -64,6 +64,10 @@ class ProjectController extends Controller
           return view('pages.createProject', ['projects'=>$projects]);
         }
     }
+    public function create()
+    {
+        
+    }
    
     /**
      * Creates a new card.
