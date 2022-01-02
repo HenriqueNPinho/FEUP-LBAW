@@ -23,6 +23,8 @@ Route::put('api/task/{project_id}','TaskController@create');
 Route::get('api/task/{task_id}','TaskController@get');
 Route::post('api/task/{task_id}','TaskController@edit');
 Route::delete('api/task/{task_id}','TaskController@delete');
+Route::get('api/user/notifications','UserController@getNotifications');
+
 
 // Authentication
 Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');

@@ -374,7 +374,11 @@ form h4 {
     margin-left: 5%;
     height: 90vh;
     background-color: #dfdfdf;
+    width: 15%;
+    overflow-y: scroll;
 }
+
+
 
 .slide-right-menu-item div {
     display: flex;
@@ -391,7 +395,11 @@ form h4 {
     margin-right: 10px;
 }
 
-.slide-right-menu-item {
+.slide-right-menu-item{
+    cursor:pointer;
+}
+
+.slide-right-menu-divider {
     cursor: pointer;
     height: 2px;
     width: 100%;
@@ -399,6 +407,57 @@ form h4 {
 
 .slide-right-menu-item div h2 {
     font-size: 18px;
+}
+
+.project-info-plus-accept-reject{
+    display: flex;
+    flex-direction: column;
+}
+
+.project-info-plus-accept-reject h4{
+    align-self: center;
+}
+
+#slide-right-menu-main-options{
+    flex-direction: column;
+}
+
+#notification-container{
+    display: none;
+    flex-direction: column;
+}
+
+.notification{
+    background-color: white;
+    padding:20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.accept-icons-container {
+    align-self: center;
+    display: flex;
+    justify-content: space-around;
+    width: 80%;
+}
+
+.accept-reject-icon{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+
+}
+
+.accept-reject-icon h5{
+    margin-top: 5px;
+    align-self: center;
+}
+
+.accept-icons-container img{
+    height: 30px;
+    width: 30px;
+    cursor: pointer;
+    align-self: center;
 }
 
 .project-overview {
@@ -600,6 +659,11 @@ form h4 {
     box-shadow: 0px 5px 16px 0px rgba(27, 27, 27, 0.05);
 }
 
+.task-preview-info{
+    max-width:90% ;
+    overflow-wrap: break-word;
+}
+
 .task-zone {
     width: 100%;
     background-color: yellow;
@@ -696,8 +760,11 @@ form h4 {
     color: #264653;
 }
 
+
+
 #task-description-container {
     width: 100%;
+    overflow-wrap: break-word;
 }
 
 #task-page-task-date-container {
@@ -1035,7 +1102,6 @@ form h4 {
 
 #regForm {
     margin: 100px auto;
-    font-family: Raleway;
     padding: 40px;
     width: 70%;
     min-width: 300px;
@@ -1357,7 +1423,7 @@ a {
 }
 
 ::-webkit-scrollbar {
-    width: 10px;
+    width: 4px;
 }
 
 /* Track */

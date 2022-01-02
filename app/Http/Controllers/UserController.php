@@ -100,6 +100,11 @@ class UserController extends Controller
         return Redirect::route('homepage')->with('global', 'Your account has been deleted!'); 
     }
 
+    public function getNotifications()
+    {
+        $user = Auth::user();
+        return $user->projectInvitations;
+    }
     /**
      * Show the application dashboard.
      *
