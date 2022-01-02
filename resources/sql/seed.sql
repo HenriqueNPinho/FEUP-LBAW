@@ -131,9 +131,11 @@ CREATE TABLE invitation(
     project_id INTEGER NOT NULL REFERENCES projects(id),
     users_id INTEGER NOT NULL REFERENCES users(id),
     coordinator_id INTEGER NOT NULL REFERENCES users(id),
-    accepted BOOLEAN,
-    PRIMARY KEY(project_id,users_id,coordinator_id)
+    accepted BOOLEAN DEFAULT NULL,
+    PRIMARY KEY(project_id,users_id)
 );
+
+
 
 CREATE TABLE favorite(
     project_id INTEGER NOT NULL REFERENCES projects(id),
@@ -254,6 +256,15 @@ INSERT INTO users VALUES (
   '/images/avatars/profile-pic-2.png'
 ); -- Password is 1234. Generated using Hash::make('1234')
 
+INSERT INTO users VALUES (
+  DEFAULT,
+  'Maria Doe',
+  'maria@example.com',
+  '$2y$10$HfzIhGCCaxqyaIdGgjARSuOKAcm1Uy82YfLuNaajn6JrjLWy9Sj/W',
+  '/images/avatars/profile-pic.png'
+); -- Password is 1234. Generated using Hash::make('1234')
+
+
 
 INSERT INTO company VALUES(DEFAULT,'FEUP');
 INSERT INTO projects VALUES(DEFAULT,1,'LBAW','Um trabalho que me faz querer cortar os pulsos','2021-08-24', '2022-08-24', DEFAULT);
@@ -261,6 +272,10 @@ INSERT INTO project_member VALUES(1,1);
 INSERT INTO project_coordinator VALUES(1,1);
 INSERT INTO tasks VALUES(DEFAULT,1,'Finish A8','Finish this specification on time','2021-08-24','2021-09-12',DEFAULT);
 INSERT INTO task_assigned VALUES(1,1,null,DEFAULT);
+INSERT INTO projects VALUES(DEFAULT,1,'Other','Um trabalho que me faz querer cortar os pulsos','2021-08-24', '2022-08-24', DEFAULT);
+INSERT INTO project_member VALUES(2,2);
+INSERT INTO project_coordinator VALUES(2,2);
+INSERT INTO invitation VALUES(2,1,2,DEFAULT);
 
 
 -- INSERT INTO cards VALUES (DEFAULT, 'Things to do', 1);

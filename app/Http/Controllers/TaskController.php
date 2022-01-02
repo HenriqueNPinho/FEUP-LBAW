@@ -27,7 +27,6 @@ class TaskController extends Controller
 		$this->authorize('create', $task);
 		$task->status = $request->input('status');
 		$task->name = $request->input('name');
-		$task->start_date = date("Y-m-d");
 		$task->delivery_date = $request->input('date');
 		$task->description = $request->input('description');
 		$members=$request->input('members');
@@ -77,12 +76,12 @@ class TaskController extends Controller
 		$task = Task::find($id);
 		$this->authorize('update', $task);
 		$task->name = $request->input('name');
-		$task->start_date = date("Y-m-d");
-		$task->delivery_date = $request->input('date');
+        if($task->delivery_date!=$request->input('date'))
+		    $task->delivery_date = $request->input('date');
 		$task->description = $request->input('description');
 		$members=$request->input('members');
+        $task->members()->detach();
 		$task->save();
-		$task->members()->detach();
 		if($members!=""){
 			$assignedMembersIDs = explode(",", $members);
 			foreach($assignedMembersIDs as $memberID){

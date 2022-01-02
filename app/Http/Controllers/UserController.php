@@ -8,8 +8,11 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 use App\Models\Image;
+use App\Rules\MatchOldPassword;
+
 class UserController extends Controller
 {
     public function showProfile()
@@ -65,6 +68,8 @@ class UserController extends Controller
         else{
             $sofia = "não recebi imagem";
             echo("<script>console.log('PATH: " . $sofia . "');</script>");
+
+            echo("<script>console.log('PATH: " . $user->profile_image . "');</script>");
         }
 
         $user->save();
@@ -79,6 +84,9 @@ class UserController extends Controller
         File::delete($user->profile_image);
         $user->profile_image = '/images/avatars/profile-pic-2.png';
 
+        echo("<script>console.log('PATH: " . $user->profile_image . "');</script>");
+
+        $user->save();
         return view('pages.edituserpage', ['user' => $user]);
     }
 
@@ -91,4 +99,32 @@ class UserController extends Controller
         
         return Redirect::route('homepage')->with('global', 'Your account has been deleted!'); 
     }
+
+    public function getNotifications()
+    {
+        $user = Auth::user();
+        return $user->projectInvitations;
+    }
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function store(Request $request)
+    {
+        $sofia = "vou mudar a pass";
+        echo("<script>console.log('PATH: " . $sofia . "');</script>");
+
+        $request->validate([
+            'current_password' => ['required', new MatchOldPassword],
+            'new_password' => ['required', 'string', 'min:6' , 'confirmed'],
+            'new_confirm_password' => ['same:new_password'],
+        ]);
+
+        $user = Auth::user();
+        $user->update(['password'=> Hash::make($request->new_password)]);
+
+        return view('pages.edituserpage', ['user' => $user]);
+    } 
+
 }

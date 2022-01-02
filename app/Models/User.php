@@ -43,4 +43,8 @@ class User extends Authenticatable
     public function companies(){
         return $this->belongsToMany('App\Models\Company','work','users_id','company_id');
     }
+
+    public function projectInvitations(){
+        return $this->belongsToMany('App\Models\Project','invitation','users_id','project_id')->wherePivot('accepted',null)->withPivot('coordinator_id','accepted');
+    }
 }
