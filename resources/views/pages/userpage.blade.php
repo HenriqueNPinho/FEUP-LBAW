@@ -10,7 +10,7 @@
         <div class ="goBack">
             <form method="GET" action="{{'/deleteuser'}}" >
                 <input type="hidden" id= "deleteaccountButton" onchange="sofi(event)">
-                <button type="submit" class= "goBackButton" >Delete Account</button>
+                <button type="submit" class= "goBackButton" onclick="return confirm('Are you sure you want to delete your account?')" >Delete Account</button>
             </form>
         </div>
         <div class = "userpageSetUp">

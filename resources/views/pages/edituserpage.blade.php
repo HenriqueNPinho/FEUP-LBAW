@@ -16,7 +16,8 @@
         <div class = "userpageParam">
             <form method="GET" action="{{'/deleteUserPhoto'}}" >
                 <input type="hidden">
-                <button type="submit" class= "deleteImageText" id="deleteImageButtonID" >
+
+                <button type="submit" class= "deleteImageText" id="deleteImageButtonID" onclick="return confirm('Are you sure you want to delete your profile image?')" >
                     <i class="fas fa-trash-alt blackIcon"></i>
                     Delete Image
                 </button>
@@ -95,12 +96,14 @@
         <form method="POST" action="{{ route('changePassword') }}" enctype="multipart/form-data"  id = "passwordForm">
         @csrf 
         @foreach ($errors->all() as $error)
-        <p>{{ $error }}</p>
+        <span id = "errorEditProfile" >
+            {{ $error }}
+        </span>
         @endforeach 
             <div class = "userpageParam"> 
                 <label for="password" class="editprofileText">Current Password</label>
                 <input id="password" type="password" class="edituserpagePlaceholder" name="current_password" autocomplete="current-password">
-                
+        
                 <label for="password" class="editprofileText">New Password</label>
                 <input id="new_password" type="password" class="edituserpagePlaceholder" name="new_password" autocomplete="current-password">
 
