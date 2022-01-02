@@ -78,7 +78,6 @@ class ProjectController extends Controller
         $project->start_date=date('Y-m-d');
         $project->description=$request->input('description');
         
-
         $project->save();
 		
         $project->members()->attach(Auth::user()->id);

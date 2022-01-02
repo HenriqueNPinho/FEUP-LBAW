@@ -79,7 +79,7 @@ CREATE TABLE projects (
     start_date DATE,
     delivery_date DATE,
     archived BOOLEAN DEFAULT FALSE NOT NULL,
-    CONSTRAINT date_ck CHECK (delivery_date>=start_date)
+    CONSTRAINT date_ck CHECK (delivery_date>start_date)
 );
 
 
