@@ -20,7 +20,7 @@
   
   <div class="tab">
     <h1>When is the delivery date:</h1>
-    <p><input type ="date" this.className = '' name="date" id="cp-date" min ='<?php echo date('Y-m-d');?>' ></p>
+    <p><input type ="date" this.className = '' name="date" id="cp-date" min ='<?php echo date('Y-m-d',time()+86400);?>' ></p>  <!-- 24*60*60 -->
     <h1> <p> Give your project a description </p>  <p>(Optional)</p></h1>
     <div id="create-project">
       <textarea id= "cp-description" name="description"
