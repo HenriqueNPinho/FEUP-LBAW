@@ -32,7 +32,7 @@ CREATE TABLE users (
     id SERIAL PRIMARY KEY,
     name TEXT NOT NULL,
     email TEXT NOT NULL UNIQUE,
-    password TEXT NOT NULL,
+    password BINARY(60) NOT NULL,
     profile_image TEXT,
     profile_description TEXT,
     remember_token VARCHAR
