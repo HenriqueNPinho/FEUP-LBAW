@@ -35,8 +35,7 @@ class ForumPostController extends Controller
         $forumPost->deleted = false;
         $forumPost->save();
 
-        //return $forumPost;
-        return view('pages.projectforum', ['project'=>$project, 'projects'=>$projects]);
+        return $forumPost;
     }
    
     /**
