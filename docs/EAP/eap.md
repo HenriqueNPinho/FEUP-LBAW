@@ -4,11 +4,9 @@
 
 ## A7: High-level architecture. Privileges. Web resources specification
 
-> Brief presentation of the artefact's goals.
+The architecture of the web application to develop is documented indicating the catalogue of resources and the properties of each resource, including: references to the graphical interfaces, and the format of JSON responses. This page includes the following operations over data: create, read, update, and delete
 
 ### 1. Overview
-
-> An overview of the web application to implement is presented in this section, where the modules are identified and briefly described. The web resources associated with each module are detailed in the individual documentation of each module inside the OpenAPI specification.  
 
 | Module | Description|
 |----|----|
@@ -21,8 +19,6 @@
 
 ### 2. Permissions
 
-This section defines the permissions used in the modules to establish the conditions of access to resources.
-
 | Identifier | Name                | Descripton              |
 | ---------- | ------------------- | ------------------------|
 | **PUB**    | Public              | Users without privileges|
@@ -34,25 +30,13 @@ This section defines the permissions used in the modules to establish the condit
 
 ### 3. OpenAPI Specification
 
-> This section includes the complete API specification in OpenAPI (YAML).
-
-> Additionally there is a link to the OpenAPI YAML file in the group's repository. The filename should include ‘openapi’ to activate GitLab’s OpenAPI viewer.
-OpenAPI specification in YAML format to describe the web application's web resources.
-
-Link to the `.yaml` file in the group's repository.
+[Link to .yaml file](a7_openapi.yaml)
 
 Link to the Swagger generated documentation (e.g. `https://app.swaggerhub.com/apis-docs/...`).
 
 ```yaml
 openapi: 3.0.0
-tags:
- - name: 'M01: Authentication'
- - name: 'M02: Authenticated User Area'
- - name: 'M03: Tasks'
- - name: 'M04: Forum'
- - name: 'M05: Static Pages'
- - name: 'M06: Project Area'
- - name: 'M07: Company Administrator Area'
+
 ...
 ```
 
@@ -61,38 +45,58 @@ tags:
 
 ## A8: Vertical prototype
 
-> Brief presentation of the artefact goals.
-
 ### 1. Implemented Features
 
 #### 1.1. Implemented User Stories
 
-> Identify the user stories that were implemented in the prototype.  
-
-| User Story reference | Name                   | Priority                   | Description                   |
-| -------------------- | ---------------------- | -------------------------- | ----------------------------- |
+| Identifier | Name        | Priority | Description                                                                                                             |
+| ---------- | ----------- | -------- | ----------------------------------------------------------------------------------------------------------------------- |
 | US101      | Login       | High     | As a Visitor, I want to authenticate myself into the system, so that I can access privileged information                |
 | US102      | Sign-up     | High     | As a Visitor, I want to register myself into the system, so that I can authenticate myself into the system              |
 | US103      | See home    | High     | As a Visitor, I want to access the home page, so that I can see a brief presentation of the website                     |
-| US104      | See about   | High     | As a Visitor, I want to access the about page, so that I can see a complete description of the website and its creators |
-| US105      | Consult FAQ | High     | As a Visitor, I want to access the FAQ, so that I can get quick answers to common questions                             |
-
-...
+| US201      | Create project             | High     | As an Authenticated user, I want to create a project, so that I can work on a new project                                                                      |
+| US202      | View projects              | High     | As an Authenticated user, I want to see my projects, so that I can switch between projects                                                                     |
+| US203      | Manage profile             | High     | As an Authenticated user, I want to be able to manage my personal information (Name, Contact Info, Profile Picture,...), so that I can update them at any time |
+| US204      | Manage project invitations | High     | As an Authenticated user, I want to be able to accept or decline invitations, so that I can participate in new projects                                        |
+| US205      | Logout                     | High     | As an Authenticated user, I want to be able to logout of my account                                                                                            |
+| US207      | Delete account             | Medium   | As an Authenticated user, I want to be able to delete my account, so that I can erase my personal information from the system                                  |
+| US301      | Create task                    | High     | As a Project Member, I want to create a task                                                                                                  |
+| US302      | Manage tasks                   | High     | As a Project Member, I want to manage tasks (assign them to another Project member, choose the priority of each task and its due date)        |
+| US303      | Complete an assigned task      | High     | As a Project Member, I want to be able to mark the tasks I am assigned to as complete                                                         |
+| US304      | Search tasks                   | High     | As a Project Member, I want to be able to search for tasks using a search bar, so that I can access them faster                               |
+| US306      | Assign Users to Tasks          | High     | As a Project Member, I want to be able to assign a task to another project member, so that every collaborator knows what they need to work on |
+| US308      | View task details              | Medium   | As a Project Member, I want to be able to view task details                                                                                   |
+| US312      | View the project’s team        | Low      | As a Project Member, I want to be able to view the project’s team, so that I know every collaborator within the project                       |
 
 #### 1.2. Implemented Web Resources
 
-> Identify the web resources that were implemented in the prototype.  
 
-> Module M01: Module Name  
+
+Module M01: Static Pages  
 
 | Web Resource Reference | URL                            |
 | ---------------------- | ------------------------------ |
+| R101: Get Homepage | GET / |
+
+Module M02: Authentication  
+
+| Web Resource Reference | URL                            |
+| ---------------------- | ------------------------------ |
+| R201: Login Form | GET /login   |
+| R202: Login Action  | POST /login |
+| R203: Logout Action | GET /logout  |
+| R204: Register Form  | GET /register  |
+| R205: Register Action | POST /register  |
+
+Module M03: Authenticated User Area
+
 | R301: Access User Profile | GET /userpage   |
 | R302: Edit User Profile Form  | GET /edituserpage |
 | R303: Edit User Profile Action | POST /userpage  |
 | R304: Delete User's Profile Photo  | GET /deleteuser  |
 | R305: Delete Account | GET /api/user/deleteUserPhoto  |
 | R306: Accept/Decline Project Invitation | POST /api/user/projectInvite  |
+
 
 Module M04: Project Area  
 
@@ -116,15 +120,16 @@ Module M04: Project Area
 
 #### 2.1. Credentials
 
+| Email | Password | Position |
+|-------|----------|----------|
+|joao@lbaw.com|123456|Project Coordinator|
+|maria@example.com|123456|Project Member|
 
----
 
 
 ## Revision history
 
-Changes made to the first submission:
-1. Item 1
-1. ..
+No changes have yet been made to this document.
 
 ***
 GROUP2151, 03/01/2022
