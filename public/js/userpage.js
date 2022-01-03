@@ -16,8 +16,5 @@ function setUpAcceptRejectProject(){
         });
     }
 }
-
-
-
 setUpConfirmDeleteAccount();
 setUpAcceptRejectProject();
