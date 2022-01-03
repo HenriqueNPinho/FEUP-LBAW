@@ -303,7 +303,7 @@ paths:
                   value: '/edituserpage'
   /deleteuser:
     get:
-      operationId: 305
+      operationId: R305
       summary: "R305: Delete User"
       description: 'Delete User account. Access: OWN'
       tags:
@@ -407,7 +407,7 @@ paths:
                     description: 'Failed. Redirect to project creation form.'
                     value: '/create-project/'
           
-  /project/id:
+  project/{id}:
     get:
         operationID: R403
         summary: "R403: See project page"
@@ -462,7 +462,7 @@ paths:
         '400':
           description: "Error in parameters"
             
-  /project/project_id/search:
+  /project/{project_id}/search:
     get:
       operationId: R405
       summary: 'R405: Search Tasks API'
@@ -489,7 +489,7 @@ paths:
                 items: 
                   $ref: '#/components/schemas/Task'
                    
-  /api/task/project_id:
+  /api/task/{project_id}:
     put:
       operationId: R406
       summary: "R406: Create new task"
@@ -517,7 +517,7 @@ paths:
         '201':
           description: 'Task created'
 
-  api/task/id:
+  api/task/{id}:
     get:
       operationID: R407
       summary: "R407: Get task info"
@@ -586,7 +586,7 @@ paths:
   
 #------------------------------- M05 -----------------------------------------------------------------
 
-  /project/project_id/forum:
+  /project/{project_id}/forum:
     get:
       operationId: R501
       summary: "R501: Browse through forum's posts"
