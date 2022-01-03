@@ -9,10 +9,6 @@ servers:
 - url: http://lbaw2151.lbaw.fe.up.pt
   description: Production server
 
-externalDocs:
-  description: Find more info here.
-  url: https://web.fe.up.pt/~ssn/wiki/teach/lbaw/medialib/a07
-
 tags:
   - name: 'M01: Static Pages'
   - name: 'M02: Authentication'
@@ -105,8 +101,8 @@ paths:
                   
   /register:
     get:
-      operationId: R204
-      summary: 'R204: Register Form'
+      operationId: R203
+      summary: 'R203: Register Form'
       description: 'Provide new user registration form. Access: PUB'
       tags:
         - 'M02: Authentication'
@@ -115,8 +111,8 @@ paths:
           description: 'Ok. Show sign-up UI'
 
     post:
-      operationId: R205
-      summary: 'R205: Register Action'
+      operationId: R204
+      summary: 'R204: Register Action'
       description: 'Processes the new user registration form submission. Access: PUB'
       tags:
         - 'M02: Authentication'
@@ -132,9 +128,6 @@ paths:
                   type: string
                 email:
                   type: string
-                picture:
-                  type: string
-                  format: binary
               required:
                 - name
                 - email
@@ -157,8 +150,8 @@ paths:
  
   /password/recovery:
     get:
-      operationId: R206
-      summary: 'R206: Password Recovery Form'
+      operationId: R205
+      summary: 'R205: Password Recovery Form'
       description: 'Provide password recovery form. Access: PUB'
       tags:
         - 'M02: Authentication'
@@ -166,8 +159,8 @@ paths:
         '200':  
           description: 'Ok. Show password recovery form'
     post:
-      operationId: R207
-      summary: 'R207: Recover Password Action'
+      operationId: R206
+      summary: 'R206: Recover Password Action'
       description: "Recover a user's password"
       tags:
         - 'M02: Authentication'
@@ -230,16 +223,19 @@ paths:
       tags:
         - 'M03: Authenticated User Area'
 
-      parameters:
-        - in: path
-          name: id
-          schema:
-            type: integer
-          required: true
-
       responses:
         '200':
           description: 'Ok. Show view profile UI'
+          content:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                email:
+                  type: string
+                description:
+                  type: string
   
   /edituserpage:
     get:
@@ -259,6 +255,16 @@ paths:
       responses:
         '200':
           description: 'Ok. Show edit profile UI'
+          content:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                email:
+                  type: string
+                description:
+                  type: string
     post:
       operationID: R304
       summary: 'R304: Edit user profile action'
@@ -273,6 +279,8 @@ paths:
               type: object
               properties:
                 inputName:
+                  type: string
+                inputEmail:
                   type: string
                 inputDescription:
                   type: string
@@ -293,11 +301,22 @@ paths:
                 302Failure:
                   description: 'Failed to process information. Redirect to edit user information form.'
                   value: '/edituserpage'
+  /deleteuser:
+    get:
+      operationId: 305
+      summary: "R305: Delete User"
+      description: 'Delete User account. Access: OWN'
+      tags:
+        - 'M03: Authenticated User Area'
+
+      responses:
+        '200':
+          description: 'Ok. Account Deleted'
 
   /changePassword:
     get:
-      operationId: R305
-      summary: "R305: Change user's password form"
+      operationId: R306
+      summary: "R306: Change user's password form"
       description: 'Show the password change form. Access: OWN'
       tags:
         - 'M03: Authenticated User Area'
@@ -306,22 +325,13 @@ paths:
         '200':
           description: 'Ok. Show edit profile UI'
     post:
-      operationID: R306
-      summary: "R306: Change user's password"
+      operationID: R307
+      summary: "R307: Change user's password"
       description: "Change user's password"
       tags:
         - 'M03: Authenticated User Area'
       requestBody:
         required: true
-        content:
-          application/x-www-form-urlencoded:
-            schema:
-              type: object
-              properties:
-                Old password:
-                  type: string
-                New password:
-                  type: string
 
       responses:
         '302':
@@ -351,6 +361,15 @@ paths:
       responses:
       '200':
         description: 'Ok. Show edit profile UI'
+        content:
+          schema:
+            type: array
+            items:
+              type: object
+              properties:
+                company:
+                  type: string
+
   /api/project/create:
     post:
       operationId: R402
@@ -358,27 +377,21 @@ paths:
       description: 'Create New Project. Access: USR'
       tags:
         - 'M04: Project Area'
-      parameters:
-        - in: query
-          name: name
-          schema:
-            type: string
-        - in: query
-          name: company id
-          schema:
-            type: integer
-        - in: query
-          name: description
-          schema:
-            type: string 
-        - in: query
-          name: start date
-          schema:
-            type: string    
-        - in: query
-          name: delivery date
-          schema:
-            type: string   
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                inputName:
+                  type: string
+                inputCompanyID:
+                  type: integer
+                inputDescription:
+                  type: string
+                inputAssignedMembers:
+                  type: string
       responses:
         '302':
             description: 'Redirect after processing the project information.'
@@ -396,8 +409,8 @@ paths:
           
   project/{id}:
     get:
-        operationID: R402
-        summary: "R402: See project page"
+        operationID: R403
+        summary: "R403: See project page"
         description: "See the project page and all its information. Access: PM"
         tags:
           - 'M04: Project Area'
@@ -411,31 +424,29 @@ paths:
         responses:
           '200':
             description: 'Ok. Show project page UI'
-
+            content:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                    members:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          $ref: '#/components/schemas/User'
+                    
 
   /api/load-users:
     get:
-      operationId: R403
-      summary: 'R403: Load Users'
+      operationId: R404
+      summary: 'R404: Load Users'
       description: 'Load Users. Access: PM'
       tags:
         - 'M04: Project Area'
-      parameters:
-        - in: query
-          name: pagination
-          schema:
-            type: integer
-          required: false
-        - in: query
-          name: page
-          schema:
-            type: integer
-          required: false
-        - in: query
-          name: sortBy
-          schema:
-            type: integer
-          required: false
       responses:
         '200':
           description: "Return users for pagination"
@@ -453,8 +464,8 @@ paths:
             
   /project/{project_id}/search:
     get:
-      operationId: R404
-      summary: 'R404: Search Tasks API'
+      operationId: R405
+      summary: 'R405: Search Tasks API'
       description: 'Searches for tasks and returns the results as JSON. Access: PM.'
 
       tags: 
@@ -466,7 +477,7 @@ paths:
           description: String to use for full-text search
           schema:
             type: string
-          required: false
+          required: true
 
       responses:
         '200':
@@ -480,8 +491,8 @@ paths:
                    
   /api/task/{project_id}:
     put:
-      operationId: R405
-      summary: "R405: Create new task"
+      operationId: R406
+      summary: "R406: Create new task"
       description: "Create a new task. Access: PM"
       tags:
         - 'M04: Project Area'
@@ -508,8 +519,8 @@ paths:
 
   api/task/{id}:
     get:
-      operationID: R406
-      summary: "R406: Get task info"
+      operationID: R407
+      summary: "R407: Get task info"
       description: "Get the task's information. Access: PM"
       tags:
         - 'M04: Project Area'
@@ -530,8 +541,8 @@ paths:
                 items: 
                   $ref: '#/components/schemas/Task'
     delete:
-      operationID: R407
-      summary: "R407: Delete task"
+      operationID: R408
+      summary: "R408: Delete task"
       description: "Delete a task. Access: PM"
       tags:
         - 'M04: Project Area'
@@ -545,8 +556,8 @@ paths:
       responses:
         '200':
     post:
-      operationID: R408
-      summary: "R408: Update task info"
+      operationID: R409
+      summary: "R409: Update task info"
       description: "Update the task's information. Access: PM"
       tags:
         - 'M04: Project Area'
@@ -575,24 +586,52 @@ paths:
   
 #------------------------------- M05 -----------------------------------------------------------------
 
-  /forum:
+  /project/{project_id}/forum:
     get:
       operationId: R501
       summary: "R501: Browse through forum's posts"
       description: "Browse through the forum's posts. Access: PM."
-
+      parameters: 
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
       tags: 
         - 'M05: Forum'
       responses:
         '200':
           description: 'Success show forum UI'
                   
-               
-  /new-post/:
-    get:
+    post:
       operationId: R502
       summary: "R502: Create new post"
       description: 'Show the form to create a new task. Access: PM'
+      parameters: 
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                project_id:
+                  type: integer
+                project_member_id:
+                  type: integer
+                content:
+                  type: array
+                post_date:
+                  type: string
+                deleted:
+                  type: boolean
+                  items:
+                    $ref: '#/components/schemas/Forum'
       tags:
         - 'M05: Forum'
 
@@ -600,11 +639,35 @@ paths:
         '200':
           description: 'Ok. Post created'
 
-  /edit-post/:
-    get:
+    put:
       operationId: R503
       summary: "R503: Edit an existing post"
       description: 'Show the form to create a new task. Access: PA'
+      parameters: 
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                project_id:
+                  type: integer
+                project_member_id:
+                  type: integer
+                content:
+                  type: array
+                post_date:
+                  type: string
+                deleted:
+                  type: boolean
+                  items:
+                    $ref: '#/components/schemas/Forum'
       tags:
         - 'M05: Forum'
 
@@ -612,20 +675,47 @@ paths:
         '200':
           description: 'Ok. Post edited'
 
-  /delete-post/:
-    get:
+    delete:
       operationId: R504
       summary: "R504: Delete post"
       description: 'Show the form to create a new task. Access: PA'
       tags:
         - 'M05: Forum'
-
+      parameters: 
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                project_id:
+                  type: integer
+                project_member_id:
+                  type: integer
+                deleted:
+                  type: boolean
+                  items:
+                    $ref: '#/components/schemas/Forum'
       responses:
         '200':
           description: 'Ok. Post Deleted'
 
 #------------------------------- M06 -----------------------------------------------------------------
+  /invite-user-company:
+    post:
+      operationID: R601
+      summary: "R601: Invite a user to the company's workspace"
+      description: "Invite a user to the company's workspace. Access: ADM"
+      tags:
+        - 'M06: Company Administrator Area'
 
+      
 # -------------------- Components --------------------
   
 components:
@@ -643,6 +733,7 @@ components:
           type: string
         project_member:
           type: array
+        
           items:
             $ref: '#/components/schemas/User'
         photo:
