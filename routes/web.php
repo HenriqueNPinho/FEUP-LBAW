@@ -24,14 +24,7 @@ Route::get('api/task/{task_id}','TaskController@get');
 Route::post('api/task/{task_id}','TaskController@edit');
 Route::delete('api/task/{task_id}','TaskController@delete');
 Route::get('api/user/notifications','UserController@getNotifications');
-Route::post('api/user/projectInvite','UserController@inviteResponse');
-Route::put('api/project/create','ProjectController@create');
 
-// Forum
-Route::get('project/{project_id}/forum','ForumPostController@getProjectForum');
-Route::post('project/{project_id}/forum','ForumPostController@create');
-Route::put('project/{project_id}/forum','ForumPostController@edit');
-Route::delete('project/{project_id}/forum','ForumPostController@delete');
 
 // Authentication
 Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
@@ -47,12 +40,13 @@ Route::get('edituserpage', 'UserController@edit');
 //Edit User Page
 Route::post('userpage', 'UserController@userpageUpdate')->name('edituserpage');
 Route::get('deleteuser', 'UserController@delete')->name('deleteuser');
-Route::get('api/user/deleteUserPhoto', 'UserController@deletePhoto')->name('deleteUserPhoto');
+Route::get('deleteUserPhoto', 'UserController@deletePhoto')->name('deleteUserPhoto');
 
 //Change Password
 Route::post('changePassword', 'UserController@store')->name('changePassword');
 
-Route::get('create-project', 'ProjectController@getCreateProject');
-
+Route::get('create-project', 'ProjectController@createproject');
+//Route::put('api/project/create','ProjectController@createproject');
+Route::put('api/project/create','ProjectController@create');
 
 

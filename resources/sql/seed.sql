@@ -130,6 +130,7 @@ CREATE TABLE forum_post(
 CREATE TABLE invitation(
     project_id INTEGER NOT NULL REFERENCES projects(id) ON DELETE CASCADE,
     users_id INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+    coordinator_id INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
     accepted BOOLEAN DEFAULT NULL,
     PRIMARY KEY(project_id,users_id)
 );
@@ -267,21 +268,14 @@ INSERT INTO users VALUES (
 
 INSERT INTO company VALUES(DEFAULT,'FEUP');
 INSERT INTO projects VALUES(DEFAULT,1,'LBAW','Um trabalho que me faz querer cortar os pulsos','2021-08-24', '2022-08-24', DEFAULT);
-INSERT INTO projects VALUES(DEFAULT,1,'FEUP','Bem vindos pinguins','2021-08-24', '2022-08-24', DEFAULT);
 INSERT INTO project_member VALUES(1,1);
-INSERT INTO project_member VALUES(1,2);
 INSERT INTO project_coordinator VALUES(1,1);
-INSERT INTO project_coordinator VALUES(1,2);
 INSERT INTO tasks VALUES(DEFAULT,1,'Finish A8','Finish this specification on time','2021-08-24','2021-09-12',DEFAULT);
 INSERT INTO task_assigned VALUES(1,1,null,DEFAULT);
-INSERT INTO forum_post VALUES (DEFAULT, 1, 1, 'Primeiro post', '2021-12-28 19:10:25+00', DEFAULT);
-INSERT INTO forum_post VALUES (DEFAULT, 1, 1, 'Segundo post', '2021-12-29 19:10:25+00', DEFAULT);
-INSERT INTO forum_post VALUES (DEFAULT, 2, 1, 'Terceiro post', '2021-12-30 19:10:25+00', DEFAULT);
-INSERT INTO forum_post VALUES (DEFAULT, 2, 1, 'Quarto post', '2021-12-31 19:10:25+00', DEFAULT);
 INSERT INTO projects VALUES(DEFAULT,1,'Other','Um trabalho que me faz querer cortar os pulsos','2021-08-24', '2022-08-24', DEFAULT);
 INSERT INTO project_member VALUES(2,2);
 INSERT INTO project_coordinator VALUES(2,2);
-INSERT INTO invitation VALUES(2,1,DEFAULT);
+INSERT INTO invitation VALUES(2,1,2,DEFAULT);
 
 
 -- INSERT INTO cards VALUES (DEFAULT, 'Things to do', 1);

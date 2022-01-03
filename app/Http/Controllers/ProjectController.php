@@ -7,7 +7,6 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
 use App\Models\Project;
-use App\Models\User;
 
 class ProjectController extends Controller
 {
@@ -58,11 +57,11 @@ class ProjectController extends Controller
         }
         return view('pages.task-search-results',['searchResults'=>$searchResults,'project' => $project,'projects' =>$projects]);
     }
-    public function getCreateProject()
+    public function createproject()
     {
         if (Auth::check()){
           $projects = Auth::user()->projects()->orderBy('id')->get();
-          return view('pages.create-project', ['projects'=>$projects]);
+          return view('pages.createProject', ['projects'=>$projects]);
         }
         else return redirect('/login');
     }
@@ -71,7 +70,7 @@ class ProjectController extends Controller
     {
         if (!Auth::check()) return redirect('/login');
         $project=new Project();
-        //$company=$request->input('company');
+        $company=$request->input('company');
         //if($company!="none")
          // $project->company_id=$request->input('company');
         $project->name=$request->input('name');
@@ -83,13 +82,6 @@ class ProjectController extends Controller
 		
         $project->members()->attach(Auth::user()->id);
 		
-        $membersToInvite=explode(";",$request->input("members"));
-        foreach($membersToInvite as $member){
-            $user=User::where('email',$member)->first();
-            if($user!=NULL){
-                $user->projectInvitations()->attach($project->id);
-            } 
-        }
     }
    
     /**

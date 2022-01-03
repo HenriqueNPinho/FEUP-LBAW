@@ -11,7 +11,6 @@ use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 use App\Models\Image;
-use App\Models\Project;
 use App\Rules\MatchOldPassword;
 
 class UserController extends Controller
@@ -19,8 +18,8 @@ class UserController extends Controller
     public function showProfile()
     {
         $user = Auth::user();
-        $projectInvitations=$user->projectInvitations()->whereNull('accepted')->get();
-        return view('pages.userpage',['user' => $user, 'projectInvitations'=> $projectInvitations]);
+
+        return view('pages.userpage',['user' => $user]);
     }
 
     /**
@@ -33,7 +32,7 @@ class UserController extends Controller
     {
         $user = Auth::user();
 
-        return view('pages.edit-userpage', ['user' => $user]);
+        return view('pages.edituserpage', ['user' => $user]);
     }
 
     /**
@@ -74,8 +73,7 @@ class UserController extends Controller
         }
 
         $user->save();
-        $projectInvitations=$user->projectInvitations()->whereNull('accepted')->get();
-        return view('pages.userpage',['user' => $user, 'projectInvitations'=> $projectInvitations]);
+        return view('pages.userpage', ['user' => $user]);
     }
 
     public function deletePhoto(Request $request){
@@ -89,7 +87,7 @@ class UserController extends Controller
         echo("<script>console.log('PATH: " . $user->profile_image . "');</script>");
 
         $user->save();
-        return view('pages.edit-userpage', ['user' => $user]);
+        return view('pages.edituserpage', ['user' => $user]);
     }
 
     public function delete(Request $request) 
@@ -126,35 +124,12 @@ class UserController extends Controller
         $user = Auth::user();
         $user->update(['password'=> Hash::make($request->new_password)]);
 
-        return view('pages.edit-userpage', ['user' => $user]);
+        return view('pages.edituserpage', ['user' => $user]);
     } 
 
     public function inviteResponse(Request $request)
     {
-        
-        $user = Auth::user();
-        $responseProjectID=$request->input("projectID");
-        $response=$request->input("accepted");
-        
-        $projectInvitations=$user->projectInvitations()->whereNull('accepted')->get();
-       
-        foreach($projectInvitations as $projectInvitation){
-            
-            if($projectInvitation->pivot->project_id==$responseProjectID){
-            
-                if($response=="true"){
-                    $user->projects()->attach($responseProjectID);
-                    $projectInvitation->pivot->accepted=TRUE;
-                    $projectInvitation->pivot->save();    
-                }
-                else if($response=="false"){
-                    $user->projects()->attach($responseProjectID);
-                    $projectInvitation->pivot->accepted=FALSE;
-                    $projectInvitation->pivot->save();   
-                }
-            }
-        }
-        return view('pages.userpage',['user' => $user, 'projectInvitations'=> $projectInvitations]);
+
     }
 
 }

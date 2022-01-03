@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-<script type="text/javascript" src={{ asset('js/project-page.js') }} defer></script>
 <div id="project-area">
 
 
@@ -21,26 +20,17 @@
                 
                 @if(count($project->members)>3)
                     @for($i = 0; $i <= 2; $i++)
-                        @if(empty($project->members[$i]->profile_image))
-                            <img src = "/images/avatars/profile-pic-2.png">
-                            <script>console.log("{{$project->members[$i]->profile_image}}")</script>
+                        <img src="{{$project->members[$i]->profile_image}}" alt="">
+                        @if((count($project->members)-3)>9)
+                            <div><h2>9+</h2></div>
                         @else
-                            <img src ="{{$project->members[$i]->profile_image}}"> 
+                            <div><h2>{{count($$project->members)}}+</h2></div>
                         @endif
+                        
                     @endfor
-                    @if((count($project->members)-3)>9)
-                        <div><h2>9+</h2></div>
-                    @else
-                        <div><h2>{{count($$project->members)}}+</h2></div>
-                    @endif
                 @else
                     @foreach($project->members as $member)
-                        @if(empty($member->profile_image))
-                            <img src = "/images/avatars/profile-pic-2.png">
-                            <script>console.log("{{$member->profile_image}}")</script>
-                        @else
-                            <img src ="{{$member->profile_image}}"> 
-                        @endif
+                        <img src="{{$member->profile_image}}" alt="">
                     @endforeach
                 @endif
             </div>

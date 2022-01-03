@@ -1,20 +1,22 @@
 @extends('layouts.app')
 @section('content')
-<script type="text/javascript" src={{ asset('js/userpage.js') }} defer></script>
-<div class = "profileDiv">
 
+<div class = "profileDiv">
+    <div class = "profileTitle">
+        {{Auth::user()->name}}'s Profile
+    </div>
+    <hr class = "edituserpageHR">
 
     
     <div class = "userpageSetUp">
         <div class = "textSpace">
             <div class="userpageInfo">
-                <h2>Your Profile</h2>
-                <hr class = "userPageHR">
-                <h1>{{ $user->name }}</h1>
-                
+                <p class="userName">{{ $user->name }}</p>
+                <hr id = "userPageHR">
             </div>
             <div class="userpageInfo">
                 <div id = "emailSpace">
+                    <i class="fas fa-envelope icon" id = "emailIcon" ></i>
                     <p class="userEmail">{{ $user->email }}</p>
                 </div>
             </div>
@@ -52,33 +54,7 @@
             </div>
         </div>
     </div>
-   
-    <div class="project-invites">
-        <h2>Project Invites</h2>
-        <hr class = "userPageHR">
-        @if(count($projectInvitations)==0)
-            <h4>You currently have no project invitations.</h4>
-        @endif
-        @foreach ($projectInvitations as $projectInvitation)
-            <div class="project-invite" >
-                <h4>Project Name: {{$projectInvitation->name}}</h4>
-                <p>Description: {{$projectInvitation->description}}</p>
-                <div class="accept-icons-container">
-                    <div class="accept-reject-icon">
-                        <img class="accept-project-icon" data-id="{{$projectInvitation->pivot->project_id}}" src="/images/icons/accept.png" alt="">
-                        <h5>Join</h5>
-                    </div>
-                    <div class="accept-reject-icon">
-                        <img class="reject-project-icon" data-id="{{$projectInvitation->pivot->project_id}}" src="/images/icons/reject.png" alt="">
-                        <h5>Ignore</h5>
-                    </div>
-                    
-                </div>
-            </div>
-        @endforeach
-    </div>
 
-    
 </div>
 @endsection
 
