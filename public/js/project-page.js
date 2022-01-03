@@ -208,7 +208,7 @@ function viewFullTask() {
             "delete",
             "/api/task/" + taskID,
             null,
-            genericResponseHandler
+            genericResponseHandlerWithRefresh
         );
     });
 
