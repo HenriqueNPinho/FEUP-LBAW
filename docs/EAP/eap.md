@@ -339,7 +339,7 @@ paths:
                   value: '/edituserpage'
   /deleteuser:
     get:
-      operationId: 305
+      operationId: R305
       summary: "R305: Delete User"
       description: 'Delete User account. Access: OWN'
       tags:
