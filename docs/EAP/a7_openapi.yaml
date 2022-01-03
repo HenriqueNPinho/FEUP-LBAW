@@ -335,7 +335,7 @@ paths:
       summary: 'R401: Create New Project'
       description: 'Create New Project. Access: USR'
       tags:
-        - 'MO4: Project Area'
+        - 'M04: Project Area'
       parameters:
         - in: query
           name: name
@@ -367,15 +367,33 @@ paths:
                 examples:
                   302Success:
                     description: 'Success. Redirect to project area.'
-                    value: #### project page
+                    value: '/project/1'
                   302Error:
                     description: 'Failed. Redirect to project creation form.'
                     value: '/create-project/'
           
-       
+  project/{id}:
+    get:
+        operationID: R402
+        summary: "R402: See project page"
+        description: "See the project page and all its information. Access: PM"
+        tags:
+          - 'M04: Project Area'
+        parameters:
+          - in: path
+            name: id
+            schema:
+              type: integer
+            required: true
+
+        responses:
+          '200':
+            description: 'Ok. Show project page UI'
+
+
   /api/load-users:
     get:
-      operationId: R402
+      operationId: R403
       summary: 'R402: Load Users'
       description: 'Load Users. Access: PM'
       tags:
@@ -411,9 +429,9 @@ paths:
         '400':
           description: "Error in parameters"
             
-  /search-tasks/:
+  project/{project_id}/search/:
     get:
-      operationId: R403
+      operationId: R404
       summary: 'R403: Search Tasks API'
       description: 'Searches for tasks and returns the results as JSON. Access: PM.'
 
@@ -438,9 +456,9 @@ paths:
                 items: 
                   $ref: '#/components/schemas/TaskPreview'
                    
-  /new-task/:
+  api/task/{project_id}:
     get:
-      operationId: R404
+      operationId: R405
       summary: "R404: Get new task form"
       description: 'Show the form to create a new task. Access: PM'
       tags:
@@ -476,9 +494,9 @@ paths:
         '201':
           description: 'Task created'
 
-  /task-page/{id}:
+ api/task/{task_id}:
     get:
-      operationID: R405
+      operationID: R406
       summary: "R405: See task page"
       description: "See the task page and all its information. Access: PM"
       tags:
@@ -493,6 +511,70 @@ paths:
       responses:
         '200':
           description: 'Ok. Show task page UI'
+  
+  api/task/updateStatus/{id}:
+    post:
+      operationID: R407
+      summary: "R407: Update task status"
+      description: "Update task status. Access: PM"
+      tags:
+        - 'M04: Project Area'
+      parameters:
+        - in: path
+          name: status
+          schema:
+            type: status
+          required: true
+
+      responses: 
+         '200':
+            description: "Ok. Show task page UI"
+  
+  api/task/{task_id}:
+    post:
+      operationID: R408
+      summary: "R408: Edit task"
+      descritpion: "Edit task, like description, delivery date, etc. Access: PM"
+      tags:
+        - 'M04: Project Area'
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                inputName:
+                  type: string
+                inputDescription:
+                  type: string
+                inputDate:
+                  type: date
+
+      responses:
+        '302':
+          description: 'Redirect after processing the new user information.'
+          headers:
+            Location:
+              schema:
+                type: string
+              examples:
+                302Success:
+                  description: 'Information successfully processed. Redirect to project page.'
+                  value: '/project/{id}'
+    
+    api/task/{task_id}:
+      get:
+        operationId: R409
+        summary: "R504: Delete task"
+        description: 'Delete an active task. Access: PM'
+        tags:
+          - 'M05: Project Area'
+
+        responses:
+          '200':
+            description: 'Ok. Task deleted'
+
 
 
   
