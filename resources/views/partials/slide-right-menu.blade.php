@@ -15,7 +15,7 @@
         </div>
         </a>
         <div class="slide-right-menu-divider"></div>
-        <a class="slide-right-menu-item" >
+        <a id="slide-right-project-forum-link" class="slide-right-menu-item" >
         <div>
             <img src="/images/icons/messages.png" alt="">
             <h2>Forum</h2>

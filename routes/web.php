@@ -27,6 +27,12 @@ Route::get('api/user/notifications','UserController@getNotifications');
 Route::post('api/user/projectInvite','UserController@inviteResponse');
 Route::put('api/project/create','ProjectController@create');
 
+// Forum
+Route::get('project/{project_id}/forum','ForumPostController@getProjectForum');
+Route::post('project/{project_id}/forum','ForumPostController@create');
+Route::put('project/{project_id}/forum','ForumPostController@edit');
+Route::delete('project/{project_id}/forum','ForumPostController@delete');
+
 // Authentication
 Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
 Route::post('login', 'Auth\LoginController@login');

@@ -1747,3 +1747,37 @@ a {
     font-weight: bold;
     color: #ff3333;
 }
+
+#forum{
+    display: inline;
+    margin-top: 3vh;
+    margin-left: 10%;
+}
+
+#forumPost{
+    left: 8%;
+    position:absolute;
+    overflow: scroll;
+    max-height: 340px;
+    width: 92%;
+
+    /*
+    border-style: ridge;
+    border:#2a9d8f;
+    */  
+}
+
+
+#new-post-content-input {
+    top: 500px;
+    left: 8%;
+    position:absolute;
+    resize:vertical;
+    width: 91%;
+}
+
+#createNewPostButton {
+    top: 580px;
+    left: 8%;
+    position:absolute;
+}
