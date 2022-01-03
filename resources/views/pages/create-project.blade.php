@@ -2,8 +2,7 @@
 
 @section('content')
 
-
-<body>
+<script type="text/javascript" src={{ asset('js/create-project-page.js') }} defer></script>
   <div id="project-area" name="create-project">
     @include('partials.slide-right-menu')
     @include('partials.projects-bar',['projects'=>$projects])
@@ -14,7 +13,7 @@
     <p><input placeholder="Project Name" oninput="this.className = ''" name="pname" id="cp-projectname"></p>
     <h1>Company name:</h1>
     <select id="cp-company" name="company">
-      <option value="none">none</option>
+      <option value="none"></option>
     </select>
   </div>
   
@@ -57,8 +56,8 @@
   
   </div>
 @endsection
-</body>
-</html>
+
+
 
   
 
