@@ -1,6 +1,7 @@
 # EAP: Architecture Specification and Prototype
 
-> Project vision.
+Delivery Date: 03/01/2022 
+Editor: Sofia Germer (up201907461) - up201907461@up.pt
 
 ## A7: High-level architecture. Privileges. Web resources specification
 
@@ -138,7 +139,7 @@ GROUP2151, 03/01/2022
 
 | Name                    | Number    | E-Mail            |
 | ----------------------- | --------- | ----------------- |
-| Sofia Germer            | 201907461 | up201907461@up.pt |
+| Sofia Germer  (Editor)  | 201907461 | up201907461@up.pt |
 | Miguel Lopes            | 201704590 | up201704590@up.pt |
 | Edgar Torre             | 201906573 | up201906573@up.pt |
-| Henrique Pinho (Editor) | 201805000 | up201805000@up.pt |
+| Henrique Pinho          | 201805000 | up201805000@up.pt |
