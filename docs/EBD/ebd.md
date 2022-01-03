@@ -435,7 +435,7 @@ CREATE TABLE users (
     id SERIAL PRIMARY KEY,
     email TEXT NOT NULL UNIQUE,
     name TEXT NOT NULL,
-    password BINARY(60) NOT NULL,
+    password TEXT NOT NULL,
     profile_image TEXT NOT NULL,
     profile_description TEXT
 );
