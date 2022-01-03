@@ -23,9 +23,9 @@
                     @for($i = 0; $i <= 2; $i++)
                         @if(empty($project->members[$i]->profile_image))
                             <img src = "/images/avatars/profile-pic-2.png">
-                            <script>console.log("{{$project->members[$i]->profile_image}}")</script>
+                            
                         @else
-                            <img src ="{{$project->members[$i]->profile_image}}"> 
+                            <img src ="/{{$project->members[$i]->profile_image}}"> 
                         @endif
                     @endfor
                     @if((count($project->members)-3)>9)
@@ -37,9 +37,8 @@
                     @foreach($project->members as $member)
                         @if(empty($member->profile_image))
                             <img src = "/images/avatars/profile-pic-2.png">
-                            <script>console.log("{{$member->profile_image}}")</script>
                         @else
-                            <img src ="{{$member->profile_image}}"> 
+                            <img src ="/{{$member->profile_image}}"> 
                         @endif
                     @endforeach
                 @endif

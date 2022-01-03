@@ -42,9 +42,10 @@ Route::post('register', 'Auth\RegisterController@register');
 
 //User Page
 Route::get('userpage', 'UserController@showProfile')->name('userpage');
-Route::get('edituserpage', 'UserController@edit');
+
 
 //Edit User Page
+Route::get('edituserpage', 'UserController@edit');
 Route::post('userpage', 'UserController@userpageUpdate')->name('edituserpage');
 Route::get('deleteuser', 'UserController@delete')->name('deleteuser');
 Route::get('api/user/deleteUserPhoto', 'UserController@deletePhoto')->name('deleteUserPhoto');

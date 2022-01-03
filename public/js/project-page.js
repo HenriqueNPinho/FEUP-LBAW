@@ -208,7 +208,7 @@ function viewFullTask() {
             "delete",
             "/api/task/" + taskID,
             null,
-            genericResponseHandlerWithRefresh
+            genericResponseHandler
         );
     });
 
@@ -225,7 +225,7 @@ function viewFullTask() {
     task[1].forEach(function (item, index) {
         let image = document.createElement("img");
         if(task[1][index]["profile_image"]!=null){
-            image.setAttribute("src", task[1][index]["profile_image"]);
+            image.setAttribute("src", "/"+task[1][index]["profile_image"]);
         }
         else image.setAttribute("src", "/images/avatars/profile-pic-2.png");
         
