@@ -83,7 +83,6 @@ class ProjectController extends Controller
         $project->save();
 		
         $project->members()->attach(Auth::user()->id);
-        $project->coordinators()->attach(Auth::user()->id);
 		
         $membersToInvite=explode(";",$request->input("members"));
         foreach($membersToInvite as $member){

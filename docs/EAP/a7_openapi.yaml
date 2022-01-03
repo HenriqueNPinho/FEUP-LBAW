@@ -357,7 +357,7 @@ paths:
       summary: 'R402: Create New Project Action'
       description: 'Create New Project. Access: USR'
       tags:
-        - 'MO4: Project Area'
+        - 'M04: Project Area'
       parameters:
         - in: query
           name: name
@@ -394,7 +394,25 @@ paths:
                     description: 'Failed. Redirect to project creation form.'
                     value: '/create-project/'
           
-       
+  project/{id}:
+    get:
+        operationID: R402
+        summary: "R402: See project page"
+        description: "See the project page and all its information. Access: PM"
+        tags:
+          - 'M04: Project Area'
+        parameters:
+          - in: path
+            name: id
+            schema:
+              type: integer
+            required: true
+
+        responses:
+          '200':
+            description: 'Ok. Show project page UI'
+
+
   /api/load-users:
     get:
       operationId: R403

@@ -39,9 +39,9 @@ class TaskPolicy
 
     public function delete(User $user, Task $task)
     {
-      
-      foreach($task->project->members as $member){
-        if($user->id == $member->id) return TRUE;
+      // Only coordinators can delete tasks
+      foreach($task->project->coordinators as $coordinator){
+        if($coordinator->id == $user->id) return TRUE;
       }
       return FALSE;
     }

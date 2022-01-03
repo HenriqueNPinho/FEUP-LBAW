@@ -22,8 +22,6 @@ class RegisterController extends Controller
 
     use RegistersUsers;
 
-
-    protected $redirectTo = '/projects';
     /**
      * Create a new controller instance.
      *
