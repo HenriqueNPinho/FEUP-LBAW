@@ -90,6 +90,8 @@ Module M02: Authentication
 
 Module M03: Authenticated User Area
 
+| Web Resource Reference | URL                            |
+| ---------------------- | ------------------------------ |
 | R301: Access User Profile | GET /userpage   |
 | R302: Edit User Profile Form  | GET /edituserpage |
 | R303: Edit User Profile Action | POST /userpage  |
