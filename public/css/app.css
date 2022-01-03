@@ -5,6 +5,10 @@ body {
     font-family: "Montserrat", sans-serif;
 }
 
+button {
+    font-family: "Montserrat", sans-serif;
+}
+
 /******Header******/
 main > header {
     display: flex;
@@ -55,7 +59,7 @@ main > header {
 
 .navbar-collapse {
     display: none;
-    position: absolute;
+    position: fixed;
     top: 10vh;
     background-color: white;
     width: 180px;
@@ -270,6 +274,12 @@ form h4 {
 
 #project-select {
     align-self: center;
+    display: flex;
+    justify-content: space-around;
+}
+
+#project-select a {
+    margin: 10px;
 }
 
 #project-select .project-icon-big {
@@ -321,6 +331,7 @@ form h4 {
     border: 3px solid #264653;
     padding: auto;
     background-color: white;
+    margin-top: 10px;
 }
 
 .project-icon h5 {
@@ -379,8 +390,6 @@ form h4 {
     overflow-y: scroll;
 }
 
-
-
 .slide-right-menu-item div {
     display: flex;
     justify-content: left;
@@ -396,8 +405,8 @@ form h4 {
     margin-right: 10px;
 }
 
-.slide-right-menu-item{
-    cursor:pointer;
+.slide-right-menu-item {
+    cursor: pointer;
 }
 
 .slide-right-menu-divider {
@@ -410,51 +419,62 @@ form h4 {
     font-size: 18px;
 }
 
-.project-info-plus-accept-reject{
+.project-invite {
     display: flex;
     flex-direction: column;
 }
 
-.project-info-plus-accept-reject h4{
-    align-self: center;
-}
-
-#slide-right-menu-main-options{
+#slide-right-menu-main-options {
     flex-direction: column;
 }
 
-#notification-container{
+#notification-container {
     display: none;
     flex-direction: column;
 }
 
-.notification{
+.project-invites {
+    margin-top: 50px;
+    margin-left: 10%;
+    align-self: left;
+    width: 20%;
+}
+
+.project-invites p {
+    text-align: left;
+}
+
+.project-invites h4 {
+    text-align: left;
+}
+
+.notification {
     background-color: white;
-    padding:20px;
+    padding: 20px;
     display: flex;
     flex-direction: column;
 }
 
 .accept-icons-container {
-    align-self: center;
+    margin-top: 15px;
+    align-self: left;
     display: flex;
-    justify-content: space-around;
-    width: 80%;
+    justify-content: space-between;
+    width: 30%;
 }
 
-.accept-reject-icon{
+.accept-reject-icon {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-
 }
 
-.accept-reject-icon h5{
+.accept-reject-icon h5 {
     margin-top: 5px;
     align-self: center;
 }
 
-.accept-icons-container img{
+.accept-icons-container img {
     height: 30px;
     width: 30px;
     cursor: pointer;
@@ -500,6 +520,7 @@ form h4 {
     object-fit: cover;
     border-radius: 35px;
     align-self: center;
+    margin-left: 5px;
 }
 #project-overview-top-bar-left img:first-of-type {
     margin-left: 20px;
@@ -663,8 +684,8 @@ form h4 {
     box-shadow: 0px 5px 16px 0px rgba(27, 27, 27, 0.05);
 }
 
-.task-preview-info{
-    max-width:90% ;
+.task-preview-info {
+    max-width: 90%;
     overflow-wrap: break-word;
 }
 
@@ -763,8 +784,6 @@ form h4 {
     font-size: 35px;
     color: #264653;
 }
-
-
 
 #task-description-container {
     width: 100%;
@@ -1112,13 +1131,12 @@ form h4 {
     width: 70%;
     min-width: 300px;
 }
-#regForm select{
+#regForm select {
     width: 20%;
     height: 30px;
     display: block;
     margin-left: auto;
     margin-right: auto;
-  
 }
 #regForm h5 {
     text-align: center;
@@ -1127,14 +1145,13 @@ form h4 {
     margin-top: 2vh;
     color: #7e7d7ad2;
 }
-#create-project textarea{ 
+#create-project textarea {
     display: block;
     margin-left: auto;
     margin-right: auto;
     width: 40%;
     text-size-adjust: 30%;
     resize: none;
-    
 }
 h1 {
     text-align: center;
@@ -1145,13 +1162,11 @@ h1 {
     width: 100%;
     font-size: 17px;
     border: 1px solid #aaaaaa;
-} 
+}
 
 /* Mark input boxes that gets an error on validation: */
 
-
 /* Hide all steps by default: */
-
 
 button:hover {
     opacity: 0.8;
@@ -1267,6 +1282,28 @@ a {
     align-items: center;
     width: 50%;
     height: auto;
+    align-self: center;
+}
+
+.BigDivEditProfile form{
+    display: flex;
+}
+
+.BigDivEditProfile .photoSpace form{
+    display: flex;
+    width: 100%;
+    height: 45px;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.BigDivEditProfile .userpageSetUp{
+    width: 100%;
+}
+
+.BigDivEditProfile .userpageSetUp .textSpace{
+    margin-top: 3%;
+    width: 100%;
 }
 
 .textSpace {
@@ -1278,16 +1315,16 @@ a {
     height: auto;
 }
 
-.textSpace form{
+.textSpace form {
     display: flex;
     align-self: center;
 }
 
-.textSpace form button{
+.textSpace form button {
     align-self: center;
 }
 
-.textSpaceButtons{
+.textSpaceButtons {
     margin-top: 20px;
     align-self: center;
     width: 60%;
@@ -1299,20 +1336,14 @@ a {
     color: #264653;
     font-weight: 600px;
     font-size: 30px;
-    text-align: center;
+    text-align: left;
 }
 
 .userEmail {
     color: black;
 }
 
-.userpageSetUp {
-    padding-top: 5%;
-    display: flex;
-    flex-flow: row nowrap;
-    align-self: center;
-    justify-content: center;
-}
+
 .userpageInfo {
     display: flex;
     flex-flow: column;
@@ -1346,7 +1377,7 @@ a {
     justify-content: center;
 }
 
-#userPageHR {
+.userPageHR {
     background-color: #2a9d8f;
     border: none;
     height: 5px;
@@ -1376,7 +1407,7 @@ a {
     background-color: #89adbb;
 }
 
-#profileButtonDelete{
+#profileButtonDelete {
     background-color: #e76f51;
 }
 
@@ -1387,9 +1418,9 @@ a {
     font-weight: bold;
 }
 
-#edituserpagePlaceholder{
-    width:100%;
-    height:2px;
+#edituserpagePlaceholder {
+    width: 100%;
+    height: 2px;
     color: black;
 }
 /*--------------------*/
@@ -1398,22 +1429,22 @@ a {
 .profileDiv {
     display: flex;
     flex-flow: column;
+    margin-top: 3%;
 }
 
-.profileTitle {
+.project-invites h2 {
     color: #264653;
     font-size: 30px;
-    text-align: center;
-    padding-top: 15px;
 }
 
-.edituserpageHR {
-    border: 0;
-    height: 1px;
-    width: 80%;
-    position: relative;
-    margin: 30px auto;
-    background: #2a9d8f;
+.userpageInfo h2 {
+    color: #264653;
+    font-size: 30px;
+}
+
+.userpageInfo h1 {
+    text-align: left;
+    margin-bottom: 0px;
 }
 
 .edituserpageHR::before {
@@ -1431,16 +1462,21 @@ a {
     -ms-transform: rotate(45deg);
 }
 
+.BigDivEditProfile{
+    display: flex;
+    width: 80%;
+    align-self: center;
+}
+
 .userpageParam {
     padding-bottom: 30px;
     display: flex;
     flex-flow: column;
 }
 
-#divButtonUpdate {
+#userpage-edit-buttons {
     display: flex;
-    align-self: center;
-    justify-content: center;
+    align-items: center;
 }
 
 img {
@@ -1482,10 +1518,17 @@ a {
     background: #ececec;
 }
 #buttonUpdate {
-    width: 300px;
+    display: flex;
+    align-content: center;
+    align-items: center;
+    width: fit-content;
     height: 45px;
-    text-align: center;
-    font-size: 18px;
+    border-radius: 20px;
+    justify-content: center;
+    color: white;
+    background-color: #2a9d8f;
+    font-weight: bold;
+    font-size: 14px;
 }
 
 .edituserpagePlaceholder {
@@ -1571,7 +1614,7 @@ a {
 
 #edituserpageForm {
     display: flex;
-    flex-flow: column;
+    width: 100%;
 }
 
 .editprofileText {
@@ -1579,41 +1622,36 @@ a {
     font-size: 18px;
 }
 
-.goBack {
-    width: 80%;
-    height: 30px;
-    padding-bottom: 10px;
-    display: flex;
-    flex-flow: row nowrap;
-    align-self: center;
+.textSpaceButtons form{
+    margin-bottom: 0;
 }
 
 .goBackButton {
-    width: 200px;
-    height: 30px;
     display: flex;
+    align-content: center;
     align-items: center;
+    width: fit-content;
+    padding: 15px;
+    height: 15px;
+    border-radius: 20px;
     justify-content: center;
-    color: rgb(235, 228, 228);
-    background-color: #264653;
+    color: white;
+    background-color: #f4a261;
     font-weight: bold;
-    font-size: 15px;
-    position: absolute;
-    right: 10%;
+    font-size: 14px;
+    margin-right: 20px;
 }
 
 .goBackButton:hover {
     background-color: #89adbb;
-    color: rgb(49, 48, 48);
 }
 
 #deleteImageButtonID {
     background-color: rgb(219, 216, 216);
     color: black;
-    position: absolute;
-    right: 10%;
     height: 45px;
     width: 200px;
+    align-self: center  ;
 }
 
 #bottomButtons {
@@ -1633,15 +1671,14 @@ a {
     height: auto;
 }
 
-
-#changeP{
+#changeP {
     padding-bottom: 20px;
     color: #264653;
 }
 
-#passButton{
-    width:30%;
-    background-color : #264653;
+#passButton {
+    width: 30%;
+    background-color: #264653;
 }
 
 /* ============================================== */
@@ -1710,7 +1747,41 @@ a {
 
 /* ============================================== */
 
-#errorEditProfile{
+#errorEditProfile {
     font-weight: bold;
     color: #ff3333;
+}
+
+#forum{
+    display: inline;
+    margin-top: 3vh;
+    margin-left: 10%;
+}
+
+#forumPost{
+    left: 8%;
+    position:absolute;
+    overflow: scroll;
+    max-height: 340px;
+    width: 92%;
+
+    /*
+    border-style: ridge;
+    border:#2a9d8f;
+    */  
+}
+
+
+#new-post-content-input {
+    top: 500px;
+    left: 8%;
+    position:absolute;
+    resize:vertical;
+    width: 91%;
+}
+
+#createNewPostButton {
+    top: 580px;
+    left: 8%;
+    position:absolute;
 }
