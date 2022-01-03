@@ -25,7 +25,7 @@
                             <img src = "/images/avatars/profile-pic-2.png">
                             
                         @else
-                            <img src ="/{{$project->members[$i]->profile_image}}"> 
+                            <img src ="{{$project->members[$i]->profile_image}}"> 
                         @endif
                     @endfor
                     @if((count($project->members)-3)>9)
@@ -38,7 +38,7 @@
                         @if(empty($member->profile_image))
                             <img src = "/images/avatars/profile-pic-2.png">
                         @else
-                            <img src ="/{{$member->profile_image}}"> 
+                            <img src ="{{$member->profile_image}}"> 
                         @endif
                     @endforeach
                 @endif

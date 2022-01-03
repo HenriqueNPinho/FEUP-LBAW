@@ -42,7 +42,7 @@
                   @if(empty(Auth::user()->profile_image))
                     <img src = "/images/avatars/profile-pic-2.png" id = "navbarProfilePhoto">
                   @else
-                    <img src ="/{{Auth::user()->profile_image}}" id = "navbarProfilePhoto"> 
+                    <img src ="{{Auth::user()->profile_image}}" id = "navbarProfilePhoto"> 
                   @endif
               </div>
             </div>
