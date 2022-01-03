@@ -6,7 +6,7 @@ info:
   description: 'Web Resources Specification (A7) for Project Clinic'
 
 servers:
-- url: http://lbaw.fe.up.pt
+- url: http://lbaw2151.lbaw.fe.up.pt
   description: Production server
 
 externalDocs:
@@ -19,7 +19,7 @@ tags:
   - name: 'M03: Authenticated User Area'
   - name: 'M04: Project Area'
   - name: 'M05: Forum'
-  - name: 'M06 Company Administrator Area'
+  - name: 'M06: Company Administrator Area'
 
 paths:
 #-------------------------------- M01 -----------------------------------------
@@ -44,6 +44,17 @@ paths:
       responses:
       '200':
         description: 'Ok. Show FAQ page' 
+
+  /:
+    get:
+      operationID: R103
+      summary: 'R103: See the home page'
+      description: 'See the home page when you access the app. Access: PUB'
+      tags:
+      - 'M01: Static Pages'
+      responses:
+      '200':
+        description: 'Ok. Show homepage' 
 #-------------------------------- M02 -----------------------------------------
   /login:
     get:
@@ -86,8 +97,8 @@ paths:
                 type: string
               examples:
                 302Success:
-                  description: 'Successful authentication. Redirect to user profile.'
-                  value: '/users/{id}'
+                  description: 'Successful authentication. Redirect to projects page.'
+                  value: '/projects'
                 302Error:
                   description: 'Failed authentication. Redirect to login form.'
                   value: '/login'
@@ -138,8 +149,8 @@ paths:
                 type: string
               examples:
                 302Success:
-                  description: 'Successful authentication. Redirect to user profile.'
-                  value: '/users/{id}'
+                  description: 'Successful authentication. Redirect to the projects page.'
+                  value: '/projects'
                 302Failure:
                   description: 'Failed authentication. Redirect to login form.'
                   value: '/login'
@@ -211,11 +222,11 @@ paths:
                   value: '/login'
   
 
-  /users/{id}:
+  /userpage:
     get:
       operationId: R302
       summary: 'R302: View user profile'
-      description: 'Show the individual user profile. Access: USR'
+      description: 'Show the individual user profile. Access: OWN'
       tags:
         - 'M03: Authenticated User Area'
 
@@ -230,11 +241,11 @@ paths:
         '200':
           description: 'Ok. Show view profile UI'
   
-  /users/{id}/edit:
+  /edituserpage:
     get:
       operationId: R303
       summary: 'R303: Edit user profile form'
-      description: 'Show the individual user profile edit form. Access: USR'
+      description: 'Show the individual user profile edit form. Access: OWN'
       tags:
         - 'M03: Authenticated User Area'
 
@@ -251,7 +262,7 @@ paths:
     post:
       operationID: R304
       summary: 'R304: Edit user profile action'
-      description: 'Edit user profile'
+      description: 'Edit user profile. Access: OWN'
       tags:
         - 'M03: Authenticated User Area'
       requestBody:
@@ -278,16 +289,16 @@ paths:
               examples:
                 302Success:
                   description: 'Information successfully processed. Redirect to user profile.'
-                  value: '/users/{id}'
+                  value: '/userpage'
                 302Failure:
                   description: 'Failed to process information. Redirect to edit user information form.'
-                  value: '/users/{id}/edit'
+                  value: '/edituserpage'
 
-  /users/{id}/password:
+  /changePassword:
     get:
       operationId: R305
       summary: "R305: Change user's password form"
-      description: 'Show the password change form. Access: USR'
+      description: 'Show the password change form. Access: OWN'
       tags:
         - 'M03: Authenticated User Area'
 
@@ -322,17 +333,28 @@ paths:
               examples:
                 302Success:
                   description: 'Information successfully processed. Redirect to user profile.'
-                  value: '/users/{id}'
+                  value: '/userpage'
                 302Failure:
                   description: 'Failed to process information. Redirect to edit user information form.'
-                  value: '/users/{id}/edit'
+                  value: '/edituserpage'
+                  
   
  #------------------------------- M04 -----------------------------------------------------------------
 
-  /create-project/:
+  /create-project:
     get:
       operationId: R401
-      summary: 'R401: Create New Project'
+      summary: 'R401: Create New Project Form'
+      description: 'Create New Project. Access: USR'
+      tags:
+        - 'MO4: Project Area'
+      responses:
+      '200':
+        description: 'Ok. Show edit profile UI'
+  /api/project/create:
+    post:
+      operationId: R402
+      summary: 'R402: Create New Project Action'
       description: 'Create New Project. Access: USR'
       tags:
         - 'MO4: Project Area'
@@ -367,7 +389,7 @@ paths:
                 examples:
                   302Success:
                     description: 'Success. Redirect to project area.'
-                    value: #### project page
+                    value: '/project/{id}'
                   302Error:
                     description: 'Failed. Redirect to project creation form.'
                     value: '/create-project/'
@@ -375,8 +397,8 @@ paths:
        
   /api/load-users:
     get:
-      operationId: R402
-      summary: 'R402: Load Users'
+      operationId: R403
+      summary: 'R403: Load Users'
       description: 'Load Users. Access: PM'
       tags:
         - 'M04: Project Area'
@@ -411,10 +433,10 @@ paths:
         '400':
           description: "Error in parameters"
             
-  /search-tasks/:
+  /project/{project_id}/search:
     get:
-      operationId: R403
-      summary: 'R403: Search Tasks API'
+      operationId: R404
+      summary: 'R404: Search Tasks API'
       description: 'Searches for tasks and returns the results as JSON. Access: PM.'
 
       tags: 
@@ -436,22 +458,12 @@ paths:
               schema:
                 type: array
                 items: 
-                  $ref: '#/components/schemas/TaskPreview'
+                  $ref: '#/components/schemas/Task'
                    
-  /new-task/:
-    get:
-      operationId: R404
-      summary: "R404: Get new task form"
-      description: 'Show the form to create a new task. Access: PM'
-      tags:
-        - 'M04: Project Area'
-
-      responses:
-        '200':
-          description: 'Ok. Show create  profile UI'
-    post:
-      operationId: R404
-      summary: "R404: Create new task"
+  /api/task/{project_id}:
+    put:
+      operationId: R405
+      summary: "R405: Create new task"
       description: "Create a new task. Access: PM"
       tags:
         - 'M04: Project Area'
@@ -476,11 +488,11 @@ paths:
         '201':
           description: 'Task created'
 
-  /task-page/{id}:
+  api/task/{id}:
     get:
-      operationID: R405
-      summary: "R405: See task page"
-      description: "See the task page and all its information. Access: PM"
+      operationID: R406
+      summary: "R406: Get task info"
+      description: "Get the task's information. Access: PM"
       tags:
         - 'M04: Project Area'
       parameters:
@@ -493,41 +505,69 @@ paths:
       responses:
         '200':
           description: 'Ok. Show task page UI'
-
-
-  
-#------------------------------- M05 -----------------------------------------------------------------
-
-  /api/forum:
-    get:
-      operationId: R501
-      summary: 'R501: Search post API'
-      description: 'Searches for post and returns the results as JSON. Access: PM.'
-
-      tags: 
-        - 'M05: Forum'
-
-      parameters:
-        - in: query
-          name: query
-          description: String to use for full-text search
-          schema:
-            type: string
-          required: false
-
-      responses:
-        '200':
-          description: Success
           content:
             application/json:
               schema:
                 type: array
                 items: 
-                  properties: 
-                    message:
-                      type: string
-                    author_name:
-                      type: string
+                  $ref: '#/components/schemas/Task'
+    delete:
+      operationID: R407
+      summary: "R407: Delete task"
+      description: "Delete a task. Access: PM"
+      tags:
+        - 'M04: Project Area'
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+
+      responses:
+        '200':
+    post:
+      operationID: R408
+      summary: "R408: Update task info"
+      description: "Update the task's information. Access: PM"
+      tags:
+        - 'M04: Project Area'
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                task-name:
+                  type: string
+                task-description:
+                  type: string
+                task-members:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/User'
+                due-date:
+                  type: string
+      responses:
+        '200':
+          description: 'Task updated'
+
+
+  
+#------------------------------- M05 -----------------------------------------------------------------
+
+  /forum:
+    get:
+      operationId: R501
+      summary: "R501: Browse through forum's posts"
+      description: "Browse through the forum's posts. Access: PM."
+
+      tags: 
+        - 'M05: Forum'
+      responses:
+        '200':
+          description: 'Success show forum UI'
                   
                
   /new-post/:
@@ -572,7 +612,7 @@ paths:
   
 components:
   schemas:
-    TaskPreview:
+    Task:
       type: object
       properties:
         description:
