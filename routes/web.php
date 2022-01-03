@@ -47,7 +47,7 @@ Route::get('edituserpage', 'UserController@edit');
 //Edit User Page
 Route::post('userpage', 'UserController@userpageUpdate')->name('edituserpage');
 Route::get('deleteuser', 'UserController@delete')->name('deleteuser');
-Route::get('deleteUserPhoto', 'UserController@deletePhoto')->name('deleteUserPhoto');
+Route::get('api/user/deleteUserPhoto', 'UserController@deletePhoto')->name('deleteUserPhoto');
 
 //Change Password
 Route::post('changePassword', 'UserController@store')->name('changePassword');

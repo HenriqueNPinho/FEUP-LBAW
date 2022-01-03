@@ -1,12 +1,3 @@
-var loadFile = function (event) {
-    var image = document.getElementById("tempProfilePhoto");
-    image.src = URL.createObjectURL(event.target.files[0]);
-    image.onload = function () {
-        URL.revokeObjectURL(image.src); // free memory
-    };
-};
-
-
 function setUpConfirmDeleteAccount(){
     let deleteAccountButton=document.querySelector("#profileButtonDelete");
     deleteAccountButton.addEventListener("click",function(evt){
@@ -25,6 +16,8 @@ function setUpAcceptRejectProject(){
         });
     }
 }
+
+
 
 setUpConfirmDeleteAccount();
 setUpAcceptRejectProject();

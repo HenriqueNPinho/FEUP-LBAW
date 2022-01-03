@@ -21,7 +21,7 @@ class ForumPostController extends Controller
         $project = Project::find($project_id);
         $this->authorize('access', $project);
 
-        return view('pages.projectforum', ['project'=>$project, 'projects'=>$projects]);
+        return view('pages.project-forum', ['project'=>$project, 'projects'=>$projects]);
     }
 
     public function create(Request $request, $project_id) {

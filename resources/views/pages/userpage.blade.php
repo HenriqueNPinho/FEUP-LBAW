@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-<script type="text/javascript" src={{ asset('js/user-page.js') }} defer></script>
+<script type="text/javascript" src={{ asset('js/userpage.js') }} defer></script>
 <div class = "profileDiv">
 
 

@@ -1,6 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
+<script type="text/javascript" src={{ asset('js/forum.js') }} defer></script>
+
 <div id="project-area">
 
 

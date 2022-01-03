@@ -1285,6 +1285,10 @@ a {
     align-self: center;
 }
 
+.BigDivEditProfile form{
+    display: flex;
+}
+
 .BigDivEditProfile .photoSpace form{
     display: flex;
     width: 100%;
@@ -1464,10 +1468,6 @@ a {
     align-self: center;
 }
 
-.BigDivEditProfile form{
-    width: 60%;
-}
-
 .userpageParam {
     padding-bottom: 30px;
     display: flex;
@@ -1614,12 +1614,16 @@ a {
 
 #edituserpageForm {
     display: flex;
-    flex-flow: column;
+    width: 100%;
 }
 
 .editprofileText {
     font-weight: bold;
     font-size: 18px;
+}
+
+.textSpaceButtons form{
+    margin-bottom: 0;
 }
 
 .goBackButton {

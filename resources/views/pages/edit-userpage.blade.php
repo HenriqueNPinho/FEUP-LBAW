@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-
+<script type="text/javascript" src={{ asset('js/edit-userpage.js') }} defer></script>
 <div class = "profileDiv">
 
     <div class = "BigDivEditProfile">
@@ -50,37 +50,40 @@
                 </div>
                 
             </div>
-        </form>
-        <div class = "photoSpace">
-            <div class = "editprofileText"> Profile Picture </div>
-            <div id = "profilePhoto">
-                <div id = "containerEditPhoto">
-                    <div class = "profilePhotoCropper">
-                        @if(empty(Auth::user()->profile_image))
-                            <img src = "/images/avatars/profile-pic-2.png" class = "roundPhoto" id = "tempProfilePhoto">
-                        @else
-                            <img src ="{{Auth::user()->profile_image}}" class = "roundPhoto" id = "tempProfilePhoto"> 
-                        @endif
-                    </div>
-                    <div class = "uploadImage">
-                        <input type="file"  accept="image/*" name="profile_image" id="profile_image"  onchange="loadFile(event)" style="display: none;">
-                        <div class = "editImageButton">
-                            <i class="fas fa-pencil-alt blackIcon"></i>
-                            <p><label for="profile_image" class= "deleteImageText" id= "uploadImageButton"> Edit</label></p>
+            <div class = "photoSpace">
+                <div class = "editprofileText"> Profile Picture </div>
+                <div id = "profilePhoto">
+                    <div id = "containerEditPhoto">
+                        <div class = "profilePhotoCropper">
+                            @if(empty(Auth::user()->profile_image))
+                                <img src = "/images/avatars/profile-pic-2.png" class = "roundPhoto" id = "tempProfilePhoto">
+                            @else
+                                <img src ="{{Auth::user()->profile_image}}" class = "roundPhoto" id = "tempProfilePhoto"> 
+                            @endif
+                        </div>
+                        <div class = "uploadImage">
+                            <input type="file"  accept="image/*" name="profile_image" id="profile_image"  onchange="loadFile(event)" style="display: none;">
+                            <div class = "editImageButton">
+                                <i class="fas fa-pencil-alt blackIcon"></i>
+                                <p><label for="profile_image" class= "deleteImageText" id= "uploadImageButton"> Edit</label></p>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <form method="GET" action="{{'/deleteUserPhoto'}}" >
-                <input type="hidden">
-
-                <button type="submit" class= "deleteImageText" id="deleteImageButtonID" onclick="return confirm('Are you sure you want to delete your profile image?')" >
+                <button class= "deleteImageText" id="deleteImageButtonID"  >
                     <i class="fas fa-trash-alt blackIcon"></i>
                     Delete Image
                 </button>
-            </form>
             
-        </div>
+            </div>
+            
+        </form>
+        <!-- <form method="GET" action="{{'/deleteUserPhoto'}}" >
+            <input type="hidden">
+
+            
+        </form> -->
+        
         <!-- <hr id = "changePasswordHR">
         <div class="editprofileText" id = "changeP">
             Change your password
