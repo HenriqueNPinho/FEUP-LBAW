@@ -1753,31 +1753,50 @@ a {
 }
 
 #forum{
-    display: inline;
+    display: flex;
+    flex-direction: column;
     margin-top: 3vh;
-    margin-left: 10%;
+    margin-left: 3%;
+    width: 70%;
+    height: 75vh;
+    justify-content: space-between;
 }
 
-#forumPost{
-    left: 8%;
-    position:absolute;
-    overflow: scroll;
-    max-height: 340px;
-    width: 92%;
-
-    /*
-    border-style: ridge;
-    border:#2a9d8f;
-    */  
+.forumPost{
+    display: flex;
 }
 
+#forum-posts-container{
+    display: flex;
+    flex-direction: column;
+    margin-top: 2vh;
+}
 
-#new-post-content-input {
-    top: 500px;
-    left: 8%;
-    position:absolute;
-    resize:vertical;
-    width: 91%;
+.forum-post-name-date-options-content{
+    display: flex;
+    margin-left: 20px ;
+    flex-direction: column;
+}
+
+.forum-post-profile-image{
+    height: 40px;
+    width: 40px;
+    object-fit: cover;
+    border-radius: 40px;
+}
+
+.forum-post-options-button{
+    width: 20px;
+    height: 20px;
+}
+
+.forum-post-name-plus-date{
+    display: flex;
+}
+
+.forum-post-name-date-options{
+    display: flex;
+    justify-content: space-between;
 }
 
 #createNewPostButton {

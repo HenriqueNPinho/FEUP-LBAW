@@ -34,15 +34,26 @@
             </div>
         </div>
         <div id = "forum">
-            <div id = "forumPost">
+            <div id="forum-posts-container">
                 @foreach($project->forumPosts as $forumPost)
-                    <p> Post by user nº{{$forumPost->project_member_id}} </p>
-                    <p> Post Date: {{$forumPost->post_date}}</p>
-                    <p> Content: {{$forumPost->content}}</p>
-                    <br>
+                
+                <div class = "forumPost">
+                    
+                    <img class="forum-post-profile-image" src="{{$forumPost->projectMember->profile_image}}" alt="">
+                    <div class="forum-post-name-date-options-content">
+                        <div class="forum-post-name-date-options">
+                            <div class="forum-post-name-plus-date">
+                                <h5>{{$forumPost->projectMember->name}}</h5>
+                                <h6> Post Date: {{$forumPost->post_date}}</h6>
+                            </div>
+                            <img class="forum-post-options-button" src="/images/icons/3points.png" alt="">
+                        </div>
+                        <p>{{$forumPost->content}}</p>
+                    </div>
+                    
+                </div>
                 @endforeach
             </div>
-
             <textarea id="new-post-content-input" data-project-id="{{$project->id}}" name="content" placeholder="Type a new message..." cols="120" rows="4"></textarea>
             <div id="createNewPostButton" type="button" ><h4>Add Post</h4></div>
         </div>
