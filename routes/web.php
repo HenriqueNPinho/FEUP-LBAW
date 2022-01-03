@@ -24,7 +24,8 @@ Route::get('api/task/{task_id}','TaskController@get');
 Route::post('api/task/{task_id}','TaskController@edit');
 Route::delete('api/task/{task_id}','TaskController@delete');
 Route::get('api/user/notifications','UserController@getNotifications');
-
+Route::post('api/user/projectInvite','UserController@inviteResponse');
+Route::put('api/project/create','ProjectController@create');
 
 // Authentication
 Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
@@ -45,8 +46,7 @@ Route::get('deleteUserPhoto', 'UserController@deletePhoto')->name('deleteUserPho
 //Change Password
 Route::post('changePassword', 'UserController@store')->name('changePassword');
 
-Route::get('create-project', 'ProjectController@createproject');
-//Route::put('api/project/create','ProjectController@createproject');
-Route::put('api/project/create','ProjectController@create');
+Route::get('create-project', 'ProjectController@getCreateProject');
+
 
 

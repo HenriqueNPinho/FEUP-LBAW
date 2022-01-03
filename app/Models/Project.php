@@ -25,7 +25,7 @@ class Project extends Model
   }
 
     public function usersInvited(){
-        return $this->belongsToMany('App\Models\User','invitation','project_id','users_id')->withPivot('coordinator_id','accepted');;
+        return $this->belongsToMany('App\Models\User','invitation','project_id','users_id')->withPivot('accepted');;
     }
     public function company()
     {

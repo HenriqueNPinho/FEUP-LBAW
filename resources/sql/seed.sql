@@ -130,7 +130,6 @@ CREATE TABLE forum_post(
 CREATE TABLE invitation(
     project_id INTEGER NOT NULL REFERENCES projects(id) ON DELETE CASCADE,
     users_id INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
-    coordinator_id INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
     accepted BOOLEAN DEFAULT NULL,
     PRIMARY KEY(project_id,users_id)
 );
@@ -275,7 +274,7 @@ INSERT INTO task_assigned VALUES(1,1,null,DEFAULT);
 INSERT INTO projects VALUES(DEFAULT,1,'Other','Um trabalho que me faz querer cortar os pulsos','2021-08-24', '2022-08-24', DEFAULT);
 INSERT INTO project_member VALUES(2,2);
 INSERT INTO project_coordinator VALUES(2,2);
-INSERT INTO invitation VALUES(2,1,2,DEFAULT);
+INSERT INTO invitation VALUES(2,1,DEFAULT);
 
 
 -- INSERT INTO cards VALUES (DEFAULT, 'Things to do', 1);
