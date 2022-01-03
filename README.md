@@ -2,7 +2,11 @@
 
 ## Project Clinic - Project Management application
 
+### Links to artifacts
 
+[ER](/docs/ER)
+[EBD](/docs/EBD)
+[EAP](/docs/EAP)
 
 
 | Name             | E-Mail              |
