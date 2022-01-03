@@ -119,7 +119,10 @@ Module M03: Authenticated User Area
 > URL of the prototype plus user credentials necessary to test all features.  
 > Link to the prototype source code in the group's git repository.  
 
-
+| Email | Password | Position |
+|-------|----------|----------|
+|joao@lbaw.com|123456|Project Coordinator|
+|maria@example.com|123456|Project Member|
 ---
 
 
