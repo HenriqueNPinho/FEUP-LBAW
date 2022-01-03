@@ -4,9 +4,11 @@
 
 ### Links to artifacts
 
-[ER](/docs/ER)
-[EBD](/docs/EBD)
-[EAP](/docs/EAP)
+[ER - Link](/docs/ER)
+
+[EBD - Link](/docs/EBD)
+
+[EAP - Link](/docs/EAP)
 
 
 | Name             | E-Mail              |
