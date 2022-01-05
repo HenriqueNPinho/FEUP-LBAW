@@ -7,4 +7,23 @@ function setUpAddNewForumPost() {
     });
 }
 
+function setUpForumPostOptions(){
+    let forumPostOptionsContainers = document.querySelectorAll('.forum-post-options-container');
+
+    forumPostOptionsContainers.forEach(element => {
+        element.addEventListener("click",function(){
+            for(let i=0;i<forumPostOptionsContainers.length;i++){
+                if(forumPostOptionsContainers[i]==this) continue;
+                forumPostOptionsContainers[i].querySelector('.forum-post-options-menu').style.display="none";
+            }
+            let elementToDisplay=this.querySelector('.forum-post-options-menu');
+            if(elementToDisplay.style.display==""||elementToDisplay.style.display=="none")
+                elementToDisplay.style.display="block"
+            else if(elementToDisplay.style.display=="block")
+                elementToDisplay.style.display="none";
+        })
+    });
+}
+
 setUpAddNewForumPost();
+setUpForumPostOptions();

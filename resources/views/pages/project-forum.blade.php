@@ -46,7 +46,13 @@
                                 <h5>{{$forumPost->projectMember->name}}</h5>
                                 <h6>{{$forumPost->post_date}}</h6>
                             </div>
-                            <img class="forum-post-options-button" src="/images/icons/3points.png" alt="">
+                            <div class="forum-post-options-container">
+                                <div class="forum-post-options-menu">
+                                    <div><h4>Edit post</h4></div>
+                                    <div><h4>Delete post</h4></div>
+                                </div>
+                                <img class="forum-post-options-button" src="/images/icons/3points.png" alt="">
+                            </div>
                         </div>
                         <p>{{$forumPost->content}}</p>
                     </div>

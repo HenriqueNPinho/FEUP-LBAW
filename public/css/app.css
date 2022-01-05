@@ -388,7 +388,7 @@ form h4 {
     height: 90vh;
     background-color: #dfdfdf;
     width: 15%;
-    overflow-y:auto;
+    overflow-y: auto;
     scrollbar-width: thin;
 }
 
@@ -1519,7 +1519,6 @@ a {
     background: #ececec;
 }
 
-
 #buttonUpdate {
     display: flex;
     align-content: center;
@@ -1758,7 +1757,7 @@ a {
 #forum {
     display: flex;
     flex-direction: column;
-    margin-top: 3vh;
+    margin-top: 1vh;
     margin-left: 3%;
     margin-right: 3%;
     width: 94%;
@@ -1769,7 +1768,7 @@ a {
 .forumPost {
     display: flex;
     width: 100%;
-    margin-top: 10px;
+    margin-top: 20px;
 }
 
 #forum-posts-container {
@@ -1849,4 +1848,37 @@ a {
     padding-right: 30px;
     overflow-y: auto;
     font-size: 14px;
+}
+
+.forum-post-options-menu {
+    display: none;
+    position: relative;
+    top:10px
+}
+
+.forum-post-options-container {
+    height: 0;
+    display: flex;
+}
+
+.forum-post-options-menu div h4 {
+    font-size: 14px;
+    margin: 0px;
+}
+
+.forum-post-options-menu div {
+    background-color: rgb(240, 240, 240);
+    padding: 10px;
+    padding-right: 10px;
+    margin-right: 5px;
+    cursor: pointer;
+}
+
+.forum-post-options-menu div:first-of-type {
+    border-top-left-radius: 3px ;
+}
+
+.forum-post-options-menu div:last-of-type {
+    border-bottom-left-radius: 3px ;
+    border-bottom-right-radius: 3px ;
 }
