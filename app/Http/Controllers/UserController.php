@@ -10,7 +10,6 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
-use App\Models\Image;
 use App\Models\Project;
 use App\Rules\MatchOldPassword;
 

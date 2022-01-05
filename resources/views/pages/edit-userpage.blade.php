@@ -64,14 +64,14 @@
                         <div class = "uploadImage">
                             <input type="file"  accept="image/*" name="profile_image" id="profile_image"  onchange="loadFile(event)" style="display: none;">
                             <div class = "editImageButton">
-                                <i class="fas fa-pencil-alt blackIcon"></i>
-                                <p><label for="profile_image" class= "deleteImageText" id= "uploadImageButton"> Edit</label></p>
+                                <!-- <i class="fas fa-pencil-alt blackIcon"></i> -->
+                                <label for="profile_image" class= "deleteImageText" id= "uploadImageButton"> Edit</label>
                             </div>
                         </div>
                     </div>
                 </div>
                 <button class= "deleteImageText" id="deleteImageButtonID"  >
-                    <i class="fas fa-trash-alt blackIcon"></i>
+                    <!-- <i class="fas fa-trash-alt blackIcon"></i> -->
                     Delete Image
                 </button>
             
