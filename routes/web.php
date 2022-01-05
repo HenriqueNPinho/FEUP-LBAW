@@ -40,6 +40,9 @@ Route::get('logout', 'Auth\LoginController@logout')->name('logout');
 Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
 Route::post('register', 'Auth\RegisterController@register');
 
+//Authentication -> Administrator
+Route::get('registerAdministrator', 'Auth\RegisterAdministratorController@showRegistrationForm')->name('registerAdministrator');
+
 //User Page
 Route::get('userpage', 'UserController@showProfile')->name('userpage');
 Route::get('edituserpage', 'UserController@edit');
