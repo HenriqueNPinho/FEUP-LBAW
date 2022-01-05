@@ -281,7 +281,6 @@ INSERT INTO forum_post VALUES (DEFAULT, 2, 1, 'Quarto post', '2021-12-31 19:10:2
 INSERT INTO projects VALUES(DEFAULT,1,'Other','Um trabalho que me faz querer cortar os pulsos','2021-08-24', '2022-08-24', DEFAULT);
 INSERT INTO project_member VALUES(2,2);
 INSERT INTO project_coordinator VALUES(2,2);
-INSERT INTO invitation VALUES(2,1,DEFAULT);
 
 
 -- INSERT INTO cards VALUES (DEFAULT, 'Things to do', 1);

@@ -61,38 +61,28 @@ class UserController extends Controller
             $file = $request->file('profile_image');
             $fileNameExtension = ".jpg";
 
-            $user->profile_image = 'images/avatars/' . (Auth::user()->id). '.jpg';
-            echo("<script>console.log('PATH: " . $user->profile_image . "');</script>");
+            $user->profile_image = '/images/avatars/' . (Auth::user()->id). '.jpg';
+
 
             $file->move(public_path('/images/avatars'), (Auth::user()->id) . $fileNameExtension);
         }
-        else{
-            $sofia = "não recebi imagem";
-            echo("<script>console.log('PATH: " . $sofia . "');</script>");
-
-            echo("<script>console.log('PATH: " . $user->profile_image . "');</script>");
-        }
-
         $user->save();
         $projectInvitations=$user->projectInvitations()->whereNull('accepted')->get();
         return view('pages.userpage',['user' => $user, 'projectInvitations'=> $projectInvitations]);
     }
 
-    public function deletePhoto(Request $request){
+    public function deletePhoto(){
         $sofia = "estou na função que apaga a foto";
         echo("<script>console.log('PATH: " . $sofia . "');</script>");
 
         $user = Auth::user();
         File::delete($user->profile_image);
         $user->profile_image = '/images/avatars/profile-pic-2.png';
-
-        echo("<script>console.log('PATH: " . $user->profile_image . "');</script>");
-
         $user->save();
-        return view('pages.edit-userpage', ['user' => $user]);
+        return $user;
     }
 
-    public function delete(Request $request) 
+    public function delete() 
     {
         $user = Auth::user();
         File::delete($user->profile_image);
@@ -114,8 +104,6 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        $sofia = "vou mudar a pass";
-        echo("<script>console.log('PATH: " . $sofia . "');</script>");
 
         $request->validate([
             'current_password' => ['required', new MatchOldPassword],

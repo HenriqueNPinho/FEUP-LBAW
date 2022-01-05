@@ -60,14 +60,14 @@ function genericResponseHandlerWithRefresh() {
         console.log(this.status);
         console.log(this.response);
     }
-    location.reload();
+    location.reload(true);
     return;
 }
 
 function genericResponseHandler() {
     if (this.status >= 400) {
         alert("Error, try again");
-       // location.reload();
+        location.reload(true);
     }
     console.log(this.status);
     console.log(this.response);

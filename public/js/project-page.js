@@ -15,7 +15,7 @@ function setUpDragAndDropTasks() {
                 // store a ref. on the dragged elem
                 dragged = item;
                 // make it transparent
-                item.style.opacity = 0.001;
+                item.style.opacity = 0.5;
             },
             false
         );

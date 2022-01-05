@@ -8,7 +8,8 @@ var loadFile = function (event) {
 
 function setUpDeletePhoto(){
     let deletePhotoButton=document.querySelector("#deleteImageButtonID");
-    deletePhotoButton.addEventListener("click",function(){
+    deletePhotoButton.addEventListener("click",function(evt){
+        evt.preventDefault()
         if(!confirm("Are you sure you want to delete your current profile picture?")) return;
         sendAjaxRequest("get","api/user/deleteUserPhoto",null,genericResponseHandlerWithRefresh);
     })

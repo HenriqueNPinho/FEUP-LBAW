@@ -44,7 +44,7 @@
                         <div class="forum-post-name-date-options">
                             <div class="forum-post-name-plus-date">
                                 <h5>{{$forumPost->projectMember->name}}</h5>
-                                <h6> Post Date: {{$forumPost->post_date}}</h6>
+                                <h6>{{$forumPost->post_date}}</h6>
                             </div>
                             <img class="forum-post-options-button" src="/images/icons/3points.png" alt="">
                         </div>
@@ -54,8 +54,10 @@
                 </div>
                 @endforeach
             </div>
-            <textarea id="new-post-content-input" data-project-id="{{$project->id}}" name="content" placeholder="Type a new message..." cols="120" rows="4"></textarea>
-            <div id="createNewPostButton" type="button" ><h4>Add Post</h4></div>
+            <div class="new-post-content-input"  data-project-id="{{$project->id}}">
+                <textarea id="new-post-text-area-input" name="content" placeholder="Type a new message..." cols="120" rows="4"></textarea>
+                <img id="createNewPostButton" src="/images/icons/send.png" alt="">
+            </div>
         </div>
     </div>
 </div>
