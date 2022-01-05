@@ -5,6 +5,8 @@ namespace App\Models;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
+use App\Models\Project;
+
 class User extends Authenticatable
 {
     use Notifiable;
@@ -33,7 +35,7 @@ class User extends Authenticatable
      * The projects this user is a member of.
      */
     public function projects() {
-        return $this->belongsToMany('App\Models\Project','project_member','users_id','project_id');
+        return $this->belongsToMany('App\Models\Project','project_member','users_id','project_id')->where('archived',FALSE);
     }
 
     public function tasks() {
@@ -46,5 +48,18 @@ class User extends Authenticatable
 
     public function projectInvitations(){
         return $this->belongsToMany('App\Models\Project','invitation','users_id','project_id')->withPivot('accepted');
+    }
+
+    public function favoriteProjects(){
+        return $this->belongsToMany('App\Models\Project','favorite','users_id','project_id');
+    }
+
+    public function isFavorite(Project $project){
+        $favProjects=$this->favoriteProjects;
+        foreach($favProjects as $favProject){
+            if($favProject->id==$project->id)
+                return TRUE;
+        }
+        return FALSE;
     }
 }

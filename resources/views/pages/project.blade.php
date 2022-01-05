@@ -23,7 +23,6 @@
                     @for($i = 0; $i <= 2; $i++)
                         @if(empty($project->members[$i]->profile_image))
                             <img src = "/images/avatars/profile-pic-2.png">
-                            <script>console.log("{{$project->members[$i]->profile_image}}")</script>
                         @else
                             <img src ="{{$project->members[$i]->profile_image}}"> 
                         @endif
@@ -37,7 +36,6 @@
                     @foreach($project->members as $member)
                         @if(empty($member->profile_image))
                             <img src = "/images/avatars/profile-pic-2.png">
-                            <script>console.log("{{$member->profile_image}}")</script>
                         @else
                             <img src ="{{$member->profile_image}}"> 
                         @endif
@@ -50,6 +48,17 @@
                     <input name="search-tasks-query" id="search-tasks-query" type="search" placeholder="Search for tasks here..." autofocus required />
                     <button type="submit">Go</button>    
                 </form>
+                <div id="project-options-container">
+                    <img id="project-options-3points-icon" src="/images/icons/3points.png" alt="">
+                    <div id="project-options">
+                        @if(Auth::user()->isFavorite($project))
+                            <div id="remove-from-favorites-button"><h4>Remove from favorites</h4></div>
+                        @else
+                            <div id="add-to-favorites-button"><h4>Mark project as favorite</h4></div>
+                        @endif
+                        <div id="archive-project-button"><h4>Archive project</h4></div>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="boards-container">

@@ -56,9 +56,9 @@ function setUpSlideRightMenu() {
 
 function genericResponseHandlerWithRefresh() {
     if (this.status >= 400) {
-        alert("Error, try again");
-        console.log(this.status);
-        console.log(this.response);
+        if(this.response!=""||this.response!=null)
+            alert(this.response);
+        //console.log(this.response);
     }
     location.reload(true);
     return;
@@ -66,7 +66,8 @@ function genericResponseHandlerWithRefresh() {
 
 function genericResponseHandler() {
     if (this.status >= 400) {
-        alert("Error, try again");
+        if(this.response!=""||this.response!=null)
+            alert(this.response);
         location.reload(true);
     }
     console.log(this.status);
