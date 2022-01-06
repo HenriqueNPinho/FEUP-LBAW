@@ -104,4 +104,14 @@ class ProjectController extends Controller
         return;
     }
 
+    public function getSettings($project_id)
+    {
+        if (!Auth::check()) return redirect('/login');
+        $this->authorize('list', Project::class);
+        $projects = Auth::user()->projects()->orderBy('id')->get();
+        $project = Project::find($id);
+        $this->authorize('access', $project);
+        return view('pages.project-settings', ['project' => $project,'projects' =>$projects]);
+    }
+
 }

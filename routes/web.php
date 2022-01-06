@@ -13,11 +13,13 @@
 // Home
 Route::get('/', 'HomepageController@index')->name("homepage");
 
+//Projects
 Route::get('projects', 'ProjectController@list');
+
+
+//Project Page
 Route::get('project/{id}', 'ProjectController@show');
 Route::get('project/{project_id}/search/','ProjectController@taskSearch');
-
-// API
 Route::post('api/task/updateStatus/{id}', 'TaskController@updateStatus');
 Route::put('api/task/{project_id}','TaskController@create');
 Route::get('api/task/{task_id}','TaskController@get');
@@ -35,6 +37,9 @@ Route::get('project/{project_id}/forum','ForumPostController@getProjectForum');
 Route::post('project/{project_id}/forum','ForumPostController@create');
 Route::put('project/{project_id}/forum','ForumPostController@edit');
 Route::delete('project/{project_id}/forum','ForumPostController@delete');
+
+//Project Settings
+Route::get('project/{project_id}/settings','ProjectController@getSettings');
 
 // Authentication
 Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');

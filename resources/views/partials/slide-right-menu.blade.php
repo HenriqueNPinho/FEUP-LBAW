@@ -22,7 +22,7 @@
         </div>
         </a>
         <div class="slide-right-menu-divider"></div>
-        <a class="slide-right-menu-item" >
+        <a id="slide-right-project-settings-link" class="slide-right-menu-item" >
         <div>
             <img src="/images/icons/settings.png" alt="">
             <h2>Settings</h2>
