@@ -49,7 +49,11 @@
           <a href="{{ url('/userpage') }}"><div>Profile</div></a>
           <a href="{{ url('/logout') }}"><div>Logout</div></a>
         </div>
-         
+
+        @elseif(Auth::guard('admin')->check())
+        <div class ="navbar">
+            Hello I'm Here
+        </div>
         @else
         <div class="navbar">
           <a href="{{ url('/') }}"><img src="/images/horizontal-logo.png" alt=""></a>

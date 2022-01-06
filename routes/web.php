@@ -43,10 +43,6 @@ Route::get('logout', 'Auth\LoginController@logout')->name('logout');
 Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
 Route::post('register', 'Auth\RegisterController@register');
 
-//Authentication -> Administrator
-Route::get('registerAdministrator', 'Auth\RegisterAdministratorController@showRegistrationForm')->name('registerAdmin');
-Route::get('admin/home', [HomeController::class, 'adminHome'])->name('admin.home')->middleware('is_admin');
-
 //User Page
 Route::get('userpage', 'UserController@showProfile')->name('userpage');
 Route::get('edituserpage', 'UserController@edit');
@@ -63,4 +59,11 @@ Route::post('changePassword', 'UserController@store')->name('changePassword');
 Route::get('create-project', 'ProjectController@getCreateProject');
 
 
+//Authentication -> Administrator
+Route::get('registerAdministrator', 'Auth\RegisterAdminController@showRegistrationForm')->name('registerAdmin');
+Route::post('registerAdministrator', 'Auth\RegisterAdminController@showRegistrationForm');
+Route::post('loginAdmin', 'Auth\LoginAdminController@login')->name('loginAdmin');
+Route::get('logout', 'Auth\LoginAdminController@logout')->name('logout');
 
+//Admin Home
+Route::get('home', 'AdminHomepageController@index')->name("adminHome");

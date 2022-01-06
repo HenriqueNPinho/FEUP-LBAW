@@ -7,8 +7,18 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 
-class RegisterAdministratorController extends Controller
+class RegisterAdminController extends Controller
 {
+    protected $redirectTo = 'home';
+
+    use RegistersUsers {
+        showRegistrationForm as laravelShowRegistrationForm;
+    }
+
+    public function showRegistrationForm()
+    {
+        return view('auth.registeradmin');
+    }
     /*
     |--------------------------------------------------------------------------
     | Register Controller
@@ -19,8 +29,6 @@ class RegisterAdministratorController extends Controller
     | provide this functionality without requiring any additional code.
     |
     */
-
-    use RegistersUsers;
 
     /**
      * Create a new controller instance.
