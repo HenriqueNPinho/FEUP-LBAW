@@ -15,6 +15,7 @@ class ProjectPolicy
     public function access(User $user, Project $project)
     {
       // Only a project member can see it
+      if($project->archived) return FALSE;
       foreach ($project->members as $member) {
         if($user->id==$member->id) return TRUE;
       }
@@ -31,6 +32,13 @@ class ProjectPolicy
     {
       // Any user can create a new card
       return Auth::check();
+    }
+
+    public function archive(User $user, Project $project){
+        foreach ($project->coordinators as $coordinator) {
+            if($user->id==$coordinator->id) return TRUE;
+        }
+        return FALSE;
     }
 
 

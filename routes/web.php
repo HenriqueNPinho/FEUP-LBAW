@@ -26,6 +26,9 @@ Route::delete('api/task/{task_id}','TaskController@delete');
 Route::get('api/user/notifications','UserController@getNotifications');
 Route::post('api/user/projectInvite','UserController@inviteResponse');
 Route::put('api/project/create','ProjectController@create');
+Route::post('api/user/removeFavorite/{project_id}','UserController@removeFavorite');
+Route::post('api/user/addFavorite/{project_id}','UserController@addFavorite');
+Route::post('api/project/archive/{project_id}','ProjectController@archive');
 
 // Forum
 Route::get('project/{project_id}/forum','ForumPostController@getProjectForum');

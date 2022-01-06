@@ -83,6 +83,7 @@ class ProjectController extends Controller
         $project->save();
 		
         $project->members()->attach(Auth::user()->id);
+        $project->coordinators()->attach(Auth::user()->id);
 		
         $membersToInvite=explode(";",$request->input("members"));
         foreach($membersToInvite as $member){
@@ -93,31 +94,14 @@ class ProjectController extends Controller
         }
     }
    
-    /**
-     * Creates a new card.
-     *
-     * @return Card The card created.
-     */
-    // public function create(Request $request)
-    // {
-    //   $card = new Card();
+    public function archive($project_id){
+        if (!Auth::check()) return redirect('/login');
+        $project = Project::find($project_id);
+        $this->authorize('archive',$project);
+        $project->archived=TRUE;
+        $project->save();
+        $project->usersFavorite()->detach();
+        return;
+    }
 
-    //   $this->authorize('create', $card);
-
-    //   $card->name = $request->input('name');
-    //   $card->user_id = Auth::user()->id;
-    //   $card->save();
-
-    //   return $card;
-    // }
-
-    // public function delete(Request $request, $id)
-    // {
-    //   $card = Card::find($id);
-
-    //   $this->authorize('delete', $card);
-    //   $card->delete();
-
-    //   return $card;
-    // }
 }

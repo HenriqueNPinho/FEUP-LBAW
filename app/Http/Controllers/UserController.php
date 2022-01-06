@@ -71,9 +71,6 @@ class UserController extends Controller
     }
 
     public function deletePhoto(){
-        $sofia = "estou na função que apaga a foto";
-        echo("<script>console.log('PATH: " . $sofia . "');</script>");
-
         $user = Auth::user();
         File::delete($user->profile_image);
         $user->profile_image = '/images/avatars/profile-pic-2.png';
@@ -146,4 +143,35 @@ class UserController extends Controller
         return view('pages.userpage',['user' => $user, 'projectInvitations'=> $projectInvitations]);
     }
 
+    public function removeFavorite($project_id){
+        $user = Auth::user();
+        $projects = $user->favoriteProjects()->get();
+        foreach($projects as $project){
+            if($project->id==$project_id){
+                $user->favoriteProjects()->detach($project);
+                return;
+            }
+        }
+        return;
+    }
+
+    public function addFavorite($project_id){
+        $user = Auth::user();
+        $projects = $user->projects()->get();
+        if(count($user->favoriteProjects()->get())==5){
+            http_response_code(403);
+            echo "You can't have more than 5 favorite projects.";
+            exit;
+        }
+
+        foreach($projects as $project){
+            if($project->id==$project_id){
+                $user->favoriteProjects()->attach($project);
+                return;
+            }
+        }
+        return;
+    }
+
+    
 }

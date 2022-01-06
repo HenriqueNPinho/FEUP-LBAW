@@ -129,6 +129,17 @@ function createNewTask() {
     });
     let createTaskButton = document.querySelector("#createNewTaskButton");
     let taskStatus = this.getAttribute("data-id");
+
+    let memberSelectionInput = document.querySelectorAll(
+        ".new-member-selection-option-input"
+    );
+    memberSelectionInput.forEach(function (item) {
+        item.checked=false;
+    });
+    document.querySelector(
+        "#new-task-description-input"
+    ).value="";
+    document.querySelector("#new-task-name-input").value="";
     createTaskButton.addEventListener("click", function () {
         let id = document
             .querySelector(".project-overview")
@@ -138,9 +149,6 @@ function createNewTask() {
             "#new-task-description-input"
         ).value;
         let selectedMembers = [];
-        let memberSelectionInput = document.querySelectorAll(
-            ".new-member-selection-option-input"
-        );
         memberSelectionInput.forEach(function (item) {
             if (item.checked)
                 selectedMembers.push(item.getAttribute("data-id"));
@@ -260,6 +268,7 @@ function editTask(task) {
         ".edit-member-selection-option-input"
     );
     memberSelectionInput.forEach(function (item) {
+        item.checked=false;
         for (let i = 0; i < task[1].length; i++) {
             if (item.getAttribute("data-id") == task[1][i]["id"]) {
                 item.checked = true;
@@ -301,7 +310,57 @@ function editTask(task) {
     });
 }
 
+function setUpProjectOptions(){
+    let projectOptionsIcon=document.querySelector('#project-options-3points-icon');
+    let projectOptions=document.querySelector("#project-options");
+
+    projectOptionsIcon.addEventListener("click",function(){
+        if(projectOptions.style.display==""||projectOptions.style.display=="none")
+            projectOptions.style.display="block"
+        else if(projectOptions.style.display=="block"){
+            projectOptions.style.display="none"
+        }
+            
+    })
+}
+
+function setUpRemoveFromFavorites(){
+    let projectID=document.querySelector('.project-overview').getAttribute('data-id');
+    let removeFromFavoritesButton=document.querySelector('#remove-from-favorites-button');
+    if(removeFromFavoritesButton==null) return;
+    removeFromFavoritesButton.addEventListener("click",function(){
+        sendAjaxRequest('post','/api/user/removeFavorite/'+projectID,null,genericResponseHandlerWithRefresh);
+    })
+}
+
+function setUpAddToFavorites(){
+    let projectID=document.querySelector('.project-overview').getAttribute('data-id');
+    let addToFavoritesButton=document.querySelector('#add-to-favorites-button');
+    if(addToFavoritesButton==null) return;
+    addToFavoritesButton.addEventListener("click",function(){
+        sendAjaxRequest('post','/api/user/addFavorite/'+projectID,null,genericResponseHandlerWithRefresh);
+    })
+}
+
+function setUpArchiveProject(){
+    let projectID=document.querySelector('.project-overview').getAttribute('data-id');
+    let archiveProjectButton = document.querySelector('#archive-project-button');
+    
+    archiveProjectButton.addEventListener("click",function(){
+        sendAjaxRequest('post','/api/project/archive/'+projectID,null,function(){
+            if(this.status<400)
+                location.href='/'
+            else
+                console.log(this.response);
+        });
+    })
+
+}
 
 setUpDragAndDropTasks();
 setUpAddNewTask();
 setUpViewFullTask();
+setUpProjectOptions();
+setUpRemoveFromFavorites();
+setUpAddToFavorites();
+setUpArchiveProject();
