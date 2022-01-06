@@ -13,7 +13,7 @@
 // Home
 Route::get('/', 'HomepageController@index')->name("homepage");
 
-Route::get('projects', 'ProjectController@list');
+Route::get('projects', 'ProjectController@list')->name('projects');
 Route::get('project/{id}', 'ProjectController@show');
 Route::get('project/{project_id}/search/','ProjectController@taskSearch');
 
@@ -41,7 +41,8 @@ Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('re
 Route::post('register', 'Auth\RegisterController@register');
 
 //Authentication -> Administrator
-Route::get('registerAdministrator', 'Auth\RegisterAdministratorController@showRegistrationForm')->name('registerAdministrator');
+Route::get('registerAdministrator', 'Auth\RegisterAdministratorController@showRegistrationForm')->name('registerAdmin');
+Route::get('admin/home', [HomeController::class, 'adminHome'])->name('admin.home')->middleware('is_admin');
 
 //User Page
 Route::get('userpage', 'UserController@showProfile')->name('userpage');
@@ -53,6 +54,7 @@ Route::get('deleteuser', 'UserController@delete')->name('deleteuser');
 Route::get('api/user/deleteUserPhoto', 'UserController@deletePhoto')->name('deleteUserPhoto');
 
 //Change Password
+Route::get('changePassword', 'UserController@showChangePassword');
 Route::post('changePassword', 'UserController@store')->name('changePassword');
 
 Route::get('create-project', 'ProjectController@getCreateProject');

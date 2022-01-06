@@ -29,13 +29,20 @@
             <div class="textSpaceButtons">
                 <a  class="profileButton" href="{{ url('/edituserpage') }}" id = "editProfileButtonText">Edit Profile </a>
 
+                <a  class="profileButton" href="{{ url('/changePassword') }}" id = "editProfileButtonText">Reset Password </a>
 
                 <form method="GET" action="{{'/deleteuser'}}" >
                     <input type="hidden" id= "deleteaccountButton" onchange="sofi(event)">
                     <button type="submit" id="profileButtonDelete" class= "profileButton" >Delete Account</button>
                 </form>
             </div>
-            
+            <!--
+            <div class="textSpaceButtons">
+                <form method="GET" action="{{'/deleteuser'}}" >
+                    <input type="hidden" id= "deleteaccountButton" onchange="sofi(event)">
+                    <button type="submit" id="profileButtonDelete" class= "profileButton" >Delete Account</button>
+                </form>
+            </div> -->
 
         </div>  
         <div class = "photoSpace">

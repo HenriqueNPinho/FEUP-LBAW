@@ -1328,10 +1328,9 @@ a {
 
 .textSpaceButtons {
     margin-top: 20px;
-    align-self: center;
-    width: 60%;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
+    width: 75%;
 }
 
 .userName {
@@ -1644,10 +1643,6 @@ a {
     margin-right: 20px;
 }
 
-.goBackButton:hover {
-    background-color: #89adbb;
-}
-
 #deleteImageButtonID {
     background-color: rgb(219, 216, 216);
     color: black;
@@ -1664,15 +1659,24 @@ a {
 
 /* PASSWORD */
 
+#changePassButton{
+    margin-left: 20px;
+    background-color: #2a9d8f;
+    color: white;
+}
+
 #passwordForm {
     display: flex;
     flex-flow: column;
     align-items: left;
     justify-content: center;
-    width: 50%;
+    width: 100%;
     height: auto;
 }
 
+.passInputPlaceHolder{
+    width: 100%;
+}
 #changeP {
     padding-bottom: 20px;
     color: #264653;

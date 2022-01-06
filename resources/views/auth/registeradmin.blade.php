@@ -2,8 +2,8 @@
 
 @section('content')
 <div class="auth-page">
-  
-  <form method="POST" action="{{ route('register') }}">
+  <form method="POST" action="{{ route('registerAdmin') }}">
+      OLAAAAAAAAA ESTE É O MEU REGISTER AAAAAAAAAA
       <h2>Create a new account</h2>
       {{ csrf_field() }}
 
@@ -20,6 +20,9 @@
             {{ $errors->first('email') }}
         </span>
       @endif
+
+      <!-- value="{{ old('companyName') }} required-->
+      <input id="companyName" type="text" placeholder="Company Name" name="companyName" >
 
       <input id="password" type="password" placeholder="Password" name="password" required>
       @if ($errors->has('password'))
