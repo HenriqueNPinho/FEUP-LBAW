@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class HomepageController extends Controller
+class AdminHomepageController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,9 +15,11 @@ class HomepageController extends Controller
      */
     public function index()
     {
-        if (Auth::check()) return redirect('/projects');
-        return view('pages.homepage');
+        if (Auth::guard('admin')->check()) {
+            $output = "estou no admin home page controller yeyyyyy";
+            echo "<script>console.log('Debug Objects: " . $output . "' );</script>";
+            return redirect('/adminHome');
+        }
+        return view('pages.adminhome');
     }
-
-
 }

@@ -60,14 +60,36 @@
           <div class="navbar-options">
             <a href="">About Us</a>
             <a href="">FAQ</a>
-            <a href="{{ url('/login') }}">Login</a>
-            <a href="{{ url('/register') }}">Signup</a>
+            <div class = "collapsible" onclick= "adminCollapse('loginContent')" >
+              Login
+            </div>
+            <div class = "collapsible" onclick= "adminCollapse('registerContent')" >
+              Sign Up
+            </div>
           </div>
         </div>
         @endif
       </header>
       <div id="filler"></div>
       <section id="content">
+        <div class = "navbar-collapse adminOptions" id = "loginContent">
+          <div class = "adminItem">
+            <a href="{{ url('/login') }}"> Login to your Personal Account</a> 
+          </div>
+          <hr class = "hrAdmin"> </hr>
+          <div class = "adminItem">
+            <a href="{{ url('/adminLogin') }}"> Login to your Company Account</a> 
+          </div>
+        </div>
+        <div class = "navbar-collapse adminOptions" id = "registerContent">
+          <div class = "adminItem">
+            <a href="{{ url('/register') }}"> Create Personal Account</a> 
+          </div>
+          <hr class = "hrAdmin"> </hr>
+          <div class = "adminItem">
+            <a href="{{ route('registerAdmin') }}"> Create Company's Account</a> 
+          </div>
+        </div>
         @yield('content')
       </section>
     </main>

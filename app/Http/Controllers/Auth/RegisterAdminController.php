@@ -9,7 +9,7 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 
 class RegisterAdminController extends Controller
 {
-    protected $redirectTo = 'home';
+    protected $redirectTo = 'homepage';
 
     use RegistersUsers {
         showRegistrationForm as laravelShowRegistrationForm;

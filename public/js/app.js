@@ -105,3 +105,15 @@ function sendAjaxRequest(method, url, data, handler) {
 
 setUpDropDownMenu();
 setUpSlideRightMenu();
+
+/* ======================================================== */
+/* ADMIN CODE */
+
+function adminCollapse(elementID){
+    var content = document.getElementById(elementID);
+    if (content.style.display === "block") {
+        content.style.display = "none";
+    } else {
+        content.style.display = "block";
+    }
+}
