@@ -73,13 +73,16 @@ Route::get('logout', 'Auth\LoginController@logout')->name('logout');
 // ==============================================
 // Authentication -> Administrator
 // register
-Route::get('registerAdministrator', 'Auth\RegisterAdminController@showRegistrationForm')->name('registerAdmin');
-Route::post('registerAdministrator', 'Auth\RegisterAdminController@register');
+Route::get('/register/admin', 'Auth\RegisterController@showAdminRegistrationForm');
+Route::post('/register/admin', 'Auth\RegisterController@createAdmin');
 
 //login
 Route::get('loginAdmin', 'Auth\LoginAdminController@showLoginForm')->name('loginAdmin');
 Route::post('loginAdmin', 'Auth\LoginAdminController@login')->name('loginAdmin');
 
+Route::group(['middleware' => 'auth:admin'], function(){
+    Route::view('/admin','admin');
+});
 //logout
 Route::get('logoutAdmin', 'Auth\LoginAdminController@logout')->name('logoutAdmin');
 
@@ -87,4 +90,4 @@ Route::get('logoutAdmin', 'Auth\LoginAdminController@logout')->name('logoutAdmin
 // ******************************************** 
 //Admin Home
 
-Route::get('home', 'AdminHomepageController@index')->middleware('admin');
+Route::get('home', 'AdminHomepageController@index');

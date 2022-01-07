@@ -34,10 +34,10 @@
 
         <a class="button" href="{{ route('register') }}">Sign Up HERE</a>
 
-        <!-- 
+        <!--
         <h4>Are you creating an account for your company?</h4>
         <h4>Are you creating an account for yourself?</h4>
-        <a class="button" href="{{ route('registerAdmin') }}">Sign Up your Company HERE</a>
+        <a class="button" href="{{ url('/register/admin') }}">Sign Up your Company HERE</a>
         -->
     </form>
 </div>

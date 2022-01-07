@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="auth-page">
-  <form method="POST" action="{{ route('registerAdmin') }}">
+  <form method="POST" action="{{ url('/register/admin') }}">
       <h2>Create a new account</h2>
       {{ csrf_field() }}
 

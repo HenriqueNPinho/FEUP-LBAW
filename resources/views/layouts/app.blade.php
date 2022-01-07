@@ -87,7 +87,7 @@
           </div>
           <hr class = "hrAdmin"> </hr>
           <div class = "adminItem">
-            <a href="{{ route('registerAdmin') }}"> Create Company's Account</a> 
+             <a href="{{ url('/register/admin') }}"> Create Company's Account</a>  
           </div>
         </div>
         @yield('content')
