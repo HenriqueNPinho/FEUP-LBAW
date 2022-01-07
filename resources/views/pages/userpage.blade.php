@@ -32,7 +32,7 @@
                 <a  class="profileButton" href="{{ url('/changePassword') }}" id = "editProfileButtonText">Reset Password </a>
 
                 <form method="GET" action="{{'/deleteuser'}}" >
-                    <input type="hidden" id= "deleteaccountButton" onchange="sofi(event)">
+                    <input type="hidden" id= "deleteaccountButton"  hange="sofi(event)">
                     <button type="submit" id="profileButtonDelete" class= "profileButton" >Delete Account</button>
                 </form>
             </div>

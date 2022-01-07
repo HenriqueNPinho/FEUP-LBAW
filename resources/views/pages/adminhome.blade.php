@@ -3,16 +3,29 @@
 @section('content')
 
 <div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">Dashboard</div>
-                <div class="card-body">
-                    You are Admin.
-                </div>
-            </div>
-        </div>
+    @auth("web")
+        @if (Auth::check())
+            oh well tou na merda
+        @else
+            sou user e não tou autenticado wtf
+        @endif
+    @endauth
+
+    @auth("admin")
+        You're an administrator!
+    @endauth
+
+    @guest
+        You're not logged in!
+    @endguest
+
+    @if(auth()->user()->admin)
+        é admin então o que CARALHO
+    @endif
+    <!--
+        ISTO FUNCIONA VAI PARA O CARALHO ISTO NAÕ É UM USER
+    <a >{{ Auth::guard('web')->user()->name }}</a>
+    -->
     </div>
-</div>
 
 @endsection

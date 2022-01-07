@@ -55,6 +55,8 @@ Route::get('create-project', 'ProjectController@getCreateProject');
 // ******************************************** 
 // AUTHENTICATION
 
+Auth::routes();
+
 // ==============================================
 // Authentication -> User
 //register
@@ -75,14 +77,14 @@ Route::get('registerAdministrator', 'Auth\RegisterAdminController@showRegistrati
 Route::post('registerAdministrator', 'Auth\RegisterAdminController@register');
 
 //login
-Route::get('logout', 'Auth\LoginAdminController@showLoginForm')->name('logout');
+Route::get('loginAdmin', 'Auth\LoginAdminController@showLoginForm')->name('loginAdmin');
 Route::post('loginAdmin', 'Auth\LoginAdminController@login')->name('loginAdmin');
 
 //logout
-Route::get('logout', 'Auth\LoginAdminController@logout')->name('logout');
+Route::get('logoutAdmin', 'Auth\LoginAdminController@logout')->name('logoutAdmin');
 
 // ==============================================
 // ******************************************** 
 //Admin Home
 
-Route::get('home', 'AdminHomepageController@index');
+Route::get('home', 'AdminHomepageController@index')->middleware('admin');

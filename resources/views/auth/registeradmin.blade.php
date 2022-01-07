@@ -21,7 +21,12 @@
       @endif
 
       <!-- value="{{ old('companyName') }} required-->
-      <input id="companyName" type="text" placeholder="Company Name" name="companyName" >
+      <input id="companyName" type="text" placeholder="Company Name" name="companyName" value="{{ old('companyName') }}" required>
+      @if ($errors->has('companyName'))
+        <span class="error">
+            {{ $errors->first('companyName') }}
+        </span>
+      @endif
 
       <input id="password" type="password" placeholder="Password" name="password" required>
       @if ($errors->has('password'))
