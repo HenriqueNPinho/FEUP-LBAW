@@ -9,7 +9,7 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 
 class RegisterAdminController extends Controller
 {
-    protected $redirectTo = 'homepage';
+    protected $redirectTo = 'adminHome';
 
     use RegistersUsers {
         showRegistrationForm as laravelShowRegistrationForm;
@@ -48,6 +48,7 @@ class RegisterAdminController extends Controller
      */
     protected function validator(array $data)
     {
+
         return Validator::make($data, [
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',

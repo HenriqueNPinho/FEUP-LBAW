@@ -15,6 +15,9 @@ class AdminHomepageController extends Controller
      */
     public function index()
     {
+        $output = "estou no admin home page controller yeyyyyy";
+        echo "<script>console.log('Debug Objects: " . $output . "' );</script>";
+        
         if (Auth::guard('admin')->check()) {
             $output = "estou no admin home page controller yeyyyyy";
             echo "<script>console.log('Debug Objects: " . $output . "' );</script>";
