@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Task;
 use App\Models\Project;
-
+use App\Models\TaskComment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
@@ -45,9 +45,9 @@ class TaskController extends Controller
 	public function get($task_id)
 	{
         if (!Auth::check()) return redirect('/login');
-		$task = Task::find($task_id);
+		$task = Task::with(['members','comments'])->find($task_id);
 		$this->authorize('access', $task);
-		return [$task,$task->members];
+		return $task;
 	}
 
 
@@ -97,7 +97,7 @@ class TaskController extends Controller
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function delete(Request $request, $id)
+	public function delete($id)
 	{
         if (!Auth::check()) return redirect('/login');  
         $task = Task::find($id);
@@ -107,5 +107,18 @@ class TaskController extends Controller
 	}
 	
 
+    public function addComment(Request $request, $task_id)
+    {
+        if (!Auth::check()) return redirect('/login');  
+        $task = Task::find($task_id);
+        $this->authorize('update', $task);
+        $commentContent=$request->input("content");
+        $taskComment = new TaskComment();
+        $taskComment->task_id=$task_id;
+        $taskComment->project_member_id=Auth::id();
+        $taskComment->content=$commentContent;
+        $taskComment->save();
+        return;
+    }
 
 }

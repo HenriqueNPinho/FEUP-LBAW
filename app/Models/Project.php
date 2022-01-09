@@ -29,7 +29,7 @@ class Project extends Model
     }
 
     public function usersInvited(){
-        return $this->belongsToMany('App\Models\User','invitation','project_id','users_id')->withPivot('accepted');;
+        return $this->belongsToMany('App\Models\User','invitation','project_id','users_id');
     }
     public function company()
     {
@@ -38,6 +38,25 @@ class Project extends Model
 
     public function usersFavorite(){
         return $this->belongsToMany('App\Models\User','favorite','project_id','users_id');
+    }
+
+    public function isCoordinator(User $user){
+        
+        foreach($this->coordinators as $coordinator){
+            if($user->id==$coordinator->id){
+                return TRUE;
+            }
+        }
+        return FALSE;
+    }
+
+    public function isMember($email){
+        foreach($this->members as $member){
+            if(strcmp($member->email,$email)==0){
+                return TRUE;
+            }
+        }
+        return FALSE;
     }
 
 }

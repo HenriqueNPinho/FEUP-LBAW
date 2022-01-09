@@ -14,6 +14,7 @@
         @include('partials.new-task-form')
         @include('partials.edit-task-form')
         @include('partials.task-page')
+        @include('partials.project-members-page')
         
         <div id="project-overview-top-bar">
             <div id="project-overview-top-bar-left">
@@ -22,22 +23,22 @@
                 @if(count($project->members)>3)
                     @for($i = 0; $i <= 2; $i++)
                         @if(empty($project->members[$i]->profile_image))
-                            <img src = "/images/avatars/profile-pic-2.png">
+                            <img data-id="{{$project->members[$i]->id}}" title="{{$project->members[$i]->name}}" alt="{{$project->members[$i]->name}}" class="profile-image-link" src = "/images/avatars/profile-pic-2.png">
                         @else
-                            <img src ="{{$project->members[$i]->profile_image}}"> 
+                            <img data-id="{{$project->members[$i]->id}}" title="{{$project->members[$i]->name}}" alt="{{$project->members[$i]->name}}" class="profile-image-link" src ="{{$project->members[$i]->profile_image}}"> 
                         @endif
                     @endfor
                     @if((count($project->members)-3)>9)
-                        <div><h2>9+</h2></div>
+                        <div class="extra-members-count-div"><h2>9+</h2></div>
                     @else
-                        <div><h2>{{count($$project->members)}}+</h2></div>
+                        <div class="extra-members-count-div"><h2>+{{count($project->members)-3}}</h2></div>
                     @endif
                 @else
                     @foreach($project->members as $member)
                         @if(empty($member->profile_image))
-                            <img src = "/images/avatars/profile-pic-2.png">
+                            <img data-id="{{$member->id}}" title="{{$member->name}}" alt="{{$member->name}}" class="profile-image-link" src = "/images/avatars/profile-pic-2.png">
                         @else
-                            <img src ="{{$member->profile_image}}"> 
+                            <img data-id="{{$member->id}}" title="{{$member->name}}" alt="{{$member->name}}" class="profile-image-link" src ="{{$member->profile_image}}"> 
                         @endif
                     @endforeach
                 @endif
@@ -56,7 +57,9 @@
                         @else
                             <div id="add-to-favorites-button"><h4>Mark project as favorite</h4></div>
                         @endif
-                        <div id="archive-project-button"><h4>Archive project</h4></div>
+                        @if($project->isCoordinator(Auth::user()))
+                            <div id="archive-project-button"><h4>Archive project</h4></div>
+                        @endif
                     </div>
                 </div>
             </div>

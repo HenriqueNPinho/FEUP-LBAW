@@ -19,14 +19,15 @@ class ForumPostController extends Controller
 
         $projects = Auth::user()->projects()->orderBy('id')->get();
         $project = Project::find($project_id);
-        $this->authorize('access', $project);
+        $this->authorize('memberAccess', $project);
 
         return view('pages.project-forum', ['project'=>$project, 'projects'=>$projects]);
     }
 
     public function create(Request $request, $project_id) {
         if (!Auth::check()) return redirect ('/login');
-
+        $project = Project::find($project_id);
+        $this->authorize('memberAccess', $project);
         $forumPost = new ForumPost();
         $forumPost->project_id = $project_id;
         $forumPost->project_member_id = Auth::user()->id;

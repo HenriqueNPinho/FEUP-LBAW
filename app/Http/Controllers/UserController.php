@@ -18,7 +18,7 @@ class UserController extends Controller
     public function showProfile()
     {
         $user = Auth::user();
-        $projectInvitations=$user->projectInvitations()->whereNull('accepted')->get();
+        $projectInvitations=$user->projectInvitations()->get();
         return view('pages.userpage',['user' => $user, 'projectInvitations'=> $projectInvitations]);
     }
 
@@ -66,7 +66,7 @@ class UserController extends Controller
             $file->move(public_path('/images/avatars'), (Auth::user()->id) . $fileNameExtension);
         }
         $user->save();
-        $projectInvitations=$user->projectInvitations()->whereNull('accepted')->get();
+        $projectInvitations=$user->projectInvitations()->get();
         return view('pages.userpage',['user' => $user, 'projectInvitations'=> $projectInvitations]);
     }
 
@@ -120,7 +120,7 @@ class UserController extends Controller
         $responseProjectID=$request->input("projectID");
         $response=$request->input("accepted");
         
-        $projectInvitations=$user->projectInvitations()->whereNull('accepted')->get();
+        $projectInvitations=$user->projectInvitations()->get();
        
         foreach($projectInvitations as $projectInvitation){
             
@@ -128,16 +128,15 @@ class UserController extends Controller
             
                 if($response=="true"){
                     $user->projects()->attach($responseProjectID);
-                    $projectInvitation->pivot->accepted=TRUE;
-                    $projectInvitation->pivot->save();    
+                    $user->projectInvitations()->detach($responseProjectID);
                 }
                 else if($response=="false"){
-                    $user->projects()->attach($responseProjectID);
-                    $projectInvitation->pivot->accepted=FALSE;
-                    $projectInvitation->pivot->save();   
+                    $user->projects()->detach($responseProjectID);
+                    $user->projectInvitations()->detach($responseProjectID);
                 }
             }
         }
+        
         return view('pages.userpage',['user' => $user, 'projectInvitations'=> $projectInvitations]);
     }
 
@@ -171,5 +170,34 @@ class UserController extends Controller
         return;
     }
 
-    
+    public function leaveProject($project_id)
+    {
+        $user = Auth::user();
+        $projects=$user->projects()->get();
+        $tasks=$user->tasks()->get();
+        foreach($tasks as $task){
+            if($task->pivot->project_id==$project_id){
+                $user->tasks()->detach($task);
+            }
+        }
+        foreach($projects as $project){
+            if($project->id==$project_id){
+                $user->projects()->detach($project);
+                if($project->isCoordinator($user)) $project->coordinators()->detach($user);
+                break;
+            }
+        }
+        
+        $user->save();
+        $projects=$user->projects()->get();
+        return view('pages.projects', ['projects' => $projects]);
+    }
+
+    public function showCoworkerPage($user_id)
+    {
+        if (!Auth::check()) return redirect('/login');
+        $coworker = User::find($user_id);
+        $this->authorize('coworkerAccess',$coworker);
+        return view('pages.view-only-userpage',['user'=>$coworker]);
+    }
 }

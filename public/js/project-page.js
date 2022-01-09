@@ -211,7 +211,7 @@ function viewFullTask() {
         if (!confirm("Are you sure you want to delete this task?")) return;
         projectAreaCover.style.display = "none";
         taskPage.style.display = "none";
-        let taskID = task[0]["id"];
+        let taskID = task["id"];
         sendAjaxRequest(
             "delete",
             "/api/task/" + taskID,
@@ -223,22 +223,54 @@ function viewFullTask() {
     let taskPageMembersContainer = document.querySelector("#task-page-members");
     taskPageMembersContainer.style.display = "flex";
 
-    document.querySelector("#task-page-task-name").innerHTML = task[0]["name"];
+    document.querySelector("#task-page-task-name").innerHTML = task["name"];
     document.querySelector("#task-page-task-description").innerHTML =
-        task[0]["description"];
+        task["description"];
     document.querySelector("#task-page-task-date").innerHTML =
-        task[0]["delivery_date"];
+        task["delivery_date"];
 
     taskPageMembersContainer.innerHTML = "";
-    task[1].forEach(function (item, index) {
+    task["members"].forEach(function (item, index) {
         let image = document.createElement("img");
-        if(task[1][index]["profile_image"]!=null){
-            image.setAttribute("src", task[1][index]["profile_image"]);
+        if(task["members"][index]["profile_image"]!=null){
+            image.setAttribute("src", task["members"][index]["profile_image"]);
+            image.setAttribute("title",task["members"][index]["name"]);
+            image.addEventListener("click",function(){
+                location.href="/project/userpage/"+task["members"][index]["id"];
+            })
         }
         else image.setAttribute("src", "/images/avatars/profile-pic-2.png");
         
-        image.setAttribute("data-id", task[1][index]["id"]);
+        image.setAttribute("data-id", task["members"][index]["id"]);
         document.querySelector("#task-page-members").appendChild(image);
+    });
+
+    let commentContainer=document.querySelector('#task-comments-container');
+    let addTaskElement=document.querySelector('#add-task-page-comment');
+    commentContainer.innerHTML="";
+    commentContainer.appendChild(addTaskElement);
+    task["comments"].forEach(function(item,index){
+        let comment=document.createElement("div");
+        comment.setAttribute("class","task-page-comment");
+        let image=document.createElement("img");
+        let commentAuthorID=item["project_member_id"];
+        let commentAuthor;
+        for(let i=0;i<task["members"].length;i++){
+            if(task["members"][i]["id"]==commentAuthorID){
+                commentAuthor=task["members"][i];
+            }
+        }
+        image.setAttribute("src",commentAuthor["profile_image"]);
+        let commentDiv=document.createElement("div");
+        let commentAuthorH5=document.createElement("h5");
+        commentAuthorH5.innerHTML=commentAuthor["name"];
+        let commentContentP=document.createElement("p");
+        commentContentP.innerHTML=item["content"];
+        commentDiv.appendChild(commentAuthorH5);
+        commentDiv.appendChild(commentContentP);
+        comment.appendChild(image);
+        comment.appendChild(commentDiv);
+        commentContainer.appendChild(comment);
     });
 
     let editTaskIcon = document.querySelector("#edit-task-icon");
@@ -247,7 +279,31 @@ function viewFullTask() {
         taskPage.style.display = "none";
         editTask(task);
     });
+
+    let addCommentButton = document.querySelector("#add-task-comment-button");
+    addCommentButton.addEventListener("click",function(){
+        let content=document.querySelector('#add-task-comment-content-input');
+        sendAjaxRequest('put','/api/task/'+task["id"]+'/addComment',{content:content.value},function(){
+            genericResponseHandler();
+            let comment=document.createElement("div");
+            comment.setAttribute("class","task-page-comment");
+            let image=addTaskElement.querySelector("img");
+            let commentDiv=document.createElement("div");
+            let commentAuthorH5=addTaskElement.querySelector("h5");
+            let commentContentP=document.createElement("p");
+            commentContentP.innerHTML=content.value;
+            commentDiv.appendChild(commentAuthorH5);
+            commentDiv.appendChild(commentContentP);
+            comment.appendChild(image);
+            comment.appendChild(commentDiv);
+            commentContainer.appendChild(comment);
+        })
+    })
+
+
 }
+
+function commentBuilder(){}
 
 function editTask(task) {
     let projectAreaCover = document.querySelector(
@@ -258,25 +314,25 @@ function editTask(task) {
     taskForm.style.display = "flex";
 
     let taskName = document.querySelector("#edit-task-name-input");
-    taskName.value = task[0]["name"];
+    taskName.value = task["name"];
     let taskDescription = document.querySelector(
         "#edit-task-description-input"
     );
-    taskDescription.value = task[0]["description"];
+    taskDescription.value = task["description"];
     let selectedMembers = [];
     let memberSelectionInput = document.querySelectorAll(
         ".edit-member-selection-option-input"
     );
     memberSelectionInput.forEach(function (item) {
         item.checked=false;
-        for (let i = 0; i < task[1].length; i++) {
-            if (item.getAttribute("data-id") == task[1][i]["id"]) {
+        for (let i = 0; i < task["members"].length; i++) {
+            if (item.getAttribute("data-id") == task["members"][i]["id"]) {
                 item.checked = true;
             }
         }
     });
     let taskDeliveryDate = document.querySelector("#edit-task-end-date");
-    taskDeliveryDate.value = task[0]["delivery_date"];
+    taskDeliveryDate.value = task["delivery_date"];
 
     let closeTaskIcon = document.querySelector("#close-edit-task-form");
     closeTaskIcon.addEventListener("click", function () {
@@ -298,7 +354,7 @@ function editTask(task) {
 
         sendAjaxRequest(
             "post",
-            "/api/task/" + task[0]["id"],
+            "/api/task/" + task["id"],
             {
                 name: taskName.value,
                 description: taskDescription.value,
@@ -345,7 +401,7 @@ function setUpAddToFavorites(){
 function setUpArchiveProject(){
     let projectID=document.querySelector('.project-overview').getAttribute('data-id');
     let archiveProjectButton = document.querySelector('#archive-project-button');
-    
+    if(archiveProjectButton==null) return;
     archiveProjectButton.addEventListener("click",function(){
         sendAjaxRequest('post','/api/project/archive/'+projectID,null,function(){
             if(this.status<400)
@@ -357,6 +413,34 @@ function setUpArchiveProject(){
 
 }
 
+function setUpProfileImagesLinks(){
+    let profileImages=document.querySelectorAll('.profile-image-link');
+    profileImages.forEach(element => {
+        element.addEventListener("click",function(){
+            let id=element.getAttribute('data-id');
+            location.href="/project/userpage/"+id;
+        })
+    });
+}
+
+function setUpViewFullMemberList(){
+    let extraMemberCountIcon=document.querySelector('.extra-members-count-div');
+    if(extraMemberCountIcon==null) return;
+    extraMemberCountIcon.addEventListener("click",function(){
+        let projectAreaCover = document.querySelector(
+            "#project-overview-opaque-cover"
+        );
+        projectAreaCover.style.display = "block";
+        let memberList=document.querySelector("#full-member-list");
+        memberList.style.display="flex";
+        let closeTaskIcon = document.querySelector("#close-full-member-list");
+        closeTaskIcon.addEventListener("click", function () {
+            projectAreaCover.style.display = "none";
+            memberList.style.display = "none";
+        });
+    });
+}
+
 setUpDragAndDropTasks();
 setUpAddNewTask();
 setUpViewFullTask();
@@ -364,3 +448,5 @@ setUpProjectOptions();
 setUpRemoveFromFavorites();
 setUpAddToFavorites();
 setUpArchiveProject();
+setUpProfileImagesLinks();
+setUpViewFullMemberList();

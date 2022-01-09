@@ -3,8 +3,6 @@ create schema if not exists lbaw21;
 
 
 DROP TABLE IF EXISTS users CASCADE;
-DROP TABLE IF EXISTS cards CASCADE;
-DROP TABLE IF EXISTS items CASCADE;
 DROP TABLE IF EXISTS company CASCADE;
 DROP TABLE IF EXISTS administrator CASCADE;
 DROP TABLE IF EXISTS work CASCADE;
@@ -13,6 +11,7 @@ DROP TABLE IF EXISTS project_coordinator CASCADE;
 DROP TABLE IF EXISTS project_member CASCADE;
 DROP TABLE IF EXISTS tasks CASCADE;
 DROP TABLE IF EXISTS task_assigned CASCADE;
+DROP TABLE IF EXISTS task_comment CASCADE;
 DROP TABLE IF EXISTS forum_post CASCADE;
 DROP TABLE IF EXISTS invitation CASCADE;
 DROP TABLE IF EXISTS favorite CASCADE;
@@ -38,19 +37,6 @@ CREATE TABLE users (
     remember_token VARCHAR
 );
 
-
-CREATE TABLE cards (
-  id SERIAL PRIMARY KEY,
-  name VARCHAR NOT NULL,
-  user_id INTEGER REFERENCES users NOT NULL
-);
-
-CREATE TABLE items (
-  id SERIAL PRIMARY KEY,
-  card_id INTEGER NOT NULL REFERENCES cards ON DELETE CASCADE,
-  description VARCHAR NOT NULL,
-  done BOOLEAN NOT NULL DEFAULT FALSE
-);
 
 CREATE TABLE company(
     id SERIAL PRIMARY KEY,
@@ -109,6 +95,8 @@ CREATE TABLE tasks (
     CONSTRAINT date_ck CHECK (delivery_date>start_date)
 );
 
+
+
 CREATE TABLE task_assigned(
     project_member_id INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
     task_id INTEGER NOT NULL REFERENCES tasks(id) ON DELETE CASCADE,
@@ -116,6 +104,16 @@ CREATE TABLE task_assigned(
     notified BOOLEAN DEFAULT FALSE NOT NULL,
     PRIMARY KEY(project_member_id,task_id)
 );
+
+CREATE TABLE task_comment(
+    id SERIAL PRIMARY KEY,
+    task_id INTEGER NOT NULL REFERENCES tasks(id) ON DELETE CASCADE,
+    project_member_id INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+    content TEXT,
+    comment_date TIMESTAMP WITH TIME ZONE DEFAULT now() NOT NULL,
+    deleted BOOLEAN DEFAULT FALSE NOT NULL
+);
+
 
 CREATE TABLE forum_post(
     id SERIAL PRIMARY KEY,
@@ -129,11 +127,8 @@ CREATE TABLE forum_post(
 CREATE TABLE invitation(
     project_id INTEGER NOT NULL REFERENCES projects(id) ON DELETE CASCADE,
     users_id INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
-    accepted BOOLEAN DEFAULT NULL,
     PRIMARY KEY(project_id,users_id)
 );
-
-
 
 CREATE TABLE favorite(
     project_id INTEGER NOT NULL REFERENCES projects(id),
@@ -271,21 +266,13 @@ INSERT INTO project_member VALUES(1,1);
 INSERT INTO project_member VALUES(1,2);
 INSERT INTO project_coordinator VALUES(1,1);
 INSERT INTO project_coordinator VALUES(1,2);
-INSERT INTO tasks VALUES(DEFAULT,1,'Finish A8','Finish this specification on time','2021-08-24','2021-09-12',DEFAULT);
-INSERT INTO task_assigned VALUES(1,1,null,DEFAULT);
 INSERT INTO forum_post VALUES (DEFAULT, 1, 1, 'Primeiro post', '2021-12-28 19:10:25+00', DEFAULT);
 INSERT INTO forum_post VALUES (DEFAULT, 1, 1, 'Segundo post', '2021-12-29 19:10:25+00', DEFAULT);
 INSERT INTO forum_post VALUES (DEFAULT, 2, 1, 'Terceiro post', '2021-12-30 19:10:25+00', DEFAULT);
 INSERT INTO forum_post VALUES (DEFAULT, 2, 1, 'Quarto post', '2021-12-31 19:10:25+00', DEFAULT);
 INSERT INTO projects VALUES(DEFAULT,1,'Other','Um trabalho que me faz querer cortar os pulsos','2021-08-24', '2022-08-24', DEFAULT);
 INSERT INTO project_member VALUES(2,2);
-INSERT INTO project_coordinator VALUES(2,2);
 INSERT INTO favorite VALUES(1,1);
+INSERT INTO tasks VALUES(DEFAULT,1,'Task name','A task description you know','2021-11-19','2022-12-31','Not Started');
+INSERT INTO task_comment VALUES(DEFAULT,1,1,'Hello this is a comment','2021-12-31 19:10:25+00',DEFAULT);
 
--- INSERT INTO cards VALUES (DEFAULT, 'Things to do', 1);
--- INSERT INTO items VALUES (DEFAULT, 1, 'Buy milk');
--- INSERT INTO items VALUES (DEFAULT, 1, 'Walk the dog', true);
-
--- INSERT INTO cards VALUES (DEFAULT, 'Things not to do', 1);
--- INSERT INTO items VALUES (DEFAULT, 2, 'Break a leg');
--- INSERT INTO items VALUES (DEFAULT, 2, 'Crash the car');

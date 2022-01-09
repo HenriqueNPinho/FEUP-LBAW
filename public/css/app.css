@@ -73,11 +73,15 @@ main > header {
 .navbar-collapse a div {
     padding-top: 15px;
     padding-bottom: 15px;
-    border-top: solid 1px #264653;
+    border: solid 1px #2646532a;
+}
+
+.navbar-collapse a div:hover{
+    background-color: whitesmoke;
 }
 
 .navbar-collapse a:last-child div {
-    border-bottom: solid 1px #264653;
+    border-top: none;
 }
 
 .navbar-options a:hover {
@@ -256,18 +260,17 @@ form h4 {
     flex-direction: column;
 }
 
-#all-projects h2:first-of-type{
+#all-projects h2:first-of-type {
     align-self: center;
     font-size: 40px;
     margin-top: 10vh;
 }
 
-#all-projects h2{
+#all-projects h2 {
     align-self: center;
     font-size: 40px;
     margin-top: 0;
 }
-
 
 #all-projects h3 {
     text-align: center;
@@ -286,7 +289,7 @@ form h4 {
     display: flex;
     justify-content: space-around;
     height: 30vh;
-    overflow-y:auto;
+    overflow-y: auto;
 }
 
 .project-select a {
@@ -411,6 +414,11 @@ form h4 {
     background-color: white;
 }
 
+.slide-right-menu-item div:hover {
+    background-color: whitesmoke;
+}
+
+
 .slide-right-menu-item div img {
     align-self: center;
     height: 32px;
@@ -462,9 +470,26 @@ form h4 {
 
 .notification {
     background-color: white;
-    padding: 20px;
+    padding: 15px;
     display: flex;
     flex-direction: column;
+}
+
+.notification-more-info{
+    align-self: center;
+    padding: 10px;
+}
+
+.notification-more-info h4{
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-size: 16px;
+}
+
+.notification-more-info p{
+    margin-top: 0px;
+    font-size: 13px;
+    margin-bottom: 0px;
 }
 
 .accept-icons-container {
@@ -497,6 +522,7 @@ form h4 {
     display: flex;
     flex-direction: column;
     width: 95%;
+    overflow-y: auto;
 }
 
 #project-overview-top-bar {
@@ -533,6 +559,7 @@ form h4 {
     border-radius: 35px;
     align-self: center;
     margin-left: 5px;
+    cursor: pointer;
 }
 #project-overview-top-bar-left img:first-of-type {
     margin-left: 20px;
@@ -654,7 +681,7 @@ form h4 {
     padding-top: 20px;
     padding-left: 30px;
     padding-right: 30px;
-    width: 450px;
+    width: 25%;
     height: 70vh;
     background-color: #ececec;
     border-radius: 3px;
@@ -694,6 +721,10 @@ form h4 {
     margin-bottom: 20px;
     -webkit-box-shadow: 0px 5px 16px 0px rgba(27, 27, 27, 0.05);
     box-shadow: 0px 5px 16px 0px rgba(27, 27, 27, 0.05);
+}
+
+.task-preview:hover{
+    background-color: whitesmoke;
 }
 
 .task-preview-info {
@@ -795,6 +826,7 @@ form h4 {
     margin-bottom: 15px;
     font-size: 35px;
     color: #264653;
+    text-align: left;
 }
 
 #task-description-container {
@@ -825,6 +857,7 @@ form h4 {
     object-fit: cover;
     margin-left: 5px;
     align-self: center;
+    cursor: pointer;
 }
 
 #task-page-members img:first-of-type {
@@ -832,15 +865,18 @@ form h4 {
 }
 
 #task-comments-container {
-    width: 60%;
+    width: 100%;
 }
 .task-page-comment {
     display: flex;
     padding-bottom: 10px;
+    width: 100%;
 }
 
 .task-page-comment img {
     height: 40px;
+    width: 40px;
+    object-fit: cover;
     border-radius: 40px;
 }
 
@@ -851,19 +887,24 @@ form h4 {
     margin-bottom: 0px;
 }
 
+.task-page-comment>div{
+    width: 80%;
+}
+
 .task-page-comment > div > p {
     margin-left: 10px;
     font-size: 13px;
     margin-top: 5px;
     background-color: white;
     border-radius: 5px;
+    border-top-left-radius: 0px;
     padding: 13px;
-    width: 480px;
+
 }
 
 .task-page-comment > div > textarea {
     margin-left: 10px;
-    width: 480px;
+    width: 80%;
     font-size: 13px;
     margin-top: 5px;
     background-color: white;
@@ -871,6 +912,7 @@ form h4 {
     border-radius: 5px;
     padding: 13px;
     height: 45px;
+    border-top-left-radius: 0px;
     outline: 0;
     resize: none;
 }
@@ -882,11 +924,15 @@ form h4 {
     text-align: center;
     border-radius: 5px;
     font-size: 11px;
-    width: 10%;
+    width: fit-content;
     margin-left: 10px;
     margin-top: 10px;
     color: white;
 }
+.task-page-comment > div > h4:hover{
+    opacity: 0.8;
+}
+
 
 #new-task-form,
 #edit-task-form {
@@ -985,6 +1031,7 @@ form h4 {
     display: flex;
     flex-direction: column;
     height: 22vh;
+    overflow-y: auto;
 }
 
 #new-member-selection h4,
@@ -1870,13 +1917,12 @@ a {
 .forum-post-options-container {
     height: 0;
     display: flex;
-    
 }
 
 .forum-post-options-menu div h4 {
     font-size: 14px;
     margin: 0px;
-    color:rgb(63, 63, 63)
+    color: rgb(63, 63, 63);
 }
 
 .forum-post-options-menu div {
@@ -1885,13 +1931,13 @@ a {
     padding-right: 10px;
     margin-right: 5px;
     cursor: pointer;
-    border:solid 1px rgba(197, 197, 197, 0.781);
-    border-top:0px;
+    border: solid 1px rgba(197, 197, 197, 0.781);
+    border-top: 0px;
 }
 
 .forum-post-options-menu div:first-of-type {
     border-top-left-radius: 3px;
-    border-top:solid 1px rgba(197, 197, 197, 0.781);
+    border-top: solid 1px rgba(197, 197, 197, 0.781);
 }
 
 .forum-post-options-menu div:last-of-type {
@@ -1928,24 +1974,217 @@ a {
     box-shadow: 0px 5px 12px 0px rgba(0, 0, 0, 0.03);
     border-radius: 4px;
     border-top-right-radius: 0px;
-    border:solid 1px rgba(197, 197, 197, 0.781)
+    border: solid 1px rgba(197, 197, 197, 0.781);
 }
 
-#project-options h4{
+#project-options h4 {
     margin: 0px;
-    vertical-align:middle;
-    color:rgb(63, 63, 63)
+    vertical-align: middle;
+    color: rgb(63, 63, 63);
 }
 
-#project-options div{
-    padding-right:20px;
-    padding:15px;
+#project-options div {
+    padding-right: 20px;
+    padding: 15px;
 
     cursor: pointer;
-    border-top:solid 1px rgba(177, 177, 177, 0.781)
+    border-top: solid 1px rgba(177, 177, 177, 0.781);
 }
 
-#project-options div:first-child{
+#project-options div:first-child {
     border-top: none;
-    
+}
+
+.settings-form {
+    display: flex;
+    flex-direction: column;
+    margin-left: 50px;
+    width: 7    0%;
+}
+
+.settings-form h3 {
+    color: #264653;
+}
+
+.settings-form input {
+    font-size: 18px;
+    height: 25px;
+    width: 350px;
+    outline: 0;
+    resize: none;
+}
+
+.settings-form button {
+    width: fit-content;
+    margin-top: 20px;
+}
+
+.settings-form select {
+    width: 250px;
+    height: 31px;
+    font-size: 14px;
+    margin-top:5px;
+    margin-bottom: 5px;
+    padding: 3px;
+    font-weight: bolder;
+}
+
+#settings-form-remove-member-button {
+    background-color: #e76f51;
+}
+
+#settings-form-archive-button{
+    background-color: #e76f51;
+}
+
+#settings-form-leave-button{
+    background-color: #e76f51;
+}
+
+.settings-form h3{
+    margin-top: 40px;
+    margin-bottom: 15px;
+    font-size: 22px;
+}
+
+.settings-form p{
+    margin-top: 0px;
+    margin-bottom: 5px;
+    width: 60%;
+    font-size: 14px;
+}
+
+#assign-member-settings-form-explain{
+    margin-bottom: 10px;
+}
+
+.settings-form button{
+    margin-top: 15px;
+}
+
+#project-settings-columns-container{
+    display: flex;
+}
+
+#project-settings-columns-container div:first-child{
+    width: 40%;
+}
+
+.settings-form .error{
+    font-size: 14px;
+    color:red;
+}
+/* #e76f51 */
+
+.extra-members-count-div{
+    margin-left: 5px;
+    align-self: center;
+    margin-bottom: 0px;
+    border: 2px solid #264653;
+    border-radius: 35px;
+    height: 33px;
+    width: 33px;
+    display: flex;
+    text-align: center;
+    cursor: pointer;
+}
+
+#project-overview-top-bar-left .extra-members-count-div h2{
+    font-size: 17px;
+    margin-bottom: 0px;
+    width: 100%;
+    align-self: center;
+}
+
+#full-member-list-header {
+    display: flex;
+    justify-content: space-between;
+    margin-left:5%;
+    margin-right:5%;
+}
+
+#full-member-list-header h2 {
+    align-self: top;
+    margin-top: 33px;
+    align-self: left;
+    text-transform: uppercase;
+    color: #264653;
+}
+
+#full-member-list-header img {
+    margin-left: 15px;
+    cursor: pointer;
+    height: 23px;
+    margin-top: 33px;
+}
+
+#full-member-list{
+    display: none;
+    position: absolute;
+    flex-direction: column;
+    margin-top: 8vh;
+    margin-left: 30%;
+    margin-right: 35%;
+    width: 30%;
+    max-height: 80vh;
+    overflow: scroll;
+    background-color: #ececec;
+    border-radius: 3px;
+    -webkit-box-shadow: 0px 5px 16px 0px rgba(0, 0, 0, 0.11);
+    box-shadow: 0px 5px 16px 0px rgba(0, 0, 0, 0.11);
+    z-index: 3;
+    margin-bottom: 0px;
+}
+
+#full-member-list-content{
+    display: flex;
+    flex-direction: column;
+}
+
+#full-member-list-content>a>div>img{
+    height: 50px;
+    width: 50px;
+    border-radius: 50px;
+    object-fit: cover;
+    align-self: center;
+}
+
+#full-member-list-content>a>div{
+    display: flex;
+    width: 90%;
+    justify-content: center;
+    cursor: pointer;
+    padding-left:5%;
+    padding-right:5%;
+}
+
+#full-member-list-content>a>div h2{
+    display: flex;
+    width: 100%;
+    color: #264653;
+    vertical-align: middle;
+    margin-left: 15px;
+    font-size: 21px;
+}
+
+#full-member-list-content>a{
+    border-bottom: 1px solid #a8a8a85d;
+    padding-bottom: 10px;
+    padding-top : 10px;
+    width: 100%;
+}
+
+#full-member-list-content>a:last-of-type{
+    border:none;
+}
+
+#add-task-page-comment.task-page-comment {
+    width: 100%;
+
+}
+
+#add-task-page-comment.task-page-comment>div{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
 }

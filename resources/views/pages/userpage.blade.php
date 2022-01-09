@@ -52,7 +52,7 @@
             </div>
         </div>
     </div>
-   
+    
     <div class="project-invites">
         <h2>Project Invites</h2>
         <hr class = "userPageHR">

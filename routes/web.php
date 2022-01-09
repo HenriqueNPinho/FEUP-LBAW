@@ -25,6 +25,7 @@ Route::put('api/task/{project_id}','TaskController@create');
 Route::get('api/task/{task_id}','TaskController@get');
 Route::post('api/task/{task_id}','TaskController@edit');
 Route::delete('api/task/{task_id}','TaskController@delete');
+Route::put('api/task/{task_id}/addComment','TaskController@addComment');
 Route::get('api/user/notifications','UserController@getNotifications');
 Route::post('api/user/projectInvite','UserController@inviteResponse');
 Route::put('api/project/create','ProjectController@create');
@@ -40,6 +41,11 @@ Route::delete('project/{project_id}/forum','ForumPostController@delete');
 
 //Project Settings
 Route::get('project/{project_id}/settings','ProjectController@getSettings');
+Route::post('project/{project_id}/removeMember','ProjectController@removeMember');
+Route::post('project/{project_id}/addCoordinator','ProjectController@addCoordinator');
+Route::post('project/{project_id}/addMember','ProjectController@addMember');
+Route::post('project/{project_id}/archive','ProjectController@archive');
+Route::post('user/{project_id}/leave','UserController@leaveProject');
 
 // Authentication
 Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
@@ -52,6 +58,7 @@ Route::post('register', 'Auth\RegisterController@register');
 Route::get('registerAdministrator', 'Auth\RegisterAdministratorController@showRegistrationForm')->name('registerAdministrator');
 
 //User Page
+Route::get('project/userpage/{user_id}','UserController@showCoworkerPage');
 Route::get('userpage', 'UserController@showProfile')->name('userpage');
 Route::get('edituserpage', 'UserController@edit');
 

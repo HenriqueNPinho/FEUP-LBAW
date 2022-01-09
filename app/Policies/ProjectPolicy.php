@@ -12,7 +12,7 @@ class ProjectPolicy
 {
     use HandlesAuthorization;
 
-    public function access(User $user, Project $project)
+    public function memberAccess(User $user, Project $project)
     {
       // Only a project member can see it
       if($project->archived) return FALSE;
@@ -22,26 +22,29 @@ class ProjectPolicy
       return FALSE;
     }
 
-    public function list()
+    public function userAccess()
     {
-      // Any user can list its own cards
       return Auth::check();
     }
 
-    public function create()
-    {
-      // Any user can create a new card
-      return Auth::check();
-    }
-
-    public function archive(User $user, Project $project){
+    public function coordinatorAccess(User $user, Project $project){
         foreach ($project->coordinators as $coordinator) {
             if($user->id==$coordinator->id) return TRUE;
         }
         return FALSE;
     }
 
-
+    public function coworkerAccess(User $coworker)
+    {
+        $user=Auth::user();
+        return TRUE;
+        echo $coworker->id;
+        foreach($user->projects as $project){ 
+            if($project->isMember($coworker->email)) return TRUE;
+        }
+        return FALSE;
+    }
+    
     // public function delete(User $user, Card $card)
     // {
     //   // Only a card owner can delete it

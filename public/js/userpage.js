@@ -7,7 +7,7 @@ function setUpConfirmDeleteAccount(){
     },false);
 }
 
-function setUpAcceptRejectProject(){
+function setUpAcceptProject(){
     let projectInvitesAccept=document.querySelectorAll('.accept-project-icon');
     for(let i=0;i<projectInvitesAccept.length;i++){
         projectInvitesAccept[i].addEventListener("click",function(){
@@ -17,7 +17,17 @@ function setUpAcceptRejectProject(){
     }
 }
 
+function setUpRejectProject(){
+    let projectInvitesReject=document.querySelectorAll('.reject-project-icon');
+    for(let i=0;i<projectInvitesReject.length;i++){
+        projectInvitesReject[i].addEventListener("click",function(){
+            let project=this.getAttribute("data-id");
+            sendAjaxRequest('post','/api/user/projectInvite',{projectID:project,accepted:"false"},genericResponseHandlerWithRefresh);
+        });
+    }
+}
 
 
 setUpConfirmDeleteAccount();
-setUpAcceptRejectProject();
+setUpAcceptProject();
+setUpRejectProject();

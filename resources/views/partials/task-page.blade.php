@@ -21,39 +21,23 @@
                 <img src="/images/icons/calendar.png" alt="">
                 <p id="task-page-task-date">I got my first real six string Bought it at the five and dime Played it till my fingers bled Was the summer of '69…</p>
             </div>
-            <!-- <div id="task-comments-container">
+            <div id="task-comments-container">
                 <h2>COMMENTS</h2>
-                <div class="task-page-comment">
-                    <img src="/images/profile-pic.png" alt="">
+                <div id="add-task-page-comment" class="task-page-comment">
+                    @if(Auth::user()->profile_image==null)
+                    <img src="/images/avatars/profile-pic-2.png" alt="">
+                    @else
+                    <img src="{{Auth::user()->profile_image}}" alt="">
+                    @endif
                     <div>
-                        <h5>Current User</h5>
-                        <textarea placeholder="Write your comment here." name="comment" id="" cols="30" rows="10"></textarea>
-                        <h4>Save</h4>
+                        <h5>{{Auth::user()->name}}</h5>
+                        <textarea id="add-task-comment-content-input" placeholder="Write your comment here." name="comment"></textarea>
+                        <h4 id="add-task-comment-button">Comment</h4>
                     </div>
                     
                 </div>
-                <div class="task-page-comment">
-                    <img src="/images/profile-pic.png" alt="">
-                    <div>
-                        <h5>John Doe</h5>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt odio ea cum provident hic cumque expedita eveniet eos ducimus? Et!</p>
-                    </div>
-                </div>
-                <div class="task-page-comment">
-                    <img src="/images/profile-pic.png" alt="">
-                    <div>
-                        <h5>John Doe</h5>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt odio ea cum provident hic cumque expedita eveniet eos ducimus? Et!</p>
-                    </div>
-                </div>
-                <div class="task-page-comment">
-                    <img src="/images/profile-pic.png" alt="">
-                    <div>
-                        <h5>John Doe</h5>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt odio ea cum provident hic cumque expedita eveniet eos ducimus? Et!</p>
-                    </div>
-                </div>
-            </div> -->
+                
+            </div>
         </div>
     </div>
 </div>

@@ -19,5 +19,9 @@ class Task extends Model
   public function members() {
     return $this->belongsToMany('App\Models\User','task_assigned','task_id','project_member_id');
   }
+
+    public function comments(){
+      return $this->hasMany('App\Models\TaskComment');
+    }
   
 }

@@ -32,24 +32,20 @@
     
 
     <div id="notification-container">
-        <!-- <div class="slide-right-menu-divider"></div>
-        <div class="notification invite-notification">
-            <p>Coordinator's Name invited you to work on a project.</p>
-            <div class="project-info-plus-accept-reject">
-                <h4>Project Name</h4>
-                <div class="accept-icons-container">
-                    <div class="accept-reject-icon">
-                        <img id="accept-project-icon" src="/images/icons/accept.png" alt="">
-                        <h5>Join</h5>
-                    </div>
-                    <div class="accept-reject-icon">
-                        <img id="reject-project-icon" src="/images/icons/reject.png" alt="">
-                        <h5>Ignore</h5>
-                    </div>
-                    
-                </div>
+        <div class="notification assigned-notification">
+            <p>Coordinator's Name assigned you to a task:</p>
+            <div class="notification-more-info">
+                <h4>Task Name</h4>
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quaerat, ullam.    </p>
             </div>
-        </div> -->
-        
+        </div>
+        <div class="slide-right-menu-divider"></div>
+        <div class="notification assigned-notification">
+            <p>Coordinator's Name assigned you to a task:</p>
+            <div class="notification-more-info">
+                <h4>Task Name</h4>
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quaerat, ullam.    </p>
+            </div>
+        </div>
     </div>
 </div>
