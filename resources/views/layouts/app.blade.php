@@ -18,6 +18,9 @@
 
     <link rel="shortcut icon" href="/images/favicon.png" type="image">
   
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
     <script type="text/javascript">
         // Fix for Firefox autofocus CSS bug
         // See: http://stackoverflow.com/questions/18943276/html-5-autofocus-messes-up-css-loading/18945951#18945951
@@ -49,47 +52,21 @@
           <a href="{{ url('/userpage') }}"><div>Profile</div></a>
           <a href="{{ url('/logout') }}"><div>Logout</div></a>
         </div>
-
-        @elseif(Auth::guard('admin')->check())
-        <div class ="navbar">
-            Hello I'm Here
-        </div>
+         
         @else
         <div class="navbar">
           <a href="{{ url('/') }}"><img src="/images/horizontal-logo.png" alt=""></a>
           <div class="navbar-options">
             <a href="">About Us</a>
             <a href="">FAQ</a>
-            <div class = "collapsible" onclick= "adminCollapse('loginContent')" >
-              Login
-            </div>
-            <div class = "collapsible" onclick= "adminCollapse('registerContent')" >
-              Sign Up
-            </div>
+            <a href="{{ url('/login') }}">Login</a>
+            <a href="{{ url('/register') }}">Signup</a>
           </div>
         </div>
         @endif
       </header>
       <div id="filler"></div>
       <section id="content">
-        <div class = "navbar-collapse adminOptions" id = "loginContent">
-          <div class = "adminItem">
-            <a href="{{ url('/login') }}"> Login to your Personal Account</a> 
-          </div>
-          <hr class = "hrAdmin"> </hr>
-          <div class = "adminItem">
-            <a href="{{ url('/adminLogin') }}"> Login to your Company Account</a> 
-          </div>
-        </div>
-        <div class = "navbar-collapse adminOptions" id = "registerContent">
-          <div class = "adminItem">
-            <a href="{{ url('/register') }}"> Create Personal Account</a> 
-          </div>
-          <hr class = "hrAdmin"> </hr>
-          <div class = "adminItem">
-             <a href="{{ url('/register/admin') }}"> Create Company's Account</a>  
-          </div>
-        </div>
         @yield('content')
       </section>
     </main>
