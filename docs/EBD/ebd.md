@@ -36,7 +36,7 @@ Relation schemas are specified in the compact notation:
 | ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | R01                | user(id **PK**,email **UK NN**,name **NN**,password **NN**, profile_image, profile_description)                                                               |
 | R02                | company(id **PK**,name **NN**)                                                                                                                                |
-| R03                | administrator(id **PK**, email **PK**,name **NN**,company_id **NN**)                                                                                          |
+| R03                | administrators(id **PK**, email **PK**,name **NN**,company_id **NN**)                                                                                          |
 | R04                | work(user_id **PK**,**company id**)                                                                                                                           |
 | R05                | project(id **PK**, company_id **FK**,name **NN**, description, start_date **NN**, delivery_date **NN** **CK** delivery_date>start_date, archived)             |
 | R06                | project_coordinator(user_id **PK**,project_id**PK**)                                                                                                          |
@@ -87,7 +87,7 @@ To validate the Relational Schema obtained from the Conceptual Data Model, all f
 | FD0101                      | id → {name} |
 | **NORMAL FORM**             | BCNF        |
 
-| **TABLE R03**               | administrator                  |
+| **TABLE R03**               | administrators                  |
 | --------------------------- | ------------------------------ |
 | **Keys**                    | {id}, { email }                |
 | **Functional Dependencies** |                                |
@@ -180,7 +180,7 @@ It's essential to grasp the nature of the workload for the application and the p
 | ---------------------- | ------------------- | ---------------------------- | ---------------------- |
 | R01                    | user                | 10k (tens of thousands)      | 10 (tens) / day        |
 | R02                    | company             | 100 (hundreds)               | 1 (units) / day        |
-| R03                    | administrator       | 100                          | 1 / day                |
+| R03                    | administrators      | 100                          | 1 / day                |
 | R04                    | work                | 10k                          | 10 / day               |
 | R05                    | project             | 1k (thousands)               | 1 / day                |
 | R06                    | project_coordinator | 1k                           | 1 / day                |
@@ -410,7 +410,7 @@ END TRANSACTION;
 ```sql
 DROP TABLE IF EXISTS users CASCADE;
 DROP TABLE IF EXISTS company CASCADE;
-DROP TABLE IF EXISTS administrator CASCADE;
+DROP TABLE IF EXISTS administrators CASCADE;
 DROP TABLE IF EXISTS work CASCADE;
 DROP TABLE IF EXISTS project CASCADE;
 DROP TABLE IF EXISTS project_coordinator CASCADE;
@@ -445,7 +445,7 @@ CREATE TABLE company(
     name TEXT NOT NULL
 );
 
-CREATE TABLE administrator(
+CREATE TABLE administrators(
     id SERIAL PRIMARY KEY,
     email TEXT NOT NULL,
     name TEXT NOT NULL,
@@ -822,26 +822,26 @@ INSERT INTO company (id, name) VALUES
 (DEFAULT, 'Zaask');
 
 -- 20 rows
-INSERT INTO administrator (id,email, name, company_id) VALUES
-(DEFAULT,'luisa.moreira03@gmail.com', 'Luisa Moreira', 1),
-(DEFAULT,'tramos02@gmail.com', 'Tiago Ramos', 2),
-(DEFAULT,'bernardo.slemos96@gmail.com', 'Bernardo Lemos', 3),
-(DEFAULT,'fredrbastos00@gmail.com', 'Frederico Bastos', 4),
-(DEFAULT,'patricia.fsilva@gmail.com', 'Patricia Silva', 5),
-(DEFAULT,'margarida..ribeiro84@gmail.com', 'Margarida Ribeiro', 6),
-(DEFAULT,'ritaotorres@gmail.com', 'Rita Torres', 7),
-(DEFAULT,'hugoaamoreira01@gmail.com', 'Hugo Amoreira', 8),
-(DEFAULT,'ines_osilva04@gmail.com', 'Ines Oliveira', 9),
-(DEFAULT,'ricardopires54@gmail.com', 'Ricardo Pires', 10),
-(DEFAULT,'joanatsilva06@gmail.com', 'Joana Silva', 11),
-(DEFAULT,'leonardo.igreja@gmail.com', 'Leonardo Igreja', 12),
-(DEFAULT,'zdanielatorresz@gmail.com', 'Daniela Torres', 13),
-(DEFAULT,'edtandrade93@gmail.com', 'Edgar Andrade', 14),
-(DEFAULT,'pedrofbrandao7@gmail.com', 'Pedro Brandão', 15),
-(DEFAULT,'gabimelo75@gmail.com', 'Gabriela Melo', 16),
-(DEFAULT,'martamelao12@gmail.com', 'Marta Melão', 17),
-(DEFAULT,'rafacampos04@gmail.com', 'Rafael Campos', 18),
-(DEFAULT,'guilhermerestivo@gmail.com', 'Guilherme Restivo', 19);
+INSERT INTO administrators (id,email, name, password, company_id) VALUES
+(DEFAULT,'luisa.moreira03@gmail.com', 'pass1221ssap', 'Luisa Moreira', 1),
+(DEFAULT,'tramos02@gmail.com', 'pass1221ssap', 'Tiago Ramos', 2),
+(DEFAULT,'bernardo.slemos96@gmail.com', 'pass1221ssap','Bernardo Lemos', 3),
+(DEFAULT,'fredrbastos00@gmail.com', 'pass1221ssap', 'Frederico Bastos', 4),
+(DEFAULT,'patricia.fsilva@gmail.com','pass1221ssap',  'Patricia Silva', 5),
+(DEFAULT,'margarida..ribeiro84@gmail.com','pass1221ssap', 'Margarida Ribeiro', 6),
+(DEFAULT,'ritaotorres@gmail.com','pass1221ssap', 'Rita Torres', 7),
+(DEFAULT,'hugoaamoreira01@gmail.com', 'pass1221ssap','Hugo Amoreira', 8),
+(DEFAULT,'ines_osilva04@gmail.com', 'pass1221ssap','Ines Oliveira', 9),
+(DEFAULT,'ricardopires54@gmail.com', 'pass1221ssap','Ricardo Pires', 10),
+(DEFAULT,'joanatsilva06@gmail.com', 'pass1221ssap','Joana Silva', 11),
+(DEFAULT,'leonardo.igreja@gmail.com','pass1221ssap', 'Leonardo Igreja', 12),
+(DEFAULT,'zdanielatorresz@gmail.com', 'pass1221ssap','Daniela Torres', 13),
+(DEFAULT,'edtandrade93@gmail.com', 'pass1221ssap','Edgar Andrade', 14),
+(DEFAULT,'pedrofbrandao7@gmail.com', 'pass1221ssap','Pedro Brandão', 15),
+(DEFAULT,'gabimelo75@gmail.com', 'pass1221ssap','Gabriela Melo', 16),
+(DEFAULT,'martamelao12@gmail.com','pass1221ssap', 'Marta Melão', 17),
+(DEFAULT,'rafacampos04@gmail.com','pass1221ssap' 'Rafael Campos', 18),
+(DEFAULT,'guilhermerestivo@gmail.com', 'pass1221ssap','Guilherme Restivo', 19);
 
 
 --  1 -> [1..29],     2 -> [25..45],    3 -> [40..59],    4 -> [60..69],    5 -> [65..84]

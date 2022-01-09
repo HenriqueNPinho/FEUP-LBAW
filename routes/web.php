@@ -13,11 +13,7 @@
 // Home
 Route::get('/', 'HomepageController@index')->name("homepage");
 
-//Projects
-Route::get('projects', 'ProjectController@list');
-
-
-//Project Page
+Route::get('projects', 'ProjectController@list')->name('projects');
 Route::get('project/{id}', 'ProjectController@show');
 Route::get('project/{project_id}/search/','ProjectController@taskSearch');
 Route::post('api/task/updateStatus/{id}', 'TaskController@updateStatus');
@@ -47,16 +43,6 @@ Route::post('project/{project_id}/addMember','ProjectController@addMember');
 Route::post('project/{project_id}/archive','ProjectController@archive');
 Route::post('user/{project_id}/leave','UserController@leaveProject');
 
-// Authentication
-Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
-Route::post('login', 'Auth\LoginController@login');
-Route::get('logout', 'Auth\LoginController@logout')->name('logout');
-Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
-Route::post('register', 'Auth\RegisterController@register');
-
-//Authentication -> Administrator
-Route::get('registerAdministrator', 'Auth\RegisterAdministratorController@showRegistrationForm')->name('registerAdministrator');
-
 //User Page
 Route::get('project/userpage/{user_id}','UserController@showCoworkerPage');
 Route::get('userpage', 'UserController@showProfile')->name('userpage');
@@ -68,9 +54,48 @@ Route::get('deleteuser', 'UserController@delete')->name('deleteuser');
 Route::get('api/user/deleteUserPhoto', 'UserController@deletePhoto')->name('deleteUserPhoto');
 
 //Change Password
+Route::get('changePassword', 'UserController@showChangePassword');
 Route::post('changePassword', 'UserController@store')->name('changePassword');
 
 Route::get('create-project', 'ProjectController@getCreateProject');
 
 
+// ******************************************** 
+// AUTHENTICATION
 
+Auth::routes();
+
+// ==============================================
+// Authentication -> User
+//register
+Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
+Route::post('register', 'Auth\RegisterController@register');
+
+//login
+Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
+Route::post('login', 'Auth\LoginController@login');
+
+//logout
+Route::get('logout', 'Auth\LoginController@logout')->name('logout');
+
+// ==============================================
+// Authentication -> Administrator
+// register
+Route::get('/register/admin', 'Auth\RegisterController@showAdminRegistrationForm');
+Route::post('/register/admin', 'Auth\RegisterController@createAdmin');
+
+//login
+Route::get('loginAdmin', 'Auth\LoginAdminController@showLoginForm')->name('loginAdmin');
+Route::post('loginAdmin', 'Auth\LoginAdminController@login')->name('loginAdmin');
+
+Route::group(['middleware' => 'auth:admin'], function(){
+    Route::view('/admin','admin');
+});
+//logout
+Route::get('logoutAdmin', 'Auth\LoginAdminController@logout')->name('logoutAdmin');
+
+// ==============================================
+// ******************************************** 
+//Admin Home
+
+Route::get('home', 'AdminHomepageController@index');

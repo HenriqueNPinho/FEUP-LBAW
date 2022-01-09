@@ -93,17 +93,19 @@ class UserController extends Controller
         $user = Auth::user();
         return $user->projectInvitations;
     }
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
-     */
+    
+    public function showChangePassword(Request $request){
+        $user = Auth::user();
+        return view('pages.changePassword',['user' => $user]);
+    }
+
+
     public function store(Request $request)
     {
 
         $request->validate([
             'current_password' => ['required', new MatchOldPassword],
-            'new_password' => ['required', 'string', 'min:6' , 'confirmed'],
+            'new_password' => ['required', 'string', 'min:6' ],
             'new_confirm_password' => ['same:new_password'],
         ]);
 

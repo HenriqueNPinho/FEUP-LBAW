@@ -1,6 +1,6 @@
 DROP TABLE IF EXISTS users CASCADE;
 DROP TABLE IF EXISTS company CASCADE;
-DROP TABLE IF EXISTS administrator CASCADE;
+DROP TABLE IF EXISTS administrators CASCADE;
 DROP TABLE IF EXISTS work CASCADE;
 DROP TABLE IF EXISTS project CASCADE;
 DROP TABLE IF EXISTS project_coordinator CASCADE;
@@ -35,10 +35,11 @@ CREATE TABLE company(
     name TEXT NOT NULL
 );
 
-CREATE TABLE administrator(
+CREATE TABLE administrators(
     id SERIAL PRIMARY KEY,
     email TEXT NOT NULL,
     name TEXT NOT NULL,
+    password TEXT NOT NULL,
     company_id INTEGER NOT NULL REFERENCES company(id)
 );
 

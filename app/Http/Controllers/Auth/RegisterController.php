@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers\Auth;
 
+use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Foundation\Auth\RegistersUsers;
 
 class RegisterController extends Controller
@@ -20,6 +23,8 @@ class RegisterController extends Controller
     |
     */
 
+    protected $redirectTo = '/projects';
+
     use RegistersUsers;
 
     protected $redirectTo = '/projects';
@@ -32,6 +37,7 @@ class RegisterController extends Controller
     public function __construct()
     {
         $this->middleware('guest');
+        $this->middleware('guest:admin');
     }
 
     /**
@@ -63,5 +69,33 @@ class RegisterController extends Controller
             'password' => bcrypt($data['password']),
             'profile_image' => null,
         ]);
+    }
+    /* ========================================== */
+    /* ADMIN                                      */
+    /* ========================================== */
+    protected function createAdmin(Request $request)
+    {
+        $sofi = "vou criar filho da puta do admin";
+        echo "<script>console.log('Debug Objects: " . $sofi . "' );</script>";
+
+        $this->validator($request->all())->validate();
+
+        $sofi = "depois da";
+        echo "<script>console.log('Debug Objects: " . $sofi . "' );</script>";
+        return Admin::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+        ]);
+        $sofi = "criei o filho da puta do admin";
+        echo "<script>console.log('Debug Objects: " . $sofi . "' );</script>";
+        return redirect()->intended('login');
+    }
+
+    public function showAdminRegistrationForm()
+    {
+        $sofi = "vou mostrar o oregister do admin";
+        echo "<script>console.log('Debug Objects: " . $sofi . "' );</script>";
+        return view('auth.registeradmin');
     }
 }

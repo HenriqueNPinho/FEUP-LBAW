@@ -2,8 +2,7 @@
 
 @section('content')
 <div class="auth-page">
-  
-  <form method="POST" action="{{ route('register') }}">
+  <form method="POST" action="{{ url('/register/admin') }}">
       <h2>Create a new account</h2>
       {{ csrf_field() }}
 
@@ -18,6 +17,14 @@
       @if ($errors->has('email'))
         <span class="error">
             {{ $errors->first('email') }}
+        </span>
+      @endif
+
+      <!-- value="{{ old('companyName') }} required-->
+      <input id="companyName" type="text" placeholder="Company Name" name="companyName" value="{{ old('companyName') }}" required>
+      @if ($errors->has('companyName'))
+        <span class="error">
+            {{ $errors->first('companyName') }}
         </span>
       @endif
 
