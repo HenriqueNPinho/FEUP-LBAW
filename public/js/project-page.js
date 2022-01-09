@@ -255,9 +255,9 @@ function viewFullTask() {
         let image=document.createElement("img");
         let commentAuthorID=item["project_member_id"];
         let commentAuthor;
-        for(let i=0;i<task["members"].length;i++){
-            if(task["members"][i]["id"]==commentAuthorID){
-                commentAuthor=task["members"][i];
+        for(let i=0;i<task["project"]["members"].length;i++){
+            if(task["project"]["members"][i]["id"]==commentAuthorID){
+                commentAuthor=task["project"]["members"][i];
             }
         }
         image.setAttribute("src",commentAuthor["profile_image"]);
