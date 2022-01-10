@@ -34,7 +34,8 @@ CREATE TABLE users (
     password TEXT NOT NULL,
     profile_image TEXT,
     profile_description TEXT,
-    remember_token VARCHAR
+    remember_token VARCHAR,
+    is_admin BOOLEAN DEFAULT FALSE NOT NULL
 );
 
 
@@ -44,11 +45,12 @@ CREATE TABLE company(
 );
 
 CREATE TABLE administrators(
-    id SERIAL PRIMARY KEY,
-    email TEXT NOT NULL,
-    name TEXT NOT NULL,
-    password TEXT NOT NULL,
-    company_id INTEGER NOT NULL REFERENCES company(id)
+    user_id INTEGER PRIMARY KEY REFERENCES users(id) ON UPDATE CASCADE ON DELETE CASCADE,
+    company_id INTEGER REFERENCES company(id) -- acrescentar not null quando puder
+    -- email TEXT NOT NULL,
+    -- name TEXT NOT NULL,
+    -- password TEXT NOT NULL
+    -- company_id INTEGER NOT NULL REFERENCES company(id)
 );
 
 CREATE TABLE work(
@@ -95,8 +97,6 @@ CREATE TABLE tasks (
     status task_status DEFAULT 'Not Started',
     CONSTRAINT date_ck CHECK (delivery_date>start_date)
 );
-
-
 
 CREATE TABLE task_assigned(
     project_member_id INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
@@ -247,7 +247,8 @@ INSERT INTO users VALUES (
   'John Doe',
   'admin@example.com',
   '$2y$10$HfzIhGCCaxqyaIdGgjARSuOKAcm1Uy82YfLuNaajn6JrjLWy9Sj/W',
-  '/images/avatars/profile-pic-2.png'
+  '/images/avatars/profile-pic-2.png',
+  FALSE
 ); -- Password is 1234. Generated using Hash::make('1234')
 
 INSERT INTO users VALUES (
@@ -255,12 +256,27 @@ INSERT INTO users VALUES (
   'Maria Doe',
   'maria@example.com',
   '$2y$10$HfzIhGCCaxqyaIdGgjARSuOKAcm1Uy82YfLuNaajn6JrjLWy9Sj/W',
-  '/images/avatars/profile-pic.png'
+  '/images/avatars/profile-pic-2.png',
+  FALSE
 ); -- Password is 1234. Generated using Hash::make('1234')
 
+INSERT INTO users VALUES (
+  80,
+  'Sofia Germer',
+  'sofia@example.com',
+  '$2y$10$HfzIhGCCaxqyaIdGgjARSuOKAcm1Uy82YfLuNaajn6JrjLWy9Sj/W',
+  '/images/avatars/profile-pic-2.png',
+  TRUE
+); -- Password is 1234. Generated using Hash::make('1234')
 
+INSERT INTO company VALUES(100,'FEUP');
 
-INSERT INTO company VALUES(DEFAULT,'FEUP');
+INSERT INTO administrators VALUES (
+  80,
+  100
+);
+
+/*
 INSERT INTO projects VALUES(DEFAULT,1,'LBAW','Um trabalho que me faz querer cortar os pulsos','2021-08-24', '2022-08-24', DEFAULT);
 INSERT INTO projects VALUES(DEFAULT,1,'FEUP','Bem vindos pinguins','2021-08-24', '2022-08-24', DEFAULT);
 INSERT INTO project_member VALUES(1,1);
@@ -276,4 +292,4 @@ INSERT INTO project_member VALUES(2,2);
 INSERT INTO favorite VALUES(1,1);
 INSERT INTO tasks VALUES(DEFAULT,1,'Task name','A task description you know','2021-11-19','2022-12-31','Not Started');
 INSERT INTO task_comment VALUES(DEFAULT,1,1,'Hello this is a comment','2021-12-31 19:10:25+00',DEFAULT);
-
+*/

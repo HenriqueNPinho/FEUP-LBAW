@@ -5,8 +5,6 @@
 
 <div id="project-area">
 
-
-
   @include('partials.projects-bar')
 
   @include('partials.slide-right-menu')

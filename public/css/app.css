@@ -109,6 +109,44 @@ main > header {
 }
 /*=================================*/
 
+/*REGISTER OPTIONS*/
+
+.hrAdmin{
+    width: 100%;
+    height: 3px;
+    background-color: #264653;
+}
+
+.adminOptions{
+    width: 300px;
+    border-right: 1px solid #000000;
+    border-left: 1px solid #000000;
+    border-bottom: 1px solid #000000;
+    background-color: rgb(236, 235, 235);
+    right:40px;
+    padding: 5px;
+    font-weight: 500;
+}
+
+.collapsible {
+    padding-right: 40px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #000;
+    font-size: 18px;
+}
+
+.active {
+    color: rgb(119, 118, 118);
+}
+
+.adminItem{
+    height: 40px;
+    justify-content: center;
+}
+
+/*=================================*/
+
 /******Homepage******/
 
 #homepage-content {
@@ -2192,4 +2230,23 @@ a {
     display: flex;
     flex-direction: column;
     width: 100%;
+}
+
+/* =================================================================== */
+/*ADMIN USER PAGE */
+#profileAdmin{
+    display: flex;
+    flex-flow: column;
+}
+
+.adminTextSpace{
+    width: 100%;
+}
+
+.buttonAdmin{
+    margin: 6px;
+}
+
+.hiddenIsAdmin{
+    display:none
 }

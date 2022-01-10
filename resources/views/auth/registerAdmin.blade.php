@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="auth-page">
-  <form method="POST" action="{{ url('/register') }}">
+  <form method="POST" action="{{ url('/register/admin') }}">
       <h2>Create a new account</h2>
       {{ csrf_field() }}
 
@@ -20,6 +20,13 @@
         </span>
       @endif
 
+      <input id="companyName" type="text" placeholder="Company Name" name="companyName" value="{{ old('companyName') }}" required autofocus>
+      @if ($errors->has('companyName'))
+        <span class="error">
+            {{ $errors->first('Company Name') }}
+        </span>
+      @endif
+
       <input id="password" type="password" placeholder="Password" name="password" required>
       @if ($errors->has('password'))
         <span class="error">
@@ -29,7 +36,7 @@
 
       <input id="password-confirm" type="password" placeholder="Confirm Password" name="password_confirmation" required>
 
-      <input id="is_admin" name= "is_admin" type="boolean" value = "false" class="hiddenIsAdmin" required>
+      <input id="is_admin" name= "is_admin" type="boolean" class="hiddenIsAdmin" value = "true" required>
 
       <button type="submit">
         Register

@@ -61,15 +61,26 @@ Route::get('create-project', 'ProjectController@getCreateProject');
 
 // ==============================================
 // Authentication -> User
-//register
-Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
-Route::post('register', 'Auth\RegisterController@register');
-
 //login
-Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
-Route::post('login', 'Auth\LoginController@login');
+Route::get('login', 'Auth\LoginController@showLoginForm');
+Route::post('login', 'Auth\LoginController@login', function () {
+    return redirect('/');
+});
 
+//register
+Route::get('register', 'Auth\RegisterController@showRegistrationForm');
+Route::post('register', 'Auth\RegisterController@register',  function () {
+    if (Auth::check()) {
+        $user = Auth::user();
+        return view('pages.project', ['user'=> $user]);
+    }
+
+    return view('pages.homepage');
+});
+
+Route::get('register/admin', 'Auth\RegisterController@showAdminRegistrationForm');
+Route::post('register/admin', 'Auth\RegisterController@register', function () {
+    return redirect('/projects');
+});
 //logout
 Route::get('logout', 'Auth\LoginController@logout')->name('logout');
-
-

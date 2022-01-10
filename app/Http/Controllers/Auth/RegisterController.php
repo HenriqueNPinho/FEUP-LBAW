@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Models\User;
+use App\Models\Admin;
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -21,8 +23,12 @@ class RegisterController extends Controller
     */
 
     use RegistersUsers;
-
-    /**
+    
+    /*
+    protected function redirectTo(){
+        return view('pages.project', ['user' => $user]);
+    }*/
+    /**$
      * Create a new controller instance.
      *
      * @return void
@@ -47,6 +53,7 @@ class RegisterController extends Controller
         ]);
     }
 
+
     /**
      * Create a new user instance after a valid registration.
      *
@@ -55,11 +62,22 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+
+        $sofia = "estou na função de criar user caralho";
+        echo "<script>console.log('ADMIN ?: " . $sofia . "' );</script>";
+        echo "<script>console.log('ADMIN ?: " . $data['is_admin'] . "' );</script>";
+
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
             'profile_image' => null,
+            'is_admin' => $data['is_admin'],
         ]);
+    }
+
+
+    public function showAdminRegistrationForm(){
+        return view ('auth.registerAdmin');
     }
 }

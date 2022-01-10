@@ -15,9 +15,12 @@ class HomepageController extends Controller
      */
     public function index()
     {
-        if (Auth::check()) return redirect('/projects');
+        if (Auth::check()) {
+            $user = Auth::user();
+            return view('pages.project', ['user'=> $user]);
+        }
+
         return view('pages.homepage');
+
     }
-
-
 }
