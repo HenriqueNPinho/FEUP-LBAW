@@ -6,7 +6,7 @@
   <div id="project-area" name="create-project">
     @include('partials.slide-right-menu')
     @include('partials.projects-bar',['projects'=>$projects])
-<form id="regForm">
+<form id="regForm" action="projects">
  
   <div class="tab">
     <h1>Whats the name of the project:</h1>
@@ -27,13 +27,12 @@
     </div>
   </div>
 
-  <div class="tab">
-   
-         <h1>Assign members to your team</h1>   
-        <h5>Invite them via e-mail</h5>
-        <div id="create-project">
-            <input id= "cp-project-members" name="project-members"
-            type="email" multiple placeholder="eg: email@example.com; email1@example.com; email2@example.com; email3@example.com">
+  <div class="tab">  
+    <h1>Assign members to your team</h1>   
+    <h5>Invite them via e-mail</h5>
+    <div id="create-project">
+      <input id= "cp-project-members" name="project-members"
+        type="email" multiple placeholder="eg: email@example.com; email1@example.com; email2@example.com; email3@example.com">
   </div>
   </div>
 
@@ -45,7 +44,6 @@
     </div>
   </div>
 
-  <!-- Circles which indicates the steps of the form: -->
   <div style="text-align:center;margin-top:40px;">
     <span class="step"></span>
     <span class="step"></span>

@@ -29,12 +29,10 @@ function nextPrev(n) {
   currentTab = currentTab + n;
  
   if (currentTab >= x.length) {
-    
-    //document.getElementById("regForm").submit();
     sendCreateProjectRequest();
     return false;
   }
- 
+
   showTab(currentTab);
 }
 
@@ -44,7 +42,7 @@ function validateForm() {
   x = document.getElementsByClassName("tab");
   y = x[currentTab].getElementsByTagName("input");
  
-  for (i = 0; i < y.length; i++) {
+  for (i = 0; i < y.length-1; i++) {
    
     if (y[i].value == "") {
       
@@ -75,6 +73,6 @@ function sendCreateProjectRequest(){
     let description = document.querySelector("#cp-description");
     let memberInput=document.querySelector("#cp-project-members");
     sendAjaxRequest('put', 'api/project/create',{name:projectName.value, company:company.value, date:date.value, description:description.value, members:memberInput.value}, genericResponseHandlerWithRefresh);
-}
+  }
 
 
