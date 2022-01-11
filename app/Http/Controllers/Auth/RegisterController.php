@@ -24,6 +24,8 @@ class RegisterController extends Controller
 
     use RegistersUsers;
     
+    protected $redirectTo = '/';
+    
     /*
     protected function redirectTo(){
         return view('pages.project', ['user' => $user]);

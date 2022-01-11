@@ -3,7 +3,7 @@
 @section('content')
 <script type="text/javascript" src={{ asset('js/project-page.js') }} defer></script>
 
-@if (!($user->is_admin))
+@if ((Auth::user()->is_admin))
     <div id="project-area">
     @include('partials.projects-bar')
 
@@ -90,7 +90,7 @@
         
         </div>
     </div>
-@elseif ($user->is_admin)
+@elseif (Auth::user()->is_admin)
     <div>
         Hi BOSS
     </div>

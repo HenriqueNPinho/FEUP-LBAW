@@ -17,7 +17,7 @@ class HomepageController extends Controller
     {
         if (Auth::check()) {
             $user = Auth::user();
-            return view('pages.project', ['user'=> $user]);
+            return redirect('/projects');
         }
 
         return view('pages.homepage');
