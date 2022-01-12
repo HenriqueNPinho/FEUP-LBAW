@@ -181,14 +181,16 @@ class UserController extends Controller
             $user = Auth::user();
             if($user->is_admin){
                 $company = Company::find($user->company_id);
-                if($company==null){
-                    return;
-                }
                 return view('pages.userpage', ['user' => $user, 'companyName' => $company->name]);
             }
             else if(!($user->is_admin)){
                 $projectInvitations=$user->projectInvitations()->get();
-                return view('pages.userpage',['user' => $user, 'projectInvitations'=> $projectInvitations]);
+                
+                $projects=$user->projects()->get();
+
+                $companies  = $user->companies()->get();
+
+                return view('pages.userpage',['user' => $user, 'projectInvitations'=> $projectInvitations, 'companies'=> $companies]);
             }
         }
 

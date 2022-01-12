@@ -1534,6 +1534,17 @@ a {
     height: 2px;
     color: black;
 }
+
+.divIconUserPage{
+    display: flex;
+    flex-flow : row;
+}
+
+.iconUserPage{
+    color: #264653;
+    align-self: center;
+    margin-right: 10px;
+}
 /*--------------------*/
 /* EDIT USER PAGE */
 
