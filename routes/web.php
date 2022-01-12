@@ -46,7 +46,7 @@ Route::post('user/{project_id}/leave','UserController@leaveProject');
 //User Page
 Route::get('project/userpage/{user_id}','UserController@showCoworkerPage');
 Route::get('userpage', 'UserController@showUserPage')->name('userpage');
-Route::get('edituserpage', 'UserController@edit');
+Route::get('edituserpage', 'UserController@showEditUserPage');
 
 //Edit User Page
 Route::post('userpage', 'UserController@userpageUpdate')->name('edituserpage');
@@ -74,5 +74,3 @@ Route::post('register/admin', 'Auth\RegisterController@register');
 
 //logout
 Route::get('logout', 'Auth\LoginController@logout')->name('logout');
-
-Route::get('adminHomePage', 'AdminController@showAdminPage');

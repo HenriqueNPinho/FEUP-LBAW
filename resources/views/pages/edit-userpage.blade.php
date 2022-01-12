@@ -111,7 +111,7 @@
                     </div>
                     <div class = "userpageParam">
                         <div class = "editprofileText"> Company's Name </div>
-                        <input type="text" class="edituserpagePlaceholder" id ="companyName" value="FOREX" name="companyName">
+                        <input type="text" class="edituserpagePlaceholder" id ="companyName" value="{{$companyName}}" name="companyName">
                     </div>
                     <div id="userpage-edit-buttons">
                         <a href="{{ url('/userpage') }}" class="goBackButton"> GO BACK TO YOUR PROFILE </a>

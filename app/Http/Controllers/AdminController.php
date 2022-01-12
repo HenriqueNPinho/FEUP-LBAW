@@ -14,7 +14,7 @@ class AdminCOntroller extends Controller
     public function showAdminPage()
     {
         if (!Auth::check()) return redirect('/login');
-        
+        if(!Auth::user()->is_admin) return redirect('/');
         return view('pages.admin-homepage');
     }
 }

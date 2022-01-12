@@ -43,27 +43,6 @@ class UserController extends Controller
         ]);
     }
 
-    public function userpageUpdate(Request $request){
-        //validation rules
-        $user = Auth::user();
-        $user->name = $request['name'];
-        $user->email = $request['email'];
-        $user->profile_description = $request['profile_description'];
-
-        if ($request->file('profile_image')) {
-            $file = $request->file('profile_image');
-            $fileNameExtension = ".jpg";
-
-            $user->profile_image = '/images/avatars/' . (Auth::user()->id). '.jpg';
-
-
-            $file->move(public_path('/images/avatars'), (Auth::user()->id) . $fileNameExtension);
-        }
-        $user->save();
-        $projectInvitations=$user->projectInvitations()->get();
-        return view('pages.userpage',['user' => $user, 'projectInvitations'=> $projectInvitations]);
-    }
-
     public function deletePhoto(){
         $user = Auth::user();
         File::delete($user->profile_image);
@@ -203,7 +182,6 @@ class UserController extends Controller
             if($user->is_admin){
                 $company = Company::find($user->company_id);
                 if($company==null){
-                    echo "toma la";
                     return;
                 }
                 return view('pages.userpage', ['user' => $user, 'companyName' => $company->name]);
@@ -215,5 +193,49 @@ class UserController extends Controller
         }
 
         return view('pages.homepage');
+    }
+
+    public function showEditUserPage()
+    {
+        if (Auth::check()) {
+            $user = Auth::user();
+            if($user->is_admin){
+                $company = Company::find($user->company_id);
+                return view('pages.edit-userpage', ['user' => $user, 'companyName' => $company->name]);
+            }
+            else if(!($user->is_admin)){
+                return view('pages.edit-userpage', ['user' => $user]);
+            }
+        }
+    }
+
+    public function userpageUpdate(Request $request){
+        if (Auth::check()) {
+            $user = Auth::user();
+
+            $user->name = $request['name'];
+            $user->email = $request['email'];
+    
+            if ($request->file('profile_image')) {
+                $file = $request->file('profile_image');
+                $fileNameExtension = ".jpg";
+                $user->profile_image = '/images/avatars/' . (Auth::user()->id). '.jpg';
+                $file->move(public_path('/images/avatars'), (Auth::user()->id) . $fileNameExtension);
+            }
+
+            if($user->is_admin){
+                $company = Company::find($user->company_id);
+                $company->name = $request['companyName'];
+                $company->save();
+                $user->save();
+                return view('pages.userpage', ['user' => $user, 'companyName' => $company->name]);
+            }
+            else if(!($user->is_admin)){
+                $user->profile_description = $request['profile_description'];
+                $user->save();
+                $projectInvitations=$user->projectInvitations()->get();
+                return view('pages.userpage',['user' => $user, 'projectInvitations'=> $projectInvitations]);
+            }
+        }
     }
 }
