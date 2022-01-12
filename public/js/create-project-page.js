@@ -19,17 +19,22 @@ function showTab(n) {
 }
 
 function nextPrev(n) {
-
   var x = document.getElementsByClassName("tab");
-
-  if (n == 1 && !validateForm()) return false;
+  if(currentTab<2){
+   if (n == 1 && !validateForm()) return false;
+  }
+  else {
+    document.getElementsByClassName("step")[currentTab].className += " finish";
+  }
 
   x[currentTab].style.display = "none";
 
   currentTab = currentTab + n;
  
   if (currentTab >= x.length) {
-    sendCreateProjectRequest();
+   
+   sendCreateProjectRequest();
+   window.location.replace("/projects");
     return false;
   }
 
@@ -41,9 +46,8 @@ function validateForm() {
   var x, y, i, valid = true;
   x = document.getElementsByClassName("tab");
   y = x[currentTab].getElementsByTagName("input");
- 
-  for (i = 0; i < y.length-1; i++) {
-   
+
+  for (i = 0; i < y.length; i++) {
     if (y[i].value == "") {
       
       y[i].className += " invalid";
@@ -51,6 +55,7 @@ function validateForm() {
       valid = false;
     }
   }
+ 
   
   if (valid) {
     document.getElementsByClassName("step")[currentTab].className += " finish";
@@ -72,7 +77,6 @@ function sendCreateProjectRequest(){
     let date= document.querySelector("#cp-date");
     let description = document.querySelector("#cp-description");
     let memberInput=document.querySelector("#cp-project-members");
-    sendAjaxRequest('put', 'api/project/create',{name:projectName.value, company:company.value, date:date.value, description:description.value, members:memberInput.value}, genericResponseHandlerWithRefresh);
+    sendAjaxRequest('put', 'api/project/create',{name:projectName.value, company:company.value, date:date.value, description:description.value, members:memberInput.value}, genericResponseHandler);
   }
-
 

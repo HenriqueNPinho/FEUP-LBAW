@@ -6,7 +6,7 @@
   <div id="project-area" name="create-project">
     @include('partials.slide-right-menu')
     @include('partials.projects-bar',['projects'=>$projects])
-<form id="regForm" action="projects">
+<div id="regForm">
  
   <div class="tab">
     <h1>Whats the name of the project:</h1>
@@ -38,7 +38,6 @@
 
   <div style="overflow:auto;">
     <div style="float:right;">
-      
       <button type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
       <button type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
     </div>
@@ -50,7 +49,7 @@
     <span class="step"></span>
   </div>
 
-</form>
+</div>
   
   </div>
 @endsection
