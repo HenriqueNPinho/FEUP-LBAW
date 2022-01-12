@@ -12,16 +12,10 @@ use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 use App\Models\Project;
 use App\Rules\MatchOldPassword;
+use App\Models\Company;
 
 class UserController extends Controller
 {
-    public function showProfile()
-    {
-        $user = Auth::user();
-        $projectInvitations=$user->projectInvitations()->get();
-        return view('pages.userpage',['user' => $user, 'projectInvitations'=> $projectInvitations]);
-    }
-
     /**
      * Show the form for editing the specified User.
      *
@@ -201,5 +195,25 @@ class UserController extends Controller
         $coworker = User::find($user_id);
         $this->authorize('coworkerAccess',$coworker);
         return view('pages.view-only-userpage',['user'=>$coworker]);
+    }
+
+    public function showUserPage(){
+        if (Auth::check()) {
+            $user = Auth::user();
+            if($user->is_admin){
+                $company = Company::find($user->company_id);
+                if($company==null){
+                    echo "toma la";
+                    return;
+                }
+                return view('pages.userpage', ['user' => $user, 'companyName' => $company->name]);
+            }
+            else if(!($user->is_admin)){
+                $projectInvitations=$user->projectInvitations()->get();
+                return view('pages.userpage',['user' => $user, 'projectInvitations'=> $projectInvitations]);
+            }
+        }
+
+        return view('pages.homepage');
     }
 }

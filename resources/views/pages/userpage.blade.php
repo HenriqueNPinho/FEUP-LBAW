@@ -94,20 +94,13 @@
                                 <p class="userEmail">{{ $user->email }}</p>
                             </div>
                         </div>
-                        @if (!is_null($user->profile_description))
-                        <div class = "descriptionBox">
-                            <div class = "userpageParam"> 
-                                <p class="userDescription">{{ $user->profile_description }}</p>
-                            </div>
-                        </div>
-                        @endif
                     </div> 
 
                     <div class = "textSpace adminTextSpace">
                         <div class="userpageInfo">
                             <h2>Your Company</h2>
                             <hr class = "userPageHR">
-                            Forex          
+                            <p class="userEmail"> {{$companyName}}</p>
                         </div>
                         <div class="textSpaceButtons adminTextSpace">
                             <a  class="profileButton buttonAdmin" href="{{ url('/edituserpage') }}" id = "editProfileButtonText">Edit Profile </a>

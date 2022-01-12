@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Models\User;
 use App\Models\Admin;
+use App\Models\Company;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
@@ -26,10 +27,6 @@ class RegisterController extends Controller
     
     protected $redirectTo = '/';
     
-    /*
-    protected function redirectTo(){
-        return view('pages.project', ['user' => $user]);
-    }*/
     /**$
      * Create a new controller instance.
      *
@@ -63,19 +60,23 @@ class RegisterController extends Controller
      * @return \App\Models\User
      */
     protected function create(array $data)
-    {
+    {   
+        $user = new User();
+        $user->name = $data['name'];
+        $user->email = $data['email'];
+        $user->password = bcrypt($data['password']);
+        $user->profile_image = null;
+        $user->is_admin = $data['is_admin'];
+        $user->save();
 
-        $sofia = "estou na função de criar user caralho";
-        echo "<script>console.log('ADMIN ?: " . $sofia . "' );</script>";
-        echo "<script>console.log('ADMIN ?: " . $data['is_admin'] . "' );</script>";
-
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => bcrypt($data['password']),
-            'profile_image' => null,
-            'is_admin' => $data['is_admin'],
-        ]);
+        if($user->is_admin == 1){
+            $company = new Company();
+            $company->name = $data['companyName'];
+            $company->save();
+            $user->company_id = $company->id;
+            $user->save();
+        }
+        return $user;
     }
 
 

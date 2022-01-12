@@ -45,7 +45,7 @@ Route::post('user/{project_id}/leave','UserController@leaveProject');
 
 //User Page
 Route::get('project/userpage/{user_id}','UserController@showCoworkerPage');
-Route::get('userpage', 'UserController@showProfile')->name('userpage');
+Route::get('userpage', 'UserController@showUserPage')->name('userpage');
 Route::get('edituserpage', 'UserController@edit');
 
 //Edit User Page
@@ -63,24 +63,16 @@ Route::get('create-project', 'ProjectController@getCreateProject');
 // Authentication -> User
 //login
 Route::get('login', 'Auth\LoginController@showLoginForm');
-Route::post('login', 'Auth\LoginController@login', function () {
-    return redirect('/');
-});
+Route::post('login', 'Auth\LoginController@login');
 
 //register
 Route::get('register', 'Auth\RegisterController@showRegistrationForm');
-Route::post('register', 'Auth\RegisterController@register',  function () {
-    if (Auth::check()) {
-        $user = Auth::user();
-        return view('pages.project', ['user'=> $user]);
-    }
-
-    return view('pages.homepage');
-});
+Route::post('register', 'Auth\RegisterController@register');
 
 Route::get('register/admin', 'Auth\RegisterController@showAdminRegistrationForm');
-Route::post('register/admin', 'Auth\RegisterController@register', function () {
-    return redirect('/projects');
-});
+Route::post('register/admin', 'Auth\RegisterController@register');
+
 //logout
 Route::get('logout', 'Auth\LoginController@logout')->name('logout');
+
+Route::get('adminHomePage', 'AdminController@showAdminPage');

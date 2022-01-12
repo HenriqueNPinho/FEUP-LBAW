@@ -6,6 +6,8 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 use App\Models\Project;
+use App\Models\Admin;
+use App\Models\Company;
 
 class User extends Authenticatable
 {
@@ -22,7 +24,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'profile_image','description', 'is_admin'
+        'name', 'email', 'password', 'profile_image','description', 'is_admin', 'company_id'
     ];
     /**
      * The attributes that should be hidden for arrays.
