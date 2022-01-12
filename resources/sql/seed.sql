@@ -65,8 +65,6 @@ CREATE TABLE project_coordinator(
     PRIMARY KEY(users_id,project_id)
 );
 
-
-
 CREATE TABLE project_member(
     users_id INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
     project_id INTEGER NOT NULL REFERENCES projects(id) ON DELETE CASCADE,
