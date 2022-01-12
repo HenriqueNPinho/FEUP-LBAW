@@ -1266,12 +1266,27 @@ h1 {
 
 /* Hide all steps by default: */
 
-button:hover {
-    opacity: 0.8;
-}
-
 #prevBtn {
+    cursor: pointer;
+    width: 100px;
+    padding: 10px;
+    border:none;
+    border-radius: 30px;
+    text-transform: uppercase;
+    font-size: 15px;
+    opacity: 0.8;
     background-color: #bbbbbb;
+}
+#nextBtn{
+    cursor: pointer;
+    width: 80px;
+    padding: 10px;
+    border:none;
+    border-radius: 30px;
+    text-transform: uppercase;
+    font-size: 15px;
+    opacity: 0.8;
+    background-color:#2a9d8f;
 }
 .tab {
     display: none;
