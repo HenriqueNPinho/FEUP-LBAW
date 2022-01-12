@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Project;
+use App\Models\Company;
 
 class HomepageController extends Controller
 {
@@ -17,10 +19,14 @@ class HomepageController extends Controller
     {
         if (Auth::check()) {
             $user = Auth::user();
-            return redirect('/projects');
+            if($user->is_admin){
+                return redirect('/adminHomePage');
+            }
+            else if(!($user->is_admin)){
+                return redirect('/projects');
+            }
         }
 
         return view('pages.homepage');
-
     }
 }

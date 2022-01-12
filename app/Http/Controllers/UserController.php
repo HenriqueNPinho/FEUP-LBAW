@@ -12,16 +12,10 @@ use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 use App\Models\Project;
 use App\Rules\MatchOldPassword;
+use App\Models\Company;
 
 class UserController extends Controller
 {
-    public function showProfile()
-    {
-        $user = Auth::user();
-        $projectInvitations=$user->projectInvitations()->get();
-        return view('pages.userpage',['user' => $user, 'projectInvitations'=> $projectInvitations]);
-    }
-
     /**
      * Show the form for editing the specified User.
      *
@@ -47,27 +41,6 @@ class UserController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
         ]);
-    }
-
-    public function userpageUpdate(Request $request){
-        //validation rules
-        $user = Auth::user();
-        $user->name = $request['name'];
-        $user->email = $request['email'];
-        $user->profile_description = $request['profile_description'];
-
-        if ($request->file('profile_image')) {
-            $file = $request->file('profile_image');
-            $fileNameExtension = ".jpg";
-
-            $user->profile_image = '/images/avatars/' . (Auth::user()->id). '.jpg';
-
-
-            $file->move(public_path('/images/avatars'), (Auth::user()->id) . $fileNameExtension);
-        }
-        $user->save();
-        $projectInvitations=$user->projectInvitations()->get();
-        return view('pages.userpage',['user' => $user, 'projectInvitations'=> $projectInvitations]);
     }
 
     public function deletePhoto(){
@@ -201,5 +174,68 @@ class UserController extends Controller
         $coworker = User::find($user_id);
         $this->authorize('coworkerAccess',$coworker);
         return view('pages.view-only-userpage',['user'=>$coworker]);
+    }
+
+    public function showUserPage(){
+        if (Auth::check()) {
+            $user = Auth::user();
+            if($user->is_admin){
+                $company = Company::find($user->company_id);
+                if($company==null){
+                    return;
+                }
+                return view('pages.userpage', ['user' => $user, 'companyName' => $company->name]);
+            }
+            else if(!($user->is_admin)){
+                $projectInvitations=$user->projectInvitations()->get();
+                return view('pages.userpage',['user' => $user, 'projectInvitations'=> $projectInvitations]);
+            }
+        }
+
+        return view('pages.homepage');
+    }
+
+    public function showEditUserPage()
+    {
+        if (Auth::check()) {
+            $user = Auth::user();
+            if($user->is_admin){
+                $company = Company::find($user->company_id);
+                return view('pages.edit-userpage', ['user' => $user, 'companyName' => $company->name]);
+            }
+            else if(!($user->is_admin)){
+                return view('pages.edit-userpage', ['user' => $user]);
+            }
+        }
+    }
+
+    public function userpageUpdate(Request $request){
+        if (Auth::check()) {
+            $user = Auth::user();
+
+            $user->name = $request['name'];
+            $user->email = $request['email'];
+    
+            if ($request->file('profile_image')) {
+                $file = $request->file('profile_image');
+                $fileNameExtension = ".jpg";
+                $user->profile_image = '/images/avatars/' . (Auth::user()->id). '.jpg';
+                $file->move(public_path('/images/avatars'), (Auth::user()->id) . $fileNameExtension);
+            }
+
+            if($user->is_admin){
+                $company = Company::find($user->company_id);
+                $company->name = $request['companyName'];
+                $company->save();
+                $user->save();
+                return view('pages.userpage', ['user' => $user, 'companyName' => $company->name]);
+            }
+            else if(!($user->is_admin)){
+                $user->profile_description = $request['profile_description'];
+                $user->save();
+                $projectInvitations=$user->projectInvitations()->get();
+                return view('pages.userpage',['user' => $user, 'projectInvitations'=> $projectInvitations]);
+            }
+        }
     }
 }
