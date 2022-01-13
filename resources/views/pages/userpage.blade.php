@@ -13,7 +13,8 @@
                         
                     </div>
                     <div class="userpageInfo">
-                        <div id = "emailSpace">
+                        <div class = "divIconUserPage">
+                            <i class="fas fa-envelope iconUserPage "></i>
                             <p class="userEmail">{{ $user->email }}</p>
                         </div>
                     </div>
@@ -24,6 +25,17 @@
                         </div>
                     </div>
                     @endif
+
+                    @if(!is_null($companies))
+                        @foreach ($companies as $company)
+                        <div class = "userpageInfo">
+                            <div class = "divIconUserPage">
+                                <i class="fas fa-briefcase iconUserPage"></i>
+                                {{$company->name}}
+                            </div>
+                        </div>
+                        @endforeach
+                    @endif 
 
                     <div class="textSpaceButtons">
                         <a  class="profileButton" href="{{ url('/edituserpage') }}" id = "editProfileButtonText">Edit Profile </a>

@@ -69,17 +69,12 @@ class ProjectController extends Controller
     {
         if (!Auth::check()) return redirect('/login');
         $project=new Project();
-        //$company=$request->input('company');
-        //if($company!="none")
-         // $project->company_id=$request->input('company');
         $project->name=$request->input('name');
         $project->delivery_date=$request->input('date');
         $project->start_date=date('Y-m-d');
         $project->description=$request->input('description');
         
-
         $project->save();
-		
         $project->members()->attach(Auth::user()->id);
         $project->coordinators()->attach(Auth::user()->id);
 		

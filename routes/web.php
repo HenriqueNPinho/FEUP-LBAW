@@ -74,3 +74,6 @@ Route::post('register/admin', 'Auth\RegisterController@register');
 
 //logout
 Route::get('logout', 'Auth\LoginController@logout')->name('logout');
+
+//adminHomePage
+Route::get('adminHomePage', 'AdminController@showAdminPage');

@@ -65,8 +65,6 @@ CREATE TABLE project_coordinator(
     PRIMARY KEY(users_id,project_id)
 );
 
-
-
 CREATE TABLE project_member(
     users_id INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
     project_id INTEGER NOT NULL REFERENCES projects(id) ON DELETE CASCADE,
@@ -261,7 +259,8 @@ INSERT INTO users VALUES (
 ); -- Password is 1234. Generated using Hash::make('1234')
 
 INSERT INTO projects VALUES(DEFAULT,1,'LBAW','Um trabalho que me faz querer cortar os pulsos','2021-08-24', '2022-08-24', DEFAULT);
-INSERT INTO projects VALUES(DEFAULT,1,'FEUP','Bem vindos pinguins','2021-08-24', '2022-08-24', DEFAULT);
+INSERT INTO projects VALUES(DEFAULT,1,'RCOM','Bem vindos pinguins','2021-08-24', '2022-08-24', DEFAULT);
+INSERT INTO work VALUES(2,1); -- user id, company id
 INSERT INTO project_member VALUES(1,1);
 INSERT INTO project_member VALUES(1,2);
 INSERT INTO project_coordinator VALUES(1,1);

@@ -1555,6 +1555,17 @@ a {
     height: 2px;
     color: black;
 }
+
+.divIconUserPage{
+    display: flex;
+    flex-flow : row;
+}
+
+.iconUserPage{
+    color: #264653;
+    align-self: center;
+    margin-right: 10px;
+}
 /*--------------------*/
 /* EDIT USER PAGE */
 
@@ -2285,4 +2296,129 @@ a {
 
 .hiddenIsAdmin{
     display:none
+}
+
+/* =================================================================== */
+/*ADMIN HOME PAGE */
+
+#adminHomePage{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-flow: row;
+}
+
+.adminZone{
+    width: 50%;
+    height: 100%;
+    text-align: center;
+    display: flex;
+    flex-flow: column;
+}
+
+#companyUserZone{
+   /* border-right-style: solid; */
+}
+
+#projectsZone{
+    border-left-style: solid;
+}
+
+.adminHeading{
+    color : #264653;
+}
+
+.adminUser{
+    background-color: rgb(233, 231, 231);
+    height: 35px;
+    margin: 10px;
+    display: flex;
+    flex-flow: row;
+}
+
+.iconRemoveUser{
+    color: black;
+}
+
+#currentUsers{
+    width: 100%;
+    display: flex;
+    flex-flow: column;
+    align-self: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.adminProject{
+    width: 300px;
+    height: 150px;
+    background-color: rgb(233, 231, 231);
+    margin: 10px;
+}
+
+#currentProjects{
+    display: flex;
+    flex-flow: row wrap;
+    align-self: center;
+    justify-content: center;
+}
+
+.adminProjectTitle{
+    background-color: rgb(202, 199, 199);
+    height: 30px;
+    display: flex;
+    justify-content: center;
+}
+
+.adminNameParameter{
+    align-self: center;
+}
+
+#divButtonsAdmin{
+    display: flex;
+    flex-flow: row;
+    width: 620px;
+    height: 40px;
+    align-self: center;
+    margin-bottom: 30px;
+}
+
+.adminButton{
+    width:50%;
+    display: flex;
+    justify-content: center;
+}
+
+.adminGreen{
+    background-color: #2a9d8f;
+}
+
+.adminOrange{
+    background-color: #f4a261
+}
+
+.bold{
+    font-weight: bold;
+}
+
+.adminButtonText{
+    color: white;
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: bold;
+}
+
+.adminUserTitle{
+    height: 60px;
+    justify-content: center;
+}
+
+.zonaAdminMember{
+    width: 70%;
+    align-self: center;
+    margin-bottom: 80px;
+}
+
+.adminMemberName{
+    margin-left:25px;
 }
