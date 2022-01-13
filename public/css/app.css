@@ -1871,6 +1871,7 @@ a {
     font-size: 15px;
     background-color: rgb(219, 216, 216);
     display: flex;
+    cursor: pointer;
     flex-flow: row nowrap;
     color: black;
     border-radius: 20px;
@@ -1906,6 +1907,7 @@ a {
 
 .deleteImageText {
     font-weight: bold;
+    cursor: pointer;
     text-align: center;
 }
 
@@ -1931,6 +1933,13 @@ a {
     display: flex;
     width: 100%;
     margin-top: 20px;
+}
+
+#keep-scroll-at-bottom{
+    display: flex;
+    flex-direction: column-reverse;
+    overflow-y: auto;
+    height: 100%;
 }
 
 #forum-posts-container {
@@ -1962,6 +1971,7 @@ a {
     width: 20px;
     height: 20px;
     cursor: pointer;
+    margin-right: 20px;
 }
 
 .forum-post-name-plus-date {
@@ -1991,7 +2001,8 @@ a {
 
 .new-post-content-input {
     height: 100px;
-    margin-bottom: 20px;
+    margin-bottom: 0px;
+    margin-top: 1vh;
 }
 .new-post-content-input #createNewPostButton {
     position: relative;
@@ -2016,6 +2027,10 @@ a {
     display: none;
     position: relative;
     top: 10px;
+}
+
+.forumPost:last-child>.forum-post-name-date-options-content>.forum-post-name-date-options>.forum-post-options-container>.forum-post-options-menu{
+    top: -65px;
 }
 
 .forum-post-options-container {
@@ -2484,4 +2499,47 @@ a {
 
 .adminMemberName{
     margin-left:25px;
+}
+
+#deleted-forum-post-icon-plus-text-content{
+    display: flex;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+#deleted-forum-post-icon-plus-text-content p{
+    margin:0px;
+
+    margin-left:5px;
+
+}
+
+#deleted-forum-post-icon-plus-text-content span{
+    color:#666;    
+}
+
+#edit-forum-post-save-button{
+    border: 0;
+    background-color: #2a9d8f;
+    padding: 7px;
+    border-radius: 13px;
+    height: fit-content;
+    font-size: 14px;
+    color: white;
+    text-transform: uppercase;
+    font-weight: bold;
+    width: fit-content;
+    cursor: pointer;
+    align-self:flex-end;
+    margin-right: 20px;
+    margin-top: 10px;
+}
+
+#edit-forum-post-textarea{
+    margin-top:5px;
+    margin-right: 20px;
+    resize: none;
+    border:1px solid rgba(102, 102, 102, 0.39);
+    padding: 5px;
+    border-radius: 1px;
 }

@@ -126,7 +126,7 @@ CREATE TABLE favorite(
 
 CREATE TABLE post_edition(
     id SERIAL PRIMARY KEY,
-    post_id INTEGER NOT NULL REFERENCES forum_post(id),
+    forum_post_id INTEGER NOT NULL REFERENCES forum_post(id),
     edit_date TIMESTAMP WITH TIME ZONE DEFAULT now() NOT NULL,
     content TEXT
 );
