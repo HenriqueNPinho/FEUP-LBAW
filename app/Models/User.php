@@ -7,6 +7,8 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 
 use App\Models\Project;
+use App\Models\Admin;
+use App\Models\Company;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
@@ -23,7 +25,7 @@ class User extends Authenticatable implements MustVerifyEmail
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'profile_image','description'
+        'name', 'email', 'password', 'profile_image','description', 'is_admin', 'company_id'
     ];
     /**
      * The attributes that should be hidden for arrays.
@@ -33,6 +35,11 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    /*
+    public function isAdmin(){
+        return Admin::find($this->id) != null ? true : false;
+    }*/
 
     /**
      * The projects this user is a member of.

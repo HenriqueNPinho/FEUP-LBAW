@@ -3,7 +3,7 @@
 @section('content')
 <div class="auth-page">
     
-    <form method="POST" action="{{ route('login') }}">
+    <form method="POST" action="{{ url('/login') }}">
         <h2>Login to your account</h2>
         {{ csrf_field() }}
 
@@ -28,17 +28,6 @@
         <button type="submit">
             Login
         </button>
-
-        <div class="divider"></div>
-        <h4>New to Project Clinic?</h4>
-
-        <a class="button" href="{{ route('register') }}">Sign Up HERE</a>
-
-        <!--
-        <h4>Are you creating an account for your company?</h4>
-        <h4>Are you creating an account for yourself?</h4>
-        <a class="button" href="{{ url('/register/admin') }}">Sign Up your Company HERE</a>
-        -->
     </form>
 </div>
 @endsection

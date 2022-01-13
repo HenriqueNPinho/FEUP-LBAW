@@ -3,8 +3,7 @@ create schema if not exists lbaw21;
 
 
 DROP TABLE IF EXISTS users CASCADE;
-DROP TABLE IF EXISTS company CASCADE;
-DROP TABLE IF EXISTS administrators CASCADE;
+DROP TABLE IF EXISTS companys CASCADE;
 DROP TABLE IF EXISTS work CASCADE;
 DROP TABLE IF EXISTS projects CASCADE;
 DROP TABLE IF EXISTS project_coordinator CASCADE;
@@ -26,6 +25,10 @@ DROP FUNCTION IF EXISTS task_search_update CASCADE;
 
 CREATE TYPE task_status AS ENUM('Not Started','In Progress', 'Complete');
 
+CREATE TABLE companys(
+    id SERIAL PRIMARY KEY,
+    name TEXT NOT NULL
+);
 
 CREATE TABLE users (
     id SERIAL PRIMARY KEY,
@@ -33,34 +36,21 @@ CREATE TABLE users (
     email TEXT NOT NULL UNIQUE,
     password TEXT NOT NULL,
     profile_image TEXT,
-    profile_description TEXT,
-    email_verified_at TIMESTAMP WITH TIME ZONE,
-    remember_token VARCHAR
-);
-
-
-CREATE TABLE company(
-    id SERIAL PRIMARY KEY,
-    name TEXT NOT NULL
-);
-
-CREATE TABLE administrators(
-    id SERIAL PRIMARY KEY,
-    email TEXT NOT NULL,
-    name TEXT NOT NULL,
-    password TEXT NOT NULL,
-    company_id INTEGER NOT NULL REFERENCES company(id)
+    profile_description TEXT DEFAULT NULL,
+    is_admin BOOLEAN DEFAULT FALSE NOT NULL,
+    company_id INTEGER REFERENCES companys(id),
+    email_verified_at TIMESTAMP WITH TIME ZONE
 );
 
 CREATE TABLE work(
     users_id INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
-    company_id INTEGER NOT NULL REFERENCES company(id) ON DELETE CASCADE,
+    company_id INTEGER NOT NULL REFERENCES companys(id) ON DELETE CASCADE,
     PRIMARY KEY(users_id,company_id)
 );
 
 CREATE TABLE projects (
     id SERIAL PRIMARY KEY,
-    company_id INTEGER DEFAULT NULL REFERENCES company(id) ON DELETE CASCADE,
+    company_id INTEGER DEFAULT NULL REFERENCES companys(id) ON DELETE CASCADE,
     name TEXT NOT NULL,
     description TEXT,
     start_date DATE,
@@ -69,15 +59,11 @@ CREATE TABLE projects (
     CONSTRAINT date_ck CHECK (delivery_date>=start_date)
 );
 
-
-
 CREATE TABLE project_coordinator(
     users_id INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
     project_id INTEGER NOT NULL REFERENCES projects(id) ON DELETE CASCADE,
     PRIMARY KEY(users_id,project_id)
 );
-
-
 
 CREATE TABLE project_member(
     users_id INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
@@ -96,8 +82,6 @@ CREATE TABLE tasks (
     status task_status DEFAULT 'Not Started',
     CONSTRAINT date_ck CHECK (delivery_date>start_date)
 );
-
-
 
 CREATE TABLE task_assigned(
     project_member_id INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
@@ -243,15 +227,15 @@ BEFORE UPDATE ON forum_post
 FOR EACH ROW
 EXECUTE PROCEDURE add_edit();
 
-
-
 INSERT INTO users VALUES (
   DEFAULT,
   'John Doe',
   'admin@example.com',
   '$2y$10$HfzIhGCCaxqyaIdGgjARSuOKAcm1Uy82YfLuNaajn6JrjLWy9Sj/W',
   '/images/avatars/profile-pic-2.png',
-  'Ola o meu nome é John',
+  DEFAULT,
+  FALSE,
+  NULL,
   '2021-12-28 19:10:25+00'
 ); -- Password is 1234. Generated using Hash::make('1234')
 
@@ -260,16 +244,30 @@ INSERT INTO users VALUES (
   'Maria Doe',
   'maria@example.com',
   '$2y$10$HfzIhGCCaxqyaIdGgjARSuOKAcm1Uy82YfLuNaajn6JrjLWy9Sj/W',
-  '/images/avatars/profile-pic.png',
-  'Ola o meu nome é Maria',
+  '/images/avatars/profile-pic-2.png',
+  DEFAULT,
+  FALSE,
+  NULL,
   '2021-12-28 19:10:25+00'
 ); -- Password is 1234. Generated using Hash::make('1234')
 
+INSERT INTO companys VALUES(1,'FEUP');
 
+INSERT INTO users VALUES (
+  DEFAULT,
+  'Sofia Germer',
+  'sofia@example.com',
+  '$2y$10$HfzIhGCCaxqyaIdGgjARSuOKAcm1Uy82YfLuNaajn6JrjLWy9Sj/W',
+  '/images/avatars/profile-pic-2.png',
+  DEFAULT,
+  TRUE,
+  1,
+  '2021-12-28 19:10:25+00'
+); -- Password is 1234. Generated using Hash::make('1234')
 
-INSERT INTO company VALUES(DEFAULT,'FEUP');
 INSERT INTO projects VALUES(DEFAULT,1,'LBAW','Um trabalho que me faz querer cortar os pulsos','2021-08-24', '2022-08-24', DEFAULT);
-INSERT INTO projects VALUES(DEFAULT,1,'FEUP','Bem vindos pinguins','2021-08-24', '2022-08-24', DEFAULT);
+INSERT INTO projects VALUES(DEFAULT,1,'RCOM','Bem vindos pinguins','2021-08-24', '2022-08-24', DEFAULT);
+INSERT INTO work VALUES(2,1); -- user id, company id
 INSERT INTO project_member VALUES(1,1);
 INSERT INTO project_member VALUES(1,2);
 INSERT INTO project_coordinator VALUES(1,1);

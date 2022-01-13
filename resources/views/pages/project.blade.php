@@ -3,12 +3,9 @@
 @section('content')
 <script type="text/javascript" src={{ asset('js/project-page.js') }} defer></script>
 <div id="project-area">
+@include('partials.projects-bar')
 
-
-
-  @include('partials.projects-bar')
-
-  @include('partials.slide-right-menu')
+@include('partials.slide-right-menu')
     <div class="project-overview" data-id="{{$project->id}}">
         <div id="project-overview-opaque-cover"></div>
         @include('partials.new-task-form')
@@ -88,8 +85,7 @@
             </div>
         </div>
 
-       
+    
     </div>
 </div>
-
 @endsection

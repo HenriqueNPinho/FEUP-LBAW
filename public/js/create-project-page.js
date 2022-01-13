@@ -1,5 +1,5 @@
-var currentTab = 0; //first tab 
-showTab(currentTab); // Display the current tab
+var currentTab = 0;
+showTab(currentTab);
 
 function showTab(n) {
   var x = document.getElementsByClassName("tab");
@@ -19,22 +19,22 @@ function showTab(n) {
 }
 
 function nextPrev(n) {
-
   var x = document.getElementsByClassName("tab");
-
-  if (n == 1 && !validateForm()) return false;
+  if(currentTab<2){
+   if (n == 1 && !validateForm()) return false;
+  }
 
   x[currentTab].style.display = "none";
 
   currentTab = currentTab + n;
- 
+
+  //console.log("Current tab= "+currentTab+" x= "+x.length);
+
   if (currentTab >= x.length) {
-    
-    //document.getElementById("regForm").submit();
-    sendCreateProjectRequest();
-    return false;
+   sendCreateProjectRequest();
+   window.location.replace("/projects");
+  return false;
   }
- 
   showTab(currentTab);
 }
 
@@ -43,9 +43,8 @@ function validateForm() {
   var x, y, i, valid = true;
   x = document.getElementsByClassName("tab");
   y = x[currentTab].getElementsByTagName("input");
- 
+
   for (i = 0; i < y.length; i++) {
-   
     if (y[i].value == "") {
       
       y[i].className += " invalid";
@@ -53,6 +52,7 @@ function validateForm() {
       valid = false;
     }
   }
+ 
   
   if (valid) {
     document.getElementsByClassName("step")[currentTab].className += " finish";
@@ -74,7 +74,6 @@ function sendCreateProjectRequest(){
     let date= document.querySelector("#cp-date");
     let description = document.querySelector("#cp-description");
     let memberInput=document.querySelector("#cp-project-members");
-    sendAjaxRequest('put', 'api/project/create',{name:projectName.value, company:company.value, date:date.value, description:description.value, members:memberInput.value}, genericResponseHandlerWithRefresh);
-}
-
+    sendAjaxRequest('put', 'api/project/create',{name:projectName.value, company:company.value, date:date.value, description:description.value, members:memberInput.value}, genericResponseHandler);
+  }
 

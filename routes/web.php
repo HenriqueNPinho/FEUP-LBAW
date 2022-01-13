@@ -16,8 +16,9 @@ use Illuminate\Http\Request;
 |
 */
 // Home
-Route::get('/', 'HomepageController@index')->name("home");
-Route::get('/home','HomepageController@index');
+Route::get('/', 'HomepageController@index')->name("home")->middleware('verified');;
+Route::get('/home','HomepageController@index')->middleware('verified');;
+Route::get('adminHomePage', 'AdminController@showAdminPage')->middleware('verified');;
 
 Route::get('projects', 'ProjectController@list')->name('projects')->middleware('verified');;
 Route::get('project/{id}', 'ProjectController@show')->middleware('verified');;
@@ -51,9 +52,9 @@ Route::post('project/{project_id}/archive','ProjectController@archive')->middlew
 Route::post('user/{project_id}/leave','UserController@leaveProject')->middleware('verified');;
 
 //User Page
-Route::get('project/userpage/{user_id}','UserController@showCoworkerPage')->middleware('verified');;
-Route::get('userpage', 'UserController@showProfile')->name('userpage')->middleware('verified');;
-Route::get('edituserpage', 'UserController@edit')->middleware('verified');;
+Route::get('project/userpage/{user_id}','UserController@showCoworkerPage')->middleware('verified');
+Route::get('userpage', 'UserController@showUserPage')->name('userpage')->middleware('verified');
+Route::get('edituserpage', 'UserController@showEditUserPage')->middleware('verified');
 
 //Edit User Page
 Route::post('userpage', 'UserController@userpageUpdate')->name('edituserpage')->middleware('verified');;
@@ -68,13 +69,16 @@ Route::get('create-project', 'ProjectController@getCreateProject')->middleware('
 
 // ==============================================
 // Authentication -> User
+//login
+Route::get('login', 'Auth\LoginController@showLoginForm');
+Route::post('login', 'Auth\LoginController@login');
+
 //register
-Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
+Route::get('register', 'Auth\RegisterController@showRegistrationForm');
 Route::post('register', 'Auth\RegisterController@register');
 
-//login
-Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
-Route::post('login', 'Auth\LoginController@login');
+Route::get('register/admin', 'Auth\RegisterController@showAdminRegistrationForm');
+Route::post('register/admin', 'Auth\RegisterController@register');
 
 //logout
 Route::get('logout', 'Auth\LoginController@logout')->name('logout');
@@ -94,3 +98,5 @@ Route::post('/email/verification-notification', function (Request $request) {
 
     return back()->with('message', 'Verification link sent!');
 })->middleware(['auth', 'throttle:6,1'])->name('verification.send');
+
+

@@ -22,10 +22,11 @@ class ProjectController extends Controller
     {
         if (!Auth::check()) return redirect('/login');
         $this->authorize('userAccess', Project::class);
+        $user = Auth::user();
         $projects = Auth::user()->projects()->orderBy('id')->get();
         $project = Project::find($id);
         $this->authorize('memberAccess', $project);
-        return view('pages.project', ['project' => $project,'projects' =>$projects]);
+        return view('pages.project', ['user' => $user, 'project' => $project,'projects' =>$projects]);
     }
 
 
@@ -68,17 +69,12 @@ class ProjectController extends Controller
     {
         if (!Auth::check()) return redirect('/login');
         $project=new Project();
-        //$company=$request->input('company');
-        //if($company!="none")
-         // $project->company_id=$request->input('company');
         $project->name=$request->input('name');
         $project->delivery_date=$request->input('date');
         $project->start_date=date('Y-m-d');
         $project->description=$request->input('description');
         
-
         $project->save();
-		
         $project->members()->attach(Auth::user()->id);
         $project->coordinators()->attach(Auth::user()->id);
 		

@@ -3,6 +3,9 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Models\User;
+use App\Models\Admin;
+use App\Models\Company;
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -49,6 +52,7 @@ class RegisterController extends Controller
         ]);
     }
 
+
     /**
      * Create a new user instance after a valid registration.
      *
@@ -56,12 +60,27 @@ class RegisterController extends Controller
      * @return \App\Models\User
      */
     protected function create(array $data)
-    {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => bcrypt($data['password']),
-            'profile_image' => null,
-        ]);
+    {   
+        $user = new User();
+        $user->name = $data['name'];
+        $user->email = $data['email'];
+        $user->password = bcrypt($data['password']);
+        $user->profile_image = null;
+        $user->is_admin = $data['is_admin'];
+        $user->save();
+
+        if($user->is_admin == 1){
+            $company = new Company();
+            $company->name = $data['companyName'];
+            $company->save();
+            $user->company_id = $company->id;
+            $user->save();
+        }
+        return $user;
+    }
+
+
+    public function showAdminRegistrationForm(){
+        return view ('auth.registerAdmin');
     }
 }
