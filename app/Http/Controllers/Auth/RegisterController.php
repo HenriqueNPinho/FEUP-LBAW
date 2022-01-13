@@ -22,6 +22,8 @@ class RegisterController extends Controller
 
     use RegistersUsers;
 
+    protected $redirectTo = '/email/verify';
+
     /**
      * Create a new controller instance.
      *

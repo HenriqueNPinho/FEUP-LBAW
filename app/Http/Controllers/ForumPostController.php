@@ -38,32 +38,15 @@ class ForumPostController extends Controller
 
         return $forumPost;
     }
-   
-    /**
-     * Creates a new card.
-     *
-     * @return Card The card created.
-     */
-    // public function create(Request $request)
-    // {
-    //   $card = new Card();
 
-    //   $this->authorize('create', $card);
+    public function delete($post_id)
+    {
+        if (!Auth::check()) return redirect ('/login');
+        $post=ForumPost::find($post_id);
+        $this->authorize('postAuthorAccess',$post);
+        $post->deleted=true;
+        $post->save();
+        return;
+    }
 
-    //   $card->name = $request->input('name');
-    //   $card->user_id = Auth::user()->id;
-    //   $card->save();
-
-    //   return $card;
-    // }
-
-    // public function delete(Request $request, $id)
-    // {
-    //   $card = Card::find($id);
-
-    //   $this->authorize('delete', $card);
-    //   $card->delete();
-
-    //   return $card;
-    // }
 }

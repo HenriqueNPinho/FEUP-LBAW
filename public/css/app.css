@@ -76,7 +76,7 @@ main > header {
     border: solid 1px #2646532a;
 }
 
-.navbar-collapse a div:hover{
+.navbar-collapse a div:hover {
     background-color: whitesmoke;
 }
 
@@ -92,7 +92,6 @@ main > header {
     height: 10vh;
     width: 100%;
 }
- 
 
 /*=================================*/
 
@@ -167,8 +166,9 @@ main > header {
     flex-direction: column;
     padding: 2.5em;
     max-width: 20em;
-    -webkit-box-shadow: 0px 5px 20px 3px rgba(138, 138, 138, 0.096);
-    box-shadow: 0px 5px 20px 3px rgba(138, 138, 138, 0.096);
+    -webkit-box-shadow: 0px 5px 20px 3px rgba(138, 138, 138, 0.05);
+    box-shadow: 0px 5px 20px 3px rgba(138, 138, 138, 0.05);
+    border: 1px solid rgba(190, 190, 190, 0.418);
 }
 
 .auth-page form input {
@@ -419,7 +419,6 @@ form h4 {
     background-color: whitesmoke;
 }
 
-
 .slide-right-menu-item div img {
     align-self: center;
     height: 32px;
@@ -476,21 +475,36 @@ form h4 {
     flex-direction: column;
 }
 
-.notification-more-info{
+.notification h6 {
+    margin: 0px;
+    margin-top: 5px;
+    color: #2a9d8f;
+}
+
+.notification > p {
+    margin-top: 5px;
+    margin-bottom: 0px;
+    font-size: 13px;
+}
+
+.notification-more-info {
     align-self: center;
     padding: 10px;
+    width: 100%;
 }
 
-.notification-more-info h4{
+.notification-more-info h4 {
     margin-top: 5px;
     margin-bottom: 5px;
-    font-size: 16px;
+    font-size: 13px;
 }
 
-.notification-more-info p{
+.notification-more-info p {
     margin-top: 0px;
     font-size: 13px;
     margin-bottom: 0px;
+    text-align: left;
+    width: 100%;
 }
 
 .accept-icons-container {
@@ -724,8 +738,10 @@ form h4 {
     box-shadow: 0px 5px 16px 0px rgba(27, 27, 27, 0.05);
 }
 
-.task-preview:hover{
-    background-color: whitesmoke;
+.task-preview:hover {
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    background-color: rgba(255, 255, 255, 0.863);
 }
 
 .task-preview-info {
@@ -888,8 +904,8 @@ form h4 {
     margin-bottom: 0px;
 }
 
-.task-page-comment>div{
-    width: 80%;
+.task-page-comment > div {
+    width: 85%;
 }
 
 .task-page-comment > div > p {
@@ -900,12 +916,11 @@ form h4 {
     border-radius: 5px;
     border-top-left-radius: 0px;
     padding: 13px;
-
 }
 
 .task-page-comment > div > textarea {
     margin-left: 10px;
-    width: 80%;
+    width: 85%;
     font-size: 13px;
     margin-top: 5px;
     background-color: white;
@@ -930,10 +945,9 @@ form h4 {
     margin-top: 10px;
     color: white;
 }
-.task-page-comment > div > h4:hover{
+.task-page-comment > div > h4:hover {
     opacity: 0.8;
 }
-
 
 #new-task-form,
 #edit-task-form {
@@ -1717,7 +1731,7 @@ a {
 
 /* PASSWORD */
 
-#changePassButton{
+#changePassButton {
     margin-left: 20px;
     background-color: #2a9d8f;
     color: white;
@@ -1732,7 +1746,7 @@ a {
     height: auto;
 }
 
-.passInputPlaceHolder{
+.passInputPlaceHolder {
     width: 100%;
 }
 #changeP {
@@ -1996,6 +2010,10 @@ a {
     border-top: solid 1px rgba(177, 177, 177, 0.781);
 }
 
+#project-options div:hover {
+    background-color: whitesmoke;
+}
+
 #project-options div:first-child {
     border-top: none;
 }
@@ -2004,7 +2022,7 @@ a {
     display: flex;
     flex-direction: column;
     margin-left: 50px;
-    width: 7    0%;
+    width: 7 0%;
 }
 
 .settings-form h3 {
@@ -2028,7 +2046,7 @@ a {
     width: 250px;
     height: 31px;
     font-size: 14px;
-    margin-top:5px;
+    margin-top: 5px;
     margin-bottom: 5px;
     padding: 3px;
     font-weight: bolder;
@@ -2038,50 +2056,50 @@ a {
     background-color: #e76f51;
 }
 
-#settings-form-archive-button{
+#settings-form-archive-button {
     background-color: #e76f51;
 }
 
-#settings-form-leave-button{
+#settings-form-leave-button {
     background-color: #e76f51;
 }
 
-.settings-form h3{
+.settings-form h3 {
     margin-top: 40px;
     margin-bottom: 15px;
     font-size: 22px;
 }
 
-.settings-form p{
+.settings-form p {
     margin-top: 0px;
     margin-bottom: 5px;
     width: 60%;
     font-size: 14px;
 }
 
-#assign-member-settings-form-explain{
+#assign-member-settings-form-explain {
     margin-bottom: 10px;
 }
 
-.settings-form button{
+.settings-form button {
     margin-top: 15px;
 }
 
-#project-settings-columns-container{
+#project-settings-columns-container {
     display: flex;
 }
 
-#project-settings-columns-container div:first-child{
+#project-settings-columns-container div:first-child {
     width: 40%;
 }
 
-.settings-form .error{
+.settings-form .error {
     font-size: 14px;
-    color:red;
+    color: red;
 }
 /* #e76f51 */
 
-.extra-members-count-div{
+.extra-members-count-div {
     margin-left: 5px;
     align-self: center;
     margin-bottom: 0px;
@@ -2094,7 +2112,7 @@ a {
     cursor: pointer;
 }
 
-#project-overview-top-bar-left .extra-members-count-div h2{
+#project-overview-top-bar-left .extra-members-count-div h2 {
     font-size: 17px;
     margin-bottom: 0px;
     width: 100%;
@@ -2104,8 +2122,8 @@ a {
 #full-member-list-header {
     display: flex;
     justify-content: space-between;
-    margin-left:5%;
-    margin-right:5%;
+    margin-left: 5%;
+    margin-right: 5%;
 }
 
 #full-member-list-header h2 {
@@ -2123,7 +2141,7 @@ a {
     margin-top: 33px;
 }
 
-#full-member-list{
+#full-member-list {
     display: none;
     position: absolute;
     flex-direction: column;
@@ -2141,12 +2159,12 @@ a {
     margin-bottom: 0px;
 }
 
-#full-member-list-content{
+#full-member-list-content {
     display: flex;
     flex-direction: column;
 }
 
-#full-member-list-content>a>div>img{
+#full-member-list-content > a > div > img {
     height: 50px;
     width: 50px;
     border-radius: 50px;
@@ -2154,16 +2172,16 @@ a {
     align-self: center;
 }
 
-#full-member-list-content>a>div{
+#full-member-list-content > a > div {
     display: flex;
     width: 90%;
     justify-content: center;
     cursor: pointer;
-    padding-left:5%;
-    padding-right:5%;
+    padding-left: 5%;
+    padding-right: 5%;
 }
 
-#full-member-list-content>a>div h2{
+#full-member-list-content > a > div h2 {
     display: flex;
     width: 100%;
     color: #264653;
@@ -2172,24 +2190,69 @@ a {
     font-size: 21px;
 }
 
-#full-member-list-content>a{
+#full-member-list-content > a {
     border-bottom: 1px solid #a8a8a85d;
     padding-bottom: 10px;
-    padding-top : 10px;
+    padding-top: 10px;
     width: 100%;
 }
 
-#full-member-list-content>a:last-of-type{
-    border:none;
+#full-member-list-content > a:last-of-type {
+    border: none;
 }
 
 #add-task-page-comment.task-page-comment {
     width: 100%;
-
 }
 
-#add-task-page-comment.task-page-comment>div{
+#add-task-page-comment.task-page-comment > div {
     display: flex;
     flex-direction: column;
     width: 100%;
+}
+#verify-your-email{
+    justify-content: space-around;
+    align-self: center;
+    text-align: center;
+    margin-top: 20vh;
+    width: 50%;
+}
+
+#verify-email-page button{
+    border: 0;
+    background-color: #2a9d8f;
+    padding: 13 px;
+    border-radius: 20px;
+    height: fit-content;
+    text-align: center;
+    font-size: 14px;
+    font-weight: bold;
+    color: white;
+    margin-top: 10px;
+    width: fit-content;
+    align-self: center ;
+
+}
+
+#verify-email-page button:hover{
+    opacity: 0.8;
+}
+
+#verify-email-page form{
+    all:initial;
+    display: flex;
+    justify-content: space-around;
+}
+
+.green-message{
+    color: #2a9d8f;
+}
+
+#verify-email-page h4{
+    align-self: center;
+}
+
+.delete-post-content{
+    color: #666;
+    font-style: italic;
 }

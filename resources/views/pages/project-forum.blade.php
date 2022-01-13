@@ -36,28 +36,62 @@
         <div id = "forum">
             <div id="forum-posts-container">
                 @foreach($project->forumPosts as $forumPost)
-                
+                @if($forumPost->deleted)
                 <div class = "forumPost">
                     
-                    <img class="forum-post-profile-image" src="{{$forumPost->projectMember->profile_image}}" alt="">
+                    <img class="forum-post-profile-image" src="{{$forumPost->postAuthor->profile_image}}" alt="">
                     <div class="forum-post-name-date-options-content">
                         <div class="forum-post-name-date-options">
                             <div class="forum-post-name-plus-date">
-                                <h5>{{$forumPost->projectMember->name}}</h5>
-                                <h6>{{$forumPost->post_date}}</h6>
+                                <h5>{{$forumPost->postAuthor->name}}</h5>
+                                <h6 class="forum-post-date-value">{{$forumPost->post_date}}</h6>
                             </div>
+                            @if($forumPost->isAuthor(Auth::user()))
                             <div class="forum-post-options-container">
                                 <div class="forum-post-options-menu">
-                                    <div><h4>Edit post</h4></div>
-                                    <div><h4>Delete post</h4></div>
+                                    <div data-id="{{$forumPost->id}}" class="forum-post-edit-post-button"><h4>Edit post</h4></div>
+                                    <div data-id="{{$forumPost->id}}" class="forum-post-delete-post-button"><h4>Delete post</h4></div>
                                 </div>
                                 <img class="forum-post-options-button" src="/images/icons/3points.png" alt="">
                             </div>
+                            @endif
                         </div>
-                        <p>{{$forumPost->content}}</p>
+                        <div>   
+                            <p class="delete-post-content">This post was deleted by the post's author.</p>
+                        </div>
+                        <!-- <textarea name="" id=""></textarea>
+                        <div id="edit-forum-post-save-button">Save</div> -->
                     </div>
                     
                 </div>
+                @else
+                <div class = "forumPost">
+                    
+                    <img class="forum-post-profile-image" src="{{$forumPost->postAuthor->profile_image}}" alt="">
+                    <div class="forum-post-name-date-options-content">
+                        <div class="forum-post-name-date-options">
+                            <div class="forum-post-name-plus-date">
+                                <h5>{{$forumPost->postAuthor->name}}</h5>
+                                <h6 class="forum-post-date-value">{{$forumPost->post_date}}</h6>
+                            </div>
+                            @if($forumPost->isAuthor(Auth::user()))
+                            <div class="forum-post-options-container">
+                                <div class="forum-post-options-menu">
+                                    <div data-id="{{$forumPost->id}}" class="forum-post-edit-post-button"><h4>Edit post</h4></div>
+                                    <div data-id="{{$forumPost->id}}" class="forum-post-delete-post-button"><h4>Delete post</h4></div>
+                                </div>
+                                <img class="forum-post-options-button" src="/images/icons/3points.png" alt="">
+                            </div>
+                            @endif
+                        </div>
+                        <p>{{$forumPost->content}}</p>
+                        <!-- <textarea name="" id=""></textarea>
+                        <div id="edit-forum-post-save-button">Save</div> -->
+                    </div>
+                    
+
+                </div>
+                @endif
                 @endforeach
             </div>
             <div class="new-post-content-input"  data-project-id="{{$project->id}}">

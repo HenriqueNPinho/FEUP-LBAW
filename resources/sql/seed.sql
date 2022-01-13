@@ -34,6 +34,7 @@ CREATE TABLE users (
     password TEXT NOT NULL,
     profile_image TEXT,
     profile_description TEXT,
+    email_verified_at TIMESTAMP WITH TIME ZONE,
     remember_token VARCHAR
 );
 
@@ -101,8 +102,10 @@ CREATE TABLE tasks (
 CREATE TABLE task_assigned(
     project_member_id INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
     task_id INTEGER NOT NULL REFERENCES tasks(id) ON DELETE CASCADE,
-    project_coordinator_id INTEGER,
+    assigned_by_id INTEGER,
+    assigned_on TIMESTAMP WITH TIME ZONE DEFAULT now() NOT NULL,
     notified BOOLEAN DEFAULT FALSE NOT NULL,
+    new_comment BOOLEAN DEFAULT FALSE NOT NULL,
     PRIMARY KEY(project_member_id,task_id)
 );
 
@@ -247,7 +250,9 @@ INSERT INTO users VALUES (
   'John Doe',
   'admin@example.com',
   '$2y$10$HfzIhGCCaxqyaIdGgjARSuOKAcm1Uy82YfLuNaajn6JrjLWy9Sj/W',
-  '/images/avatars/profile-pic-2.png'
+  '/images/avatars/profile-pic-2.png',
+  'Ola o meu nome é John',
+  '2021-12-28 19:10:25+00'
 ); -- Password is 1234. Generated using Hash::make('1234')
 
 INSERT INTO users VALUES (
@@ -255,7 +260,9 @@ INSERT INTO users VALUES (
   'Maria Doe',
   'maria@example.com',
   '$2y$10$HfzIhGCCaxqyaIdGgjARSuOKAcm1Uy82YfLuNaajn6JrjLWy9Sj/W',
-  '/images/avatars/profile-pic.png'
+  '/images/avatars/profile-pic.png',
+  'Ola o meu nome é Maria',
+  '2021-12-28 19:10:25+00'
 ); -- Password is 1234. Generated using Hash::make('1234')
 
 

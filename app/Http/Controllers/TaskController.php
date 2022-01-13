@@ -35,7 +35,7 @@ class TaskController extends Controller
 		if($members!=""){
 			$assignedMembersIDs = explode(",", $members);
 			foreach($assignedMembersIDs as $memberID){
-				$task->members()->attach($memberID);
+				$task->members()->attach($memberID,['assigned_by_id'=>Auth::id()]);
 			}
 		}
 		
@@ -85,7 +85,7 @@ class TaskController extends Controller
 		if($members!=""){
 			$assignedMembersIDs = explode(",", $members);
 			foreach($assignedMembersIDs as $memberID){
-				$task->members()->attach($memberID);
+				$task->members()->attach($memberID,['assigned_by_id'=>Auth::id()]);
 			}
 		}
 		return $task;
@@ -117,6 +117,13 @@ class TaskController extends Controller
         $taskComment->task_id=$task_id;
         $taskComment->project_member_id=Auth::id();
         $taskComment->content=$commentContent;
+        
+        $taskMembers=$task->members()->get();
+        foreach($taskMembers as $member){
+            $member->pivot->new_comment=TRUE;
+            $member->pivot->save();
+            $member->save();
+        }
         $taskComment->save();
         return;
     }

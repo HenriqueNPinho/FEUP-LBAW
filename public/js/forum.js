@@ -3,13 +3,13 @@ function setUpAddNewForumPost() {
     createPostButton.addEventListener("click", function () {
         let projectID = document.querySelector(".new-post-content-input").getAttribute("data-project-id");
         let postContent = document.querySelector("#new-post-text-area-input").value;
-        sendAjaxRequest("post", "/project/" + projectID + "/forum", {content: postContent}, genericResponseHandlerWithRefresh);
+        sendAjaxRequest("put", "/project/" + projectID + "/forum", {content: postContent}, genericResponseHandlerWithRefresh);
     });
 }
 
 function setUpForumPostOptions(){
     let forumPostOptionsContainers = document.querySelectorAll('.forum-post-options-container');
-
+    if(forumPostOptionsContainers==null) return;
     forumPostOptionsContainers.forEach(element => {
         element.addEventListener("click",function(){
             for(let i=0;i<forumPostOptionsContainers.length;i++){
@@ -25,5 +25,15 @@ function setUpForumPostOptions(){
     });
 }
 
+function setUpDeleteForumPost(){
+    let deleteButtons=document.querySelectorAll('.forum-post-delete-post-button');
+    deleteButtons.forEach(element => {
+        element.addEventListener("click",function(){
+            sendAjaxRequest('delete','/project/forum/'+element.getAttribute('data-id'),null,genericResponseHandlerWithRefresh);
+        })
+    });
+}
+
 setUpAddNewForumPost();
 setUpForumPostOptions();
+setUpDeleteForumPost();
