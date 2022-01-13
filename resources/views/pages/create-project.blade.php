@@ -1,5 +1,7 @@
+<html>
+<body>
+ 
 @extends('layouts.app')
-
 @section('content')
 
 <script type="text/javascript" src={{ asset('js/create-project-page.js') }} defer></script>
@@ -50,6 +52,17 @@
   
   </div>
 @endsection
+</body>
+<script>
+  //enter
+document.addEventListener("keyup", function(event) {
+    event.preventDefault();
+    if (event.keyCode === 13) {
+        document.getElementById("nextBtn").click();
+    }
+});
+</script>
+</html>
 
 
 
