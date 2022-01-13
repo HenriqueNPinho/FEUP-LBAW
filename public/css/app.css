@@ -1235,6 +1235,11 @@ form h4 {
     display: block;
     margin-left: auto;
     margin-right: auto;
+    background-color: #dfdfdf;
+    border: 0;
+    color: rgb(126, 126, 126);
+    text-size-adjust: 30%;
+    outline: 0;
 }
 #regForm h5 {
     text-align: center;
@@ -1247,19 +1252,32 @@ form h4 {
     display: block;
     margin-left: auto;
     margin-right: auto;
+    resize: none;
+    background-color: #dfdfdf;
+    border: 0;
+    color: rgb(126, 126, 126);
     width: 40%;
     text-size-adjust: 30%;
-    resize: none;
+    outline: 0;
+    padding: 4px 20px 0;
 }
+
 h1 {
     text-align: center;
 }
 
 #regForm input {
-    padding: 10px;
+    background-color: #dfdfdf;
+    margin-bottom: 20px;
+    border-radius: 2px;
+    border: 0;
+    box-sizing: border-box;
+    color: rgb(126, 126, 126);
+    font-size: 18px;
+    height: 45px;
+    outline: 0;
+    padding: 4px 20px 0;
     width: 100%;
-    font-size: 17px;
-    border: 1px solid #aaaaaa;
 }
 
 /* Mark input boxes that gets an error on validation: */
@@ -1278,6 +1296,7 @@ h1 {
     background-color: #bbbbbb;
 }
 #nextBtn{
+    margin:0 2px;
     cursor: pointer;
     width: 80px;
     padding: 10px;
@@ -1293,7 +1312,9 @@ h1 {
 }
 
 input.invalid {
+    font-weight: bold;
     background-color: #ffdddd;
+    color: #e76f51;
 }
 
 /* Make circles that indicate the steps of the form: */

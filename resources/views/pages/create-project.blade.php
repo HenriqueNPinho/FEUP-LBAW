@@ -36,19 +36,16 @@
   </div>
   </div>
 
-  <div style="overflow:auto;">
-    <div style="float:right;">
+    <div style="float:right;margin-top:40px; overflow:auto;">
       <button type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
       <button type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
     </div>
-  </div>
 
-  <div style="text-align:center;margin-top:40px;">
+  <div style="margin-top:47px; margin-left:48%;">
     <span class="step"></span>
     <span class="step"></span>
     <span class="step"></span>
   </div>
-
 </div>
   
   </div>
