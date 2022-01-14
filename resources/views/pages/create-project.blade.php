@@ -1,5 +1,7 @@
+<html>
+<body>
+ 
 @extends('layouts.app')
-
 @section('content')
 
 <script type="text/javascript" src={{ asset('js/create-project-page.js') }} defer></script>
@@ -36,23 +38,31 @@
   </div>
   </div>
 
-  <div style="overflow:auto;">
-    <div style="float:right;">
+    <div style="float:right;margin-top:40px; overflow:auto;">
       <button type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
       <button type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
     </div>
-  </div>
 
-  <div style="text-align:center;margin-top:40px;">
+  <div style="margin-top:47px; margin-left:48%;">
     <span class="step"></span>
     <span class="step"></span>
     <span class="step"></span>
   </div>
-
 </div>
   
   </div>
 @endsection
+</body>
+<script>
+  //enter
+document.addEventListener("keyup", function(event) {
+    event.preventDefault();
+    if (event.keyCode === 13) {
+        document.getElementById("nextBtn").click();
+    }
+});
+</script>
+</html>
 
 
 

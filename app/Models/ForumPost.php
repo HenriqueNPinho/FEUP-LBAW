@@ -20,12 +20,18 @@ class ForumPost extends Model
     return $this->belongsTo('App\Models\Project');
   }
 
-  public function projectMember() {
-    return $this->belongsTo('App\Models\User');
+  public function postAuthor() {
+    return $this->belongsTo('App\Models\User','project_member_id');
   }
 
   public function postEdition(){
     return $this->hasMany('App\Models\PostEdition');
+  }
+
+  public function isAuthor(User $user)
+  {
+    if($this->postAuthor->id==$user->id) return TRUE;
+    return FALSE;
   }
 
 }

@@ -1,5 +1,5 @@
-var currentTab = 0; //first tab 
-showTab(currentTab); // Display the current tab
+var currentTab = 0;
+showTab(currentTab);
 
 function showTab(n) {
   var x = document.getElementsByClassName("tab");
@@ -23,21 +23,18 @@ function nextPrev(n) {
   if(currentTab<2){
    if (n == 1 && !validateForm()) return false;
   }
-  else {
-    document.getElementsByClassName("step")[currentTab].className += " finish";
-  }
 
   x[currentTab].style.display = "none";
 
   currentTab = currentTab + n;
- 
+
+  //console.log("Current tab= "+currentTab+" x= "+x.length);
+
   if (currentTab >= x.length) {
-   
    sendCreateProjectRequest();
    window.location.replace("/projects");
-    return false;
+  return false;
   }
-
   showTab(currentTab);
 }
 

@@ -37,9 +37,9 @@ CREATE TABLE users (
     password TEXT NOT NULL,
     profile_image TEXT,
     profile_description TEXT DEFAULT NULL,
-    -- remember_token VARCHAR,
     is_admin BOOLEAN DEFAULT FALSE NOT NULL,
-    company_id INTEGER REFERENCES companys(id)
+    company_id INTEGER REFERENCES companys(id),
+    email_verified_at TIMESTAMP WITH TIME ZONE
 );
 
 CREATE TABLE work(
@@ -86,8 +86,10 @@ CREATE TABLE tasks (
 CREATE TABLE task_assigned(
     project_member_id INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
     task_id INTEGER NOT NULL REFERENCES tasks(id) ON DELETE CASCADE,
-    project_coordinator_id INTEGER,
+    assigned_by_id INTEGER,
+    assigned_on TIMESTAMP WITH TIME ZONE DEFAULT now() NOT NULL,
     notified BOOLEAN DEFAULT FALSE NOT NULL,
+    new_comment BOOLEAN DEFAULT FALSE NOT NULL,
     PRIMARY KEY(project_member_id,task_id)
 );
 
@@ -124,7 +126,7 @@ CREATE TABLE favorite(
 
 CREATE TABLE post_edition(
     id SERIAL PRIMARY KEY,
-    post_id INTEGER NOT NULL REFERENCES forum_post(id),
+    forum_post_id INTEGER NOT NULL REFERENCES forum_post(id),
     edit_date TIMESTAMP WITH TIME ZONE DEFAULT now() NOT NULL,
     content TEXT
 );
@@ -232,7 +234,9 @@ INSERT INTO users VALUES (
   '$2y$10$HfzIhGCCaxqyaIdGgjARSuOKAcm1Uy82YfLuNaajn6JrjLWy9Sj/W',
   '/images/avatars/profile-pic-2.png',
   DEFAULT,
-  FALSE
+  FALSE,
+  NULL,
+  '2021-12-28 19:10:25+00'
 ); -- Password is 1234. Generated using Hash::make('1234')
 
 INSERT INTO users VALUES (
@@ -242,7 +246,9 @@ INSERT INTO users VALUES (
   '$2y$10$HfzIhGCCaxqyaIdGgjARSuOKAcm1Uy82YfLuNaajn6JrjLWy9Sj/W',
   '/images/avatars/profile-pic-2.png',
   DEFAULT,
-  FALSE
+  FALSE,
+  NULL,
+  '2021-12-28 19:10:25+00'
 ); -- Password is 1234. Generated using Hash::make('1234')
 
 INSERT INTO companys VALUES(1,'FEUP');
@@ -255,7 +261,8 @@ INSERT INTO users VALUES (
   '/images/avatars/profile-pic-2.png',
   DEFAULT,
   TRUE,
-  1
+  1,
+  '2021-12-28 19:10:25+00'
 ); -- Password is 1234. Generated using Hash::make('1234')
 
 INSERT INTO projects VALUES(DEFAULT,1,'LBAW','Um trabalho que me faz querer cortar os pulsos','2021-08-24', '2022-08-24', DEFAULT);

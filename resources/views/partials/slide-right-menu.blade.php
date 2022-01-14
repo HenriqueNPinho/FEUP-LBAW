@@ -32,20 +32,14 @@
     
 
     <div id="notification-container">
-        <div class="notification assigned-notification">
-            <p>Coordinator's Name assigned you to a task:</p>
+        <!-- <div class="notification assigned-notification">
+            <p>Someone assigned you to a task:</p>
             <div class="notification-more-info">
                 <h4>Task Name</h4>
-                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quaerat, ullam.    </p>
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quaerat, ullam.</p>
             </div>
-        </div>
-        <div class="slide-right-menu-divider"></div>
-        <div class="notification assigned-notification">
-            <p>Coordinator's Name assigned you to a task:</p>
-            <div class="notification-more-info">
-                <h4>Task Name</h4>
-                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quaerat, ullam.    </p>
-            </div>
-        </div>
+            <h6>2021-01-07</h6>
+        </div> -->
+        <div class="slide-right-menu-divider"></div>       
     </div>
 </div>

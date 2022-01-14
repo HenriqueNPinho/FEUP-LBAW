@@ -4,12 +4,13 @@ namespace App\Models;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 
 use App\Models\Project;
 use App\Models\Admin;
 use App\Models\Company;
 
-class User extends Authenticatable
+class User extends Authenticatable implements MustVerifyEmail
 {
     use Notifiable;
 
@@ -48,7 +49,7 @@ class User extends Authenticatable
     }
 
     public function tasks() {
-        return $this->belongsToMany('App\Models\Task','task_assigned','project_member_id','task_id');
+        return $this->belongsToMany('App\Models\Task','task_assigned','project_member_id','task_id')->withPivot('assigned_by_id','assigned_on','new_comment');
     }
 
     public function companies(){
@@ -71,4 +72,5 @@ class User extends Authenticatable
         }
         return FALSE;
     }
+
 }

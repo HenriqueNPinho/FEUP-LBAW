@@ -24,10 +24,10 @@ class RegisterController extends Controller
     */
 
     use RegistersUsers;
-    
-    protected $redirectTo = '/';
-    
-    /**$
+
+    protected $redirectTo = '/email/verify';
+
+    /**
      * Create a new controller instance.
      *
      * @return void
