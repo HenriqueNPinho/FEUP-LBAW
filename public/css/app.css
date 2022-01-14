@@ -1538,12 +1538,13 @@ a {
 .divIconUserPage{
     display: flex;
     flex-flow : row;
+    justify-content: space-between;
 }
 
 .iconUserPage{
     color: #264653;
     align-self: center;
-    margin-right: 10px;
+    margin-right: 20px;
 }
 /*--------------------*/
 /* EDIT USER PAGE */
@@ -1779,6 +1780,10 @@ a {
     justify-content: center;
 }
 
+.divIconUserPageP{
+    display: flex;
+    flex-flow: row;
+}
 /* PASSWORD */
 
 #changePassButton{
@@ -2400,4 +2405,10 @@ a {
 
 .adminMemberName{
     margin-left:25px;
+}
+
+.iconAdminHome{
+    color: #264653;
+    align-self: center;
+    margin-right: 20px;
 }
