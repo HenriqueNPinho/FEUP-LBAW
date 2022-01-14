@@ -283,27 +283,33 @@ function viewFullTask() {
     let addCommentButton = document.querySelector("#add-task-comment-button");
     addCommentButton.addEventListener("click",function(){
         let content=document.querySelector('#add-task-comment-content-input');
+        if(content.value=="") return;
         sendAjaxRequest('put','/api/task/'+task["id"]+'/addComment',{content:content.value},function(){
-            genericResponseHandler();
+            let responseHandler=genericResponseHandler.bind(this);
+            responseHandler();
             let comment=document.createElement("div");
             comment.setAttribute("class","task-page-comment");
-            let image=addTaskElement.querySelector("img");
+            let image=addTaskElement.querySelector("img").getAttribute("src");
+            let imageCopy=document.createElement("img");
+            imageCopy.setAttribute("src",image);
             let commentDiv=document.createElement("div");
-            let commentAuthorH5=addTaskElement.querySelector("h5");
+            let commentAuthor=addTaskElement.querySelector("h5").innerText;
+            let commentAuthorH5=document.createElement("h5");
+            commentAuthorH5.innerHTML=commentAuthor;
             let commentContentP=document.createElement("p");
             commentContentP.innerHTML=content.value;
             commentDiv.appendChild(commentAuthorH5);
             commentDiv.appendChild(commentContentP);
-            comment.appendChild(image);
+            comment.appendChild(imageCopy);
             comment.appendChild(commentDiv);
             commentContainer.appendChild(comment);
+            content.value="";
         })
     })
 
 
 }
 
-function commentBuilder(){}
 
 function editTask(task) {
     let projectAreaCover = document.querySelector(

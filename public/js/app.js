@@ -49,6 +49,102 @@ function setUpSlideRightMenu() {
             notifications.addEventListener("click",function(){
                 notificationsContainer.style.display="flex";
                 mainOptionsContainer.style.display="none"
+
+                sendAjaxRequest('get','/api/user/notifications/'+id,null,function(){
+                    notificationsContainer.innerHTML="";
+                    let responseHandler=genericResponseHandler.bind(this);
+                    responseHandler();
+                    let assignedTaskNotifications=JSON.parse(this.response)[0];
+                    let taskCommentNotifications=JSON.parse(this.response)[1];
+                    let projectMembers=JSON.parse(this.response)[2];
+                    let divsToAppend=[];
+
+                    console.log(JSON.parse(this.response));
+                    assignedTaskNotifications.forEach(element => {
+                        let newAssignedTaskNotification=document.createElement("div");
+                        newAssignedTaskNotification.setAttribute("class","notification assigned-notification");
+                        let firstText=document.createElement("p");
+                    
+                        //isto não pode ficar assim
+                        let assignedByName;
+                        projectMembers.forEach(member => {
+                            if(element["pivot"]["assigned_by_id"]==member["id"]){
+                                assignedByName=member["name"];
+                            }
+                        });
+
+                        firstText.innerHTML=assignedByName+" assigned you a task:";
+                        newAssignedTaskNotification.appendChild(firstText);
+                        let innerDiv=document.createElement("div");
+                        innerDiv.setAttribute("class","notification-more-info")
+                        let taskName=document.createElement("h4");
+                        taskName.innerHTML=element["name"];
+                        let taskDescription=document.createElement("p");
+                        taskDescription.innerHTML=element["description"].substring(0,30);
+                        innerDiv.appendChild(taskName);
+                        innerDiv.appendChild(taskDescription);
+                        newAssignedTaskNotification.appendChild(innerDiv);
+                        let date=document.createElement("h6");
+                        date.setAttribute("id","notification-date-time")
+                        let dateValue=new Date(element["pivot"]["assigned_on"]);
+                        date.setAttribute('data-value',dateValue)
+                        date.innerHTML=dateValue.toLocaleString('pt-PT');
+                        newAssignedTaskNotification.appendChild(date);
+                        divsToAppend.push(newAssignedTaskNotification);
+                        
+                    });
+
+                    taskCommentNotifications.forEach(element => {
+                        let newCommentNotification=document.createElement("div");
+                        newCommentNotification.setAttribute("class","notification assigned-notification");
+                        let firstText=document.createElement("p");
+                        
+                        let commentedByName;
+                        projectMembers.forEach(member => {
+                            if(element["project_member_id"]==member["id"]){
+                                commentedByName=member["name"];
+                            }
+                        });
+
+                        firstText.innerHTML=commentedByName+" commented on a task you are assigned to:";
+                        newCommentNotification.appendChild(firstText);
+                        let innerDiv=document.createElement("div");
+                        innerDiv.setAttribute("class","notification-more-info")
+                        let taskName=document.createElement("h4");
+                        taskName.innerHTML="Comment:";
+                        let taskDescription=document.createElement("p");
+                        taskDescription.innerHTML=element["content"].substring(0,30);
+                        innerDiv.appendChild(taskName);
+                        innerDiv.appendChild(taskDescription);
+                        newCommentNotification.appendChild(innerDiv);
+                        let date=document.createElement("h6");
+                        date.setAttribute("id","notification-date-time")
+                        let dateValue=new Date(element["comment_date"]);
+                        date.setAttribute('data-value',dateValue)
+                        date.innerHTML=dateValue.toLocaleString('pt-PT');
+                        newCommentNotification.appendChild(date);
+                        divsToAppend.push(newCommentNotification);
+                    });
+
+                    divsToAppend.sort(function(a,b){
+                        
+                        if (new Date(a.querySelector('#notification-date-time').getAttribute('data-value'))>new Date(b.querySelector('#notification-date-time').getAttribute('data-value'))){
+                            return -1;
+                        }
+                        if (new Date(a.querySelector('#notification-date-time').getAttribute('data-value'))<new Date(b.querySelector('#notification-date-time').getAttribute('data-value'))){
+                            return 1;
+                        }
+                        return 0;
+                    })
+
+                    divsToAppend.forEach(element => {
+                        let divider=document.createElement("div");
+                        divider.setAttribute("class","slide-right-menu-divider");   
+                        notificationsContainer.appendChild(divider);
+                        notificationsContainer.appendChild(element);
+                    });
+
+                })
                 
             })
         });
@@ -69,6 +165,7 @@ function genericResponseHandlerWithRefresh() {
 
 function genericResponseHandler() {
     if (this.status >= 400) {
+        alert(this.status);
         if(this.response!=""||this.response!=null)
             alert(this.response);
         location.reload(true);
@@ -108,15 +205,3 @@ function sendAjaxRequest(method, url, data, handler) {
 
 setUpDropDownMenu();
 setUpSlideRightMenu();
-
-/* ======================================================== */
-/* ADMIN CODE */
-
-function adminCollapse(elementID){
-    var content = document.getElementById(elementID);
-    if (content.style.display === "block") {
-        content.style.display = "none";
-    } else {
-        content.style.display = "block";
-    }
-}

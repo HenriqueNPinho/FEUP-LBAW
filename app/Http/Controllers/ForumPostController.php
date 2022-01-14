@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\ForumPost;
+use App\Models\PostEdition;
+
 use App\Models\User;
 use App\Models\Task;
 use App\Models\Project;
@@ -38,32 +40,31 @@ class ForumPostController extends Controller
 
         return $forumPost;
     }
-   
-    /**
-     * Creates a new card.
-     *
-     * @return Card The card created.
-     */
-    // public function create(Request $request)
-    // {
-    //   $card = new Card();
 
-    //   $this->authorize('create', $card);
+    public function delete($post_id)
+    {
+        if (!Auth::check()) return redirect ('/login');
+        $post=ForumPost::find($post_id);
+        $this->authorize('postAuthorAccess',$post);
+        $post->deleted=true;
+        $post->save();
+        return;
+    }
 
-    //   $card->name = $request->input('name');
-    //   $card->user_id = Auth::user()->id;
-    //   $card->save();
+    public function edit(Request $request,$post_id)
+    {
+        if (!Auth::check()) return redirect ('/login');
+        $post=ForumPost::find($post_id);
+        $this->authorize('postAuthorAccess',$post);
+        if($post->deleted) return;
+        $oldPost=new PostEdition();
+        $oldPost->forum_post_id=$post->id;
+        $oldPost->edit_date= date('Y-m-d H:i:s+00');
+        $oldPost->content=$post->content;
+        $oldPost->save();
+        $post->content = $request->input('newContent');
+        $post->save();
+        return;
+    }
 
-    //   return $card;
-    // }
-
-    // public function delete(Request $request, $id)
-    // {
-    //   $card = Card::find($id);
-
-    //   $this->authorize('delete', $card);
-    //   $card->delete();
-
-    //   return $card;
-    // }
 }

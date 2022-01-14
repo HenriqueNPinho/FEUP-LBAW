@@ -16,18 +16,6 @@ use App\Models\Company;
 
 class UserController extends Controller
 {
-    /**
-     * Show the form for editing the specified User.
-     *
-     * @return Response
-     * 
-     */
-    public function edit()
-    {
-        $user = Auth::user();
-
-        return view('pages.edit-userpage', ['user' => $user]);
-    }
 
     /**
      * Get a validator for an incoming registration request.
@@ -58,13 +46,7 @@ class UserController extends Controller
         Auth::logout();
         $user->delete();
         
-        return Redirect::route('homepage'); 
-    }
-
-    public function getNotifications()
-    {
-        $user = Auth::user();
-        return $user->projectInvitations;
+        return Redirect::route('home'); 
     }
     
     public function showChangePassword(Request $request){
@@ -176,6 +158,26 @@ class UserController extends Controller
         return view('pages.view-only-userpage',['user'=>$coworker]);
     }
 
+    public function notifications($project_id)
+    {
+        $projectMembers=Auth::user()->projects()->where('project_id',$project_id)->first()->members;
+        $assignedTasks=Auth::user()->tasks()->where('project_id',$project_id)->get();
+        $taskNotifications=[];
+        $taskCommentsNotifications=[];
+        foreach($assignedTasks as $task){
+            if($task->project_id!=$project_id) continue;
+            if($task->notified==FALSE){
+                array_push($taskNotifications,$task);
+            }
+            if($task->pivot->new_comment==true){
+                array_push($taskCommentsNotifications,$task->comments->first());
+            }
+        }
+
+        return [$taskNotifications,$taskCommentsNotifications,$projectMembers];
+    }
+
+    
     public function showUserPage(){
         if (Auth::check()) {
             $user = Auth::user();
