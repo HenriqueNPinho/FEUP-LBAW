@@ -29,4 +29,8 @@ class HomepageController extends Controller
 
         return view('pages.homepage');
     }
+
+    public function showFaqPage(){
+        return view('pages.faq');
+    }
 }

@@ -77,3 +77,6 @@ Route::get('logout', 'Auth\LoginController@logout')->name('logout');
 
 //adminHomePage
 Route::get('adminHomePage', 'AdminController@showAdminPage');
+
+//faq
+Route::get('faq', 'HomepageController@showFaqPage');
