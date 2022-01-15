@@ -50,7 +50,7 @@ class User extends Authenticatable implements MustVerifyEmail,CanResetPassword
     }
 
     public function tasks() {
-        return $this->belongsToMany('App\Models\Task','task_assigned','project_member_id','task_id')->withPivot('assigned_by_id','assigned_on','new_comment');
+        return $this->belongsToMany('App\Models\Task','task_assigned','project_member_id','task_id')->withPivot('assigned_by_id','assigned_on','new_comment','notified');
     }
 
     public function companies(){
@@ -72,6 +72,21 @@ class User extends Authenticatable implements MustVerifyEmail,CanResetPassword
                 return TRUE;
         }
         return FALSE;
+    }
+
+    public function numberNotifications($project_id){
+        $assignedTasks=$this->tasks()->where('project_id',$project_id)->get();
+        $count=0;
+        foreach($assignedTasks as $task){
+            if($task->project_id!=$project_id) continue;
+            if($task->pivot->notified===false){
+                $count=$count+1;
+            }
+            if($task->pivot->new_comment===true){
+                $count=$count+1;
+            }
+        }
+        return $count;
     }
 
 }

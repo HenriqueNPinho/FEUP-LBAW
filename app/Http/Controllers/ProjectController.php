@@ -35,7 +35,6 @@ class ProjectController extends Controller
         if (!Auth::check()) return redirect('/login');
         $this->authorize('userAccess', Project::class);
         $projects = Auth::user()->projects()->orderBy('id')->get();
-        
         return view('pages.projects', ['projects' => $projects]);
     }
 

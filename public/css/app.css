@@ -10,6 +10,10 @@ button {
     font-family: "Montserrat", sans-serif;
 }
 
+input{
+    font-family: "Montserrat", sans-serif;
+}
+
 /******Header******/
 main > header {
     display: flex;
@@ -109,19 +113,19 @@ main > header {
 
 /*REGISTER OPTIONS*/
 
-.hrAdmin{
+.hrAdmin {
     width: 100%;
     height: 3px;
     background-color: #264653;
 }
 
-.adminOptions{
+.adminOptions {
     width: 300px;
     border-right: 1px solid #000000;
     border-left: 1px solid #000000;
     border-bottom: 1px solid #000000;
     background-color: rgb(236, 235, 235);
-    right:40px;
+    right: 40px;
     padding: 5px;
     font-weight: 500;
 }
@@ -138,7 +142,7 @@ main > header {
     color: rgb(119, 118, 118);
 }
 
-.adminItem{
+.adminItem {
     height: 40px;
     justify-content: center;
 }
@@ -215,7 +219,7 @@ main > header {
     border: 0;
     box-sizing: border-box;
     color: rgb(126, 126, 126);
-    font-size: 18px;
+    font-size: 15px;
     height: 45px;
     outline: 0;
     padding: 4px 20px 0;
@@ -227,25 +231,6 @@ main > header {
     color: #ff3333;
 }
 
-#remember-me {
-    display: flex;
-    padding-bottom: 20px;
-}
-
-#remember-me h4 {
-    font-weight: normal;
-    margin: 0;
-    font-size: 13px;
-    align-self: center;
-    margin-right: 10px;
-}
-
-#remember-me input {
-    margin: 0;
-    height: 15px;
-    width: 15px;
-    align-self: center;
-}
 
 form button {
     border: 0;
@@ -342,6 +327,7 @@ form h4 {
     height: 100px;
     width: 100px;
     border: 4px solid #264653;
+    border-radius: 5px;
 }
 .project-select .project-icon-big h5 {
     align-self: center;
@@ -381,6 +367,7 @@ form h4 {
     height: 2.8vw;
     width: 2.8vw;
     border: 3px solid #264653;
+    border-radius: 5px;
     padding: auto;
     background-color: white;
     margin-top: 1vw;
@@ -388,14 +375,14 @@ form h4 {
 
 .project-icon h5 {
     align-self: center;
-    font-size: 0.60vw;
+    font-size: 0.6vw;
     font-weight: bold;
     text-align: center;
 }
 
 #add-project {
     align-self: center;
-    padding-top: 1.1vw;;
+    padding-top: 1.1vw;
 }
 #add-project img {
     height: 1.7vw;
@@ -438,7 +425,9 @@ form h4 {
     margin-left: 5%;
     height: 90vh;
     background-color: #dfdfdf;
-    width: 15%;
+    width: fit-content;
+    max-width: 18%;
+    min-width: 13%;
     overflow-y: auto;
     scrollbar-width: thin;
 }
@@ -654,7 +643,7 @@ form h4 {
     position: relative;
     width: 20rem;
     height: 35px;
-    background: #2a9d8f;
+    background: #264653;
     border-radius: 15px;
 }
 
@@ -678,7 +667,7 @@ form h4 {
     outline: 0;
     width: 100%;
     background: #fff;
-    border: 2px solid #2a9d8f;
+    border: 2px solid #264653;
     padding: 0 10px;
     border-radius: 15px;
     appearance: none;
@@ -695,7 +684,7 @@ form h4 {
     width: 50px;
     font-weight: bold;
     color: white;
-    background: #2a9d8f;
+    background: #264653;
     border-radius: 0 15px 15px 0;
 }
 #search-tasks-form input:not(:placeholder-shown) {
@@ -733,7 +722,7 @@ form h4 {
     padding-top: 20px;
     padding-left: 30px;
     padding-right: 30px;
-    width: 25%;
+    width: 22%;
     height: 70vh;
     background-color: #ececec;
     border-radius: 3px;
@@ -765,6 +754,7 @@ form h4 {
     cursor: pointer;
     padding-left: 5%;
     padding-right: 5%;
+    border-radius: 3px;
     display: flex;
     justify-content: space-between;
     align-self: center;
@@ -1301,24 +1291,24 @@ h1 {
     cursor: pointer;
     width: 100px;
     padding: 10px;
-    border:none;
+    border: none;
     border-radius: 30px;
     text-transform: uppercase;
     font-size: 15px;
     opacity: 0.8;
     background-color: #bbbbbb;
 }
-#nextBtn{
-    margin:0 2px;
+#nextBtn {
+    margin: 0 2px;
     cursor: pointer;
     width: 80px;
     padding: 10px;
-    border:none;
+    border: none;
     border-radius: 30px;
     text-transform: uppercase;
     font-size: 15px;
     opacity: 0.8;
-    background-color:#2a9d8f;
+    background-color: #2a9d8f;
 }
 .tab {
     display: none;
@@ -1353,32 +1343,30 @@ input.invalid {
 
 /*FAQ*/
 
-#FAQ{
+#FAQ {
     margin: 100px auto;
     padding: 40px;
     width: 70%;
     min-width: 300px;
 }
-#FAQ-body body{
-        font-family: "Montserrat", sans-serif;
-        color:#264653;
-    
+#FAQ-body body {
+    font-family: "Montserrat", sans-serif;
+    color: #264653;
 }
-.faq-heading{
+.faq-heading {
     border-bottom: #777;
     padding: 20px 60px;
 }
-.faq-container{
+.faq-container {
     display: flex;
     justify-content: center;
     flex-direction: column;
-    }
-.hr-line{
+}
+.hr-line {
     width: 60%;
     margin: auto;
-    }
+}
 .faq-page {
-
     color: #444;
     cursor: pointer;
     padding: 30px 20px;
@@ -1388,17 +1376,16 @@ input.invalid {
     transition: 0.4s;
     margin: auto;
 }
-.faq-body{
+.faq-body {
     margin: auto;
-    text-align: center; 
-   width: 50%; 
-   padding: auto;
+    text-align: center;
+    width: 50%;
+    padding: auto;
 }
 
 .active,
 .faq-page:hover {
     background: rgba(42, 157, 143, 0.2);
-    
 }
 .faq-body {
     padding: 0 18px;
@@ -1409,14 +1396,14 @@ input.invalid {
 /*sinal de mais*/
 .faq-page:after {
     color: #264653;
-    content: '\02795';
+    content: "\02795";
     font-size: 13px;
     float: right;
     margin-left: 5px;
 }
 /*sinal de menos*/
 .active:after {
-    color:#264653;
+    color: #264653;
     content: "\2796";
 }
 
@@ -1638,13 +1625,13 @@ a {
     color: black;
 }
 
-.divIconUserPage{
+.divIconUserPage {
     display: flex;
-    flex-flow : row;
+    flex-flow: row;
     justify-content: space-between;
 }
 
-.iconUserPage{
+.iconUserPage {
     color: #264653;
     align-self: center;
     margin-right: 20px;
@@ -1883,7 +1870,7 @@ a {
     justify-content: center;
 }
 
-.divIconUserPageP{
+.divIconUserPageP {
     display: flex;
     flex-flow: row;
 }
@@ -2008,7 +1995,7 @@ a {
     margin-top: 20px;
 }
 
-#keep-scroll-at-bottom{
+#keep-scroll-at-bottom {
     display: flex;
     flex-direction: column-reverse;
     overflow-y: auto;
@@ -2102,7 +2089,11 @@ a {
     top: 10px;
 }
 
-.forumPost:last-child>.forum-post-name-date-options-content>.forum-post-name-date-options>.forum-post-options-container>.forum-post-options-menu{
+.forumPost:last-child
+    > .forum-post-name-date-options-content
+    > .forum-post-name-date-options
+    > .forum-post-options-container
+    > .forum-post-options-menu {
     top: -65px;
 }
 
@@ -2383,7 +2374,7 @@ a {
     flex-direction: column;
     width: 100%;
 }
-#verify-your-email{
+#verify-your-email {
     justify-content: space-around;
     align-self: center;
     text-align: center;
@@ -2391,7 +2382,7 @@ a {
     width: 50%;
 }
 
-#verify-email-page button{
+#verify-email-page button {
     border: 0;
     background-color: #2a9d8f;
     padding: 13 px;
@@ -2403,63 +2394,62 @@ a {
     color: white;
     margin-top: 10px;
     width: fit-content;
-    align-self: center ;
-
+    align-self: center;
 }
 
-#verify-email-page button:hover{
+#verify-email-page button:hover {
     opacity: 0.8;
 }
 
-#verify-email-page form{
-    all:initial;
+#verify-email-page form {
+    all: initial;
     display: flex;
     justify-content: space-around;
 }
 
-.green-message{
+.green-message {
     color: #2a9d8f;
 }
 
-#verify-email-page h4{
+#verify-email-page h4 {
     align-self: center;
 }
 
-.delete-post-content{
+.delete-post-content {
     color: #666;
     font-style: italic;
 }
 
 /* =================================================================== */
 /*ADMIN USER PAGE */
-#profileAdmin{
+#profileAdmin {
     display: flex;
     flex-flow: column;
 }
 
-.adminTextSpace{
+.adminTextSpace {
     width: 100%;
 }
 
-.buttonAdmin{
+.buttonAdmin {
     margin: 6px;
 }
 
-.hiddenIsAdmin{
-    display:none
+.hiddenIsAdmin {
+    display: none;
 }
 
 /* =================================================================== */
 /*ADMIN HOME PAGE */
 
-#adminHomePage{
+#adminHomePage {
     width: 100%;
     height: 100%;
     display: flex;
     flex-flow: row;
 }
 
-.adminZone{
+.adminZone {
     width: 50%;
     height: 100%;
     text-align: center;
@@ -2467,19 +2457,19 @@ a {
     flex-flow: column;
 }
 
-#companyUserZone{
-   /* border-right-style: solid; */
+#companyUserZone {
+    /* border-right-style: solid; */
 }
 
-#projectsZone{
+#projectsZone {
     border-left-style: solid;
 }
 
-.adminHeading{
-    color : #264653;
+.adminHeading {
+    color: #264653;
 }
 
-.adminUser{
+.adminUser {
     background-color: rgb(233, 231, 231);
     height: 35px;
     margin: 10px;
@@ -2487,11 +2477,11 @@ a {
     flex-flow: row;
 }
 
-.iconRemoveUser{
+.iconRemoveUser {
     color: black;
 }
 
-#currentUsers{
+#currentUsers {
     width: 100%;
     display: flex;
     flex-flow: column;
@@ -2500,32 +2490,32 @@ a {
     align-items: center;
 }
 
-.adminProject{
+.adminProject {
     width: 300px;
     height: 150px;
     background-color: rgb(233, 231, 231);
     margin: 10px;
 }
 
-#currentProjects{
+#currentProjects {
     display: flex;
     flex-flow: row wrap;
     align-self: center;
     justify-content: center;
 }
 
-.adminProjectTitle{
+.adminProjectTitle {
     background-color: rgb(202, 199, 199);
     height: 30px;
     display: flex;
     justify-content: center;
 }
 
-.adminNameParameter{
+.adminNameParameter {
     align-self: center;
 }
 
-#divButtonsAdmin{
+#divButtonsAdmin {
     display: flex;
     flex-flow: row;
     width: 620px;
@@ -2534,69 +2524,68 @@ a {
     margin-bottom: 30px;
 }
 
-.adminButton{
-    width:50%;
+.adminButton {
+    width: 50%;
     display: flex;
     justify-content: center;
 }
 
-.adminGreen{
+.adminGreen {
     background-color: #2a9d8f;
 }
 
-.adminOrange{
-    background-color: #f4a261
+.adminOrange {
+    background-color: #f4a261;
 }
 
-.bold{
+.bold {
     font-weight: bold;
 }
 
-.adminButtonText{
+.adminButtonText {
     color: white;
     text-transform: uppercase;
     text-align: center;
     font-weight: bold;
 }
 
-.adminUserTitle{
+.adminUserTitle {
     height: 60px;
     justify-content: center;
 }
 
-.zonaAdminMember{
+.zonaAdminMember {
     width: 70%;
     align-self: center;
     margin-bottom: 80px;
 }
 
-.adminMemberName{
-    margin-left:25px;
+.adminMemberName {
+    margin-left: 25px;
 }
 
-.iconAdminHome{
+.iconAdminHome {
     color: #264653;
     align-self: center;
     margin-right: 20px;
 }
-#deleted-forum-post-icon-plus-text-content{
+#deleted-forum-post-icon-plus-text-content {
     display: flex;
     margin-top: 10px;
     margin-bottom: 10px;
 }
 
-#deleted-forum-post-icon-plus-text-content p{
-    margin:0px;
+#deleted-forum-post-icon-plus-text-content p {
+    margin: 0px;
 
-    margin-left:5px;
-
+    margin-left: 5px;
 }
 
-#deleted-forum-post-icon-plus-text-content span{
-    color:#666;    
+#deleted-forum-post-icon-plus-text-content span {
+    color: #666;
 }
 
-#edit-forum-post-save-button{
+#edit-forum-post-save-button {
     border: 0;
     background-color: #2a9d8f;
     padding: 7px;
@@ -2608,16 +2597,63 @@ a {
     font-weight: bold;
     width: fit-content;
     cursor: pointer;
-    align-self:flex-end;
+    align-self: flex-end;
     margin-right: 20px;
     margin-top: 10px;
 }
 
-#edit-forum-post-textarea{
-    margin-top:5px;
+#edit-forum-post-textarea {
+    margin-top: 5px;
     margin-right: 20px;
     resize: none;
-    border:1px solid rgba(102, 102, 102, 0.39);
+    border: 1px solid rgba(102, 102, 102, 0.39);
     padding: 5px;
     border-radius: 1px;
+}
+
+.project-icon-number-notifications {
+    position: relative;
+    height: 1.2vw;
+    width: 1.2vw;
+    border-radius: 1.3vw;
+    background-color: #e76f51;
+    border:1px solid #e76f51;
+
+    top:-3.5vw;
+    display: flex;
+    right: 10px;
+    justify-content: space-around;
+
+}
+
+.project-icon-number-notifications h6 {
+    margin: 0;
+    align-self: center;
+    color: white;
+}
+
+.project-icon-number-notifications-container{
+    position: relative;
+    height: 0px;
+    align-self: flex-end;
+}
+
+.auth-page #forgot-password{
+    font-size: 13px;
+    color: black;
+    margin-bottom: 20px;
+    text-decoration: underline;
+    text-align: center;
+}
+
+#reset-password-instructions{
+    font-size: 13px;
+    margin-top:0px;
+    margin-bottom: 10px;
+}
+
+.alert-success{
+    font-size: 13px;
+    margin-bottom:10px;
+    color:#2a9d8f;
 }

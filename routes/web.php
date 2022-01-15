@@ -2,7 +2,7 @@
 
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Password;
 
 
 /*
@@ -70,8 +70,16 @@ Route::get('create-project', 'ProjectController@getCreateProject')->middleware('
 // ==============================================
 // Authentication -> User
 //login
-Route::get('login', 'Auth\LoginController@showLoginForm');
-Route::post('login', 'Auth\LoginController@login')->name('login');
+Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
+Route::post('login', 'Auth\LoginController@login');
+
+Route::get('/forgot-password', 'Auth\PasswordResetController@get')->middleware('guest')->name('password.request');
+
+Route::post('/forgot-password', 'Auth\PasswordResetController@sendResetLink')->middleware('guest')->name('password.email');
+
+Route::get('/reset-password/{token}', 'Auth\PasswordResetController@getResetForm')->middleware('guest')->name('password.reset');
+
+Route::post('/reset-password', 'Auth\PasswordResetController@resetPassword')->middleware('guest')->name('password.update');
 
 //register
 Route::get('register', 'Auth\RegisterController@showRegistrationForm');

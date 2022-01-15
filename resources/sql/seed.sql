@@ -3,7 +3,7 @@ create schema if not exists lbaw21;
 
 
 DROP TABLE IF EXISTS users CASCADE;
-DROP TABLE IF EXISTS companys CASCADE;
+DROP TABLE IF EXISTS companies CASCADE;
 DROP TABLE IF EXISTS work CASCADE;
 DROP TABLE IF EXISTS projects CASCADE;
 DROP TABLE IF EXISTS project_coordinator CASCADE;
@@ -15,6 +15,7 @@ DROP TABLE IF EXISTS forum_post CASCADE;
 DROP TABLE IF EXISTS invitation CASCADE;
 DROP TABLE IF EXISTS favorite CASCADE;
 DROP TABLE IF EXISTS post_edition CASCADE;
+DROP TABLE IF EXISTS password_resets CASCADE;
 
 DROP TYPE IF EXISTS task_status CASCADE;
 
@@ -25,10 +26,18 @@ DROP FUNCTION IF EXISTS task_search_update CASCADE;
 
 CREATE TYPE task_status AS ENUM('Not Started','In Progress', 'Complete');
 
-CREATE TABLE companys(
+CREATE TABLE companies(
     id SERIAL PRIMARY KEY,
     name TEXT NOT NULL
 );
+
+CREATE TABLE password_resets(
+    email TEXT NOT NULL,
+    token TEXT NOT NULL,
+    created_at TIMESTAMP WITH TIME ZONE,
+    PRIMARY KEY(email,token)
+);
+
 
 CREATE TABLE users (
     id SERIAL PRIMARY KEY,
@@ -38,19 +47,19 @@ CREATE TABLE users (
     profile_image TEXT,
     profile_description TEXT DEFAULT NULL,
     is_admin BOOLEAN DEFAULT FALSE NOT NULL,
-    company_id INTEGER REFERENCES companys(id),
+    company_id INTEGER REFERENCES companies(id),
     email_verified_at TIMESTAMP WITH TIME ZONE
 );
 
 CREATE TABLE work(
     users_id INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
-    company_id INTEGER NOT NULL REFERENCES companys(id) ON DELETE CASCADE,
+    company_id INTEGER NOT NULL REFERENCES companies(id) ON DELETE CASCADE,
     PRIMARY KEY(users_id,company_id)
 );
 
 CREATE TABLE projects (
     id SERIAL PRIMARY KEY,
-    company_id INTEGER DEFAULT NULL REFERENCES companys(id) ON DELETE CASCADE,
+    company_id INTEGER DEFAULT NULL REFERENCES companies(id) ON DELETE CASCADE,
     name TEXT NOT NULL,
     description TEXT,
     start_date DATE,
@@ -251,7 +260,7 @@ INSERT INTO users VALUES (
   '2021-12-28 19:10:25+00'
 ); -- Password is 1234. Generated using Hash::make('1234')
 
-INSERT INTO companys VALUES(1,'FEUP');
+INSERT INTO companies VALUES(1,'FEUP');
 
 INSERT INTO users VALUES (
   DEFAULT,
