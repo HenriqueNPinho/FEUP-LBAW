@@ -122,11 +122,7 @@ function createNewTask() {
     let taskForm = document.querySelector("#new-task-form");
     taskForm.style.display = "flex";
 
-    let closeTaskIcon = document.querySelector("#close-new-task-form");
-    closeTaskIcon.addEventListener("click", function () {
-        projectAreaCover.style.display = "none";
-        taskForm.style.display = "none";
-    });
+
     let createTaskButton = document.querySelector("#createNewTaskButton");
     let taskStatus = this.getAttribute("data-id");
 
@@ -174,6 +170,14 @@ function createNewTask() {
             genericResponseHandlerWithRefresh
         );
     });
+
+    let closeTaskIcon = document.querySelector("#close-new-task-form");
+    closeTaskIcon.addEventListener("click", function () {
+        projectAreaCover.style.display = "none";
+        taskForm.style.display = "none";
+        let clone=taskForm.cloneNode(true);
+        taskForm.replaceWith(clone);
+    });
 }
 
 function setUpViewFullTask() {
@@ -200,11 +204,6 @@ function viewFullTask() {
     );
     projectAreaCover.style.display = "block";
 
-    let closeTaskIcon = document.querySelector("#close-task-page");
-    closeTaskIcon.addEventListener("click", function () {
-        projectAreaCover.style.display = "none";
-        taskPage.style.display = "none";
-    });
 
     let deleteTaskIcon = document.querySelector("#delete-task-icon");
     deleteTaskIcon.addEventListener("click", function () {
@@ -307,6 +306,13 @@ function viewFullTask() {
         })
     })
 
+    let closeTaskIcon = document.querySelector("#close-task-page");
+    closeTaskIcon.addEventListener("click", function () {
+        projectAreaCover.style.display = "none";
+        taskPage.style.display = "none";
+        let clone=taskPage.cloneNode(true);
+        taskPage.replaceWith(clone);
+    });
 
 }
 
@@ -340,11 +346,7 @@ function editTask(task) {
     let taskDeliveryDate = document.querySelector("#edit-task-end-date");
     taskDeliveryDate.value = task["delivery_date"];
 
-    let closeTaskIcon = document.querySelector("#close-edit-task-form");
-    closeTaskIcon.addEventListener("click", function () {
-        projectAreaCover.style.display = "none";
-        taskForm.style.display = "none";
-    });
+    
     let createTaskButton = document.querySelector("#editTaskButton");
     createTaskButton.addEventListener("click", function () {
         memberSelectionInput.forEach(function (item) {
@@ -369,6 +371,14 @@ function editTask(task) {
             },
             genericResponseHandlerWithRefresh
         );
+    });
+
+    let closeTaskIcon = document.querySelector("#close-edit-task-form");
+    closeTaskIcon.addEventListener("click", function () {
+        projectAreaCover.style.display = "none";
+        taskForm.style.display = "none";
+        let clone=taskForm.cloneNode(true);
+        taskForm.replaceWith(clone);
     });
 }
 
