@@ -13,7 +13,7 @@
                         
                     </div>
                     <div class="userpageInfo">
-                        <div class = "divIconUserPage">
+                        <div class = "divIconUserPageP">
                             <i class="fas fa-envelope iconUserPage "></i>
                             <p class="userEmail">{{ $user->email }}</p>
                         </div>
@@ -29,7 +29,7 @@
                     @if(!is_null($companies))
                         @foreach ($companies as $company)
                         <div class = "userpageInfo">
-                            <div class = "divIconUserPage">
+                            <div class = "divIconUserPageP">
                                 <i class="fas fa-briefcase iconUserPage"></i>
                                 {{$company->name}}
                             </div>

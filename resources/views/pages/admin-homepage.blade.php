@@ -11,18 +11,17 @@
                 <div class = "adminUser adminGreen adminUserTitle">
                     <div class = "adminNameParameter adminButtonText"> Company's Current Member </div>
                 </div>
-
-                <div class = "adminUser"> 
+                <div class = "adminUser divIconUserPage"> 
                     <div class = "adminNameParameter adminMemberName"> Sofia Germer </div>
-                    <i class="fas fa-user-minus iconRemoveUser"></i>
+                    <i class="fas fa-user-minus iconAdminHome"></i>
                 </div>
-                <div class = "adminUser">  
+                <div class = "adminUser divIconUserPage">  
                     <div class = "adminNameParameter adminMemberName">Miguel Lopes </div>
-                    <i class="fas fa-user-minus iconRemoveUser"></i>
+                    <i class="fas fa-user-minus iconAdminHome"></i>
                 </div>
-                <div class = "adminUser">  
+                <div class = "adminUser divIconUserPage"> 
                     <div class = "adminNameParameter adminMemberName"> Edgar Torre </div>
-                    <i class="fas fa-user-minus iconRemoveUser"></i>
+                    <i class="fas fa-user-minus iconAdminHome"></i> 
                 </div>
             </div>
 

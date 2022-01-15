@@ -238,7 +238,8 @@ class UserController extends Controller
                 $user->profile_description = $request['profile_description'];
                 $user->save();
                 $projectInvitations=$user->projectInvitations()->get();
-                return view('pages.userpage',['user' => $user, 'projectInvitations'=> $projectInvitations]);
+                $companies  = $user->companies()->get();
+                return view('pages.userpage',['user' => $user, 'projectInvitations'=> $projectInvitations,'companies'=> $companies]);
             }
         }
     }

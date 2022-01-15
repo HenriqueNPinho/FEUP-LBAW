@@ -1352,6 +1352,75 @@ input.invalid {
     background-color: #7e7d7ad2;
 }
 
+/*FAQ*/
+
+#FAQ{
+    margin: 100px auto;
+    padding: 40px;
+    width: 70%;
+    min-width: 300px;
+}
+#FAQ-body body{
+        font-family: "Montserrat", sans-serif;
+        color:#264653;
+    
+}
+.faq-heading{
+    border-bottom: #777;
+    padding: 20px 60px;
+}
+.faq-container{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    }
+.hr-line{
+    width: 60%;
+    margin: auto;
+    }
+.faq-page {
+
+    color: #444;
+    cursor: pointer;
+    padding: 30px 20px;
+    width: 60%;
+    border: none;
+    outline: none;
+    transition: 0.4s;
+    margin: auto;
+}
+.faq-body{
+    margin: auto;
+    text-align: center; 
+   width: 50%; 
+   padding: auto;
+}
+
+.active,
+.faq-page:hover {
+    background: rgba(42, 157, 143, 0.2);
+    
+}
+.faq-body {
+    padding: 0 18px;
+    background-color: white;
+    display: none;
+    overflow: hidden;
+}
+/*sinal de mais*/
+.faq-page:after {
+    color: #264653;
+    content: '\02795';
+    font-size: 13px;
+    float: right;
+    margin-left: 5px;
+}
+/*sinal de menos*/
+.active:after {
+    color:#264653;
+    content: "\2796";
+}
+
 /**
  * Overide milligram colors
  * Some styles might be missing
@@ -1573,12 +1642,13 @@ a {
 .divIconUserPage{
     display: flex;
     flex-flow : row;
+    justify-content: space-between;
 }
 
 .iconUserPage{
     color: #264653;
     align-self: center;
-    margin-right: 10px;
+    margin-right: 20px;
 }
 /*--------------------*/
 /* EDIT USER PAGE */
@@ -1814,6 +1884,10 @@ a {
     justify-content: center;
 }
 
+.divIconUserPageP{
+    display: flex;
+    flex-flow: row;
+}
 /* PASSWORD */
 
 #changePassButton {
@@ -2501,6 +2575,11 @@ a {
     margin-left:25px;
 }
 
+.iconAdminHome{
+    color: #264653;
+    align-self: center;
+    margin-right: 20px;
+}
 #deleted-forum-post-icon-plus-text-content{
     display: flex;
     margin-top: 10px;
