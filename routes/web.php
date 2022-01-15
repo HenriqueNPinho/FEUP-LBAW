@@ -16,8 +16,8 @@ use Illuminate\Http\Request;
 |
 */
 // Home
-Route::get('/', 'HomepageController@index')->name("home")->middleware('verified');;
-Route::get('/home','HomepageController@index')->middleware('verified');;
+Route::get('/', 'HomepageController@index')->name("home");
+Route::get('/home','HomepageController@index');
 Route::get('adminHomePage', 'AdminController@showAdminPage')->middleware('verified');;
 
 Route::get('projects', 'ProjectController@list')->name('projects')->middleware('verified');;
@@ -71,7 +71,7 @@ Route::get('create-project', 'ProjectController@getCreateProject')->middleware('
 // Authentication -> User
 //login
 Route::get('login', 'Auth\LoginController@showLoginForm');
-Route::post('login', 'Auth\LoginController@login');
+Route::post('login', 'Auth\LoginController@login')->name('login');
 
 //register
 Route::get('register', 'Auth\RegisterController@showRegistrationForm');
