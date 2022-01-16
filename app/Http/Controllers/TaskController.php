@@ -81,13 +81,14 @@ class TaskController extends Controller
 		$task->description = $request->input('description');
 		$members=$request->input('members');
         $task->members()->detach();
-		$task->save();
+		
 		if($members!=""){
 			$assignedMembersIDs = explode(",", $members);
 			foreach($assignedMembersIDs as $memberID){
 				$task->members()->attach($memberID,['assigned_by_id'=>Auth::id()]);
 			}
 		}
+        $task->save();
 		return $task;
 	}
 

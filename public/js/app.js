@@ -65,7 +65,7 @@ function setUpSlideRightMenu() {
                         newAssignedTaskNotification.setAttribute("class","notification assigned-notification");
                         let firstText=document.createElement("p");
                     
-                        //isto não pode ficar assim
+        
                         let assignedByName;
                         projectMembers.forEach(member => {
                             if(element["pivot"]["assigned_by_id"]==member["id"]){

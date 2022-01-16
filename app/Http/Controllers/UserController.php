@@ -51,7 +51,7 @@ class UserController extends Controller
     
     public function showChangePassword(Request $request){
         $user = Auth::user();
-        return view('pages.changePassword',['user' => $user]);
+        return view('pages.change-password',['user' => $user]);
     }
 
 
@@ -166,14 +166,17 @@ class UserController extends Controller
         $taskCommentsNotifications=[];
         foreach($assignedTasks as $task){
             if($task->project_id!=$project_id) continue;
-            if($task->notified==FALSE){
+            if($task->pivot->notified===false ){
                 array_push($taskNotifications,$task);
+                $task->pivot->notified=true;
+                $task->pivot->save();
             }
-            if($task->pivot->new_comment==true){
-                array_push($taskCommentsNotifications,$task->comments->first());
+            if($task->pivot->new_comment===true){
+                array_push($taskCommentsNotifications,$task->comments->sortByDesc('comment_date')->first());
+                $task->pivot->new_comment=false;
+                $task->pivot->save();
             }
         }
-
         return [$taskNotifications,$taskCommentsNotifications,$projectMembers];
     }
 
