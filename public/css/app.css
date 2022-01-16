@@ -1395,7 +1395,7 @@ input.invalid {
    padding: auto;
 }
 
-.active,
+.active_faq,
 .faq-page:hover {
     background: rgba(42, 157, 143, 0.2);
     
@@ -1415,10 +1415,14 @@ input.invalid {
     margin-left: 5px;
 }
 /*sinal de menos*/
-.active:after {
+.active_faq:after {
     color:#264653;
     content: "\2796";
 }
+
+/*about us*/
+/*    background:rgba(42, 157, 143,0.6); */
+
 
 /**
  * Overide milligram colors

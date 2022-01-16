@@ -59,7 +59,7 @@
         <div class="navbar">
           <a href="{{ url('/') }}"><img src="/images/horizontal-logo.png" alt=""></a>
           <div class="navbar-options">
-            <a href="">About Us</a>
+            <a href= "{{ url('about-us')}}">About Us</a>
             <a href= "{{ url('faq')}}">FAQ</a>
             <a href= "{{ url('login') }}">Login</a>
             <a href= "{{ url('/register') }}">Sign Up Private</a>

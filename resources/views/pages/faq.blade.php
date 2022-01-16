@@ -9,37 +9,31 @@
         <section class="faq-container">
             <div class="faq-one">
                
-                <h1 class="faq-page">FAQ 1</h1>
+                <h1 class="faq-page">What is Project Clinic?</h1>
           
                 <div class="faq-body">
-                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Velit saepe sequi, illum facere
-                        necessitatibus cum aliquam id illo omnis maxime, totam soluta voluptate amet ut sit ipsum
-                        aperiam.
-                        Perspiciatis, porro!</p>
+                    <p> Project Clinic is a web interface for project management that allows teams to organize their professional projects,
+                        whether you are part of a company or not.</p>
                 </div>
             </div>
             <hr class="hr-line">
             <div class="faq-two">
             
-                <h1 class="faq-page">FAQ 2</h1>
+                <h1 class="faq-page">Why should I use Project Clinic to organize my projects?</h1>
               
                 <div class="faq-body">
-                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Velit saepe sequi, illum facere
-                        necessitatibus cum aliquam id illo omnis maxime, totam soluta voluptate amet ut sit ipsum
-                        aperiam.
-                        Perspiciatis, porro!</p>
+                    <p>Project Clinic can facilitate your team workflow,
+                         we provide a kanban board so your team can easily organize the tasks in three stages("To Do", "Doing", "Done"), 
+                        a Forum where you can communicate with the your team, and so much more! </p>
                 </div>
             </div>
             <hr class="hr-line">
             <div class="faq-three">
              
-                <h1 class="faq-page">FAQ 3</h1>
+                <h1 class="faq-page">Can everyone use Project Clinic?</h1>
              
                 <div class="faq-body">
-                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Velit saepe sequi, illum facere
-                        necessitatibus cum aliquam id illo omnis maxime, totam soluta voluptate amet ut sit ipsum
-                        aperiam.
-                        Perspiciatis, porro!</p>
+                    <p>Project Clinic is open to everyone who wants to easily manage their projects.</p>
                 </div>
             </div>
         </section>
