@@ -72,7 +72,7 @@ class ProjectController extends Controller
         $project->delivery_date=$request->input('date');
         $project->start_date=date('Y-m-d');
         $project->description=$request->input('description');
-        
+        $project->company_id=$request->input('company');
         $project->save();
         $project->members()->attach(Auth::user()->id);
         $project->coordinators()->attach(Auth::user()->id);
@@ -85,7 +85,6 @@ class ProjectController extends Controller
             } 
         }
     }
-   
     public function archive($project_id){
         if (!Auth::check()) return redirect('/login');
         $project = Project::find($project_id);

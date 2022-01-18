@@ -1,5 +1,5 @@
-
 @extends('layouts.app')
+
 @section('content')
 
 <div class="circle_container">
@@ -13,3 +13,4 @@
 		</div>
 	</div>
 </div>
+@endsection

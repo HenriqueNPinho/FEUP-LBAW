@@ -294,7 +294,7 @@ INSERT INTO forum_post VALUES (DEFAULT, 1, 1, 'Primeiro post', '2021-12-28 19:10
 INSERT INTO forum_post VALUES (DEFAULT, 1, 1, 'Segundo post', '2021-12-29 19:10:25+00', DEFAULT);
 INSERT INTO forum_post VALUES (DEFAULT, 2, 1, 'Terceiro post', '2021-12-30 19:10:25+00', DEFAULT);
 INSERT INTO forum_post VALUES (DEFAULT, 2, 1, 'Quarto post', '2021-12-31 19:10:25+00', DEFAULT);
-INSERT INTO projects VALUES(DEFAULT,1,'Other','Um trabalho que me faz querer cortar os pulsos','2021-08-24', '2022-08-24', DEFAULT);
+INSERT INTO projects VALUES(DEFAULT,1,'x','Um trabalho que me faz querer cortar os pulsos','2021-08-24', '2022-08-24', DEFAULT);
 INSERT INTO project_member VALUES(2,2);
 INSERT INTO favorite VALUES(1,1);
 INSERT INTO tasks VALUES(DEFAULT,1,'Task name','A task description you know','2021-11-19','2022-12-31','Not Started');

@@ -36,5 +36,27 @@ function setUpRemoveUsers(){
     });
 }
 
+function showCurrentProjects(){
+    let showCurrentProjectsButton = document.getElementById('showCurrentProjects');
+    showCurrentProjectsButton.addEventListener("click", function(){
+        document.getElementById('showCurrentProjects').style.backgroundColor = 'rgb(' + 42 + ',' + 157 + ',' + 143 +  ',' + 1 + ')';
+        document.getElementById('showArchivedProjects').style.backgroundColor = 'rgb(' + 244 + ',' + 162 + ',' + 97 +  ',' + 0.5 + ')';
+        document.getElementById('currentProjects').style.display = "flex";
+        document.getElementById('archivedProjects').style.display = "none";
+    });
+}
+
+function showArchivedProjects(){
+    let showArchivedProjectsButton = document.getElementById('showArchivedProjects');
+    showArchivedProjectsButton.addEventListener("click", function(){
+        document.getElementById('showArchivedProjects').style.backgroundColor = 'rgb(' + 244 + ',' + 162 + ',' + 97 +  ',' + 1 +')';
+        document.getElementById('showCurrentProjects').style.backgroundColor = 'rgb(' + 42 + ',' + 157 + ',' + 143 +  ',' + 0.5 + ')';
+        document.getElementById('archivedProjects').style.display = "flex";
+        document.getElementById('currentProjects').style.display = "none";
+    });
+}
+
 setUpInviteUsers();
 setUpRemoveUsers();
+showCurrentProjects();
+showArchivedProjects();

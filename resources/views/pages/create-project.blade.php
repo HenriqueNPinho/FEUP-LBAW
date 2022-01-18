@@ -14,8 +14,11 @@
     <h1>Whats the name of the project:</h1>
     <p><input placeholder="Project Name" oninput="this.className = ''" name="pname" id="cp-projectname"></p>
     <h1>Company name:</h1>
-    <select id="cp-company" name="company">
-      <option value="none"></option>
+    <select id="cp-company" name="cp-company">
+      <option>none</option> 
+      @foreach(Auth::user()->companies as $company)
+        <option value="{{$company->id}}">{{$company->name}}</option>
+      @endforeach
     </select>
   </div>
   

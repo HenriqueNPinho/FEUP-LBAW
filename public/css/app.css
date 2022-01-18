@@ -1457,18 +1457,15 @@ input.invalid {
 }
 
 /*about us*/
-/*    background:rgba(42, 157, 143,0.6); */
 
 /* Main Container -  this controls the size of the circle */
 .circle_container
 {
     margin : 0;
 	padding : 0;
-    margin-top: 14vh;
     margin-left: 30%;
-	width : 700px;
-	height : 700px;
-/*	border : 1px solid red; */
+	width : 770px;
+	height : 770px;
 }
 
 /* Circle Main draws the actual circle */
@@ -1486,7 +1483,6 @@ input.invalid {
 /* Circle Text Container - constrains text area to within the circle */
 .circle_text_container
 {
-	/* area constraints */
 
 	width : 70%;
 	height : 70%;
@@ -1495,36 +1491,28 @@ input.invalid {
 	margin : 0;
 	padding : 0;
 
-	/* some position nudging to center the text area */
 	position : relative;
 	left : 15%;
 	top : 15%;
 	
-	/* preserve 3d prevents blurring sometimes caused by the text centering in the next class */
 	transform-style : preserve-3d;
-	
-	/*border : 1px solid green;*/
 }
 
 /* Circle Text - the appearance of the text within the circle plus vertical centering */
 .circle_text_title
 {
-	/* change font/size/etc here */
-	font: 40px 	"Montserrat", sans-serif;
+	font: 43px 	"Montserrat", sans-serif;
 	text-align : center;
 	color: white;
-	/* vertical centering technique */
 	position : relative;
 	top : 50%;
 	transform : translateY(-50%);
 }
 .circle_text
 {
-	/* change font/size/etc here */
 	font: 30px 	"Montserrat", sans-serif;
 	text-align : center;
 	color: white;
-	/* vertical centering technique */
 	position : relative;
 	top : 50%;
 	transform : translateY(-50%);
@@ -2616,6 +2604,7 @@ input:focus{
 }
 
 .adminUser:first-of-type{
+    background-color: #2a9d8f;
     border: 1px solid #2646532a;
     border-top-left-radius: 4px;
     border-top-right-radius: 4px;
@@ -2661,7 +2650,7 @@ input:focus{
     margin: 10px;
 }
 
-#currentProjects {
+.adminProjects {
     display: flex;
     flex-flow: row wrap;
     align-self: center;
@@ -2669,17 +2658,24 @@ input:focus{
 }
 
 .adminProjectTitle {
-    background-color: rgb(202, 199, 199);
     height: 30px;
     display: flex;
     justify-content: center;
+}
+
+#currentProjectTitle{
+    background-color: rgb(42, 157, 143);
+}
+
+#archivedProjectTitle{
+    background-color: #f4a261;
 }
 
 .adminNameParameter {
     align-self: center;
     margin:0px;
     font-size: 14px;
-    color: #264653;
+    color: white;
     margin-top: 5px;
     margin-bottom: 5px;
 }
@@ -2699,12 +2695,18 @@ input:focus{
     justify-content: center;
 }
 
-.adminGreen {
-    background-color: #2a9d8f;
+#showCurrentProjects{
+    background-color: rgb(42, 157, 143);
+    display: flex;
 }
 
-.adminOrange {
-    background-color: #f4a261;
+#showArchivedProjects{
+    background-color: rgb(244,162,97,0.5);
+    display: flex;
+}
+
+#archivedProjects{
+    display: none;
 }
 
 .bold {
@@ -2731,6 +2733,19 @@ input:focus{
 
 .adminMemberName {
     margin-left: 15px;
+    color: #264653;
+}
+
+.adminProjectDescription{
+    margin-top: 15px;
+    color: rgb(119, 117, 117)
+}
+
+.whiteAdminIcon{
+    margin-left: 15px;
+    color: #e3dede;
+    align-self: center;
+    cursor: pointer;
 }
 
 .iconAdminHome {
