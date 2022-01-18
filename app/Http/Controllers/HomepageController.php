@@ -31,9 +31,15 @@ class HomepageController extends Controller
     }
 
     public function showFaqPage(){
+        if (Auth::check()){
+            return redirect('/projects');
+        }
         return view('pages.faq');
     }
     public function showAboutUsPage(){
+        if (Auth::check()){
+            return redirect('/projects');
+        }
         return view('pages.about-us');
     }
 }
