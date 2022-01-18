@@ -117,4 +117,6 @@ Route::post('/email/verification-notification', function (Request $request) {
 
 //faq
 Route::get('faq', 'HomepageController@showFaqPage');
+//about us
+Route::get('about-us', 'HomepageController@showAboutUsPage');
 

@@ -33,4 +33,7 @@ class HomepageController extends Controller
     public function showFaqPage(){
         return view('pages.faq');
     }
+    public function showAboutUsPage(){
+        return view('pages.about-us');
+    }
 }
