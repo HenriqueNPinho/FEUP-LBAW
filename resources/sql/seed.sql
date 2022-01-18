@@ -16,7 +16,7 @@ DROP TABLE IF EXISTS invitation CASCADE;
 DROP TABLE IF EXISTS favorite CASCADE;
 DROP TABLE IF EXISTS post_edition CASCADE;
 DROP TABLE IF EXISTS password_resets CASCADE;
-
+DROP TABLE IF EXISTS company_invites CASCADE;
 DROP TYPE IF EXISTS task_status CASCADE;
 
 DROP FUNCTION IF EXISTS add_favorite CASCADE;
@@ -48,13 +48,22 @@ CREATE TABLE users (
     profile_description TEXT DEFAULT NULL,
     is_admin BOOLEAN DEFAULT FALSE NOT NULL,
     company_id INTEGER REFERENCES companies(id),
-    email_verified_at TIMESTAMP WITH TIME ZONE
+    email_verified_at TIMESTAMP WITH TIME ZONE,
+    deleted_at TIMESTAMP WITH TIME ZONE
 );
 
 CREATE TABLE work(
     users_id INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
     company_id INTEGER NOT NULL REFERENCES companies(id) ON DELETE CASCADE,
     PRIMARY KEY(users_id,company_id)
+);
+
+CREATE TABLE company_invites(
+    id SERIAL PRIMARY KEY,
+    token TEXT NOT NULL,
+    email TEXT NOT NULL,
+    company_id INTEGER NOT NULL REFERENCES companies(id) ON DELETE CASCADE,
+    created_at TIMESTAMP
 );
 
 CREATE TABLE projects (

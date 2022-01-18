@@ -37,6 +37,10 @@ Route::post('api/user/addFavorite/{project_id}','UserController@addFavorite')->m
 Route::post('api/project/archive/{project_id}','ProjectController@archive')->middleware('verified');;
 Route::get('api/user/notifications/{project_id}','UserController@notifications')->middleware('verified');;
 
+Route::post('api/admin/inviteUser/{user_email}','AdminController@inviteUser')->middleware('verified');
+Route::post('api/admin/removeUser/{user_id}','AdminController@removeUser')->middleware('verified');
+
+
 // Forum
 Route::get('project/{project_id}/forum','ForumPostController@getProjectForum')->middleware('verified');;
 Route::put('project/{project_id}/forum','ForumPostController@create')->middleware('verified');;
@@ -82,8 +86,8 @@ Route::get('/reset-password/{token}', 'Auth\PasswordResetController@getResetForm
 Route::post('/reset-password', 'Auth\PasswordResetController@resetPassword')->middleware('guest')->name('password.update');
 
 //register
-Route::get('register', 'Auth\RegisterController@showRegistrationForm');
-Route::post('register', 'Auth\RegisterController@register');
+Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('getRegister');
+Route::post('register', 'Auth\RegisterController@register')->name('register');
 
 Route::get('register/admin', 'Auth\RegisterController@showAdminRegistrationForm');
 Route::post('register/admin', 'Auth\RegisterController@register');
@@ -91,8 +95,12 @@ Route::post('register/admin', 'Auth\RegisterController@register');
 //logout
 Route::get('logout', 'Auth\LoginController@logout')->name('logout');
 
+Route::get('acceptInvite','UserController@acceptInvite')->name('existingUserAcceptCompanyInvite');
+
+Route::get('newUserAcceptInvite','Auth\RegisterController@redirectWithToken')->name('newUserAcceptCompanyInvite');
 
 Route::get('/email/verify', function () {
+    if(Auth::user()->hasVerifiedEmail()) return redirect('/');
     return view('auth.verify-email');
 })->middleware('auth')->name('verification.notice');
 

@@ -10,10 +10,12 @@ use Illuminate\Contracts\Auth\CanResetPassword;
 use App\Models\Project;
 use App\Models\Admin;
 use App\Models\Company;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class User extends Authenticatable implements MustVerifyEmail,CanResetPassword
 {
     use Notifiable;
+    use SoftDeletes;
 
     protected $table = 'users';
 
@@ -36,11 +38,6 @@ class User extends Authenticatable implements MustVerifyEmail,CanResetPassword
     protected $hidden = [
         'password', 'remember_token',
     ];
-
-    /*
-    public function isAdmin(){
-        return Admin::find($this->id) != null ? true : false;
-    }*/
 
     /**
      * The projects this user is a member of.

@@ -1,4 +1,49 @@
+function fadeOut(element) {
+    var op = 1;  // initial opacity
+    var timer = setInterval(function () {
+        if (op <= 0.1){
+            clearInterval(timer);
+            element.style.display = 'none';
+        }
+        element.style.opacity = op;
+        element.style.filter = 'alpha(opacity=' + op * 100 + ")";
+        op -= op * 0.1;
+    }, 50);
+}
 
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+function fadeIn(element) {
+    var op = 0.1;  // initial opacity
+    element.style.opacity=0.1;
+    element.style.display = 'flex';
+    var timer = setInterval(function () {
+        if (op >= 1){
+            clearInterval(timer);
+        }
+        element.style.opacity = op;
+        element.style.filter = 'alpha(opacity=' + op * 100 + ")";
+        op += op * 0.1;
+    }, 10);
+}
+
+function successMessage(message){
+    let messageContainer=document.createElement("div");
+    messageContainer.setAttribute("class","success-message-alert");
+    let i=document.createElement("i");
+    i.setAttribute("class","far fa-check-circle fa-4x");
+    let text=document.createElement("h4");
+    text.innerHTML=message;
+    messageContainer.appendChild(i);
+    messageContainer.appendChild(text);
+    document.body.appendChild(messageContainer);
+    fadeIn(messageContainer);
+    setTimeout(function(){
+        fadeOut(messageContainer)
+    }, 1700);
+}
 
 function setUpDropDownMenu() {
     let dropDownMenuIcon = document.querySelector(".navbar-collapse-item");
