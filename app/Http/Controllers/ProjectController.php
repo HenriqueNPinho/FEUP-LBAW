@@ -155,8 +155,8 @@ class ProjectController extends Controller
         ]);
         $validator->validate();
         
-
         $project = Project::find($project_id);
+
         $this->authorize('memberAccess',$project);
         $email=$request['email'];
         if($project->isMember($email)){
@@ -165,6 +165,11 @@ class ProjectController extends Controller
         }
 
         $userToInvite=User::where('email',$email)->first();
+        $company=$project->company();
+        if(($company!=null && $userToInvite==null)||($company!=null && !$company->worksHere($userToInvite->id))){
+            $validator->errors()->add('email', "That user doesn't belong to your company's workspace. Ask your company administrator to invite him. Only then, can you invite him to a project.");
+            return redirect()->back()->withErrors($validator);
+        }
         if($userToInvite!=null){
             foreach($userToInvite->projectInvitations as $invite){
                 

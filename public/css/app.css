@@ -2369,8 +2369,8 @@ input:focus{
 }
 
 .settings-form h3 {
-    margin-top: 40px;
-    margin-bottom: 15px;
+    margin-top: 20px;
+    margin-bottom: 25px;
     font-size: 22px;
 }
 
@@ -2400,6 +2400,8 @@ input:focus{
 .settings-form .error {
     font-size: 13px;
     color: red;
+    width: 60%;
+    margin-bottom: 10px;
 }
 /* #e76f51 */
 
@@ -2879,5 +2881,55 @@ input:focus{
 
 .success-message-alert i{
     color:white;
+    align-self: center;
+}
+
+#register-redirect{
+    text-align: center;
+}
+
+#register-redirect .button{
+    width: 180px;
+    margin:0px;
+    align-self: center;
+}
+
+#register-redirect .button:first-of-type{
+    margin-top:20px;
+}
+
+#register-redirect .button:last-of-type{
+    margin-bottom: 20px;
+}
+
+.button:hover{
+    opacity: 0.8;
+}
+
+button:hover{
+    opacity: 0.8;
+}
+
+#register-redirect div>h3{
+    align-self: center;
+}
+
+#register-redirect div{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#project-overview-company-info{
+    display: flex;
+    margin-left: 50px;
+    width: 30%;
+}
+
+#project-overview-company-info i{
+    align-self: center;
+}
+
+#project-overview-company-info h3{
     align-self: center;
 }

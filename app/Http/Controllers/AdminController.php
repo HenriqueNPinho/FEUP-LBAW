@@ -24,6 +24,8 @@ class AdminController extends Controller
         return view('pages.admin-homepage',['company'=>$company]);
     }
 
+
+
     public function inviteUser($user_email)
     {
         if(!Auth::user()->is_admin) return redirect('/');

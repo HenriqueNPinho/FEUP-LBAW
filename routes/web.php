@@ -86,6 +86,8 @@ Route::get('/reset-password/{token}', 'Auth\PasswordResetController@getResetForm
 Route::post('/reset-password', 'Auth\PasswordResetController@resetPassword')->middleware('guest')->name('password.update');
 
 //register
+
+Route::get('/register-redirect','Auth\RegisterController@redirect');
 Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('getRegister');
 Route::post('register', 'Auth\RegisterController@register')->name('register');
 

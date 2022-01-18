@@ -12,9 +12,15 @@
         <div id="project-overview-top-bar">
             <div id="project-overview-top-bar-left">
                 <h2 id="project-title">{{$project->name}} - Settings</h2>
-
             </div>
         </div>
+        @if($project->company!=null)
+        <div id="project-overview-company-info">
+            <i class="fas fa-briefcase iconUserPage fa-2x"></i>
+            <h3>{{$project->company->name}}</h3>
+        </div>
+        @endif
+        
         <div id="project-settings-columns-container">
             <div>
                 <form class="settings-form" method="POST" action="/project/{{$project->id}}/addMember">

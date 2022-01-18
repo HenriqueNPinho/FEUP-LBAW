@@ -25,4 +25,13 @@ class Company extends Model
     public function workers(){
         return $this->belongsToMany('App\Models\User','work','company_id','users_id');
     }
+
+    public function worksHere($user_id){
+        foreach($this->workers as $user){
+            if($user->id==$user_id){
+                return TRUE;
+            }
+        }
+        return FALSE;
+    }
 }

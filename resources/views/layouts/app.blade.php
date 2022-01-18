@@ -62,8 +62,7 @@
             <a href= "{{ url('about-us')}}">About Us</a>
             <a href= "{{ url('faq')}}">FAQ</a>
             <a href= "{{ url('login') }}">Login</a>
-            <a href= "{{ url('/register') }}">Sign Up Private</a>
-            <a href= "{{ url('/register/admin') }}">Sign Up Company</a>
+            <a href= "{{ url('/register-redirect') }}">Sign Up</a>
           </div>
         </div>
         @endif

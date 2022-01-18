@@ -92,6 +92,11 @@ class RegisterController extends Controller
         return view ('auth.register-admin');
     }
 
+    public function redirect()
+    {
+        return view ('auth.register-redirect');
+    }
+
     public function redirectWithToken(Request $request){
         
         return redirect('/register')->with('companyInviteToken',$request['token']);

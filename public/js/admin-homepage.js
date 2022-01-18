@@ -1,9 +1,17 @@
+const validateEmail = (email) => {
+    return String(email)
+      .toLowerCase()
+      .match(
+        /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+      );
+};
 
 function setUpInviteUsers(){
     let addButton=document.querySelector("#add-user-to-company-icon");
     let emailInput=document.querySelector("#add-user-to-company-input");
     addButton.addEventListener("click",function(){
         if(emailInput.value=="") return;
+        if(!validateEmail(emailInput.value)) return;
         sendAjaxRequest('post','api/admin/inviteUser/'+emailInput.value,null,function(){
             let responseHandler=genericResponseHandler.bind(this);
             responseHandler();
