@@ -1457,18 +1457,15 @@ input.invalid {
 }
 
 /*about us*/
-/*    background:rgba(42, 157, 143,0.6); */
 
 /* Main Container -  this controls the size of the circle */
 .circle_container
 {
     margin : 0;
 	padding : 0;
-    margin-top: 14vh;
     margin-left: 30%;
-	width : 700px;
-	height : 700px;
-/*	border : 1px solid red; */
+	width : 770px;
+	height : 770px;
 }
 
 /* Circle Main draws the actual circle */
@@ -1486,7 +1483,6 @@ input.invalid {
 /* Circle Text Container - constrains text area to within the circle */
 .circle_text_container
 {
-	/* area constraints */
 
 	width : 70%;
 	height : 70%;
@@ -1495,36 +1491,28 @@ input.invalid {
 	margin : 0;
 	padding : 0;
 
-	/* some position nudging to center the text area */
 	position : relative;
 	left : 15%;
 	top : 15%;
 	
-	/* preserve 3d prevents blurring sometimes caused by the text centering in the next class */
 	transform-style : preserve-3d;
-	
-	/*border : 1px solid green;*/
 }
 
 /* Circle Text - the appearance of the text within the circle plus vertical centering */
 .circle_text_title
 {
-	/* change font/size/etc here */
-	font: 40px 	"Montserrat", sans-serif;
+	font: 43px 	"Montserrat", sans-serif;
 	text-align : center;
 	color: white;
-	/* vertical centering technique */
 	position : relative;
 	top : 50%;
 	transform : translateY(-50%);
 }
 .circle_text
 {
-	/* change font/size/etc here */
 	font: 30px 	"Montserrat", sans-serif;
 	text-align : center;
 	color: white;
-	/* vertical centering technique */
 	position : relative;
 	top : 50%;
 	transform : translateY(-50%);
