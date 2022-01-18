@@ -2614,6 +2614,7 @@ input:focus{
 }
 
 .adminUser:first-of-type{
+    background-color: #2a9d8f;
     border: 1px solid #2646532a;
     border-top-left-radius: 4px;
     border-top-right-radius: 4px;
@@ -2659,7 +2660,7 @@ input:focus{
     margin: 10px;
 }
 
-#currentProjects {
+.adminProjects {
     display: flex;
     flex-flow: row wrap;
     align-self: center;
@@ -2667,17 +2668,24 @@ input:focus{
 }
 
 .adminProjectTitle {
-    background-color: rgb(202, 199, 199);
     height: 30px;
     display: flex;
     justify-content: center;
+}
+
+#currentProjectTitle{
+    background-color: rgb(42, 157, 143);
+}
+
+#archivedProjectTitle{
+    background-color: #f4a261;
 }
 
 .adminNameParameter {
     align-self: center;
     margin:0px;
     font-size: 14px;
-    color: #264653;
+    color: white;
     margin-top: 5px;
     margin-bottom: 5px;
 }
@@ -2697,12 +2705,18 @@ input:focus{
     justify-content: center;
 }
 
-.adminGreen {
-    background-color: #2a9d8f;
+#showCurrentProjects{
+    background-color: rgb(42, 157, 143);
+    display: flex;
 }
 
-.adminOrange {
-    background-color: #f4a261;
+#showArchivedProjects{
+    background-color: rgb(244,162,97,0.5);
+    display: flex;
+}
+
+#archivedProjects{
+    display: none;
 }
 
 .bold {
@@ -2729,6 +2743,19 @@ input:focus{
 
 .adminMemberName {
     margin-left: 15px;
+    color: #264653;
+}
+
+.adminProjectDescription{
+    margin-top: 15px;
+    color: rgb(119, 117, 117)
+}
+
+.whiteAdminIcon{
+    margin-left: 15px;
+    color: #e3dede;
+    align-self: center;
+    cursor: pointer;
 }
 
 .iconAdminHome {

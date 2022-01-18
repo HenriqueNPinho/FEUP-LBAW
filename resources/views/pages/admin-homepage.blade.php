@@ -32,39 +32,47 @@
         <h2 class= "adminHeading"> COMPANY PROJECTS </h2>
 
         <div id = "divButtonsAdmin">
-            <div class = "adminButton adminGreen">
+            <div class = "noselect adminButton" id = "showCurrentProjects">
                 <div class = "adminNameParameter adminButtonText"> Current Projects </div>
             </div>
-            <div class = "adminButton adminOrange">
-                <div class = "adminNameParameter adminButtonText">Archived Projects </div>
+            <div class = "noselect adminButton" id = "showArchivedProjects">
+                <div class = "adminNameParameter adminButtonText" >Archived Projects </div>
             </div>
         </div>
-        <div id = "currentProjects">
-            <div class = "adminProject"> 
-                <div class = "adminProjectTitle">
-                    <div class = "adminNameParameter bold"> LBAW </div>
-                </div> 
-            </div>
-            <div class = "adminProject">  
-                <div class = "adminProjectTitle">
-                    <div class = "adminNameParameter bold"> RCOM </div>
-                </div> 
-            </div>
-            <div class = "adminProject">  
-                <div class = "adminProjectTitle">
-                    <div class = "adminNameParameter bold"> FSI </div>
-                </div>
-            </div>
-            <div class = "adminProject">  
-                <div class = "adminProjectTitle">
-                    <div class = "adminNameParameter bold"> PFL </div>
-                </div>
-            </div>
-            <div class = "adminProject"> 
-                <div class = "adminProjectTitle">
-                    <div class = "adminNameParameter bold"> LTW </div>
-                </div> 
-            </div>
+
+        <div class = "adminProjects" id = "currentProjects" >
+            @foreach($company->projects as $project)
+                @if(!$project->archived)
+                    <div class = "adminProject"> 
+                        <div class = "adminProjectTitle" id = "currentProjectTitle">
+                            <div class = "divIconUserPage">
+                                <div class = "adminNameParameter bold"> {{$project->name}}</div>
+                                <i class="fas fa-lock whiteAdminIcon"></i>
+                            </div>
+                        </div> 
+                        <div class = "adminProjectDescription">
+                            {{$project->description}}
+                        </div>
+                    </div>
+                @endif
+            @endforeach
+        </div>
+        <div class = "adminProjects" id = "archivedProjects">
+            @foreach($company->projects as $project)
+                @if($project->archived)
+                    <div class = "adminProject"> 
+                        <div class = "adminProjectTitle" id = "archivedProjectTitle">
+                            <div class = "divIconUserPage">
+                                <div class = "adminNameParameter bold"> {{$project->name}}</div>
+                                <i class="fas fa-unlock whiteAdminIcon"></i>
+                            </div>
+                        </div> 
+                        <div class = "adminProjectDescription">
+                            {{$project->description}}
+                        </div>
+                    </div>
+                @endif
+            @endforeach
         </div>
     </div>
     
