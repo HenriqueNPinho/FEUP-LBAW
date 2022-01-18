@@ -1,5 +1,8 @@
-<div class="project-icon" data-id="{{ $project->id }}">
-    <h5 class="noselect">{{ $project->name }}</h5>
+
+<div class="project-icon-container-grow">
+    <div class="project-icon" data-title="{{ $project->name }}" data-id="{{ $project->id }}">
+        <h5 class="noselect" >{{ $project->name }}</h5>
+    </div>
 </div>
 @if(Auth::user()->numberNotifications($project->id)>0)
 <div class="project-icon-number-notifications-container">

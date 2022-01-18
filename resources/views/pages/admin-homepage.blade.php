@@ -1,44 +1,35 @@
 @extends('layouts.app')
 
 @section('content')
+<script type="text/javascript" src={{ asset('js/admin-homepage.js') }} defer></script>
 
 <div id= "adminHomePage">
+
     <div id = "companyUserZone" class= "adminZone">
-        <h2 class= "adminHeading"> Company's Member </h2>
+        <h2 class= "adminHeading"> COMPANY WORKERS </h2>
 
         <div id = "currentUsers">
             <div class = "zonaAdminMember">
+                
                 <div class = "adminUser adminGreen adminUserTitle">
                     <div class = "adminNameParameter adminButtonText"> Company's Current Member </div>
                 </div>
+                @foreach($company->workers as $worker)
                 <div class = "adminUser divIconUserPage"> 
-                    <div class = "adminNameParameter adminMemberName"> Sofia Germer </div>
-                    <i class="fas fa-user-minus iconAdminHome"></i>
+                    <h4 class = "adminNameParameter adminMemberName">{{$worker->name}}</h4>
+                    <i class="fas fa-user-minus iconAdminHome remove-user-from-company-icon" data-id="{{$worker->id}}"></i>
                 </div>
-                <div class = "adminUser divIconUserPage">  
-                    <div class = "adminNameParameter adminMemberName">Miguel Lopes </div>
-                    <i class="fas fa-user-minus iconAdminHome"></i>
-                </div>
+                @endforeach
                 <div class = "adminUser divIconUserPage"> 
-                    <div class = "adminNameParameter adminMemberName"> Edgar Torre </div>
-                    <i class="fas fa-user-minus iconAdminHome"></i> 
-                </div>
-            </div>
-
-            <div class = "zonaAdminMember">
-                <div class = "adminUser adminOrange adminUserTitle">
-                    <div class = "adminNameParameter adminButtonText"> add a new member to your company </div>
-                </div>
-                <div class = "adminUser">  
-                    <div class = "adminNameParameter"> Add a new member </div>
-                    <i class="fas fa-user-minus iconRemoveUser"></i>
+                    <input id="add-user-to-company-input" type="text" placeholder="Enter the email of the person to invite">
+                    <i id="add-user-to-company-icon" class="fas fa-user-plus iconAdminHome"></i>
                 </div>
             </div>
         </div>
     </div>
 
     <div id = "projectsZone" class= "adminZone"> 
-        <h2 class= "adminHeading"> Company's Projects </h2>
+        <h2 class= "adminHeading"> COMPANY PROJECTS </h2>
 
         <div id = "divButtonsAdmin">
             <div class = "adminButton adminGreen">

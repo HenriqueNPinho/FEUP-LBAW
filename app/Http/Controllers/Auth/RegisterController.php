@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Models\User;
 use App\Models\Admin;
 use App\Models\Company;
+use App\Models\CompanyInvite;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
@@ -25,7 +26,7 @@ class RegisterController extends Controller
 
     use RegistersUsers;
 
-    protected $redirectTo = '/email/verify';
+    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
@@ -76,11 +77,23 @@ class RegisterController extends Controller
             $user->company_id = $company->id;
             $user->save();
         }
+
+        $invite=CompanyInvite::where('token',$data['companyInviteToken'])->first();
+        if($invite==null) return $user;
+        if($invite->email!=$user->email) return $user;
+        $company=Company::find($invite->company_id);
+        $user->companies()->attach($company);
+        $invite->delete();
         return $user;
     }
 
 
     public function showAdminRegistrationForm(){
         return view ('auth.register-admin');
+    }
+
+    public function redirectWithToken(Request $request){
+        
+        return redirect('/register')->with('companyInviteToken',$request['token']);
     }
 }

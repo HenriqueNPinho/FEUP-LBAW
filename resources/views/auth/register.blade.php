@@ -6,6 +6,10 @@
       <h2>Create a new account</h2>
       {{ csrf_field() }}
 
+      @if (\Session::has('companyInviteToken'))
+        <input type="hidden" name="companyInviteToken" value="{!! \Session::get('companyInviteToken') !!}">
+        
+      @endif
       <input id="name" type="text" placeholder="Name" name="name" value="{{ old('name') }}" required autofocus>
       @if ($errors->has('name'))
         <span class="error">

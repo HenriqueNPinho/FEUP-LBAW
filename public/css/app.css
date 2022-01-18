@@ -228,7 +228,9 @@ main > header {
 
 .auth-page form .error {
     font-weight: bold;
+    font-size: 13px;
     color: #ff3333;
+    margin-bottom: 5px;
 }
 
 
@@ -238,7 +240,7 @@ form button {
     padding: 13px;
     border-radius: 20px;
     height: 40px;
-    font-size: 14px;
+    font-size: 13px;
     color: white;
     text-transform: uppercase;
     font-weight: bold;
@@ -252,7 +254,7 @@ form .button {
     border-radius: 20px;
     height: 14px;
     text-align: center;
-    font-size: 14px;
+    font-size: 13px;
     font-weight: bold;
     color: white;
     margin-top: 10px;
@@ -327,7 +329,7 @@ form h4 {
     height: 100px;
     width: 100px;
     border: 4px solid #264653;
-    border-radius: 5px;
+    border-radius: 20px;
 }
 .project-select .project-icon-big h5 {
     align-self: center;
@@ -367,10 +369,54 @@ form h4 {
     height: 2.8vw;
     width: 2.8vw;
     border: 3px solid #264653;
-    border-radius: 5px;
-    padding: auto;
+    border-radius: 15px;
     background-color: white;
-    margin-top: 1vw;
+}
+
+.project-icon-container-grow{
+    align-self: center;
+    display: flex;
+    justify-content: center;
+    height: 3.3vw;
+    width: 3.3vw;
+    margin-top: 0.6vw;
+}
+
+.project-icon:hover{
+    height: 2.9vw;
+    width: 2.9vw;
+}
+
+[data-title]:hover:after {
+    opacity: 1;
+    transition: all 0.1s ease 0.5s;
+    visibility: visible;
+}
+/* box for title text */
+[data-title]:after {
+    content: attr(data-title);
+  	/* position for title view box */
+  	position: absolute;
+  	bottom: -1.6em;  	
+    left: 100%;
+    z-index: 99999;
+    visibility: hidden;
+    /* optional */
+    white-space: nowrap;
+  	/* stilization */
+    background-color: #264653;
+    color: #fff;
+    font-size: 13px;
+    height: fit-content;
+    width: fit-content;
+    padding: 6px 10px 6px 10px;
+    box-shadow: 1px 1px 3px #2222226b;
+    opacity: 0;
+    border-radius: 5px;
+    border-top-left-radius: 0px;
+}
+[data-title] {
+    position: relative;
 }
 
 .project-icon h5 {
@@ -378,6 +424,7 @@ form h4 {
     font-size: 0.6vw;
     font-weight: bold;
     text-align: center;
+    margin:0px
 }
 
 #add-project {
@@ -651,7 +698,7 @@ form h4 {
     height: 35px;
     border: 0;
     color: black;
-    font-size: 15px;
+    font-size: 13px;
 }
 
 #search-tasks-form button {
@@ -725,7 +772,8 @@ form h4 {
     width: 22%;
     height: 70vh;
     background-color: #ececec;
-    border-radius: 3px;
+    border-radius: 10px;
+    border: 1px solid #26465323
 }
 
 .board h2 {
@@ -758,11 +806,12 @@ form h4 {
     display: flex;
     justify-content: space-between;
     align-self: center;
-    width: 90%;
+    width: 89%;
     background-color: white;
     margin-bottom: 20px;
-    -webkit-box-shadow: 0px 5px 16px 0px rgba(27, 27, 27, 0.05);
-    box-shadow: 0px 5px 16px 0px rgba(27, 27, 27, 0.05);
+    -webkit-box-shadow: 0px 5px 16px 0px rgba(27, 27, 27, 0.02);
+    box-shadow: 0px 5px 16px 0px rgba(27, 27, 27, 0.02);
+    border: 1px solid #26465323
 }
 
 .task-preview:hover {
@@ -793,7 +842,7 @@ form h4 {
 }
 
 .task-preview h4 {
-    font-size: 14px;
+    font-size: 13px;
 }
 
 .alternate-member-count {
@@ -1105,7 +1154,7 @@ form h4 {
     padding: 13px;
     border-radius: 20px;
     height: 23px;
-    font-size: 14px;
+    font-size: 13px;
     color: white;
     text-transform: uppercase;
     font-weight: bold;
@@ -1665,7 +1714,7 @@ a {
     align-items: center;
     justify-content: center;
     font-weight: bold;
-    font-size: 14px;
+    font-size: 13px;
 }
 
 .profileButton:hover {
@@ -1806,7 +1855,7 @@ a {
     color: white;
     background-color: #2a9d8f;
     font-weight: bold;
-    font-size: 14px;
+    font-size: 13px;
 }
 
 .edituserpagePlaceholder {
@@ -1875,7 +1924,7 @@ a {
     border-radius: 20px;
     height: 40px;
     width: 200px;
-    font-size: 14px;
+    font-size: 13px;
     color: white;
     text-transform: uppercase;
     font-weight: bold;
@@ -1916,7 +1965,7 @@ a {
     color: white;
     background-color: #f4a261;
     font-weight: bold;
-    font-size: 14px;
+    font-size: 13px;
     margin-right: 20px;
 }
 
@@ -2080,7 +2129,7 @@ a {
 }
 
 .forum-post-name-date-options-content p {
-    font-size: 14px;
+    font-size: 13px;
     margin-top: 5px;
 }
 
@@ -2142,15 +2191,29 @@ a {
     resize: none;
     width: calc(100% - 35px);
     padding: 7px;
-    padding-right: 30px;
+    padding: 10px;
+    padding-right: 20px;
     overflow-y: auto;
-    font-size: 14px;
+    font-size: 13px;
+    border-radius: 10px;
+    border:1px solid rgba(102, 102, 102, 0.562);
+    color:rgba(102, 102, 102, 0.562);
+}
+
+.new-post-content-input textarea:focus{
+    border:1px solid rgba(102, 102, 102, 0.562);
+    outline: none;;
+    color: #222;
 }
 
 .forum-post-options-menu {
     display: none;
     position: relative;
     top: 10px;
+}
+
+input:focus{
+    color:#222;
 }
 
 .forumPost:last-child
@@ -2167,7 +2230,7 @@ a {
 }
 
 .forum-post-options-menu div h4 {
-    font-size: 14px;
+    font-size: 13px;
     margin: 0px;
     color: rgb(63, 63, 63);
 }
@@ -2258,7 +2321,8 @@ a {
 }
 
 .settings-form input {
-    font-size: 18px;
+    font-size: 13px;
+
     height: 25px;
     width: 350px;
     outline: 0;
@@ -2273,7 +2337,7 @@ a {
 .settings-form select {
     width: 250px;
     height: 31px;
-    font-size: 14px;
+    font-size: 13px;
     margin-top: 5px;
     margin-bottom: 5px;
     padding: 3px;
@@ -2302,7 +2366,7 @@ a {
     margin-top: 0px;
     margin-bottom: 5px;
     width: 60%;
-    font-size: 14px;
+    font-size: 13px;
 }
 
 #assign-member-settings-form-explain {
@@ -2322,7 +2386,7 @@ a {
 }
 
 .settings-form .error {
-    font-size: 14px;
+    font-size: 13px;
     color: red;
 }
 /* #e76f51 */
@@ -2453,7 +2517,7 @@ a {
     border-radius: 20px;
     height: fit-content;
     text-align: center;
-    font-size: 14px;
+    font-size: 13px;
     font-weight: bold;
     color: white;
     margin-top: 10px;
@@ -2511,10 +2575,12 @@ a {
     height: 100%;
     display: flex;
     flex-flow: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
 }
 
 .adminZone {
-    width: 50%;
+    width: 49%;
     height: 100%;
     text-align: center;
     display: flex;
@@ -2523,22 +2589,42 @@ a {
 
 #companyUserZone {
     /* border-right-style: solid; */
+    margin-top: 3vh;
 }
 
 #projectsZone {
-    border-left-style: solid;
+    border-left:1px solid #2646532a;
+    height: 90vh;
 }
 
 .adminHeading {
     color: #264653;
 }
 
+.adminUser:first-of-type{
+    border: 1px solid #2646532a;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+}
+
+.adminUser:last-of-type{
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+}
+
 .adminUser {
-    background-color: rgb(233, 231, 231);
     height: 35px;
-    margin: 10px;
+    border: 1px solid #2646532a;
+    border-top: none;
     display: flex;
-    flex-flow: row;
+}
+
+.adminUser:hover{
+    background-color: whitesmoke;
+}
+
+.adminUser:first-of-type:hover{
+    background-color:#2a9d8f;
 }
 
 .iconRemoveUser {
@@ -2577,12 +2663,17 @@ a {
 
 .adminNameParameter {
     align-self: center;
+    margin:0px;
+    font-size: 14px;
+    color: #264653;
+    margin-top: 5px;
+    margin-bottom: 5px;
 }
 
 #divButtonsAdmin {
     display: flex;
     flex-flow: row;
-    width: 620px;
+    width: 80%;
     height: 40px;
     align-self: center;
     margin-bottom: 30px;
@@ -2625,14 +2716,35 @@ a {
 }
 
 .adminMemberName {
-    margin-left: 25px;
+    margin-left: 15px;
 }
 
 .iconAdminHome {
     color: #264653;
     align-self: center;
     margin-right: 20px;
+    cursor: pointer;
 }
+
+.iconAdminHome:hover{
+    opacity: 0.8;
+}
+
+#add-user-to-company-input{
+    width: 90%;
+    border:none;
+    padding-left: 15px;
+    color: #264653;
+}
+
+#add-user-to-company-input:hover{
+    background-color: whitesmoke;
+}
+
+#add-user-to-company-input:focus{
+    outline: none;
+}
+
 #deleted-forum-post-icon-plus-text-content {
     display: flex;
     margin-top: 10px;
@@ -2655,7 +2767,7 @@ a {
     padding: 7px;
     border-radius: 13px;
     height: fit-content;
-    font-size: 14px;
+    font-size: 13px;
     color: white;
     text-transform: uppercase;
     font-weight: bold;
@@ -2664,15 +2776,24 @@ a {
     align-self: flex-end;
     margin-right: 20px;
     margin-top: 10px;
+    padding: 7px 12px 7px 12px;
+}
+
+#edit-forum-post-save-button:hover{
+    opacity: 0.8;
 }
 
 #edit-forum-post-textarea {
     margin-top: 5px;
     margin-right: 20px;
     resize: none;
-    border: 1px solid rgba(102, 102, 102, 0.39);
-    padding: 5px;
-    border-radius: 1px;
+    border:1px solid rgba(102, 102, 102, 0.562);
+    padding: 10px;
+    border-radius: 10px;
+}
+
+#edit-forum-post-textarea:focus {
+    outline: none;
 }
 
 .project-icon-number-notifications {
@@ -2720,4 +2841,31 @@ a {
     font-size: 13px;
     margin-bottom:10px;
     color:#2a9d8f;
+}
+
+.success-message-alert{
+    background-color: #3abb71;
+    position: absolute;
+    align-self: center;
+    border-radius: 5px;
+    text-align: center;
+    width: 200px;
+    height: 130px;
+    left: calc(50% - 100px);
+    top: calc(45vh - 65px);
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    padding:25px 0 0px 0;
+}
+
+.success-message-alert h4{
+
+    font-size: 13px;
+    color:white;
+}
+
+.success-message-alert i{
+    color:white;
+    align-self: center;
 }
