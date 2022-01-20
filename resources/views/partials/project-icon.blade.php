@@ -5,7 +5,7 @@
     </div>
 </div>
 @if(Auth::user()->numberNotifications($project->id)>0)
-<div class="project-icon-number-notifications-container">
+<div data-id="{{ $project->id }}" class="project-icon-number-notifications-container">
     <div class="noselect project-icon-number-notifications">
         <h6>{{Auth::user()->numberNotifications($project->id)}}</h6>
     </div>

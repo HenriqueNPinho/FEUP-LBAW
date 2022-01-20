@@ -72,7 +72,9 @@ class ProjectController extends Controller
         $project->delivery_date=$request->input('date');
         $project->start_date=date('Y-m-d');
         $project->description=$request->input('description');
-        $project->company_id=$request->input('company');
+        if($request->input('company')!=null){
+            $project->company_id=$request->input('company');
+        }
         $project->save();
         $project->members()->attach(Auth::user()->id);
         $project->coordinators()->attach(Auth::user()->id);
@@ -81,7 +83,15 @@ class ProjectController extends Controller
         foreach($membersToInvite as $member){
             $user=User::where('email',$member)->first();
             if($user!=NULL){
-                $user->projectInvitations()->attach($project->id);
+                if($project->company_id==null){
+                    $user->projectInvitations()->attach($project->id);
+                }
+                else{
+                    if($project->company->worksHere($user->id)){
+                        $user->projectInvitations()->attach($project->id);
+                    }
+                    else return response("Some of the users doesn't belong to your company's workspace. Ask your company administrator to invite them. Only then, can you invite them to a project.",207);
+                }
             } 
         }
     }
@@ -164,7 +174,7 @@ class ProjectController extends Controller
         }
 
         $userToInvite=User::where('email',$email)->first();
-        $company=$project->company();
+        $company=$project->company;
         if(($company!=null && $userToInvite==null)||($company!=null && !$company->worksHere($userToInvite->id))){
             $validator->errors()->add('email', "That user doesn't belong to your company's workspace. Ask your company administrator to invite him. Only then, can you invite him to a project.");
             return redirect()->back()->withErrors($validator);

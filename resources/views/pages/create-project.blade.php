@@ -11,11 +11,16 @@
 <div id="regForm">
  
   <div class="tab">
+    @if (\Session::has('message'))
+        <span class="alert-success">
+        {!! \Session::get('message') !!}
+        </span>
+    @endif
     <h1>Whats the name of the project:</h1>
     <p><input placeholder="Project Name" oninput="this.className = ''" name="pname" id="cp-projectname"></p>
     <h1>Company name:</h1>
     <select id="cp-company" name="cp-company">
-      <option>none</option> 
+      <option value=""></option> 
       @foreach(Auth::user()->companies as $company)
         <option value="{{$company->id}}">{{$company->name}}</option>
       @endforeach
@@ -56,15 +61,6 @@
   </div>
 @endsection
 </body>
-<script>
-  //enter
-document.addEventListener("keyup", function(event) {
-    event.preventDefault();
-    if (event.keyCode === 13) {
-        document.getElementById("nextBtn").click();
-    }
-});
-</script>
 </html>
 
 

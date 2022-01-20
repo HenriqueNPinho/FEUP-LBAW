@@ -23,8 +23,9 @@ function nextPrev(n) {
   if(currentTab<2){
    if (n == 1 && !validateForm()) return false;
   }
-
-  x[currentTab].style.display = "none";
+  if(currentTab!=2||(currentTab==2&&n==-1)){
+    x[currentTab].style.display = "none";
+  }
 
   currentTab = currentTab + n;
 
@@ -32,9 +33,10 @@ function nextPrev(n) {
 
   if (currentTab >= x.length) {
    sendCreateProjectRequest();
-   window.location.replace("/projects");
+   window.location.href="/projects";
   return false;
   }
+
   showTab(currentTab);
 }
 
@@ -75,5 +77,5 @@ function sendCreateProjectRequest(){
     let description = document.querySelector("#cp-description");
     let memberInput=document.querySelector("#cp-project-members");
     sendAjaxRequest('put', 'api/project/create',{name:projectName.value, company:company.value, date:date.value, description:description.value, members:memberInput.value}, genericResponseHandler);
-  }
+}
 

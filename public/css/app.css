@@ -303,10 +303,12 @@ form h4 {
     font-size: 33px;
     margin-top: 15vh;
 }
+
 #all-projects h5 {
     text-align: center;
     align-self: center;
     font-size: 20px;
+    overflow:hidden;
 }
 
 .project-select {
@@ -421,10 +423,12 @@ form h4 {
 
 .project-icon h5 {
     align-self: center;
-    font-size: 0.6vw;
+    font-size: 0.58vw;
     font-weight: bold;
     text-align: center;
-    margin:0px
+    margin:0px;
+    word-break:keep-all ;
+    overflow:hidden;
 }
 
 #add-project {
@@ -2357,8 +2361,8 @@ input:focus{
 }
 
 .settings-form h3 {
-    margin-top: 20px;
-    margin-bottom: 25px;
+    margin-top: 5px;
+    margin-bottom: 15px;
     font-size: 22px;
 }
 
@@ -2375,6 +2379,7 @@ input:focus{
 
 .settings-form button {
     margin-top: 15px;
+    margin-bottom: 30px;
 }
 
 #project-settings-columns-container {

@@ -94,7 +94,8 @@ function setUpSlideRightMenu() {
             notifications.addEventListener("click",function(){
                 notificationsContainer.style.display="flex";
                 mainOptionsContainer.style.display="none"
-
+                let notificationBalls=document.querySelectorAll('.project-icon-number-notifications-container');
+                
                 sendAjaxRequest('get','/api/user/notifications/'+id,null,function(){
                     notificationsContainer.innerHTML="";
                     let responseHandler=genericResponseHandler.bind(this);
@@ -188,8 +189,13 @@ function setUpSlideRightMenu() {
                         notificationsContainer.appendChild(divider);
                         notificationsContainer.appendChild(element);
                     });
-
+                    
                 })
+                notificationBalls.forEach(element => {
+                    if(element.getAttribute("data-id")==id){
+                        element.style.display="none";
+                    }
+                });
                 
             })
         });
@@ -199,24 +205,21 @@ function setUpSlideRightMenu() {
 
 
 function genericResponseHandlerWithRefresh() {
-    if (this.status >= 400) {
-        if(this.response!=""||this.response!=null)
-            alert(this.response);
-        //console.log(this.response);
+    if (this.status == 207) {
+        alert(this.response);
     }
     location.reload(true);
     return;
 }
 
 function genericResponseHandler() {
+    console.log(this.status);
     if (this.status >= 400) {
-        alert(this.status);
-        if(this.response!=""||this.response!=null)
-            alert(this.response);
         location.reload(true);
     }
-    console.log(this.status);
-    console.log(this.response);
+    else if (this.status == '207') {
+        alert(this.response);
+    }
     return;
 }
 
