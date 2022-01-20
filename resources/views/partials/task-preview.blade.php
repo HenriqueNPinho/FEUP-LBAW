@@ -1,4 +1,5 @@
 <div draggable="true" class="task-preview" data-id="{{$task->id}}">
+
     <div class="task-preview-info">
         <h3>{{ $task->name }}</h3>
         @if(strlen($task->description)>150)

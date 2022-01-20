@@ -46,13 +46,12 @@ class ProjectController extends Controller
         $this->authorize('userAccess', Project::class);
         $projects = Auth::user()->projects()->orderBy('id')->get();
         $project = Project::find($id);
-        $searchQuery=$request["search-tasks-query"];
-        $searchResults=array();
-        foreach($project->tasks as $task){
-            if(str_contains(strtoupper($task->name),strtoupper($searchQuery)) || str_contains(strtoupper($task->description),strtoupper($searchQuery))){
-                array_push($searchResults,$task);
-            }
+
+        $searchQuery = $request->input('search-tasks-query');
+        if ($searchQuery !== null) {
+            $searchResults = $project->tasks()->whereRaw('tsvectors @@ plainto_tsquery(\'english\', ?)', $searchQuery)->get();
         }
+
         return view('pages.task-search-results',['searchResults'=>$searchResults,'project' => $project,'projects' =>$projects]);
     }
     public function getCreateProject()
