@@ -84,19 +84,28 @@ class ProjectController extends Controller
         $project->coordinators()->attach(Auth::user()->id);
 		
         $membersToInvite=explode(";",$request->input("members"));
-        foreach($membersToInvite as $member){
-            $user=User::where('email',$member)->first();
-            if($user!=NULL){
-                if($project->company_id==null){
-                    $user->projectInvitations()->attach($project->id);
-                }
-                else{
-                    if($project->company->worksHere($user->id)){
-                        $user->projectInvitations()->attach($project->id);
+        foreach($membersToInvite as $email){
+            $userToInvite=User::where('email',$email)->first();
+            $company=$project->company;
+            if(($company!=null && $userToInvite==null)||($company!=null && !$company->worksHere($userToInvite->id))){
+                continue;
+            }
+            $token=Str::random(60);
+            if($userToInvite!=null){
+                foreach($userToInvite->projectInvitations as $invite){
+                    
+                    if($project->id==$invite->id){
+                        continue;
                     }
-                    else return response("Some of the users doesn't belong to your company's workspace. Ask your company administrator to invite them. Only then, can you invite them to a project.",207);
                 }
-            } 
+                $userToInvite->projectInvitations()->attach($project->id,['token'=>$token]);
+            }
+            
+            $userToInvite->save();
+            $url=URL::temporarySignedRoute(
+                'acceptEmailProjectInvite', now()->addDays(7), ['token'=>$token]
+            );
+            Mail::to($userToInvite)->send(new ProjectInvite ($project,$url));
         }
     }
     public function archive($project_id){

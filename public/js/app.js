@@ -336,7 +336,6 @@ function setUpNavbarResponsive() {
         }
     });
 }
-
 setUpDropDownMenu();
 setUpSlideRightMenu();
 setUpNavbarResponsive();
