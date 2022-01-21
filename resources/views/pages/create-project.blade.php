@@ -3,7 +3,7 @@
 @section('content')
 
 <script src={{ asset('js/create-project-page.js') }} defer></script>
-  <div id="project-area" name="create-project">
+  <div id="project-area">
     @include('partials.slide-right-menu')
     @include('partials.projects-bar',['projects'=>$projects])
 <div id="regForm">
@@ -18,7 +18,6 @@
     <p><input placeholder="Project Name" oninput="this.className = ''" name="pname" id="cp-projectname"></p>
     <h1>Company name:</h1>
     <select id="cp-company" name="cp-company">
-      <option value=""></option> 
       @foreach(Auth::user()->companies as $company)
         <option value="{{$company->id}}">{{$company->name}}</option>
       @endforeach
@@ -27,8 +26,9 @@
   
   <div class="tab">
     <h1>When is the delivery date:</h1>
-    <p><input type ="date" this.className = '' name="date" id="cp-date" min ='<?php echo date('Y-m-d',time()+86400);?>' ></p>  <!-- 24*60*60 -->
-    <h1> <p> Give your project a description </p>  <p>(Optional)</p></h1>
+    <p><input type ="date" name="date" id="cp-date" min ='<?php echo date('Y-m-d',time()+86400);?>' ></p>  <!-- 24*60*60 -->
+    <h1> Give your project a description </h1> 
+    <h1>(Optional)</h1>
     <div id="create-project">
       <textarea id= "cp-description" name="description"
       rows="5" cols="33" placeholder="" ></textarea>
