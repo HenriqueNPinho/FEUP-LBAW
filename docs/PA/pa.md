@@ -4,7 +4,7 @@
 
 ## A9: Product
 
-> Brief presentation of the product developed.  
+We developed a web application for project management which includes, task management and assignment, easier communication between project members using the project's forum, a notification system, etc. Users can use our app on both an professional environment or a personal one.
 
 ### 1. Installation
 
@@ -13,22 +13,22 @@
 
 ### 2. Usage
 
-> URL to the product: http://lbaw21gg.lbaw.fe.up.pt  
+http://lbaw2151.lbaw.fe.up.pt  
 
 #### 2.1. Administration Credentials
 
-> Administration URL: URL  
+To access the admin page just login using this credentials: 
 
 | Username | Password |
 | -------- | -------- |
-| admin    | password |
+| sofia@example.com    | 1234 |
 
 #### 2.2. User Credentials
 
 | Type          | Username  | Password |
 | ------------- | --------- | -------- |
-| basic account | user 1    | password |
-| news editor   | user 1    | password |
+| Basic User | user 1    | password |
+| Project   | user 1    | password |
 
 ### 3. Application Help
 

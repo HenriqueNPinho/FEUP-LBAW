@@ -2948,6 +2948,49 @@ button:hover {
 }
 
 @media (max-width: 1200px) {
+
+
+    .AboutUsMemberPhoto .AboutUsPhoto{
+        height: 80px;
+        width: 80px;
+    }
+    #AboutUsPageInfo .AboutUsBox{
+        width: 80%;
+        margin-top: -10vh;
+    }
+    #AboutUsTeamDiv{
+        width: 97%;
+    }
+    #AboutUsPageMembers .AboutUsBox{
+        width: 95%;
+        margin-top: -10vh;
+        padding:2.5%;
+    }
+    #homepage-content {
+        margin-top: -10vh;
+        flex-wrap: wrap;
+        height: 102vh;
+        width: 100%;
+        padding: 0;
+    }
+
+    .homepage-column:last-of-type {
+        display: none;
+    }
+
+    .homepage-column {
+        width: 80%;
+        margin-top: -10vh;
+        padding: 0px;
+    }
+
+    .homepage-column:first-of-type {
+        padding: 0px;
+    }
+
+    .homepage-column .button {
+        margin-top: 10px;
+    }
     .navbar a img {
         padding-left: 30px;
         height: 8vh;
