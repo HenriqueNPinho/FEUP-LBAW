@@ -161,7 +161,6 @@ main > header {
 }
 
 .homepage-column {
-    width: 45%;
     align-self: center;
 }
 
@@ -169,6 +168,11 @@ main > header {
     color: white;
     padding-left: 100px;
     padding-right: 100px;
+    width: 45%;
+}
+
+.homepage-column:last-of-type{
+    width: 55%;
 }
 
 .homepage-column h2 {
