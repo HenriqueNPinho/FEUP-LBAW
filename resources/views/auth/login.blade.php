@@ -31,7 +31,7 @@
         <div class="divider"></div>
         <h4>Don't have an account?</h4>
 
-        <a class="button" href="{{ url('/register') }}">Sign Up Here</a>
+        <a class="button" href="{{ url('/register-redirect') }}">Sign Up Here</a>
     </form>
 </div>
 @endsection

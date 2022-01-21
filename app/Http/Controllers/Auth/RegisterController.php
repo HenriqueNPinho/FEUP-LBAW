@@ -77,13 +77,14 @@ class RegisterController extends Controller
             $user->company_id = $company->id;
             $user->save();
         }
-
-        $invite=CompanyInvite::where('token',$data['companyInviteToken'])->first();
-        if($invite==null) return $user;
-        if($invite->email!=$user->email) return $user;
-        $company=Company::find($invite->company_id);
-        $user->companies()->attach($company);
-        $invite->delete();
+        if(array_key_exists('companyInviteToken',$data)){
+            $invite=CompanyInvite::where('token',$data['companyInviteToken'])->first();
+            if($invite==null) return $user;
+            if($invite->email!=$user->email) return $user;
+            $company=Company::find($invite->company_id);
+            $user->companies()->attach($company);
+            $invite->delete();
+        }
         return $user;
     }
 

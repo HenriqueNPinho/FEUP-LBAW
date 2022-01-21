@@ -45,9 +45,9 @@ class ProjectPolicy
         return FALSE;
     }
     
-    // public function delete(User $user, Card $card)
-    // {
-    //   // Only a card owner can delete it
-    //   return $user->id == $card->user_id;
-    // }
+    public function adminAccess(User $user, Project $project)
+    {
+        if($user->is_admin&&$user->company_id==$project->company_id) return TRUE;
+        return FALSE;
+    }
 }

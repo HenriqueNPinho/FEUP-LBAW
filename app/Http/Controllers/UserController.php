@@ -14,6 +14,7 @@ use App\Models\Project;
 use App\Rules\MatchOldPassword;
 use App\Models\Company;
 use App\Models\CompanyInvite;
+use App\Models\ProjectInvite;
 
 class UserController extends Controller
 {
@@ -248,7 +249,7 @@ class UserController extends Controller
         }
     }
 
-    public function acceptInvite(Request $request)
+    public function acceptCompanyInvite(Request $request)
     {
         $invite=CompanyInvite::where('token',$request->token)->first();
         if($invite==null) return redirect("/");
@@ -257,6 +258,18 @@ class UserController extends Controller
         $company=Company::find($invite->company_id);
         $user->companies()->attach($company);
         $invite->delete();
+        return redirect('login');
+    }
+
+    public function acceptProjectInvite(Request $request)
+    {
+        $invite=ProjectInvite::where('token',$request->token)->first();
+        if($invite==null) return redirect("/");
+        $user=User::find($invite->users_id);
+        if($user==null) return redirect("/");
+        $project_id=$invite->project_id;
+        $user->projects()->attach($project_id);
+        $user->projectInvitations()->detach($project_id);
         return redirect('login');
     }
 }

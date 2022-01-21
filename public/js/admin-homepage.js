@@ -36,7 +36,7 @@ function setUpRemoveUsers(){
     });
 }
 
-function showCurrentProjects(){
+function setUpShowCurrentProjects(){
     let showCurrentProjectsButton = document.getElementById('showCurrentProjects');
     showCurrentProjectsButton.addEventListener("click", function(){
         document.getElementById('showCurrentProjects').style.backgroundColor = 'rgb(' + 42 + ',' + 157 + ',' + 143 +  ',' + 1 + ')';
@@ -46,7 +46,7 @@ function showCurrentProjects(){
     });
 }
 
-function showArchivedProjects(){
+function setUpShowArchivedProjects(){
     let showArchivedProjectsButton = document.getElementById('showArchivedProjects');
     showArchivedProjectsButton.addEventListener("click", function(){
         document.getElementById('showArchivedProjects').style.backgroundColor = 'rgb(' + 244 + ',' + 162 + ',' + 97 +  ',' + 1 +')';
@@ -56,7 +56,29 @@ function showArchivedProjects(){
     });
 }
 
+function setUpArchiveProjects(){
+    let archiveIcons=document.querySelectorAll('.adminArchiveProjectIcon');
+    archiveIcons.forEach(element => {
+        element.addEventListener("click",function(){
+            let id=element.getAttribute("data-id");
+            sendAjaxRequest('post','api/project/archive/'+id,null,genericResponseHandlerWithRefresh);
+        })
+    });
+}
+
+function setUpUnarchiveProjects(){
+    let UnarchiveIcons=document.querySelectorAll('.adminUnarchiveProjectIcon');
+    UnarchiveIcons.forEach(element => {
+        element.addEventListener("click",function(){
+            let id=element.getAttribute("data-id");
+            sendAjaxRequest('post','api/project/unarchive/'+id,null,genericResponseHandlerWithRefresh);
+        })
+    });
+}
+
 setUpInviteUsers();
 setUpRemoveUsers();
-showCurrentProjects();
-showArchivedProjects();
+setUpShowCurrentProjects();
+setUpShowArchivedProjects();
+setUpArchiveProjects();
+setUpUnarchiveProjects();

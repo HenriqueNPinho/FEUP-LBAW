@@ -2649,27 +2649,34 @@ input:focus{
 }
 
 .adminProject {
-    width: 300px;
-    height: 150px;
-    background-color: rgb(233, 231, 231);
-    margin: 10px;
+    width: 48%;
+    height: fit-content;
+    background-color: whitesmoke;
+    margin-bottom   : 4%;
+    border-radius: 4px;
 }
 
 .adminProjects {
     display: flex;
-    flex-flow: row wrap;
-    align-self: center;
-    justify-content: center;
+    flex-wrap: wrap;
+    width: 80%;
+    margin-left: 10%;
+    margin-right: 10%;
+    align-self: left;
+    justify-content: space-between;
+
 }
 
 .adminProjectTitle {
     height: 30px;
     display: flex;
     justify-content: center;
+    border-top-left-radius:4px ;
+    border-top-right-radius: 4px;
 }
 
 #currentProjectTitle{
-    background-color: rgb(42, 157, 143);
+    background-color:#2a9d8f
 }
 
 #archivedProjectTitle{
@@ -2698,6 +2705,19 @@ input:focus{
     width: 50%;
     display: flex;
     justify-content: center;
+    border-radius: 4px;
+}
+
+.adminButton:first-of-type{
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.adminButton:last-of-type{
+
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+
 }
 
 #showCurrentProjects{
@@ -2742,15 +2762,23 @@ input:focus{
 }
 
 .adminProjectDescription{
-    margin-top: 15px;
-    color: rgb(119, 117, 117)
+    padding: 15px;
+    text-align: left;
+    color: #264653;
+    border: 1px solid #2646532a;
+    border-top: none;
+    font-size: 14px;
 }
 
 .whiteAdminIcon{
     margin-left: 15px;
-    color: #e3dede;
+    color: #fff;
     align-self: center;
     cursor: pointer;
+}
+
+.whiteAdminIcon:hover{
+    color:whitesmoke;
 }
 
 .iconAdminHome {

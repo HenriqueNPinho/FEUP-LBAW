@@ -55,7 +55,7 @@ class User extends Authenticatable implements MustVerifyEmail,CanResetPassword
     }
 
     public function projectInvitations(){
-        return $this->belongsToMany('App\Models\Project','invitation','users_id','project_id');
+        return $this->belongsToMany('App\Models\Project','project_invites','users_id','project_id');
     }
 
     public function favoriteProjects(){

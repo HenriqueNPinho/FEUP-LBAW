@@ -42,12 +42,12 @@
 
         <div class = "adminProjects" id = "currentProjects" >
             @foreach($company->projects as $project)
-                @if(!$project->archived)
+                @if($project->archived==false)
                     <div class = "adminProject"> 
                         <div class = "adminProjectTitle" id = "currentProjectTitle">
                             <div class = "divIconUserPage">
                                 <div class = "adminNameParameter bold"> {{$project->name}}</div>
-                                <i class="fas fa-lock whiteAdminIcon"></i>
+                                <i data-id="{{$project->id}}" class="fas fa-box whiteAdminIcon adminArchiveProjectIcon"></i>
                             </div>
                         </div> 
                         <div class = "adminProjectDescription">
@@ -59,12 +59,12 @@
         </div>
         <div class = "adminProjects" id = "archivedProjects">
             @foreach($company->projects as $project)
-                @if($project->archived)
+                @if($project->archived==true)
                     <div class = "adminProject"> 
                         <div class = "adminProjectTitle" id = "archivedProjectTitle">
                             <div class = "divIconUserPage">
                                 <div class = "adminNameParameter bold"> {{$project->name}}</div>
-                                <i class="fas fa-unlock whiteAdminIcon"></i>
+                                <i data-id="{{$project->id}}" class="fas fa-box-open whiteAdminIcon adminUnarchiveProjectIcon"></i>
                             </div>
                         </div> 
                         <div class = "adminProjectDescription">

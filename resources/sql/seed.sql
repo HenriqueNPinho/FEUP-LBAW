@@ -12,7 +12,7 @@ DROP TABLE IF EXISTS tasks CASCADE;
 DROP TABLE IF EXISTS task_assigned CASCADE;
 DROP TABLE IF EXISTS task_comment CASCADE;
 DROP TABLE IF EXISTS forum_post CASCADE;
-DROP TABLE IF EXISTS invitation CASCADE;
+DROP TABLE IF EXISTS project_invites CASCADE;
 DROP TABLE IF EXISTS favorite CASCADE;
 DROP TABLE IF EXISTS post_edition CASCADE;
 DROP TABLE IF EXISTS password_resets CASCADE;
@@ -74,6 +74,7 @@ CREATE TABLE projects (
     start_date DATE,
     delivery_date DATE,
     archived BOOLEAN DEFAULT FALSE NOT NULL,
+    deleted_at TIMESTAMP WITH TIME ZONE,
     CONSTRAINT date_ck CHECK (delivery_date>=start_date)
 );
 
@@ -98,6 +99,7 @@ CREATE TABLE tasks (
     start_date DATE,
     delivery_date DATE,
     status task_status DEFAULT 'Not Started',
+    deleted_at TIMESTAMP WITH TIME ZONE,
     CONSTRAINT date_ck CHECK (delivery_date>start_date)
 );
 
@@ -117,7 +119,8 @@ CREATE TABLE task_comment(
     project_member_id INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
     content TEXT,
     comment_date TIMESTAMP WITH TIME ZONE DEFAULT now() NOT NULL,
-    deleted BOOLEAN DEFAULT FALSE NOT NULL
+    deleted BOOLEAN DEFAULT FALSE NOT NULL,
+    deleted_at TIMESTAMP WITH TIME ZONE
 );
 
 
@@ -130,9 +133,10 @@ CREATE TABLE forum_post(
     deleted BOOLEAN DEFAULT FALSE NOT NULL
 );
 
-CREATE TABLE invitation(
+CREATE TABLE project_invites(
     project_id INTEGER NOT NULL REFERENCES projects(id) ON DELETE CASCADE,
     users_id INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+    token TEXT NOT NULL,
     PRIMARY KEY(project_id,users_id)
 );
 
@@ -286,6 +290,7 @@ INSERT INTO users VALUES (
 INSERT INTO projects VALUES(DEFAULT,1,'LBAW','Um trabalho que me faz querer cortar os pulsos','2021-08-24', '2022-08-24', DEFAULT);
 INSERT INTO projects VALUES(DEFAULT,1,'RCOM','Bem vindos pinguins','2021-08-24', '2022-08-24', DEFAULT);
 INSERT INTO work VALUES(2,1); -- user id, company id
+INSERT INTO work VALUES(1,1);
 INSERT INTO project_member VALUES(1,1);
 INSERT INTO project_member VALUES(1,2);
 INSERT INTO project_coordinator VALUES(1,1);

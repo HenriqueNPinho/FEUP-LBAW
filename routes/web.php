@@ -18,42 +18,43 @@ use Illuminate\Support\Facades\Password;
 // Home
 Route::get('/', 'HomepageController@index')->name("home");
 Route::get('/home','HomepageController@index');
-Route::get('adminHomePage', 'AdminController@showAdminPage')->middleware('verified');;
+Route::get('adminHomePage', 'AdminController@showAdminPage')->middleware('verified');
 
-Route::get('projects', 'ProjectController@list')->name('projects')->middleware('verified');;
-Route::get('project/{id}', 'ProjectController@show')->middleware('verified');;
-Route::get('project/{project_id}/search/','ProjectController@taskSearch')->middleware('verified');;
-Route::post('api/task/updateStatus/{id}', 'TaskController@updateStatus')->middleware('verified');;
-Route::put('api/task/{project_id}','TaskController@create')->middleware('verified');;
-Route::get('api/task/{task_id}','TaskController@get')->middleware('verified');;
-Route::post('api/task/{task_id}','TaskController@edit')->middleware('verified');;
-Route::delete('api/task/{task_id}','TaskController@delete')->middleware('verified');;
-Route::put('api/task/{task_id}/addComment','TaskController@addComment')->middleware('verified');;
-Route::get('api/user/notifications','UserController@getNotifications')->middleware('verified');;
-Route::post('api/user/projectInvite','UserController@inviteResponse')->middleware('verified');;
-Route::put('api/project/create','ProjectController@create')->middleware('verified');;
-Route::post('api/user/removeFavorite/{project_id}','UserController@removeFavorite')->middleware('verified');;
-Route::post('api/user/addFavorite/{project_id}','UserController@addFavorite')->middleware('verified');;
-Route::post('api/project/archive/{project_id}','ProjectController@archive')->middleware('verified');;
-Route::get('api/user/notifications/{project_id}','UserController@notifications')->middleware('verified');;
+Route::get('projects', 'ProjectController@list')->name('projects')->middleware('verified');
+Route::get('project/{id}', 'ProjectController@show')->middleware('verified');
+Route::get('project/{project_id}/search/','ProjectController@taskSearch')->middleware('verified');
+Route::post('api/task/updateStatus/{id}', 'TaskController@updateStatus')->middleware('verified');
+Route::put('api/task/{project_id}','TaskController@create')->middleware('verified');
+Route::get('api/task/{task_id}','TaskController@get')->middleware('verified');
+Route::post('api/task/{task_id}','TaskController@edit')->middleware('verified');
+Route::delete('api/task/{task_id}','TaskController@delete')->middleware('verified');
+Route::put('api/task/{task_id}/addComment','TaskController@addComment')->middleware('verified');
+Route::get('api/user/notifications','UserController@getNotifications')->middleware('verified');
+Route::post('api/user/projectInvite','UserController@inviteResponse')->middleware('verified');
+Route::put('api/project/create','ProjectController@create')->middleware('verified');
+Route::post('api/user/removeFavorite/{project_id}','UserController@removeFavorite')->middleware('verified');
+Route::post('api/user/addFavorite/{project_id}','UserController@addFavorite')->middleware('verified');
+Route::post('api/project/archive/{project_id}','ProjectController@archive')->middleware('verified');
+Route::post('api/project/unarchive/{project_id}','ProjectController@unarchive')->middleware('verified');
+Route::get('api/user/notifications/{project_id}','UserController@notifications')->middleware('verified');
 
 Route::post('api/admin/inviteUser/{user_email}','AdminController@inviteUser')->middleware('verified');
 Route::post('api/admin/removeUser/{user_id}','AdminController@removeUser')->middleware('verified');
 
 
 // Forum
-Route::get('project/{project_id}/forum','ForumPostController@getProjectForum')->middleware('verified');;
-Route::put('project/{project_id}/forum','ForumPostController@create')->middleware('verified');;
-Route::post('project/forum/{post_id}','ForumPostController@edit')->middleware('verified');;
-Route::delete('project/forum/{post_id}','ForumPostController@delete')->middleware('verified');;
+Route::get('project/{project_id}/forum','ForumPostController@getProjectForum')->middleware('verified');
+Route::put('project/{project_id}/forum','ForumPostController@create')->middleware('verified');
+Route::post('project/forum/{post_id}','ForumPostController@edit')->middleware('verified');
+Route::delete('project/forum/{post_id}','ForumPostController@delete')->middleware('verified');
 
 //Project Settings
-Route::get('project/{project_id}/settings','ProjectController@getSettings')->middleware('verified');;
-Route::post('project/{project_id}/removeMember','ProjectController@removeMember')->middleware('verified');;
-Route::post('project/{project_id}/addCoordinator','ProjectController@addCoordinator')->middleware('verified');;
-Route::post('project/{project_id}/addMember','ProjectController@addMember')->middleware('verified');;
-Route::post('project/{project_id}/archive','ProjectController@archive')->middleware('verified');;
-Route::post('user/{project_id}/leave','UserController@leaveProject')->middleware('verified');;
+Route::get('project/{project_id}/settings','ProjectController@getSettings')->middleware('verified');
+Route::post('project/{project_id}/removeMember','ProjectController@removeMember')->middleware('verified');
+Route::post('project/{project_id}/addCoordinator','ProjectController@addCoordinator')->middleware('verified');
+Route::post('project/{project_id}/addMember','ProjectController@addMember')->middleware('verified');
+Route::post('project/{project_id}/archive','ProjectController@archive')->middleware('verified');
+Route::post('user/{project_id}/leave','UserController@leaveProject')->middleware('verified');
 
 //User Page
 Route::get('project/userpage/{user_id}','UserController@showCoworkerPage')->middleware('verified');
@@ -61,15 +62,15 @@ Route::get('userpage', 'UserController@showUserPage')->name('userpage')->middlew
 Route::get('edituserpage', 'UserController@showEditUserPage')->middleware('verified');
 
 //Edit User Page
-Route::post('userpage', 'UserController@userpageUpdate')->name('edituserpage')->middleware('verified');;
-Route::get('deleteuser', 'UserController@delete')->name('deleteuser')->middleware('verified');;
-Route::get('api/user/deleteUserPhoto', 'UserController@deletePhoto')->name('deleteUserPhoto')->middleware('verified');;
+Route::post('userpage', 'UserController@userpageUpdate')->name('edituserpage')->middleware('verified');
+Route::get('deleteuser', 'UserController@delete')->name('deleteuser')->middleware('verified');
+Route::get('api/user/deleteUserPhoto', 'UserController@deletePhoto')->name('deleteUserPhoto')->middleware('verified');
 
 //Change Password
-Route::get('changePassword', 'UserController@showChangePassword')->middleware('verified');;
-Route::post('changePassword', 'UserController@store')->name('changePassword')->middleware('verified');;
+Route::get('changePassword', 'UserController@showChangePassword')->middleware('verified');
+Route::post('changePassword', 'UserController@store')->name('changePassword')->middleware('verified');
 
-Route::get('create-project', 'ProjectController@getCreateProject')->middleware('verified');;
+Route::get('create-project', 'ProjectController@getCreateProject')->middleware('verified');
 
 // ==============================================
 // Authentication -> User
@@ -97,9 +98,11 @@ Route::post('register/admin', 'Auth\RegisterController@register');
 //logout
 Route::get('logout', 'Auth\LoginController@logout')->name('logout');
 
-Route::get('acceptInvite','UserController@acceptInvite')->name('existingUserAcceptCompanyInvite');
+Route::get('acceptCompanyInvite','UserController@acceptCompanyInvite')->name('existingUserAcceptCompanyInvite');
 
-Route::get('newUserAcceptInvite','Auth\RegisterController@redirectWithToken')->name('newUserAcceptCompanyInvite');
+Route::get('newUserAcceptCompanyInvite','Auth\RegisterController@redirectWithToken')->name('newUserAcceptCompanyInvite');
+
+Route::get('acceptProjectInvite','UserController@acceptProjectInvite')->name('acceptEmailProjectInvite');
 
 Route::get('/email/verify', function () {
     if(Auth::user()->hasVerifiedEmail()) return redirect('/');

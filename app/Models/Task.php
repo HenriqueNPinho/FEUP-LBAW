@@ -3,11 +3,14 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
+
 
 class Task extends Model
 {
   // Don't add create and update timestamps in database.
   public $timestamps  = false;
+  use SoftDeletes;
 
   /**
    * The card this item belongs to.

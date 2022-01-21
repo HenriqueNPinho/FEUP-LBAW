@@ -3,12 +3,13 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Project extends Model
 {
     // Don't add create and update timestamps in database.
     public $timestamps  = false;
-
+    use SoftDeletes;
     /**
      * The user this card belongs to
      */

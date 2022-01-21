@@ -3,12 +3,14 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
+
 
 class TaskComment extends Model
 {
   // Don't add create and update timestamps in database.
   public $timestamps  = false;
-
+  use SoftDeletes;
 
   protected $table = 'task_comment';
   /**

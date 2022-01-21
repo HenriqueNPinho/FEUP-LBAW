@@ -6,6 +6,11 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Str;
+use App\Mail\ProjectInvite;
+use Illuminate\Support\Facades\URL;
+use Illuminate\Support\Facades\Mail;
 
 use App\Models\Project;
 use App\Models\User;
@@ -98,15 +103,28 @@ class ProjectController extends Controller
     public function archive($project_id){
         if (!Auth::check()) return redirect('/login');
         $project = Project::find($project_id);
-        $this->authorize('coordinatorAccess',$project);
+        if(Gate::denies('adminAccess',$project)){
+            $this->authorize('coordinatorAccess',$project);
+        }
         $project->archived=TRUE;
         $project->save();
         $project->usersFavorite()->detach();
         $project->usersInvited()->detach();
+        if(Gate::allows('adminAccess',$project)) return;
         $this->authorize('userAccess', Project::class);
         $projects = Auth::user()->projects()->orderBy('id')->get();
         return view('pages.projects', ['projects' => $projects]);
     }
+
+    public function unarchive($project_id){
+        if (!Auth::check()) return redirect('/login');
+        $project = Project::find($project_id);
+        $this->authorize('adminAccess',$project);
+        $project->archived=FALSE;
+        $project->save();
+        return;
+    }
+
 
     public function getSettings($project_id)
     {
@@ -179,6 +197,7 @@ class ProjectController extends Controller
             $validator->errors()->add('email', "That user doesn't belong to your company's workspace. Ask your company administrator to invite him. Only then, can you invite him to a project.");
             return redirect()->back()->withErrors($validator);
         }
+        $token=Str::random(60);
         if($userToInvite!=null){
             foreach($userToInvite->projectInvitations as $invite){
                 
@@ -187,9 +206,14 @@ class ProjectController extends Controller
                     return redirect()->back()->withErrors($validator);
                 }
             }
-            $userToInvite->projectInvitations()->attach($project);
+            $userToInvite->projectInvitations()->attach($project->id,['token'=>$token]);
         }
+        
         $userToInvite->save();
+        $url=URL::temporarySignedRoute(
+            'acceptEmailProjectInvite', now()->addDays(7), ['token'=>$token]
+        );
+        Mail::to($userToInvite)->send(new ProjectInvite ($project,$url));
         return redirect()->back()->withErrors($validator);
     }
 
