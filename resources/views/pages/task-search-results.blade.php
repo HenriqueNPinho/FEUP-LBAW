@@ -17,7 +17,7 @@
         </div>
         
         <div class="search-results-area">
-        @each('partials.task-preview',$searchResults,'task')
+            @each('partials.task-preview',$searchResults,'task')
         </div>
     </div>
     
