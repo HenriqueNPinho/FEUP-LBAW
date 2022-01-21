@@ -279,19 +279,19 @@ INSERT INTO users VALUES (
   '2021-12-28 19:10:25+00'
 ); -- Password is 1234. Generated using Hash::make('1234')
 
-INSERT INTO projects VALUES(DEFAULT,1,'LBAW','Um trabalho que me faz querer cortar os pulsos','2021-08-24', '2022-08-24', DEFAULT);
-INSERT INTO projects VALUES(DEFAULT,1,'RCOM','Bem vindos pinguins','2021-08-24', '2022-08-24', DEFAULT);
+INSERT INTO projects VALUES(DEFAULT,1,'LBAW','A project where we developed a website application for project management','2021-08-24', '2022-08-24', DEFAULT);
+INSERT INTO projects VALUES(DEFAULT,1,'RCOM','Hello penguins, welcome to this project.','2021-08-24', '2022-08-24', DEFAULT);
 INSERT INTO work VALUES(2,1); -- user id, company id
 INSERT INTO work VALUES(1,1);
 INSERT INTO project_member VALUES(1,1);
 INSERT INTO project_member VALUES(1,2);
 INSERT INTO project_coordinator VALUES(1,1);
 INSERT INTO project_coordinator VALUES(1,2);
-INSERT INTO forum_post VALUES (DEFAULT, 1, 1, 'Primeiro post', '2021-12-28 19:10:25+00', DEFAULT);
-INSERT INTO forum_post VALUES (DEFAULT, 1, 1, 'Segundo post', '2021-12-29 19:10:25+00', DEFAULT);
-INSERT INTO forum_post VALUES (DEFAULT, 2, 1, 'Terceiro post', '2021-12-30 19:10:25+00', DEFAULT);
-INSERT INTO forum_post VALUES (DEFAULT, 2, 1, 'Quarto post', '2021-12-31 19:10:25+00', DEFAULT);
-INSERT INTO projects VALUES(DEFAULT,1,'x','Um trabalho que me faz querer cortar os pulsos','2021-08-24', '2022-08-24', DEFAULT);
+INSERT INTO forum_post VALUES (DEFAULT, 1, 1, 'A random post', '2021-12-28 19:10:25+00', DEFAULT);
+INSERT INTO forum_post VALUES (DEFAULT, 1, 1, 'Another random post', '2021-12-29 19:10:25+00', DEFAULT);
+INSERT INTO forum_post VALUES (DEFAULT, 2, 1, 'Something something something', '2021-12-30 19:10:25+00', DEFAULT);
+INSERT INTO forum_post VALUES (DEFAULT, 2, 1, 'This is yet another post with nothing concrete', '2021-12-31 19:10:25+00', DEFAULT);
+INSERT INTO projects VALUES(DEFAULT,1,'Random project','Another project with a description.','2021-08-24', '2022-08-24', DEFAULT);
 INSERT INTO project_member VALUES(2,2);
 INSERT INTO favorite VALUES(1,1);
 INSERT INTO tasks VALUES(DEFAULT,1,'Task name','A task description you know','2021-11-19','2022-12-31','Not Started');
