@@ -2,9 +2,7 @@
 @section('title', 'FAQ')
 @section('content')
 
-
 <body id="FAQ-body">
-    <main>
         <div id="FAQ">
         <h1 class="faq-heading">FAQ'S</h1>
         <section class="faq-container">
@@ -39,6 +37,8 @@
             </div>
         </section>
         </div>
-    </main>
     <script  src={{ asset('js/faq.js') }} defer></script>
 </body>
+@endsection
+
+
