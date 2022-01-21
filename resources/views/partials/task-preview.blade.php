@@ -1,4 +1,4 @@
-<div draggable="true" class="task-preview" data-id="{{$task->id}}">
+<div draggable="true" class="task-preview" data-id="{{$task->id}}" data-status="{{$task->status}}">
 
     <div class="task-preview-info">
         <h3>{{ $task->name }}</h3>

@@ -10,7 +10,7 @@ button {
     font-family: "Montserrat", sans-serif;
 }
 
-input{
+input {
     font-family: "Montserrat", sans-serif;
 }
 
@@ -233,7 +233,6 @@ main > header {
     margin-bottom: 5px;
 }
 
-
 form button {
     border: 0;
     background-color: #2a9d8f;
@@ -308,7 +307,7 @@ form h4 {
     text-align: center;
     align-self: center;
     font-size: 20px;
-    overflow:hidden;
+    overflow: hidden;
 }
 
 .project-select {
@@ -375,7 +374,7 @@ form h4 {
     background-color: white;
 }
 
-.project-icon-container-grow{
+.project-icon-container-grow {
     align-self: center;
     display: flex;
     justify-content: center;
@@ -384,7 +383,7 @@ form h4 {
     margin-top: 0.6vw;
 }
 
-.project-icon:hover{
+.project-icon:hover {
     height: 2.9vw;
     width: 2.9vw;
 }
@@ -397,15 +396,15 @@ form h4 {
 /* box for title text */
 [data-title]:after {
     content: attr(data-title);
-  	/* position for title view box */
-  	position: absolute;
-  	bottom: -1.6em;  	
+    /* position for title view box */
+    position: absolute;
+    bottom: -1.6em;
     left: 100%;
     z-index: 99999;
     visibility: hidden;
     /* optional */
     white-space: nowrap;
-  	/* stilization */
+    /* stilization */
     background-color: #264653;
     color: #fff;
     font-size: 13px;
@@ -426,9 +425,9 @@ form h4 {
     font-size: 0.58vw;
     font-weight: bold;
     text-align: center;
-    margin:0px;
-    word-break:keep-all ;
-    overflow:hidden;
+    margin: 0px;
+    word-break: keep-all;
+    overflow: hidden;
 }
 
 #add-project {
@@ -777,7 +776,7 @@ form h4 {
     height: 70vh;
     background-color: #ececec;
     border-radius: 10px;
-    border: 1px solid #26465323
+    border: 1px solid #26465323;
 }
 
 .board h2 {
@@ -815,7 +814,7 @@ form h4 {
     margin-bottom: 20px;
     -webkit-box-shadow: 0px 5px 16px 0px rgba(27, 27, 27, 0.02);
     box-shadow: 0px 5px 16px 0px rgba(27, 27, 27, 0.02);
-    border: 1px solid #26465323
+    border: 1px solid #26465323;
 }
 
 .task-preview:hover {
@@ -842,7 +841,7 @@ form h4 {
 
 .task-preview-info p {
     font-size: 13px;
-    padding-right: 65px;
+    padding-right: 20%;
 }
 
 .task-preview h4 {
@@ -1241,44 +1240,6 @@ form h4 {
     width: 100%;
 }
 
-@media (max-width: 70em) {
-    #cards {
-        grid-template-columns: repeat(2, 1fr);
-    }
-    main > header {
-        display: grid;
-        grid-template-columns: 1fr auto;
-    }
-    main > header h1 {
-        grid-row-end: span 2;
-    }
-}
-@media (max-width: 40em) {
-    #cards {
-        grid-template-columns: 1fr;
-    }
-}
-@media (max-width: 25em) {
-    body {
-        margin: 0;
-    }
-    main > header {
-        margin: 0;
-        padding: 0.5em;
-    }
-    main > header span {
-        margin: 0;
-    }
-    #content form {
-        margin: 0;
-        max-width: 25em;
-    }
-    article.card {
-        margin: 0;
-        border-bottom: 1px solid rgba(96, 108, 118, 0.4);
-    }
-}
-
 #regForm {
     margin: 100px auto;
     padding: 40px;
@@ -1456,73 +1417,64 @@ input.invalid {
 }
 /*sinal de menos*/
 .active_faq:after {
-    color:#264653;
+    color: #264653;
     content: "\2796";
 }
 
 /*about us*/
 
 /* Main Container -  this controls the size of the circle */
-.circle_container
-{
-    margin : 0;
-	padding : 0;
+.circle_container {
+    margin: 0;
+    padding: 0;
     margin-left: 30%;
-	width : 770px;
-	height : 770px;
+    width: 770px;
+    height: 770px;
 }
 
 /* Circle Main draws the actual circle */
-.circle_main
-{
-
-	width : 100%;
-	height : 100%;
-	border-radius : 50%;
-    background:rgba(42, 157, 143,0.6);
-	margin : 0;
-	padding : 0;
+.circle_main {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: rgba(42, 157, 143, 0.6);
+    margin: 0;
+    padding: 0;
 }
 
 /* Circle Text Container - constrains text area to within the circle */
-.circle_text_container
-{
+.circle_text_container {
+    width: 70%;
+    height: 70%;
+    max-width: 70%;
+    max-height: 70%;
+    margin: 0;
+    padding: 0;
 
-	width : 70%;
-	height : 70%;
-	max-width : 70%;
-	max-height : 70%;
-	margin : 0;
-	padding : 0;
+    position: relative;
+    left: 15%;
+    top: 15%;
 
-	position : relative;
-	left : 15%;
-	top : 15%;
-	
-	transform-style : preserve-3d;
+    transform-style: preserve-3d;
 }
 
 /* Circle Text - the appearance of the text within the circle plus vertical centering */
-.circle_text_title
-{
-	font: 43px 	"Montserrat", sans-serif;
-	text-align : center;
-	color: white;
-	position : relative;
-	top : 50%;
-	transform : translateY(-50%);
+.circle_text_title {
+    font: 43px "Montserrat", sans-serif;
+    text-align: center;
+    color: white;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
 }
-.circle_text
-{
-	font: 30px 	"Montserrat", sans-serif;
-	text-align : center;
-	color: white;
-	position : relative;
-	top : 50%;
-	transform : translateY(-50%);
+.circle_text {
+    font: 30px "Montserrat", sans-serif;
+    text-align: center;
+    color: white;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
 }
-
-
 
 /**
  * Overide milligram colors
@@ -2200,13 +2152,13 @@ a {
     overflow-y: auto;
     font-size: 13px;
     border-radius: 10px;
-    border:1px solid rgba(102, 102, 102, 0.562);
-    color:rgba(102, 102, 102, 0.562);
+    border: 1px solid rgba(102, 102, 102, 0.562);
+    color: rgba(102, 102, 102, 0.562);
 }
 
-.new-post-content-input textarea:focus{
-    border:1px solid rgba(102, 102, 102, 0.562);
-    outline: none;;
+.new-post-content-input textarea:focus {
+    border: 1px solid rgba(102, 102, 102, 0.562);
+    outline: none;
     color: #222;
 }
 
@@ -2216,8 +2168,8 @@ a {
     top: 10px;
 }
 
-input:focus{
-    color:#222;
+input:focus {
+    color: #222;
 }
 
 .forumPost:last-child
@@ -2317,7 +2269,7 @@ input:focus{
     display: flex;
     flex-direction: column;
     margin-left: 50px;
-    width: 7 0%;
+    width: 70%;
 }
 
 .settings-form h3 {
@@ -2328,7 +2280,7 @@ input:focus{
     font-size: 13px;
 
     height: 25px;
-    width: 350px;
+    width: 100%;
     outline: 0;
     resize: none;
 }
@@ -2600,7 +2552,7 @@ input:focus{
 }
 
 #projectsZone {
-    border-left:1px solid #2646532a;
+    border-left: 1px solid #2646532a;
     height: 90vh;
 }
 
@@ -2608,14 +2560,14 @@ input:focus{
     color: #264653;
 }
 
-.adminUser:first-of-type{
+.adminUser:first-of-type {
     background-color: #2a9d8f;
     border: 1px solid #2646532a;
     border-top-left-radius: 4px;
     border-top-right-radius: 4px;
 }
 
-.adminUser:last-of-type{
+.adminUser:last-of-type {
     border-bottom-left-radius: 4px;
     border-bottom-right-radius: 4px;
 }
@@ -2627,12 +2579,12 @@ input:focus{
     display: flex;
 }
 
-.adminUser:hover{
+.adminUser:hover {
     background-color: whitesmoke;
 }
 
-.adminUser:first-of-type:hover{
-    background-color:#2a9d8f;
+.adminUser:first-of-type:hover {
+    background-color: #2a9d8f;
 }
 
 .iconRemoveUser {
@@ -2652,7 +2604,7 @@ input:focus{
     width: 48%;
     height: fit-content;
     background-color: whitesmoke;
-    margin-bottom   : 4%;
+    margin-bottom: 4%;
     border-radius: 4px;
 }
 
@@ -2664,28 +2616,27 @@ input:focus{
     margin-right: 10%;
     align-self: left;
     justify-content: space-between;
-
 }
 
 .adminProjectTitle {
     height: 30px;
     display: flex;
     justify-content: center;
-    border-top-left-radius:4px ;
+    border-top-left-radius: 4px;
     border-top-right-radius: 4px;
 }
 
-#currentProjectTitle{
-    background-color:#2a9d8f
+#currentProjectTitle {
+    background-color: #2a9d8f;
 }
 
-#archivedProjectTitle{
+#archivedProjectTitle {
     background-color: #f4a261;
 }
 
 .adminNameParameter {
     align-self: center;
-    margin:0px;
+    margin: 0px;
     font-size: 14px;
     color: white;
     margin-top: 5px;
@@ -2708,29 +2659,27 @@ input:focus{
     border-radius: 4px;
 }
 
-.adminButton:first-of-type{
+.adminButton:first-of-type {
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
 }
 
-.adminButton:last-of-type{
-
+.adminButton:last-of-type {
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
-
 }
 
-#showCurrentProjects{
+#showCurrentProjects {
     background-color: rgb(42, 157, 143);
     display: flex;
 }
 
-#showArchivedProjects{
-    background-color: rgb(244,162,97,0.5);
+#showArchivedProjects {
+    background-color: rgb(244, 162, 97, 0.5);
     display: flex;
 }
 
-#archivedProjects{
+#archivedProjects {
     display: none;
 }
 
@@ -2761,7 +2710,7 @@ input:focus{
     color: #264653;
 }
 
-.adminProjectDescription{
+.adminProjectDescription {
     padding: 15px;
     text-align: left;
     color: #264653;
@@ -2770,15 +2719,15 @@ input:focus{
     font-size: 14px;
 }
 
-.whiteAdminIcon{
+.whiteAdminIcon {
     margin-left: 15px;
     color: #fff;
     align-self: center;
     cursor: pointer;
 }
 
-.whiteAdminIcon:hover{
-    color:whitesmoke;
+.whiteAdminIcon:hover {
+    color: whitesmoke;
 }
 
 .iconAdminHome {
@@ -2788,22 +2737,22 @@ input:focus{
     cursor: pointer;
 }
 
-.iconAdminHome:hover{
+.iconAdminHome:hover {
     opacity: 0.8;
 }
 
-#add-user-to-company-input{
+#add-user-to-company-input {
     width: 90%;
-    border:none;
+    border: none;
     padding-left: 15px;
     color: #264653;
 }
 
-#add-user-to-company-input:hover{
+#add-user-to-company-input:hover {
     background-color: whitesmoke;
 }
 
-#add-user-to-company-input:focus{
+#add-user-to-company-input:focus {
     outline: none;
 }
 
@@ -2841,7 +2790,7 @@ input:focus{
     padding: 7px 12px 7px 12px;
 }
 
-#edit-forum-post-save-button:hover{
+#edit-forum-post-save-button:hover {
     opacity: 0.8;
 }
 
@@ -2849,7 +2798,7 @@ input:focus{
     margin-top: 5px;
     margin-right: 20px;
     resize: none;
-    border:1px solid rgba(102, 102, 102, 0.562);
+    border: 1px solid rgba(102, 102, 102, 0.562);
     padding: 10px;
     border-radius: 10px;
 }
@@ -2864,13 +2813,12 @@ input:focus{
     width: 1.2vw;
     border-radius: 1.3vw;
     background-color: #e76f51;
-    border:1px solid #e76f51;
+    border: 1px solid #e76f51;
 
-    top:-3.5vw;
+    top: -3.5vw;
     display: flex;
     right: 10px;
     justify-content: space-around;
-
 }
 
 .project-icon-number-notifications h6 {
@@ -2879,13 +2827,13 @@ input:focus{
     color: white;
 }
 
-.project-icon-number-notifications-container{
+.project-icon-number-notifications-container {
     position: relative;
     height: 0px;
     align-self: flex-end;
 }
 
-.auth-page #forgot-password{
+.auth-page #forgot-password {
     font-size: 13px;
     color: black;
     margin-bottom: 20px;
@@ -2893,19 +2841,19 @@ input:focus{
     text-align: center;
 }
 
-#reset-password-instructions{
+#reset-password-instructions {
     font-size: 13px;
-    margin-top:0px;
+    margin-top: 0px;
     margin-bottom: 10px;
 }
 
-.alert-success{
+.alert-success {
     font-size: 13px;
-    margin-bottom:10px;
-    color:#2a9d8f;
+    margin-bottom: 10px;
+    color: #2a9d8f;
 }
 
-.success-message-alert{
+.success-message-alert {
     background-color: #3abb71;
     position: absolute;
     align-self: center;
@@ -2918,66 +2866,360 @@ input:focus{
     display: none;
     flex-direction: column;
     justify-content: center;
-    padding:25px 0 0px 0;
+    padding: 25px 0 0px 0;
 }
 
-.success-message-alert h4{
-
+.success-message-alert h4 {
     font-size: 13px;
-    color:white;
+    color: white;
 }
 
-.success-message-alert i{
-    color:white;
+.success-message-alert i {
+    color: white;
     align-self: center;
 }
 
-#register-redirect{
+#register-redirect {
     text-align: center;
 }
 
-#register-redirect .button{
+#register-redirect .button {
     width: 180px;
-    margin:0px;
+    margin: 0px;
     align-self: center;
 }
 
-#register-redirect .button:first-of-type{
-    margin-top:20px;
+#register-redirect .button:first-of-type {
+    margin-top: 20px;
 }
 
-#register-redirect .button:last-of-type{
+#register-redirect .button:last-of-type {
     margin-bottom: 20px;
 }
 
-.button:hover{
+.button:hover {
     opacity: 0.8;
 }
 
-button:hover{
+button:hover {
     opacity: 0.8;
 }
 
-#register-redirect div>h3{
+#register-redirect div > h3 {
     align-self: center;
 }
 
-#register-redirect div{
+#register-redirect div {
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
 
-#project-overview-company-info{
+#project-overview-company-info {
     display: flex;
     margin-left: 50px;
     width: 30%;
 }
 
-#project-overview-company-info i{
+#project-overview-company-info i {
     align-self: center;
 }
 
-#project-overview-company-info h3{
+#project-overview-company-info h3 {
     align-self: center;
+}
+
+.search-results-filters {
+    margin-left: 70px;
+}
+
+.search-results-filters input {
+    margin-right: 20px;
+}
+
+.navbar .responsiveNavbarIcon{
+    display: none;
+}
+
+@media (max-width: 600px) {
+
+    .auth-page form{
+        margin-top:-10vh;
+    }
+    .responsiveNavbarIcon{
+        display: block;
+        align-self: center;
+        margin-right: 30px;
+        color: #264653;
+    }
+    .navbar-homepage{
+        display: none;
+        position: fixed;
+        top:10vh;
+        width: 100vw;
+        flex-direction: column;
+        background-color: white;
+    }
+
+    .navbar-homepage a{
+        padding-right: 0;
+        text-align: center;
+        padding-top:20px;
+        padding-bottom: 20px;
+        border-top:1px solid #7e7d7ad2
+    }
+
+    .navbar-homepage a:last-of-type{
+        border-bottom:1px solid #7e7d7ad2;
+    }
+
+    .navbar {
+        width: 100vw;
+    }
+
+    .navbar a img {
+        padding-left: 10px;
+        height: 8vh;
+        margin-top: 1vh;
+        margin-bottom: 1vh;
+    }
+
+    .navbar-collapse-item a {
+        display: none;
+    }
+
+    .navbar-collapse {
+        right: 0px;
+    }
+
+    #project-area {
+        flex-direction: column;
+        height: 80vh;
+    }
+    #projects-bar {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        height: 10vh;
+        padding-top: 0;
+        position: fixed;
+        top: 10vh;
+        z-index: 4;
+    }
+    #filler {
+        height: 20vh;
+    }
+    .project-icon-container-grow {
+        height: 8vh;
+        width: 8vh;
+        margin-top: 1vh;
+        margin-bottom: 1vh;
+        overflow-y: unset;
+    }
+
+    .project-icon-container-grow:first-of-type {
+        margin-left: 10px;
+    }
+
+    .project-icon {
+        height: 6vh;
+        width: 6vh;
+    }
+
+    .project-icon:hover {
+        height: 6vh;
+        width: 6vh;
+    }
+
+    .project-icon h5 {
+        font-size: 10px;
+    }
+
+    #all-projects {
+        width: 100%;
+    }
+
+    #all-projects h2 {
+        text-align: center;
+    }
+
+    #add-project img {
+        margin-left: 20px;
+        height: 3.8vh;
+        width: 3.8vh;
+    }
+
+    #slide-right-menu {
+        margin-left: 0;
+        max-width: unset;
+        min-width: 60vw;
+    }
+
+    .project-overview {
+        width: 100%;
+    }
+
+    #project-overview-top-bar {
+        flex-direction: column;
+        justify-content: space-around;
+    }
+
+    #project-overview-top-bar-left {
+        padding-top: 30px;
+    }
+    #project-overview-top-bar-right {
+        margin-left: 20px;
+        padding-top: 20px;
+    }
+
+    #project-title {
+        margin-left: 20px;
+    }
+
+    .boards-container {
+        flex-direction: column;
+        width: 100%;
+        justify-content: space-around;
+    }
+
+    .board {
+        width: 80%;
+        margin-left: 5%;
+        margin-right: 5%;
+        padding-left: 5%;
+        padding-right: 5%;
+        margin-bottom: 4vh;
+        height: 55vh;
+    }
+
+    #project-overview-opaque-cover {
+        width: 100%;
+        height: 100vh;
+    }
+
+    #task-page,
+    #new-task-form,
+    #edit-task-form {
+        width: 90%;
+        margin: 0;
+        margin-top: 8vh;
+        margin-left: 5%;
+        margin-right: 5%;
+        overflow-y: auto;
+    }
+
+    .two-column-container {
+        flex-direction: column;
+    }
+
+    #new-task-end-date-selection h4,
+    #edit-task-end-date-selection h4 {
+        margin-top: 20px;
+    }
+
+    #new-task-form .button,
+    #edit-task-form .button {
+        margin-top: 0px;
+        margin-bottom: 20px;
+    }
+
+    .userpageSetUp {
+        flex-direction: column-reverse;
+    }
+
+    .textSpace {
+        width: 90%;
+    }
+
+    .textSpaceButtons {
+        flex-wrap: wrap;
+        width: 100%;
+        justify-content: flex-start;
+    }
+
+    .profileButton {
+        width: 45%;
+        margin-right: 3%;
+    }
+
+    .textSpace form {
+        width: 100%;
+    }
+
+    .project-invites {
+        width: 80%;
+    }
+    .userpageSetUp {
+        margin-left: 10%;
+        margin-right: 10%;
+    }
+
+    .BigDivEditProfile {
+        width: 90%;
+    }
+
+    #edituserpageForm {
+        flex-direction: column-reverse;
+    }
+
+    #project-settings-columns-container{
+        flex-wrap: wrap;
+    }
+    #project-settings-columns-container div:first-child {
+        width: 100%;
+    }
+
+    #project-overview-company-info{
+        margin-left: 20px;
+    }
+    .settings-form{
+        margin:0;
+        margin-left: 20px;
+        width: 80%;
+    }
+    .settings-form p{
+        width: 100%;
+    }
+
+    #regForm select{
+        width: 100%;
+    }
+
+    #pointsStepIndicator{
+        display: none;
+    }
+
+    #regForm{
+        margin-top: 2vh;
+    }
+
+    #create-project textarea {
+        width: 100%;
+    }
+    #homepage-content{
+        margin-top: -10vh;
+        flex-wrap: wrap;
+        height: 102vh;
+        width: 100%;
+        padding:0;
+    }
+
+    .homepage-column:last-of-type{
+        display: none;
+    }
+
+    .homepage-column{
+        width: 80%;
+        margin-top: -10vh;
+        padding:0px
+    }
+
+    .homepage-column:first-of-type{
+        padding:0px
+    }
+
+    .homepage-column .button{
+        margin-top: 10px;
+    }
+
 }

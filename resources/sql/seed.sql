@@ -172,23 +172,15 @@ ADD COLUMN tsvectors TSVECTOR;
 
 CREATE FUNCTION task_search_update() RETURNS TRIGGER AS $$
 BEGIN
- IF TG_OP = 'INSERT' THEN
-        NEW.tsvectors = (
-         setweight(to_tsvector('english', NEW.name), 'A') ||
-         setweight(to_tsvector('english', NEW.description), 'B')
-        );
- END IF;
- IF TG_OP = 'UPDATE' THEN
-         IF (NEW.name <> OLD.name OR NEW.description <> OLD.description) THEN
-           NEW.tsvectors = (
-             setweight(to_tsvector('english', NEW.name), 'A') ||
-             setweight(to_tsvector('english', NEW.description), 'B')
-           );
-         END IF;
- END IF;
- RETURN NEW;
-END $$
-LANGUAGE plpgsql;
+    IF TG_OP = 'INSERT' THEN
+        NEW.tsvectors = setweight(to_tsvector('simple', NEW.name), 'A') || ' ' || setweight(to_tsvector('simple', coalesce(NEW.description, '')), 'B');
+    END IF;
+    IF TG_OP = 'UPDATE' THEN
+        NEW.tsvectors = setweight(to_tsvector('simple', NEW.name), 'A') || ' ' || setweight(to_tsvector('simple', coalesce(NEW.description, '')), 'B');
+    END IF;
+    RETURN NEW;
+END
+$$ LANGUAGE 'plpgsql';
 
 CREATE TRIGGER task_search_update
 BEFORE INSERT OR UPDATE ON tasks

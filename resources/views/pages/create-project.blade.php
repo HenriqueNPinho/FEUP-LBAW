@@ -51,7 +51,7 @@
       <button type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
     </div>
 
-  <div style="margin-top:47px; margin-left:48%;">
+  <div id="pointsStepIndicator" style="margin-top:47px; margin-left:48%;">
     <span class="step"></span>
     <span class="step"></span>
     <span class="step"></span>
