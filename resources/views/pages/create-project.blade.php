@@ -1,10 +1,8 @@
-<html>
-<body>
- 
 @extends('layouts.app')
+@section('title', 'Create Project')
 @section('content')
 
-<script type="text/javascript" src={{ asset('js/create-project-page.js') }} defer></script>
+<script src={{ asset('js/create-project-page.js') }} defer></script>
   <div id="project-area" name="create-project">
     @include('partials.slide-right-menu')
     @include('partials.projects-bar',['projects'=>$projects])
@@ -60,8 +58,7 @@
   
   </div>
 @endsection
-</body>
-</html>
+
 
 
 

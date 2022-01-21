@@ -1,7 +1,7 @@
 @extends('layouts.app')
-
+@section('title', 'Homepage')
 @section('content')
-<script type="text/javascript" src={{ asset('js/admin-homepage.js') }} defer></script>
+<script src={{ asset('js/admin-homepage.js') }} defer></script>
 
 <div id= "adminHomePage">
 

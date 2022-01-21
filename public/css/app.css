@@ -4,6 +4,7 @@ body {
     color: black;
     font-family: "Montserrat", sans-serif;
     scrollbar-width: thin;
+    line-height: 1.4;
 }
 
 button {
@@ -422,7 +423,7 @@ form h4 {
 
 .project-icon h5 {
     align-self: center;
-    font-size: 0.58vw;
+    font-size: 0.54vw;
     font-weight: bold;
     text-align: center;
     margin: 0px;
@@ -532,7 +533,7 @@ form h4 {
 .project-invites {
     margin-top: 50px;
     margin-left: 10%;
-    align-self: left;
+    
     width: 20%;
 }
 
@@ -585,7 +586,7 @@ form h4 {
 
 .accept-icons-container {
     margin-top: 15px;
-    align-self: left;
+    
     display: flex;
     justify-content: space-between;
     width: 30%;
@@ -770,9 +771,9 @@ form h4 {
     flex-direction: column;
     overflow-y: auto;
     padding-top: 20px;
-    padding-left: 30px;
-    padding-right: 30px;
-    width: 22%;
+    padding-left: 1%;
+    padding-right: 1%;
+    width: 25%;
     height: 70vh;
     background-color: #ececec;
     border-radius: 10px;
@@ -824,7 +825,7 @@ form h4 {
 }
 
 .task-preview-info {
-    max-width: 90%;
+    width: 70%;
     overflow-wrap: break-word;
 }
 
@@ -841,7 +842,6 @@ form h4 {
 
 .task-preview-info p {
     font-size: 13px;
-    padding-right: 20%;
 }
 
 .task-preview h4 {
@@ -895,9 +895,9 @@ form h4 {
 }
 
 #task-page-header h2 {
-    align-self: top;
+    
     margin-top: 33px;
-    align-self: left;
+    
     text-transform: uppercase;
     color: #264653;
 }
@@ -1053,12 +1053,12 @@ form h4 {
 
 #new-task-form-header h2,
 #edit-task-form-header h2 {
-    align-self: top;
+    
 }
 
 #new-task-form-header img,
 #edit-task-form-header img {
-    align-self: top;
+    
     cursor: pointer;
     height: 23px;
     margin-top: 33px;
@@ -1069,8 +1069,8 @@ form h4 {
 #edit-task-form h2 {
     margin-left: 33px;
     margin-top: 33px;
-    margin-bottom: 5%;
-    align-self: left;
+    margin-bottom: 2%;
+    
     text-transform: uppercase;
     color: #264653;
 }
@@ -1091,13 +1091,14 @@ form h4 {
     margin-bottom: 20px;
     border-radius: 2px;
     border: 0;
-    box-sizing: border-box;
     color: rgb(126, 126, 126);
     font-size: 18px;
-    height: 45px;
+    min-height: 45px;
     outline: 0;
     padding: 4px 20px 0;
     resize: none;
+    display: block;
+    
 }
 
 #new-task-end-date-selection,
@@ -1394,7 +1395,6 @@ input.invalid {
     margin: auto;
     text-align: center;
     width: 50%;
-    padding: auto;
 }
 
 .active_faq,
@@ -1581,7 +1581,7 @@ a {
 .textSpace {
     display: flex;
     flex-flow: column;
-    align-items: left;
+    
     justify-content: center;
     width: 50%;
     height: auto;
@@ -1605,7 +1605,6 @@ a {
 
 .userName {
     color: #264653;
-    font-weight: 600px;
     font-size: 30px;
     text-align: left;
 }
@@ -1954,7 +1953,7 @@ a {
 #passwordForm {
     display: flex;
     flex-flow: column;
-    align-items: left;
+    
     justify-content: center;
     width: 100%;
     height: auto;
@@ -2378,9 +2377,9 @@ input:focus {
 }
 
 #full-member-list-header h2 {
-    align-self: top;
+    
     margin-top: 33px;
-    align-self: left;
+    
     text-transform: uppercase;
     color: #264653;
 }
@@ -2472,7 +2471,7 @@ input:focus {
 #verify-email-page button {
     border: 0;
     background-color: #2a9d8f;
-    padding: 13 px;
+    padding: 13px;
     border-radius: 20px;
     height: fit-content;
     text-align: center;
@@ -2614,7 +2613,7 @@ input:focus {
     width: 80%;
     margin-left: 10%;
     margin-right: 10%;
-    align-self: left;
+    
     justify-content: space-between;
 }
 
@@ -2937,40 +2936,188 @@ button:hover {
     margin-right: 20px;
 }
 
-.navbar .responsiveNavbarIcon{
+.navbar .responsiveNavbarIcon {
     display: none;
+    align-self: center;
+    margin-right: 30px;
+    color: #264653;
+}
+
+@media (max-width: 1200px) {
+    .navbar a img {
+        padding-left: 30px;
+        height: 8vh;
+        margin-top: 1vh;
+        margin-bottom: 1vh;
+    }
+
+    .board {
+        width: 29%;
+    }
+
+    #project-area {
+        flex-direction: column;
+        height: 80vh;
+    }
+    #projects-bar {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        height: 10vh;
+        padding-top: 0;
+        position: fixed;
+        top: 10vh;
+        z-index: 4;
+    }
+    #filler {
+        height: 20vh;
+    }
+    .project-icon-container-grow {
+        height: 8vh;
+        width: 8vh;
+        margin-top: 1vh;
+        margin-bottom: 1vh;
+        overflow-y: unset;
+    }
+
+    .project-icon-container-grow:first-of-type {
+        margin-left: 20px;
+    }
+
+    .project-icon {
+        height: 6vh;
+        width: 6vh;
+    }
+
+    .project-icon:hover {
+        height: 6vh;
+        width: 6vh;
+    }
+
+    .project-icon h5 {
+        font-size: 10px;
+    }
+
+    #all-projects {
+        width: 100%;
+    }
+
+    #all-projects h2 {
+        text-align: center;
+    }
+
+    #add-project img {
+        margin-left: 20px;
+        height: 3.8vh;
+        width: 3.8vh;
+    }
+    .project-overview {
+        width: 100%;
+    }
+
+    .board{
+        height: 60vh;
+    }
+
+    #project-overview-opaque-cover {
+        width: 100%;
+        height: 80vh;
+    }
+
+    #task-page,
+    #new-task-form,
+    #edit-task-form {
+        width: 90%;
+        margin: 0;
+        margin-top: 8vh;
+        margin-left: 5%;
+        margin-right: 5%;
+        overflow-y: auto;
+        height: 60vh;
+    }
+
+    .two-column-container {
+        flex-direction: column;
+    }
+
+    #new-task-end-date-selection h4,
+    #edit-task-end-date-selection h4 {
+        margin-top: 20px;
+    }
+
+    #new-task-form .button,
+    #edit-task-form .button {
+        margin-top: 0px;
+        margin-bottom: 20px;
+    }
+
+    .userpageSetUp {
+        flex-direction: column-reverse;
+    }
+
+    .textSpace {
+        width: 90%;
+    }
+
+    .textSpaceButtons {
+        flex-wrap: wrap;
+        width: 100%;
+        justify-content: flex-start;
+    }
+
+    .profileButton {
+        width: 45%;
+        margin-right: 3%;
+    }
+
+    .textSpace form {
+        width: 100%;
+    }
+
+    .project-invites {
+        width: 80%;
+    }
+    .userpageSetUp {
+        margin-left: 10%;
+        margin-right: 10%;
+    }
+
+    .BigDivEditProfile {
+        width: 90%;
+    }
+
+    #edituserpageForm {
+        flex-direction: column-reverse;
+    }
+
 }
 
 @media (max-width: 600px) {
-
-    .auth-page form{
-        margin-top:-10vh;
+    .auth-page form {
+        margin-top: -10vh;
     }
-    .responsiveNavbarIcon{
+    .responsiveNavbarIcon {
         display: block;
-        align-self: center;
-        margin-right: 30px;
-        color: #264653;
     }
-    .navbar-homepage{
+    .navbar-homepage {
         display: none;
         position: fixed;
-        top:10vh;
+        top: 10vh;
         width: 100vw;
         flex-direction: column;
         background-color: white;
     }
 
-    .navbar-homepage a{
+    .navbar-homepage a {
         padding-right: 0;
         text-align: center;
-        padding-top:20px;
+        padding-top: 20px;
         padding-bottom: 20px;
-        border-top:1px solid #7e7d7ad2
+        border-top: 1px solid #7e7d7ad2;
     }
 
-    .navbar-homepage a:last-of-type{
-        border-bottom:1px solid #7e7d7ad2;
+    .navbar-homepage a:last-of-type {
+        border-bottom: 1px solid #7e7d7ad2;
     }
 
     .navbar {
@@ -3094,7 +3241,7 @@ button:hover {
 
     #project-overview-opaque-cover {
         width: 100%;
-        height: 100vh;
+        height: 80vh;
     }
 
     #task-page,
@@ -3106,7 +3253,9 @@ button:hover {
         margin-left: 5%;
         margin-right: 5%;
         overflow-y: auto;
+        height: 60vh;
     }
+
 
     .two-column-container {
         flex-direction: column;
@@ -3162,66 +3311,65 @@ button:hover {
         flex-direction: column-reverse;
     }
 
-    #project-settings-columns-container{
+    #project-settings-columns-container {
         flex-wrap: wrap;
     }
     #project-settings-columns-container div:first-child {
         width: 100%;
     }
 
-    #project-overview-company-info{
+    #project-overview-company-info {
         margin-left: 20px;
     }
-    .settings-form{
-        margin:0;
+    .settings-form {
+        margin: 0;
         margin-left: 20px;
         width: 80%;
     }
-    .settings-form p{
+    .settings-form p {
         width: 100%;
     }
 
-    #regForm select{
+    #regForm select {
         width: 100%;
     }
 
-    #pointsStepIndicator{
+    #pointsStepIndicator {
         display: none;
     }
 
-    #regForm{
+    #regForm {
         margin-top: 2vh;
     }
 
     #create-project textarea {
         width: 100%;
     }
-    #homepage-content{
+    #homepage-content {
         margin-top: -10vh;
         flex-wrap: wrap;
         height: 102vh;
         width: 100%;
-        padding:0;
+        padding: 0;
     }
 
-    .homepage-column:last-of-type{
+    .homepage-column:last-of-type {
         display: none;
     }
 
-    .homepage-column{
+    .homepage-column {
         width: 80%;
         margin-top: -10vh;
-        padding:0px
+        padding: 0px;
     }
 
-    .homepage-column:first-of-type{
-        padding:0px
+    .homepage-column:first-of-type {
+        padding: 0px;
     }
 
-    .homepage-column .button{
+    .homepage-column .button {
         margin-top: 10px;
     }
-
 }
 
 /* ABOUT US -> PAGE */

@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('title', $user->name."'s Profile")
 @section('content')
 <div class = "profileDiv">
     
@@ -28,9 +29,9 @@
                 <div id = "containerEditPhoto" >
                     <div class = "profilePhotoCropper">
                         @if(empty($user->profile_image))
-                            <img src = "/images/avatars/profile-pic-2.png" class = "roundPhoto" id = "tempProfilePhoto">
+                            <img src = "/images/avatars/profile-pic-2.png" class = "roundPhoto" id = "tempProfilePhoto"  alt="user-profile-image">
                         @else
-                            <img src ="{{$user->profile_image}}" class = "roundPhoto" id = "tempProfilePhoto"> 
+                            <img src ="{{$user->profile_image}}" class = "roundPhoto" id = "tempProfilePhoto"  alt="user-profile-image"> 
                         @endif
                     </div>
                 </div>

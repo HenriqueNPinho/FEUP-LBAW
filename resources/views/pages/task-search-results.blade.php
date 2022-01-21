@@ -1,7 +1,7 @@
 @extends('layouts.app')
-
+@section('title', $project->name." Search Results")
 @section('content')
-<script type="text/javascript" src={{ asset('js/project-page.js') }} defer></script>
+<script src={{ asset('js/project-page.js') }} defer></script>
 <div id="project-area">
     
     @include('partials.projects-bar',['projects'=>$projects])

@@ -1,7 +1,7 @@
 @extends('layouts.app')
-
+@section('title', $project->name)
 @section('content')
-<script type="text/javascript" src={{ asset('js/project-page.js') }} defer></script>
+<script src={{ asset('js/project-page.js') }} defer></script>
 <div id="project-area">
 @include('partials.projects-bar')
 
@@ -47,7 +47,7 @@
                     <button type="submit">Go</button>    
                 </form>
                 <div id="project-options-container">
-                    <img id="project-options-3points-icon" src="/images/icons/3points.png" alt="">
+                    <img id="project-options-3points-icon" src="/images/icons/3points.png" alt="options-icon">
                     <div id="project-options">
                         @if(Auth::user()->isFavorite($project))
                             <div id="remove-from-favorites-button"><h4>Remove from favorites</h4></div>
@@ -65,21 +65,21 @@
             <div id="not-started" class="board">
                 <div class="board-header">
                     <h2>TO DO</h2>
-                    <img class="new-task-plus" src="/images/icons/plus-blue.png" data-id="Not Started">
+                    <img class="new-task-plus" src="/images/icons/plus-blue.png" data-id="Not Started" alt="new-task-icon">
                 </div>
                 @each('partials.task-preview',$project->tasks()->where('status','Not Started')->get(),'task')
             </div>
             <div id="started" class="board">
                 <div class="board-header">
                     <h2>DOING</h2>
-                    <img class="new-task-plus" src="/images/icons/plus-blue.png" data-id="In Progress">
+                    <img class="new-task-plus" src="/images/icons/plus-blue.png" data-id="In Progress" alt="new-task-icon">
                 </div>
                 @each('partials.task-preview',$project->tasks()->where('status','In Progress')->get(),'task')
             </div>
             <div id="complete" class="board">
                 <div class="board-header">
                     <h2>DONE</h2>
-                    <img class="new-task-plus" src="/images/icons/plus-blue.png" data-id="Complete">
+                    <img class="new-task-plus" src="/images/icons/plus-blue.png" data-id="Complete" alt="new-task-icon">
                 </div>
                 @each('partials.task-preview',$project->tasks()->where('status','Complete')->get(),'task')
             </div>

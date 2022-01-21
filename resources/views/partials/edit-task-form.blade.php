@@ -1,7 +1,7 @@
 <div id="edit-task-form">
     <div id="edit-task-form-header">
         <h2>EDIT TASK</h2>
-        <img id="close-edit-task-form" src="/images/icons/close.png" alt="">
+        <img id="close-edit-task-form" src="/images/icons/close.png" alt="close-task-icon">
     </div>
     
     <input id="edit-task-name-input" type="text" name="name" placeholder="Task Name">

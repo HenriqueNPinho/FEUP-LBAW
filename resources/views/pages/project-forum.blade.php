@@ -1,7 +1,7 @@
 @extends('layouts.app')
-
+@section('title', $project->name." Forum")
 @section('content')
-<script type="text/javascript" src={{ asset('js/forum.js') }} defer></script>
+<script src={{ asset('js/forum.js') }} defer></script>
 
 <div id="project-area">
 
@@ -13,22 +13,6 @@
         <div id="project-overview-top-bar">
             <div id="project-overview-top-bar-left">
                 <h2 id="project-title">{{$project->name}}</h2>
-
-                @if(count($project->members)>3)
-                    @for($i = 0; $i <= 2; $i++)
-                        <img src="{{$project->members[$i]->profile_image}}" alt="">
-                        @if((count($project->members)-3)>9)
-                            <div><h2>9+</h2></div>
-                        @else
-                            <div><h2>{{count($$project->members)}}+</h2></div>
-                        @endif
-
-                    @endfor
-                @else
-                    @foreach($project->members as $member)
-                        <img src="{{$member->profile_image}}" alt="">
-                    @endforeach
-                @endif
             </div>
         </div>
         <div id = "forum">
@@ -38,7 +22,7 @@
                     @if($forumPost->deleted)
                     <div class = "forumPost">
                         
-                        <img class="forum-post-profile-image" src="{{$forumPost->postAuthor->profile_image}}" alt="">
+                        <img class="forum-post-profile-image" src="{{$forumPost->postAuthor->profile_image}}" alt="user-profile-pic">
                         <div class="forum-post-name-date-options-content">
                             <div class="forum-post-name-date-options">
                                 <div class="forum-post-name-plus-date">
@@ -61,7 +45,7 @@
                     @else
                     <div class = "forumPost">
                         
-                        <img class="forum-post-profile-image" src="{{$forumPost->postAuthor->profile_image}}" alt="">
+                        <img class="forum-post-profile-image" src="{{$forumPost->postAuthor->profile_image}}" alt="user-profile-pic">
                         <div class="forum-post-name-date-options-content">
                             <div class="forum-post-name-date-options">
                                 <div class="forum-post-name-plus-date">
@@ -77,7 +61,7 @@
                                         <div data-id="{{$forumPost->id}}" class="forum-post-edit-post-button"><h4>Edit post</h4></div>
                                         <div data-id="{{$forumPost->id}}" class="forum-post-delete-post-button"><h4>Delete post</h4></div>
                                     </div>
-                                    <img class="forum-post-options-button" src="/images/icons/3points.png" alt="">
+                                    <img class="forum-post-options-button" src="/images/icons/3points.png" alt="options-icon">
                                 </div>
                                 @endif
                             </div>
@@ -94,7 +78,7 @@
             </div>
             <div class="new-post-content-input"  data-project-id="{{$project->id}}">
                 <textarea id="new-post-text-area-input" name="content" placeholder="Type a new message..." cols="120" rows="4"></textarea>
-                <img id="createNewPostButton" src="/images/icons/send.png" alt="">
+                <img id="createNewPostButton" src="/images/icons/send.png" alt="send-post-icon">
             </div>
         </div>
     </div>
