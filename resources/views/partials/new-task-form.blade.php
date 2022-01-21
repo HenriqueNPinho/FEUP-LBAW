@@ -1,12 +1,12 @@
 <div id="new-task-form">
     <div id="new-task-form-header">
         <h2>Create a new task</h2>
-        <img id="close-new-task-form" src="/images/icons/close.png" alt="">
+        <img id="close-new-task-form" src="/images/icons/close.png" alt="close-icon">
         
     </div>
     
     <input id="new-task-name-input" type="text" name="name" placeholder="Task Name">
-    <textarea id="new-task-description-input" name="description" placeholder="Description of your task" cols="40" rows="5"></textarea>
+    <textarea id="new-task-description-input" name="description" placeholder="Description of your task"  ></textarea>
     <div class="two-column-container">
         <div id="new-member-selection">
             <h4>ASSIGN MEMBERS TO THE TASK</h4>

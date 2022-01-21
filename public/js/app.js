@@ -323,6 +323,7 @@ function sendAjaxRequest(method, url, data, handler) {
 function setUpNavbarResponsive() {
     let icon = document.querySelector(".responsiveNavbarIcon");
     let options = document.querySelector(".navbar-homepage");
+    if(icon==null) return;
     icon.addEventListener("click", function () {
         if (
             options.style.display == "none" ||

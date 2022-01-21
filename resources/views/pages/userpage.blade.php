@@ -1,6 +1,7 @@
 @extends('layouts.app')
+@section('title', "Your Profile")
 @section('content')
-<script type="text/javascript" src={{ asset('js/userpage.js') }} defer></script>
+<script src={{ asset('js/userpage.js') }} defer></script>
 
     @if (!($user->is_admin))
         <div class = "profileDiv">    
@@ -54,9 +55,9 @@
                         <div id = "containerEditPhoto" >
                             <div class = "profilePhotoCropper">
                                 @if(empty(Auth::user()->profile_image))
-                                    <img src = "/images/avatars/profile-pic-2.png" class = "roundPhoto" id = "tempProfilePhoto">
+                                    <img src = "/images/avatars/profile-pic-2.png" class = "roundPhoto" id = "tempProfilePhoto" alt="user-profile-image">
                                 @else
-                                    <img src ="{{Auth::user()->profile_image}}" class = "roundPhoto" id = "tempProfilePhoto"> 
+                                    <img src ="{{Auth::user()->profile_image}}" class = "roundPhoto" id = "tempProfilePhoto" alt="user-profile-image"> 
                                 @endif
                             </div>
                         </div>
@@ -76,11 +77,11 @@
                         <p>Description: {{$projectInvitation->description}}</p>
                         <div class="accept-icons-container">
                             <div class="accept-reject-icon">
-                                <img class="accept-project-icon" data-id="{{$projectInvitation->pivot->project_id}}" src="/images/icons/accept.png" alt="">
+                                <img class="accept-project-icon" data-id="{{$projectInvitation->pivot->project_id}}" src="/images/icons/accept.png" alt="accept-invite">
                                 <h5>Join</h5>
                             </div>
                             <div class="accept-reject-icon">
-                                <img class="reject-project-icon" data-id="{{$projectInvitation->pivot->project_id}}" src="/images/icons/reject.png" alt="">
+                                <img class="reject-project-icon" data-id="{{$projectInvitation->pivot->project_id}}" src="/images/icons/reject.png" alt="decline-invite">
                                 <h5>Ignore</h5>
                             </div>
                             
@@ -131,9 +132,9 @@
                         <div id = "containerEditPhoto" >
                             <div class = "profilePhotoCropper">
                                 @if(empty(Auth::user()->profile_image))
-                                    <img src = "/images/avatars/profile-pic-2.png" class = "roundPhoto" id = "tempProfilePhoto">
+                                    <img src = "/images/avatars/profile-pic-2.png" class = "roundPhoto" id = "tempProfilePhoto" alt="user-profile-image">
                                 @else
-                                    <img src ="{{Auth::user()->profile_image}}" class = "roundPhoto" id = "tempProfilePhoto"> 
+                                    <img src ="{{Auth::user()->profile_image}}" class = "roundPhoto" id = "tempProfilePhoto" alt="user-profile-image"> 
                                 @endif
                             </div>
                         </div>

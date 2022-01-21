@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('title', 'FAQ')
 @section('content')
 
 
@@ -39,5 +40,5 @@
         </section>
         </div>
     </main>
-    <script  type="text/javascript" src={{ asset('js/faq.js') }} defer></script>
+    <script  src={{ asset('js/faq.js') }} defer></script>
 </body>

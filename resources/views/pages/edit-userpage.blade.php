@@ -1,6 +1,7 @@
 @extends('layouts.app')
+@section('title', 'Edit Profile Info')
 @section('content')
-<script type="text/javascript" src={{ asset('js/edit-userpage.js') }} defer></script>
+<script src={{ asset('js/edit-userpage.js') }} defer></script>
 
 @if (!($user->is_admin))
     <div class = "profileDiv">
@@ -58,9 +59,9 @@
                         <div id = "containerEditPhoto">
                             <div class = "profilePhotoCropper">
                                 @if(empty(Auth::user()->profile_image))
-                                    <img src = "/images/avatars/profile-pic-2.png" class = "roundPhoto" id = "tempProfilePhoto">
+                                    <img src = "/images/avatars/profile-pic-2.png" class = "roundPhoto" id = "tempProfilePhoto" alt="user-profile-pic">
                                 @else
-                                    <img src ="{{Auth::user()->profile_image}}" class = "roundPhoto" id = "tempProfilePhoto"> 
+                                    <img src ="{{Auth::user()->profile_image}}" class = "roundPhoto" id = "tempProfilePhoto" alt="user-profile-pic"> 
                                 @endif
                             </div>
                             <div class = "uploadImage">
@@ -127,9 +128,9 @@
                     <div id = "containerEditPhoto">
                         <div class = "profilePhotoCropper">
                             @if(empty(Auth::user()->profile_image))
-                                <img src = "/images/avatars/profile-pic-2.png" class = "roundPhoto" id = "tempProfilePhoto">
+                                <img src = "/images/avatars/profile-pic-2.png" class = "roundPhoto" id = "tempProfilePhoto" alt="user-profile-pic">
                             @else
-                                <img src ="{{Auth::user()->profile_image}}" class = "roundPhoto" id = "tempProfilePhoto"> 
+                                <img src ="{{Auth::user()->profile_image}}" class = "roundPhoto" id = "tempProfilePhoto" alt="user-profile-pic"> 
                             @endif
                         </div>
                         <div class = "uploadImage">

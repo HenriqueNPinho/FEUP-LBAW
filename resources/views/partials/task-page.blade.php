@@ -2,9 +2,9 @@
     <div id="task-page-header">
         <h1 id="task-page-task-name">TASK NAME GOES HERE</h1>
         <div>
-            <img id="edit-task-icon" src="/images/icons/edit.png" alt="">
-            <img id="delete-task-icon" src="/images/icons/delete.png" alt="">
-            <img id="close-task-page" src="/images/icons/close.png" alt="">
+            <img id="edit-task-icon" src="/images/icons/edit.png" alt="edit-task-icon">
+            <img id="delete-task-icon" src="/images/icons/delete.png" alt="delete-task-icon">
+            <img id="close-task-page" src="/images/icons/close.png" alt="close-task-icon">
             
         </div>
     </div>
@@ -18,16 +18,16 @@
                 <p id="task-page-task-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos laudantium eveniet tenetur alias facere iste tempore fugiat cumque? Ex, dolore?</p>
             </div>
             <div id="task-page-task-date-container">
-                <img src="/images/icons/calendar.png" alt="">
+                <img src="/images/icons/calendar.png" alt="date-icon">
                 <p id="task-page-task-date">I got my first real six string Bought it at the five and dime Played it till my fingers bled Was the summer of '69…</p>
             </div>
             <div id="task-comments-container">
                 <h2>COMMENTS</h2>
                 <div id="add-task-page-comment" class="task-page-comment">
                     @if(Auth::user()->profile_image==null)
-                    <img src="/images/avatars/profile-pic-2.png" alt="">
+                    <img src="/images/avatars/profile-pic-2.png" alt="user-profile-image">
                     @else
-                    <img src="{{Auth::user()->profile_image}}" alt="">
+                    <img src="{{Auth::user()->profile_image}}" alt="user-profile-image">
                     @endif
                     <div>
                         <h5>{{Auth::user()->name}}</h5>

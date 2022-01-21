@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+@section('title', 'Home')
 @section('content')
     <div id="homepage-content">
         <div class="homepage-column">
@@ -8,7 +8,7 @@
             <a class="button white" href="{{ url('/register') }}">Signup here</a>
         </div>
         <div class="homepage-column">
-            <img src="./images/ProjectOverview.png" alt="">
+            <img src="./images/ProjectOverview.png" alt="example-image">
         </div>
     </div>
 @endsection
