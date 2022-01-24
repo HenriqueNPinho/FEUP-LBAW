@@ -85,7 +85,7 @@ The only library we used was FontAwesome, to use icons in our project. Documenta
 | US101      | Login      | M01 | High     | Sofia Germer | 100% |
 | US102      | Sign-up     | M02 | High     | Sofia Germer | 100% |
 | US103      | See home    | M01 | High     | Miguel Lopes | 100% |
-| US104      | See about   | M01 | High     | Henrique Pinho, Sofia Germer | 100% |
+| US104      | See about   | M01 | High     | Sofia Germer | 100% |
 | US105      | Consult FAQ | M01 | High     | Henrique Pinho | 100% |
 | US201      | Create project       | M04   | High     | Henrique Pinho | 100% |
 | US202      | View projects             | M04 | High     | Miguel Lopes | 100% |
