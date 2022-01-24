@@ -82,43 +82,43 @@ The only library we used was FontAwesome, to use icons in our project. Documenta
 
 | US Identifier | Name    | Module | Priority                       | Team Members               | State  |
 | ------------- | ------- | ------ | ------------------------------ | -------------------------- | ------ |
-| US101      | Login       | High     | Sofia Germer | 100% |
-| US102      | Sign-up     | High     | Sofia Germer | 100% |
-| US103      | See home    | High     | Miguel Lopes | 100% |
-| US104      | See about   | High     | Henrique Pinho, Sofia Germer | 100% |
-| US105      | Consult FAQ | High     | Henrique Pinho | 100% |
-| US201      | Create project             | High     | Henrique Pinho | 100% |
-| US202      | View projects              | High     | Miguel Lopes | 100% |
-| US203      | Manage profile             | High     | Sofia Germer | 100%|
-| US204      | Manage project invitations | High     | Miguel Lopes | 100% |
-| US205      | Logout                     | High     | Sofia Germer | 100% |
-| US206      | Mark project as favorite   | Medium   | Miguel Lopes | 100% |
-| US207      | Delete account             | Medium   | Miguel Lopes | 100% |
-| US301      | Create task                    | High     |  Miguel Lopes | 100%|
-| US302      | Manage tasks                   | High     |  Miguel Lopes | 100%|
-| US303      | Complete an assigned task      | High     |  Miguel Lopes | 100%|
-| US304      | Search tasks                   | High     |  Miguel Lopes | 100%|
-| US305      | Leave project                  | High     | Miguel Lopes | 100% |
-| US306      | Assign Users to Tasks          | High     | Miguel Lopes | 100% |
-| US307      | Post messages to project forum | Medium   | Edgar Torres | 100% |
-| US308      | View task details              | Medium   | Miguel Lopes | 100% |
-| US309      | Comment on task                | Medium   | Miguel Lopes | 100% |
-| US310      | Browse project forum           | Medium   | Edgar Torres | 100% |
-| US311      | Receive notifications          | Medium   | Miguel Lopes | 100% |
-| US312      | View the project’s team        | Low      |  Miguel Lopes | 100% |
-| US313      | View Team members profile      | Low      | Sofia Germer | 100% |
-| US401      | Edit posts   | High     | Miguel Lopes | 100% |
-| US402      | Delete posts | High     | Miguel Lopes | 100% |
-| US501      | Add user to project        | High     | Miguel Lopes | 100% |
-| US502      | Assign tasks to members    | High     | Miguel Lopes | 100% |
-| US503      | Assign new coordinator     | High     | Miguel Lopes | 100% |
-| US504      | Edit project details       | High     | Miguel Lopes | 100% |
-| US505      | Invite to Project by email | Medium   | Miguel Lopes | 100% |
-| US506      | Archive project            | Medium   | Miguel Lopes | 100% |
-| US601      | Invite user to the company’s workspace   | Sofia Germer, Miguel Lopes | 100% |
-| US602      | View a list of company users             | High     | Sofia Germer, Miguel Lopes | 100% |
-| US603      | Remove user from the company’s workplace | High     | Sofia Germer, Miguel Lopes | 100% |
-| US604      | Browse projects                          | High     | Sofia Germer, Miguel Lopes | 100% | 
+| US101      | Login      | M01 | High     | Sofia Germer | 100% |
+| US102      | Sign-up     | M02 | High     | Sofia Germer | 100% |
+| US103      | See home    | M01 | High     | Miguel Lopes | 100% |
+| US104      | See about   | M01 | High     | Henrique Pinho, Sofia Germer | 100% |
+| US105      | Consult FAQ | M01 | High     | Henrique Pinho | 100% |
+| US201      | Create project       | M04   | High     | Henrique Pinho | 100% |
+| US202      | View projects             | M04 | High     | Miguel Lopes | 100% |
+| US203      | Manage profile          | M03   | High     | Sofia Germer | 100%|
+| US204      | Manage project invitations | M03 | High     | Miguel Lopes | 100% |
+| US205      | Logout                    | M03 | High     | Sofia Germer | 100% |
+| US206      | Mark project as favorite  | M04 | Medium   | Miguel Lopes | 100% |
+| US207      | Delete account            | M02 | Medium   | Miguel Lopes | 100% |
+| US301      | Create task                | M04    | High     |  Miguel Lopes | 100%|
+| US302      | Manage tasks                | M04  | High     |  Miguel Lopes | 100%|
+| US303      | Complete an assigned task   | M04   | High     |  Miguel Lopes | 100%|
+| US304      | Search tasks               | M04   | High     |  Miguel Lopes | 100%|
+| US305      | Leave project               | M04   | High     | Miguel Lopes | 100% |
+| US306      | Assign Users to Tasks       | M04  | High     | Miguel Lopes | 100% |
+| US307      | Post messages to project forum | M05 | Medium   | Edgar Torres | 100% |
+| US308      | View task details            | M04 | Medium   | Miguel Lopes | 100% |
+| US309      | Comment on task              | M04  | Medium   | Miguel Lopes | 100% |
+| US310      | Browse project forum         | M05 | Medium   | Edgar Torres | 100% |
+| US311      | Receive notifications        | M04  | Medium   | Miguel Lopes | 100% |
+| US312      | View the project’s team      | M04 | Low      |  Miguel Lopes | 100% |
+| US313      | View Team members profile    | M04 | Low      | Sofia Germer | 100% |
+| US401      | Edit posts  | M05 | High     | Miguel Lopes | 100% |
+| US402      | Delete posts | M05 | High     | Miguel Lopes | 100% |
+| US501      | Add user to project      | M04  | High     | Miguel Lopes | 100% |
+| US502      | Assign tasks to members  | M04  | High     | Miguel Lopes | 100% |
+| US503      | Assign new coordinator   | M04  | High     | Miguel Lopes | 100% |
+| US504      | Edit project details      | M04 | Medium     |  | 0% |
+| US505      | Invite to Project by email | M04 |Medium   | Miguel Lopes | 100% |
+| US506      | Archive project            | M04 | Medium   | Miguel Lopes | 100% |
+| US601      | Invite user to the company’s workspace | M06  | High | Sofia Germer, Miguel Lopes | 100% |
+| US602      | View a list of company users          | M06 | High     | Sofia Germer, Miguel Lopes | 100% |
+| US603      | Remove user from the company’s workplace| M06 | High     | Sofia Germer, Miguel Lopes | 100% |
+| US604      | Browse projects                     | M06     | High     | Sofia Germer, Miguel Lopes | 100% | 
 ---
 
 
