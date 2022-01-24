@@ -8,8 +8,13 @@ We developed a web application for project management which includes, task manag
 
 ### 1. Installation
 
-> Link to the release with the final version of the source code in the group's Git repository.  
-> Include the full Docker command to start the image available at the group's GitLab Container Registry using the production database.  
+The final release version can be found [here](http://lbaw2151.lbaw.fe.up.pt).
+
+The full Docker command to start the image available at the group's GitLab Container Registry using the production database:
+
+```
+sudo docker run -it -p 8000:80 --name=lbaw2151 -e DB_DATABASE="lbaw2151" -e DB_SCHEMA="lbaw2151" -e DB_USERNAME="lbaw2151" -e DB_PASSWORD="wQTXZRMG" git.fe.up.pt:5050/lbaw/lbaw2122/lbaw2151
+```
 
 ### 2. Usage
 
@@ -27,8 +32,8 @@ To access the admin page just login using this credentials:
 
 | Type          | Username  | Password |
 | ------------- | --------- | -------- |
-| Basic User | user 1    | password |
-| Project   | user 1    | password |
+| User/Project Coordinator | admin@example.com   | 1234 |
+| User/Project Coordinator   | maria@example.com    | 1234 |
 
 ### 3. Application Help
 
@@ -40,28 +45,32 @@ To access the admin page just login using this credentials:
 
 ### 5. Check Accessibility and Usability
 
-> Provide the results of accessibility and usability tests using the following checklists. Include the results as PDF files in the group's repository. Add individual links to those files here.
->
-> Accessibility: https://ux.sapo.pt/checklists/acessibilidade/  
-> Usability: https://ux.sapo.pt/checklists/usabilidade/  
+Results of accessibility and usability tests using the following checklists:
+
+- Accessibility: [Accessibility Report - SAPO UX](./Checklist%20de%20Acessibilidade%20-%20SAPO%20UX.pdf)
+- Usability: [Usability Report - SAPO UX](./Checklist%20de%20Usabilidade%20-%20SAPO%20UX.pdf)
 
 ### 6. HTML & CSS Validation
 
-> Provide the results of the validation of the HTML and CSS code using the following tools. Include the results as PDF files in the group's repository. Add individual links to those files here.
->   
-> HTML: https://validator.w3.org/nu/  
-> CSS: https://jigsaw.w3.org/css-validator/  
+The results of the validation of the HTML and CSS code:
+
+- HTML: https://validator.w3.org/nu/  
+- CSS: [W3C CSS Validator Report](./W3C%20CSS%20Validator%20results.pdf)
 
 ### 7. Revisions to the Project
 
-> Describe the revisions made to the project since the requirements specification stage.  
+No structural changes were made to the project. That being said, some changes were made in the database to accommodate Laravel's functional requirements, such as:
+
+- Creating a table for password resetting using Laravel's built-in functions
+- Adding a row to the User's table to allow for email verification
+- Adding deleted_at rows to tables where we use Laravel's Soft Delete function
+- After discussing with the teacher we decided to remove Administration table from the database. Administrators are now identified by a flag in the Users table 
 
 ### 8. Implementation Details
 
 #### 8.1. Libraries Used
 
-> Include reference to all the libraries and frameworks used in the product.  
-> Include library name and reference, description of the use, and link to the example where it's used in the product.  
+The only library we used was FontAwesome, to use icons in our project. Documentation can be found [here](https://fontawesome.com/v5.15/how-to-use/on-the-web/referencing-icons/basic-use).
 
 #### 8.2 User Stories
 
@@ -73,12 +82,43 @@ To access the admin page just login using this credentials:
 
 | US Identifier | Name    | Module | Priority                       | Team Members               | State  |
 | ------------- | ------- | ------ | ------------------------------ | -------------------------- | ------ |
-|  US01          | US Name 1 | Module A | High/Mandatory | **John Silva**, Ana Alice   |  100%  |
-|  US02          | US Name 2 | Module A | Medium/Important | **Ana Alice**, John Silva                 |   75%  | 
-|  US03          | US Name 3 | Module B | Low/Optional | **Francisco Alves**                 |   5%  | 
-|  US04          | US Name 4 | Module A | Low/Optional | -                 |   0%  | 
-
-
+| US101      | Login       | High     | Sofia Germer | 100% |
+| US102      | Sign-up     | High     | Sofia Germer | 100% |
+| US103      | See home    | High     | Miguel Lopes | 100% |
+| US104      | See about   | High     | Henrique Pinho, Sofia Germer | 100% |
+| US105      | Consult FAQ | High     | Henrique Pinho | 100% |
+| US201      | Create project             | High     | Henrique Pinho | 100% |
+| US202      | View projects              | High     | Miguel Lopes | 100% |
+| US203      | Manage profile             | High     | Sofia Germer | 100%|
+| US204      | Manage project invitations | High     | Miguel Lopes | 100% |
+| US205      | Logout                     | High     | Sofia Germer | 100% |
+| US206      | Mark project as favorite   | Medium   | Miguel Lopes | 100% |
+| US207      | Delete account             | Medium   | Miguel Lopes | 100% |
+| US301      | Create task                    | High     |  Miguel Lopes | 100%|
+| US302      | Manage tasks                   | High     |  Miguel Lopes | 100%|
+| US303      | Complete an assigned task      | High     |  Miguel Lopes | 100%|
+| US304      | Search tasks                   | High     |  Miguel Lopes | 100%|
+| US305      | Leave project                  | High     | Miguel Lopes | 100% |
+| US306      | Assign Users to Tasks          | High     | Miguel Lopes | 100% |
+| US307      | Post messages to project forum | Medium   | Edgar Torres | 100% |
+| US308      | View task details              | Medium   | Miguel Lopes | 100% |
+| US309      | Comment on task                | Medium   | Miguel Lopes | 100% |
+| US310      | Browse project forum           | Medium   | Edgar Torres | 100% |
+| US311      | Receive notifications          | Medium   | Miguel Lopes | 100% |
+| US312      | View the project’s team        | Low      |  Miguel Lopes | 100% |
+| US313      | View Team members profile      | Low      | Sofia Germer | 100% |
+| US401      | Edit posts   | High     | Miguel Lopes | 100% |
+| US402      | Delete posts | High     | Miguel Lopes | 100% |
+| US501      | Add user to project        | High     | Miguel Lopes | 100% |
+| US502      | Assign tasks to members    | High     | Miguel Lopes | 100% |
+| US503      | Assign new coordinator     | High     | Miguel Lopes | 100% |
+| US504      | Edit project details       | High     | Miguel Lopes | 100% |
+| US505      | Invite to Project by email | Medium   | Miguel Lopes | 100% |
+| US506      | Archive project            | Medium   | Miguel Lopes | 100% |
+| US601      | Invite user to the company’s workspace   | Sofia Germer, Miguel Lopes | 100% |
+| US602      | View a list of company users             | High     | Sofia Germer, Miguel Lopes | 100% |
+| US603      | Remove user from the company’s workplace | High     | Sofia Germer, Miguel Lopes | 100% |
+| US604      | Browse projects                          | High     | Sofia Germer, Miguel Lopes | 100% | 
 ---
 
 
@@ -88,11 +128,11 @@ To access the admin page just login using this credentials:
 
 ### 1. Product presentation
 
-> Brief presentation of the product and its main features (2 paragraphs max).  
->
-> URL to the product: http://lbaw2151.lbaw.fe.up.pt  
->
-> Slides used during the presentation should be added, as a PDF file, to the group's repository and linked to here.
+Brief presentation of the product and its main features (2 paragraphs max).  
+
+URL to the product: http://lbaw2151.lbaw.fe.up.pt  
+
+Slides used during the presentation should be added, as a PDF file, to the group's repository and linked to here.
 
 
 ### 2. Video presentation
@@ -108,10 +148,6 @@ To access the admin page just login using this credentials:
 
 
 ## Revision history
-
-Changes made to the first submission:
-1. Removed Administration Table in seed.sql file since the Admin login with two tables wasn't possible using laravel.
-1. ..
 
 ***
 
