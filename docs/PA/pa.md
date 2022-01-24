@@ -100,10 +100,10 @@ The only library we used was FontAwesome, to use icons in our project. Documenta
 | US304      | Search tasks               | M04   | High     |  Miguel Lopes | 100%|
 | US305      | Leave project               | M04   | High     | Miguel Lopes | 100% |
 | US306      | Assign Users to Tasks       | M04  | High     | Miguel Lopes | 100% |
-| US307      | Post messages to project forum | M05 | Medium   | Edgar Torres | 100% |
+| US307      | Post messages to project forum | M05 | Medium   | Edgar Torre | 100% |
 | US308      | View task details            | M04 | Medium   | Miguel Lopes | 100% |
 | US309      | Comment on task              | M04  | Medium   | Miguel Lopes | 100% |
-| US310      | Browse project forum         | M05 | Medium   | Edgar Torres | 100% |
+| US310      | Browse project forum         | M05 | Medium   | Edgar Torre | 100% |
 | US311      | Receive notifications        | M04  | Medium   | Miguel Lopes | 100% |
 | US312      | View the project’s team      | M04 | Low      |  Miguel Lopes | 100% |
 | US313      | View Team members profile    | M04 | Low      | Sofia Germer | 100% |
