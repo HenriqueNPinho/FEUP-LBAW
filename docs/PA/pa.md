@@ -116,9 +116,9 @@ The only library we used was FontAwesome, to use icons in our project. Documenta
 | US505      | Invite to Project by email | M04 |Medium   | Miguel Lopes | 100% |
 | US506      | Archive project            | M04 | Medium   | Miguel Lopes | 100% |
 | US601      | Invite user to the company’s workspace | M06  | High | Sofia Germer, Miguel Lopes | 100% |
-| US602      | View a list of company users          | M06 | High     | Sofia Germer, Miguel Lopes | 100% |
-| US603      | Remove user from the company’s workplace| M06 | High     | Sofia Germer, Miguel Lopes | 100% |
-| US604      | Browse projects                     | M06     | High     | Sofia Germer, Miguel Lopes | 100% | 
+| US602      | View a list of company users          | M06 | High     | Sofia Germer | 100% |
+| US603      | Remove user from the company’s workplace| M06 | High     | Sofia Germer | 100% |
+| US604      | Browse projects                     | M06     | High     | Sofia Germer | 100% | 
 ---
 
 
