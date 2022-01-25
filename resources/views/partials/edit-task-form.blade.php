@@ -18,7 +18,7 @@
         </div>
         <div id="edit-task-end-date-selection">
             <h4>DELIVERY (MM/DD/YY)</h4>
-            <input type="date" id="edit-task-end-date" min="{{$project->delivery_date}}" required pattern="\d{4}-\d{2}-\d{2}">
+            <input type="date" id="edit-task-end-date" min="{{$project->delivery_date}}">
         </div>
     </div>
     

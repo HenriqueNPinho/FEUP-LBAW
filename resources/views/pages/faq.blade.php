@@ -8,7 +8,7 @@
         <section class="faq-container">
             <div class="faq-one">
                
-                <h1 class="faq-page">What is Project Clinic?</h1>
+                <h2 class="faq-page">What is Project Clinic? </h2>
           
                 <div class="faq-body">
                     <p> Project Clinic is a web interface for project management that allows teams to organize their professional projects,
@@ -18,7 +18,7 @@
             <hr class="hr-line">
             <div class="faq-two">
             
-                <h1 class="faq-page">Why should I use Project Clinic to organize my projects?</h1>
+                <h2 class="faq-page">Why should I use Project Clinic to organize my projects?</h2>
               
                 <div class="faq-body">
                     <p>Project Clinic can facilitate your team workflow,
@@ -29,7 +29,7 @@
             <hr class="hr-line">
             <div class="faq-three">
              
-                <h1 class="faq-page">Can everyone use Project Clinic?</h1>
+                <h2 class="faq-page">Can everyone use Project Clinic?</h2>
              
                 <div class="faq-body">
                     <p>Project Clinic is open to everyone who wants to easily manage their projects.</p>
