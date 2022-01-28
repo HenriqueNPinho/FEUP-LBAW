@@ -38,11 +38,13 @@ To access the admin page just login using this credentials:
 
 ### 3. Application Help
 
-> Describe where help has been implemented, pointing to working examples.  
+We strived to create an app that is simple to use and that includes features that are self-explanatory. Besides that we made sure that some other accessability features were included. To exemplify, every input has either a placeholder or label that indicates what the field should include. 
 
 ### 4. Input Validation
 
-> Describe how input data was validated, and provide examples to scenarios using both client-side and server-side validation.  
+Input data is always validated on the server-side, and when necessary, also on the client-side. 
+
+One example that includes both types of validation is when the user tries to create a project: the delivery date is validated on the client-side, preventing the user from choosing a delivery date posterior to the present day. It also prevents the user from creating a task with an empty title.
 
 ### 5. Check Accessibility and Usability
 
@@ -55,7 +57,7 @@ Results of accessibility and usability tests using the following checklists:
 
 The results of the validation of the HTML and CSS code:
 
-- HTML:[W3C HTML Validator Report](./W3C%20HTML%20Validator%20results.pdf)
+- HTML:[W3C HTML Validator Reports](./HTMLValidation)
 - CSS: [W3C CSS Validator Report](./W3C%20CSS%20Validator%20results.pdf)
 
 ### 7. Revisions to the Project
@@ -71,15 +73,10 @@ No structural changes were made to the project. That being said, some changes we
 
 #### 8.1. Libraries Used
 
-The only library we used was FontAwesome, to use icons in our project. Documentation can be found [here](https://fontawesome.com/v5.15/how-to-use/on-the-web/referencing-icons/basic-use).
+The only library we used was **FontAwesome**, to use icons in our project. Documentation can be found [here](https://fontawesome.com/v5.15/how-to-use/on-the-web/referencing-icons/basic-use).
 
 #### 8.2 User Stories
 
-> This subsection should include all high and medium priority user stories, sorted by order of implementation. Implementation should be sequential according to the order identified below. 
->
-> If there are new user stories, also include them in this table. 
-> The owner of the user story should have the name in **bold**.
-> This table should be updated when a user story is completed and another one started. 
 
 | US Identifier | Name    | Module | Priority                       | Team Members               | State  |
 | ------------- | ------- | ------ | ------------------------------ | -------------------------- | ------ |
@@ -120,20 +117,16 @@ The only library we used was FontAwesome, to use icons in our project. Documenta
 | US602      | View a list of company users          | M06 | High     | Sofia Germer | 100% |
 | US603      | Remove user from the company’s workplace| M06 | High     | Sofia Germer | 100% |
 | US604      | Browse projects                     | M06     | High     | Sofia Germer | 100% | 
----
 
 
 ## A10: Presentation
  
-> This artefact corresponds to the presentation of the product.
 
 ### 1. Product presentation
 
-Brief presentation of the product and its main features (2 paragraphs max).  
+We developed a web application for project management which includes, task management and assignment, easier communication between project members using the project's forum, a notification system, etc. Users can use our app on both an professional environment or a personal one.
 
 URL to the product: http://lbaw2151.lbaw.fe.up.pt  
-
-Slides used during the presentation should be added, as a PDF file, to the group's repository and linked to here.
 
 
 ### 2. Video presentation
