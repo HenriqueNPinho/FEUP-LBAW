@@ -2,7 +2,7 @@
 
 Delivery Date: 28/01/2022
 
-Editor: Sofia Germer (up201907461) - up201907461@up.pt
+Editor: Edgar Torre (up201906573) - up201906573@up.pt
 
 ## A9: Product
 
