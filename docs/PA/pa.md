@@ -1,5 +1,7 @@
 # PA: Product and Presentation
 
+Delivery Date: 28/01/2022 
+Editor: Sofia Germer (up201907461) - up201907461@up.pt
 
 ## A9: Product
 
@@ -144,11 +146,11 @@ https://drive.google.com/file/d/1HfiZMB7RLNwMIv1D4tYm0mDPD5RXv0Qk/view?usp=shari
 
 ***
 
-GROUP2151, 21/01/2022
+GROUP2151, 28/01/2022
 
 | Name                  | Number    | E-Mail            |
 | --------------------- | --------- | ----------------- |
 | Sofia Germer          | 201907461 | up201907461@up.pt |
-| Miguel Lopes (Editor) | 201704590 | up201704590@up.pt |
-| Edgar Torre           | 201906573 | up201906573@up.pt |
+| Miguel Lopes  | 201704590 | up201704590@up.pt |
+| Edgar Torre   (Editor)        | 201906573 | up201906573@up.pt |
 | Henrique Pinho        | 201805000 | up201805000@up.pt |
