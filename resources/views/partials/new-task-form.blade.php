@@ -19,7 +19,7 @@
         </div>
         <div id="new-task-end-date-selection">
             <h4>DELIVERY (MM/DD/YY)</h4>
-            <input type="date" id="new-task-end-date" value='<?php echo date('Y-m-d',time()+86400);?>' min='<?php echo date('Y-m-d',time()+86400);?>' required pattern="\d{4}-\d{2}-\d{2}">
+            <input type="date" id="new-task-end-date" value='<?php echo date('Y-m-d',time()+86400);?>' min='<?php echo date('Y-m-d',time()+86400);?>'>
         </div>
     </div>
     

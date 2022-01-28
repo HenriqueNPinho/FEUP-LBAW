@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-<script type="text/javascript" src={{ asset('js/about-us.js') }} defer></script>
+<script src={{ asset('js/about-us.js') }} defer></script>
 
 <div id="AboutUsPageInfo" class= "AboutUsPage">
 	<div class = "AboutUsBox">
@@ -44,13 +44,13 @@
 						</div>
 					</div>
 					<div class = "AboutUsMemberPhoto">
-						<img src = "/images/avatars/SofiaGermer.jpg" class = "AboutUsPhoto" id = "tempProfilePhoto">
+						<img src = "/images/avatars/SofiaGermer.jpg" alt= "Sofia" class = "AboutUsPhoto" id = "tempProfilePhoto1">
 					</div>
 				</div>
 
 				<div class = "AboutUsMemberSpace">
 					<div class = "AboutUsMemberPhoto">
-						<img src = "/images/avatars/MiguelLopes.png" class = "AboutUsPhoto" id = "tempProfilePhoto">
+						<img src = "/images/avatars/MiguelLopes.png" alt= "Miguel" class = "AboutUsPhoto" id = "tempProfilePhoto2">
 					</div>
 
 					<div class = "AboutUsMember">
@@ -87,13 +87,13 @@
 						</div>
 					</div>
 					<div class = "AboutUsMemberPhoto">
-						<img src =  "/images/avatars/EdgarTorre.jpg" class = "AboutUsPhoto" id = "tempProfilePhoto">
+						<img src =  "/images/avatars/EdgarTorre.jpg" alt= "Edgar" class = "AboutUsPhoto" id = "tempProfilePhoto3">
 					</div>
 				</div>
 
 				<div class = "AboutUsMemberSpace">
 					<div class = "AboutUsMemberPhoto">
-						<img src = "/images/avatars/HenriquePinho.jpg" class = "AboutUsPhoto" id = "tempProfilePhoto">
+						<img src = "/images/avatars/HenriquePinho.jpg" alt= "Henrique" class = "AboutUsPhoto" id = "tempProfilePhoto4">
 					</div>
 
 					<div class = "AboutUsMember">

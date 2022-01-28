@@ -39,10 +39,11 @@
                     @endif 
 
                     <div class="textSpaceButtons">
+                     
                         <a  class="profileButton" href="{{ url('/edituserpage') }}" id = "editProfileButtonText">Edit Profile </a>
 
                         <a  class="profileButton" href="{{ url('/changePassword') }}" id = "editProfileButtonText">Reset Password </a>
-
+                    
                         <form method="GET" action="{{'/deleteuser'}}" >
                             <input type="hidden" id= "deleteaccountButton"  onchange="sofi(event)">
                             <button type="submit" id="profileButtonDelete" class= "profileButton" >Delete Account</button>
@@ -116,10 +117,11 @@
                             <p class="userEmail"> {{$companyName}}</p>
                         </div>
                         <div class="textSpaceButtons adminTextSpace">
+                    
                             <a  class="profileButton buttonAdmin" href="{{ url('/edituserpage') }}" id = "editProfileButtonText">Edit Profile </a>
 
                             <a  class="profileButton buttonAdmin" href="{{ url('/changePassword') }}" id = "editProfileButtonText">Reset Password </a>
-
+                                
                             <form method="GET" action="{{'/deleteuser'}}" >
                                 <input type="hidden" id= "deleteaccountButton"  onchange="sofi(event)">
                                 <button type="submit" id="profileButtonDelete" class= "profileButton buttonAdmin" >Delete Account</button>

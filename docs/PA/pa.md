@@ -55,7 +55,7 @@ Results of accessibility and usability tests using the following checklists:
 
 The results of the validation of the HTML and CSS code:
 
-- HTML: https://validator.w3.org/nu/  
+- HTML:[W3C HTML Validator Report](./W3C%20HTML%20Validator%20results.pdf)
 - CSS: [W3C CSS Validator Report](./W3C%20CSS%20Validator%20results.pdf)
 
 ### 7. Revisions to the Project
