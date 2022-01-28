@@ -19,7 +19,7 @@ sudo docker run -it -p 8000:80 --name=lbaw2151 -e DB_DATABASE="lbaw2151" -e DB_S
 
 ### 2. Usage
 
-The final release version can be found [here](http://lbaw2151.lbaw.fe.up.pt).
+The final release version can be found [here (website)](http://lbaw2151.lbaw.fe.up.pt) or [here (source code)](https://git.fe.up.pt/lbaw/lbaw2122/lbaw2151).
 
 To create an account you need to use your real email address since we've implemented a safeguard to prevent users from using accounts without verifying them. Alternatively you can use the accounts we've already set up (see below).
 
