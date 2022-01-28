@@ -8,7 +8,6 @@ We developed a web application for project management which includes, task manag
 
 ### 1. Installation
 
-The final release version can be found [here](http://lbaw2151.lbaw.fe.up.pt).
 
 The full Docker command to start the image available at the group's GitLab Container Registry using the production database:
 
@@ -18,7 +17,9 @@ sudo docker run -it -p 8000:80 --name=lbaw2151 -e DB_DATABASE="lbaw2151" -e DB_S
 
 ### 2. Usage
 
-http://lbaw2151.lbaw.fe.up.pt  
+The final release version can be found [here](http://lbaw2151.lbaw.fe.up.pt).
+
+To create an account you need to use your real email address since we've implemented a safeguard to prevent users from using accounts without verifying them. Alternatively you can use the accounts we've already set up (see below).
 
 #### 2.1. Administration Credentials
 
@@ -32,7 +33,7 @@ To access the admin page just login using this credentials:
 
 | Type          | Username  | Password |
 | ------------- | --------- | -------- |
-| User/Project Coordinator | admin@example.com   | 1234 |
+| User/Project Coordinator | john@example.com   | 1234 |
 | User/Project Coordinator   | maria@example.com    | 1234 |
 
 ### 3. Application Help

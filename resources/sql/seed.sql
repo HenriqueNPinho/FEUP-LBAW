@@ -244,7 +244,7 @@ EXECUTE PROCEDURE add_edit();
 INSERT INTO users VALUES (
   DEFAULT,
   'John Doe',
-  'admin@example.com',
+  'john@example.com',
   '$2y$10$HfzIhGCCaxqyaIdGgjARSuOKAcm1Uy82YfLuNaajn6JrjLWy9Sj/W',
   '/images/avatars/profile-pic-2.png',
   DEFAULT,
