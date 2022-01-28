@@ -131,12 +131,10 @@ URL to the product: http://lbaw2151.lbaw.fe.up.pt
 
 ### 2. Video presentation
 
-> Screenshot of the video plus the link to the lbaw21gg.mp4 file  
+Screenshot of the video :
 
-> - Upload the lbaw21gg.mp4 file to the video uploads' [Google folder](https://drive.google.com/drive/folders/1-fPoSR3lXyPI38UgpWf6iQBe2Lk_ckoT?usp=sharing "Videos folder"). You need to use a Google U.Porto account to upload the video.   
-> - The video must not exceed 2 minutes.
-> - Include a link to the video on the Google Drive folder.
-
+Link to video: 
+https://drive.google.com/file/d/1HfiZMB7RLNwMIv1D4tYm0mDPD5RXv0Qk/view?usp=sharing
 
 ---
 
