@@ -1,6 +1,7 @@
 # PA: Product and Presentation
 
-Delivery Date: 28/01/2022 
+Delivery Date: 28/01/2022
+
 Editor: Sofia Germer (up201907461) - up201907461@up.pt
 
 ## A9: Product
